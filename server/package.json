@@ -4,11 +4,15 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "standard"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "hapi": "^17.5.2"
+  },
+  "devDependencies": {
+    "standard": "^11.0.1"
   }
 }
