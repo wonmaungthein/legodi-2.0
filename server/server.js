@@ -24,14 +24,13 @@ server.route({
   path: "/categories",
   handler: function(request, h) {
     return [
-        { name: "Sport" },
-        { name: "Parks" },
-        { name: "Food" },
-        { name: "Shopping" },
-        { name: "Welcome" },
-        { name: "Asylum" }
-    
-      ]
+      { name: "Sport" },
+      { name: "Parks" },
+      { name: "Food" },
+      { name: "Shopping" },
+      { name: "Welcome" },
+      { name: "Asylum" }
+    ];
   }
 });
 
