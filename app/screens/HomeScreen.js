@@ -74,7 +74,7 @@ export default class HomeScreen extends React.Component {
 
       return (
         <Text style={styles.developmentModeText}>
-          Development mode is enabled, your app will be slower but you can use useful development
+         LEGODI 2.0
           tools. {learnMoreButton}
         </Text>
       );
