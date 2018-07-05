@@ -7,4 +7,5 @@ jobs:
     steps:
       - checkout
       - run: npm --prefix app install
+      - run: npm --prefix app start
 
