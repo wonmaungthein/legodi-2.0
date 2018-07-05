@@ -1,11 +1,19 @@
 version: 2
 jobs:
-  build:
+  build_app:
     docker:
       - image: circleci/node:latest
     working_directory: ~/tmp
     steps:
       - checkout
-      - run: npm install
+      - run: npm --prefix app install
         run: npm run lint
-        
+
+build_server:
+    docker:
+      - image: circleci/node:latest
+    working_directory: ~/tmp
+    steps:
+      - checkout
+      - run: npm --prefix server install
+      - run: npm run lint
