@@ -8,6 +8,11 @@
     "dev": "nodemon server.js",
     "lint": "standard"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -18,6 +23,7 @@
     "mocha": "^5.2.0",
     "nodemon": "^1.17.5",
     "standard": "^11.0.1",
-    "supertest": "^3.1.0"
+    "supertest": "^3.1.0",
+    "husky": "^1.0.0-rc.9"
   }
 }

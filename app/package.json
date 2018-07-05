@@ -16,6 +16,11 @@
     ],
     "parser": "babel-eslint"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
   "dependencies": {
     "@expo/samples": "2.1.1",
     "expo": "^28.0.0",
@@ -25,6 +30,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^8.2.5",
+    "husky": "^1.0.0-rc.9",
     "jest-expo": "^28.0.0",
     "standard": "^11.0.1"
   }
