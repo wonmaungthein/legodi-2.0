@@ -6,14 +6,15 @@ jobs:
     working_directory: ~/tmp
     steps:
       - checkout
-      - run: npm --prefix app install
+      -run: cd app
+      - run: npm app install
         run: npm run lint
-
-build:
+  build:
     docker:
       - image: circleci/node:latest
     working_directory: ~/tmp
     steps:
       - checkout
-      - run: npm --prefix server install
+      -run: cd server
+      - run: npm server install
       - run: npm run lint
