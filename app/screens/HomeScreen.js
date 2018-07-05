@@ -15,7 +15,7 @@ export default class HomeScreen extends React.Component {
     header: null
   }
 
-  render() {
+  render () {
     return (
       <View style={styles.container}>
         <ScrollView
@@ -48,7 +48,7 @@ export default class HomeScreen extends React.Component {
     )
   }
 
-  _maybeRenderDevelopmentModeWarning() {
+  _maybeRenderDevelopmentModeWarning () {
     if (__DEV__) {
       const learnMoreButton = (
         <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
