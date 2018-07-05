@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build_app:
+  build:
     docker:
       - image: circleci/node:latest
     working_directory: ~/tmp
@@ -9,7 +9,7 @@ jobs:
       - run: npm --prefix app install
         run: npm run lint
 
-build_server:
+build:
     docker:
       - image: circleci/node:latest
     working_directory: ~/tmp
