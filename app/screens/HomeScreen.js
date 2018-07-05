@@ -9,6 +9,7 @@ import {
   View
 } from 'react-native'
 import { WebBrowser } from 'expo'
+import * as api from '../helpers/api'
 
 import { MonoText } from '../components/StyledText'
 
@@ -17,10 +18,23 @@ export default class HomeScreen extends React.Component {
     header: null
   };
 
-  render () {
+  state = {
+    categories: []
+  };
+
+  async componentDidMount() {
+    const { data: categories } = await api.getCategories()
+    console.log(categories)
+    this.setState({ categories })
+  }
+
+  render() {
     return (
       <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+        <ScrollView
+          style={styles.container}
+          contentContainerStyle={styles.contentContainer}
+        >
           <View style={styles.welcomeContainer}>
             <Image
               source={
@@ -33,22 +47,28 @@ export default class HomeScreen extends React.Component {
           </View>
 
           <View>
-              <Text style={styles.legodiTitle}>Legodi</Text>
+            <Text style={styles.legodiTitle}>Legodi</Text>
           </View>
         </ScrollView>
 
         <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
+          <Text style={styles.tabBarInfoText}>
+            This is a tab bar. You can edit it in:
+          </Text>
 
-          <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-            <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
+          <View
+            style={[styles.codeHighlightContainer, styles.navigationFilename]}
+          >
+            <MonoText style={styles.codeHighlightText}>
+              navigation/MainTabNavigator.js
+            </MonoText>
           </View>
         </View>
       </View>
     )
   }
 
-  _maybeRenderDevelopmentModeWarning () {
+  _maybeRenderDevelopmentModeWarning() {
     if (__DEV__) {
       const learnMoreButton = (
         <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
@@ -58,8 +78,7 @@ export default class HomeScreen extends React.Component {
 
       return (
         <Text style={styles.developmentModeText}>
-         LEGODI 2.0
-          tools. {learnMoreButton}
+          LEGODI 2.0 tools. {learnMoreButton}
         </Text>
       )
     } else {
@@ -72,7 +91,9 @@ export default class HomeScreen extends React.Component {
   }
 
   _handleLearnMorePress = () => {
-    WebBrowser.openBrowserAsync('https://docs.expo.io/versions/latest/guides/development-mode')
+    WebBrowser.openBrowserAsync(
+      'https://docs.expo.io/versions/latest/guides/development-mode'
+    )
   };
 
   _handleHelpPress = () => {
@@ -167,10 +188,10 @@ const styles = StyleSheet.create({
   },
   helpLinkText: {
     fontSize: 14,
-    color: '#2e78b7',
+    color: '#2e78b7'
   },
   legodiTitle: {
     fontSize: 28,
-    textAlign: 'center',
+    textAlign: 'center'
   }
-});
+})

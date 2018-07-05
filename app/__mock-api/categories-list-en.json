@@ -1,0 +1,140 @@
+[
+  {
+    "_id": "5a256e431aefb70014e3a24b",
+    "title": "Welcome",
+    "shortDescription": "Refuweege letters",
+    "description":
+      "Refuweegee is a community-led charity set up to ensure that all refugees arriving in Glasgow are welcomed to the city in true Glaswegian style.  We want to make sure that when people arrive in Scotland they receive the welcome they deserve and few useful tips too! We also want to provide everyone who wishes to get involved and make a difference, the opportunity to do so.\r\n\r\nThe heart and soul of Refuweegee's welcome packs are the \"letters fae the locals\". Here are few of them to welcome you to the wonderful city of Glasgow.",
+    "__v": 0,
+    "order": 1,
+    "icon": "",
+    "visible": true,
+    "amharngaDescription": "arabic translation",
+    "arabicDescription":
+      "منظمة Refuweege تقوم باستقبال القادمين الجدد لجلاسجو بأسلوب. هذه بعض من الرسائل التي يكتبها أصدقاء المنظمة للترحيب بالاسكتلنديين الجدد.",
+    "titleTranslation": { "am": "Amharic  translation", "ar": "مرحبا" }
+  },
+  {
+    "_id": "5a180fa0cbb54500148c1cc1",
+    "title": "Asylum",
+    "shortDescription": "Asylum in the UK",
+    "description":
+      "Asylum claims are considered under the 1951 UN Refugee Convention, and its incorporation into European and UK immigration law. To be granted asylum (to get refugee status), it’s necessary to show that you have a well-founded fear of persecution for reasons of race, religion, nationality, political opinion or membership of a particular social group you are outside your country of origin or normal residence and you cannot get protection in your own country.\r\n\r\nDo you have a well-founded fear (will it happen?) of persecution (what will happen?) for a Refugee Convention reason (why will it happen?) and no protection available to you in your home country (what will stop it happening?)\r\n\r\nContent from Right to Remain toolkit - https://righttoremain.org.uk\r\n     \r\n     \r\n     \r\n    ",
+    "__v": 0,
+    "order": 5,
+    "icon": "menu-residency",
+    "visible": true,
+    "amharngaDescription":
+      "አማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña \r\nአማርኛ amarəñña አማርኛ amarəññaአማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña.",
+    "arabicDescription":
+      "وبدأت ابتدعها كلا قد. أن إبّان الصفحة المشتّتون عدم, ان الجو كنقطة تعد, تم ضمنها مشاركة باستحداث بعد. أسر وجزر لإنعدام أم, هذا تونس جيوب ٠٨٠٤ كل, هو أفاق الواقعة بعض. شيء و مهمّات المتّبعة.\r\nبل بين أعلنت سليمان، للإتحاد, تم بتخصيص البرية الطرفين نفس. هذه ما يطول مسارح. حول ٣٠ بولندا، الدنمارك. عدد أحكم تسمّى بالفشل ٣٠. في جعل سياسة وبحلول واُسدل, مكن ببعض فكانت وبغطاء ثم, بحث تم للسيطرة والفلبين. عن جُل وسفن مشارف, أثره، حاملات لم وصل.",
+    "titleTranslation": { "am": "Amharnga ", "ar": "اللجوء" }
+  },
+  {
+    "_id": "5a181b4df192270014960243",
+    "title": "Volunteering",
+    "shortDescription": "Working and Volunteering in Glasgow",
+    "description": "Work and volunteering opportunities in Glasgow.",
+    "__v": 0,
+    "order": 10,
+    "icon": "menu-working",
+    "visible": true,
+    "amharngaDescription": "arabic translation",
+    "arabicDescription": "arabic translation",
+    "titleTranslation": { "am": "Amharic translation", "ar": "تطوع" }
+  },
+  {
+    "_id": "5a180feccbb54500148c1cc3",
+    "title": "Food",
+    "shortDescription": "Food tips in Glasgow",
+    "description": "",
+    "__v": 0,
+    "order": 20,
+    "icon": "menu-daily-life",
+    "visible": true,
+    "amharngaDescription": "arabic translation",
+    "arabicDescription": "arabic translation",
+    "titleTranslation": { "am": "Amharic translation", "ar": "الأكل" }
+  },
+  {
+    "_id": "5a180fb6cbb54500148c1cc2",
+    "title": "Parks",
+    "shortDescription": "Parks in Glasgow",
+    "description": "",
+    "__v": 0,
+    "order": 25,
+    "icon": "menu-parks",
+    "visible": true,
+    "amharngaDescription": "arabic translation",
+    "arabicDescription": "arabic translation",
+    "titleTranslation": { "am": "Amharic translation", "ar": "الحدائق" }
+  },
+  {
+    "_id": "5a181007cbb54500148c1cc4",
+    "title": "Sport",
+    "shortDescription": "Sport in Glasgow",
+    "description": "",
+    "__v": 0,
+    "order": 30,
+    "icon": "menu-sport",
+    "visible": true,
+    "amharngaDescription": "arabic translation",
+    "arabicDescription": "arabic translation",
+    "titleTranslation": { "am": "Amharic translation", "ar": "الرياضة" }
+  },
+  {
+    "_id": "5a181034cbb54500148c1cc5",
+    "title": "Shopping",
+    "shortDescription": "Shopping in Glasgow",
+    "description": "",
+    "__v": 0,
+    "order": 30,
+    "icon": "menu-shopping",
+    "visible": true,
+    "amharngaDescription": "arabic translation",
+    "arabicDescription": "arabic translation",
+    "titleTranslation": { "am": "Amharic translation", "ar": "التسوق" }
+  },
+  {
+    "_id": "5a181b66f192270014960244",
+    "title": "Transport",
+    "shortDescription": "Getting around in Glasgow",
+    "description": "",
+    "__v": 0,
+    "order": 35,
+    "icon": "menu-transport",
+    "visible": true,
+    "amharngaDescription": "arabic translation",
+    "arabicDescription": "arabic translation",
+    "titleTranslation": { "am": "Amharic translation", "ar": "المواصلات" }
+  },
+  {
+    "_id": "5a180f6ccbb54500148c1cc0",
+    "title": "Children",
+    "shortDescription": "Children activities and services in Glasgow",
+    "description":
+      "Sed nec pellentesque sem. Etiam fermentum augue mauris, et blandit justo imperdiet at. Curabitur tincidunt at nulla sed tincidunt. Sed blandit fermentum condimentum. Suspendisse aliquam dolor eu purus rutrum rhoncus. Duis lacinia gravida libero, sed rutrum nisl tempor vel. Curabitur eu nisl in erat maximus hendrerit vitae eget sem. Suspendisse in pulvinar nunc, vel mattis turpis. Proin sit amet purus semper, sodales sapien non, euismod mi. Suspendisse lobortis metus at vehicula efficitur. Etiam eu justo bibendum, sodales erat quis, porta metus. Donec nibh erat, viverra vel tristique vel, porta non risus. Vivamus eget nisl tincidunt, vulputate eros sed, interdum nisi.",
+    "__v": 0,
+    "order": 40,
+    "icon": "menu-counselling",
+    "visible": true,
+    "amharngaDescription": "arabic translation",
+    "arabicDescription": "arabic translation",
+    "titleTranslation": { "am": "Amharic translation", "ar": "الأطفال" }
+  },
+  {
+    "_id": "59fdb09cb9c9d00012d0fff5",
+    "title": "Emergency",
+    "shortDescription":
+      "This category contains articles about Emergency services in Glasgow",
+    "description":
+      "Proin eu dignissim justo. Donec dapibus turpis purus, eu rutrum nisi euismod nec. Praesent fermentum dui nibh, a vestibulum erat tristique non. Proin vitae risus nec diam vulputate bibendum ac sollicitudin nulla. Quisque ac euismod eros, suscipit feugiat dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque finibus, dui vel auctor finibus, magna tellus porttitor nunc, vel mollis nunc est sed diam. Etiam commodo vitae orci ultrices imperdiet. Fusce vehicula, quam eu condimentum dapibus, magna risus porttitor metus, dictum vulputate lacus massa vel libero. In quis interdum dui, sit amet vestibulum mauris. Praesent a purus nisl. Phasellus et laoreet turpis. Etiam vestibulum vehicula nibh, eget tincidunt mi dapibus vitae.\r\n\r\n",
+    "__v": 0,
+    "order": 45,
+    "icon": "menu-emergency",
+    "visible": true,
+    "amharngaDescription": "arabic translation",
+    "arabicDescription": "arabic translation",
+    "titleTranslation": { "am": "Amharic translation", "ar": "الطوارئ" }
+  }
+]
