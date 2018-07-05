@@ -1,18 +1,12 @@
 import React from 'react'
 import {
-  Text,
-  View,
+  Text
 } from 'react-native'
 
-CategoriesList = (props) => {
-
+const CategoriesList = (props) => {
   return (
-    <View>
-      <Text>{props.title}</Text>
-    </View>
+    <Text>{props.title}</Text>
   )
-
 }
 
-export default CategoriesList;
-
+export default CategoriesList

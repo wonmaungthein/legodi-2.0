@@ -1,37 +1,32 @@
 import React from 'react'
 import {
-  View,
+  View
 } from 'react-native'
 import * as api from '../helpers/api'
 import CategoriesIcon from '../components/CategoriesIcon'
 
 export default class CategoriesList extends React.Component {
-
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       categories: []
     }
   }
 
-  async componentDidMount() {
+  async componentDidMount () {
     const { data: categories } = await api.getCategories()
-    console.log(categories.map(cat => cat.title))
     this.setState({ categories })
   }
 
-  render() {
-    console.log(this.state.categories)
+  render () {
     return (
       <View>
-        {this.state.categories.map(category => {
+        {this.state.categories.map((category, i) => {
           return (
-            <CategoriesIcon title={category.title} />
+            <CategoriesIcon title={category.title} key={i} />
           )
         })}
       </View>
     )
   }
-
 }
-
