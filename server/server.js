@@ -14,6 +14,10 @@ server.route({
   path: "/",
   handler: function(request, h) {
     return "Legodi server";
+  host: 'localhost',
+  port: process.env.PORT || 8000,
+})
+
   }
 });
 
@@ -47,3 +51,5 @@ async function start() {
 }
 
 start()
+
+module.exports = server;
