@@ -1,31 +1,18 @@
 import React from 'react'
 import {
-  Image,
   Platform,
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View
 } from 'react-native'
 import { WebBrowser } from 'expo'
-import * as api from '../helpers/api'
-
 import { MonoText } from '../components/StyledText'
+import CategoriesList from './CategoriesList'
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null
-  };
-
-  state = {
-    categories: []
-  };
-
-  async componentDidMount() {
-    const { data: categories } = await api.getCategories()
-    console.log(categories)
-    this.setState({ categories })
   }
 
   render() {
@@ -35,20 +22,13 @@ export default class HomeScreen extends React.Component {
           style={styles.container}
           contentContainerStyle={styles.contentContainer}
         >
-          <View style={styles.welcomeContainer}>
-            <Image
-              source={
-                __DEV__
-                  ? require('../assets/images/robot-dev.png')
-                  : require('../assets/images/robot-prod.png')
-              }
-              style={styles.welcomeImage}
-            />
-          </View>
 
           <View>
             <Text style={styles.legodiTitle}>Legodi</Text>
           </View>
+
+          <CategoriesList />
+
         </ScrollView>
 
         <View style={styles.tabBarInfoContainer}>
