@@ -6,6 +6,5 @@ jobs:
     working_directory: ~/tmp
     steps:
       - checkout
-      - run: npm app install
       - run: npm --prefix app install
 
