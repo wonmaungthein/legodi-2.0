@@ -5,7 +5,6 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View
 } from 'react-native'
 import { WebBrowser } from 'expo'
@@ -22,13 +21,13 @@ export default class HomeScreen extends React.Component {
     categories: []
   };
 
-  async componentDidMount() {
+  async componentDidMount () {
     const { data: categories } = await api.getCategories()
     console.log(categories)
     this.setState({ categories })
   }
 
-  render() {
+  render () {
     return (
       <View style={styles.container}>
         <ScrollView
@@ -68,7 +67,7 @@ export default class HomeScreen extends React.Component {
     )
   }
 
-  _maybeRenderDevelopmentModeWarning() {
+  _maybeRenderDevelopmentModeWarning () {
     if (__DEV__) {
       const learnMoreButton = (
         <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
