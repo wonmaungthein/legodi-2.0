@@ -8,4 +8,8 @@ jobs:
       - checkout
       - run: npm --prefix app install
       - run: npm --prefix server install
+      - save_cache:
+          key: repo-client-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - ~/tmp
 
