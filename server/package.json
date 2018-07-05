@@ -4,11 +4,21 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "standard"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "hapi": "^17.5.2"
+  },
+  "devDependencies": {
+    "husky": "^1.0.0-rc.9",
+    "standard": "^11.0.1"
   }
 }
