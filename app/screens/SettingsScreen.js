@@ -27,7 +27,7 @@ export default class SettingsScreen extends React.Component {
           onValueChange={(itemValue, itemIndex) => this.setState({ language: itemValue })}>
           <Picker.Item label='English' value='English' />
           <Picker.Item label='Arabic' value='Arabic' />
-          <Picker.Item label='Russian' value='Russian' />
+          <Picker.Item label='Amharic' value='Amharic' />
         </Picker>
       </View>
     )
