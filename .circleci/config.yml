@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:latest
+    working_directory: ~/tmp
+    steps:
+      - checkout
+      - run: npm --prefix app install
+      - run: npm --prefix server install
+      # - run: npm --prefix app test
+      # - run: npm --prefix server test
+      - save_cache:
+          key: repo-client-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - ~/tmp
+
