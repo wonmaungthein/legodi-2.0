@@ -1,1 +1,1 @@
-echo '{ "path": "cz-conventional-changelog" }' > ~/.czrc
+echo '{ 'path': "cz-conventional-changelog" }' > ~/.czrc
