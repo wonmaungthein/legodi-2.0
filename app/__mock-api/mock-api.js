@@ -1,5 +1,5 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
+import axios from 'axios'
+import MockAdapter from 'axios-mock-adapter'
 import categoriesListEnglish from './categories-list-en'
 
 // This sets the mock adapter on the default instance
