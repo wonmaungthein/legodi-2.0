@@ -7,46 +7,48 @@ import {
 import { Ionicons } from '@expo/vector-icons'
 
 const CategoriesList = (props) => {
-  const iconName = (name) => {
-    let str = ''
+  const getIconName = (name) => {
+    let iconName = ''
     switch (name) {
       case 'Welcome':
-        str = 'md-information-circle'
+        iconName = 'md-information-circle'
         break
       case 'Asylum':
-        str = 'md-paper'
+        iconName = 'md-paper'
         break
       case 'Volunteering':
-        str = 'md-briefcase'
+        iconName = 'md-briefcase'
         break
       case 'Food':
-        str = 'md-pizza'
+        iconName = 'md-pizza'
         break
       case 'Parks':
-        str = 'md-paw'
+        iconName = 'md-paw'
         break
       case 'Sport':
-        str = 'md-tennisball'
+        iconName = 'md-tennisball'
         break
       case 'Shopping':
-        str = 'md-cart'
+        iconName = 'md-cart'
         break
       case 'Transport':
-        str = 'md-bus'
+        iconName = 'md-bus'
         break
       case 'Children':
-        str = 'md-contacts'
+        iconName = 'md-contacts'
         break
       case 'Emergency':
-        str = 'md-warning'
+        iconName = 'md-warning'
         break
+      default:
+        iconName = 'md-help'
     }
-    return str
+    return iconName
   }
 
   return (
     <TouchableOpacity style={styles.box}>
-      <Ionicons name={iconName(props.title)} size={36} color='#e5ba4f' />
+      <Ionicons name={getIconName(props.title)} size={36} color='#e5ba4f' />
       <Text style={styles.title}>{props.title}</Text>
     </TouchableOpacity>
   )
