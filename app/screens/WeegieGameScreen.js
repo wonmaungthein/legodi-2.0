@@ -4,7 +4,7 @@ import {
   View
 } from 'react-native'
 
-export default class SettingsScreen extends React.Component {
+export default class WeegieGame extends React.Component {
   static navigationOptions = {
     title: 'Glasgow welcome back',
     headerStyle: { backgroundColor: '#0f352f' },
@@ -14,7 +14,7 @@ export default class SettingsScreen extends React.Component {
   render () {
     return (
       <View>
-        <Text>Select language</Text>
+        <Text>Weegie Game Screen</Text>
       </View>
     )
   }

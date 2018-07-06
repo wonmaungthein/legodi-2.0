@@ -1,7 +1,6 @@
 import React from 'react'
 import {
   Image,
-  Platform,
   ScrollView,
   StyleSheet,
   Text,
@@ -10,11 +9,11 @@ import {
 import { WebBrowser } from 'expo'
 import * as api from '../helpers/api'
 
-import { MonoText } from '../components/StyledText'
-
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
-    header: null
+    title: 'Glasgow welcome back',
+    headerStyle: { backgroundColor: '#0f352f' },
+    headerTitleStyle: { color: '#e6bc44' }
   };
 
   state = {
@@ -49,20 +48,6 @@ export default class HomeScreen extends React.Component {
             <Text style={styles.legodiTitle}>Legodi</Text>
           </View>
         </ScrollView>
-
-        <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>
-            This is a tab bar. You can edit it in:
-          </Text>
-
-          <View
-            style={[styles.codeHighlightContainer, styles.navigationFilename]}
-          >
-            <MonoText style={styles.codeHighlightText}>
-              navigation/MainTabNavigator.js
-            </MonoText>
-          </View>
-        </View>
       </View>
     )
   }
@@ -136,9 +121,6 @@ const styles = StyleSheet.create({
   homeScreenFilename: {
     marginVertical: 7
   },
-  codeHighlightText: {
-    color: 'rgba(96,100,109, 0.8)'
-  },
   codeHighlightContainer: {
     backgroundColor: 'rgba(0,0,0,0.05)',
     borderRadius: 3,
@@ -148,31 +130,6 @@ const styles = StyleSheet.create({
     fontSize: 17,
     color: 'rgba(96,100,109, 1)',
     lineHeight: 24,
-    textAlign: 'center'
-  },
-  tabBarInfoContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    ...Platform.select({
-      ios: {
-        shadowColor: 'black',
-        shadowOffset: { height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3
-      },
-      android: {
-        elevation: 20
-      }
-    }),
-    alignItems: 'center',
-    backgroundColor: '#fbfbfb',
-    paddingVertical: 20
-  },
-  tabBarInfoText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
     textAlign: 'center'
   },
   navigationFilename: {
