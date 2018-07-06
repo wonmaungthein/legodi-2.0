@@ -4,8 +4,9 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon'
 import HomeScreen from '../screens/HomeScreen'
-import LinksScreen from '../screens/LinksScreen'
+import AboutScreen from '../screens/AboutScreen'
 import SettingsScreen from '../screens/SettingsScreen'
+import WeegieGameScreen from '../screens/WeegieGameScreen'
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen
@@ -16,25 +17,35 @@ HomeStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
+      name={Platform.OS === 'ios' ? `ios-home-outline${focused ? '' : '-outline'}` : 'md-home'}
+    />
+  )
+}
+
+const WeegieGameStack = createStackNavigator({
+  Home: WeegieGameScreen
+})
+
+WeegieGameStack.navigationOptions = {
+  tabBarLabel: 'Game',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? `ios-game-controller-b-outline${focused ? '' : '-outline'}` : 'md-game-controller-b'}
     />
   )
 }
 
 const LinksStack = createStackNavigator({
-  Links: LinksScreen
+  Links: AboutScreen
 })
 
 LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+  tabBarLabel: 'About',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link'}
+      name={Platform.OS === 'ios' ? `ios-information-circle-outline${focused ? '' : '-outline'}` : 'md-information-circle'}
     />
   )
 }
@@ -48,7 +59,7 @@ SettingsStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? `ios-options${focused ? '' : '-outline'}` : 'md-options'}
+      name={Platform.OS === 'ios' ? `ios-settings${focused ? '' : '-outline'}` : 'md-settings'}
     />
   )
 }
@@ -56,5 +67,6 @@ SettingsStack.navigationOptions = {
 export default createBottomTabNavigator({
   HomeStack,
   LinksStack,
-  SettingsStack
+  SettingsStack,
+  WeegieGameStack
 })
