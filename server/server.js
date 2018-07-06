@@ -16,7 +16,7 @@ server.route({
     return "Legodi server"
   }
 });
-
+    
 // Add Categories route
 
 server.route({

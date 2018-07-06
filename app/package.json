@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "test": "node ./node_modules/jest/bin/jest.js --watchAll",
-    "lint": "standard"
+    "lint": "standard",
+    "commit": "npx git-cz"
   },
   "jest": {
     "preset": "jest-expo"
@@ -32,8 +33,14 @@
   "devDependencies": {
     "axios-mock-adapter": "^1.15.0",
     "babel-eslint": "^8.2.5",
+    "commitizen": "^2.10.1",
     "husky": "^1.0.0-rc.9",
     "jest-expo": "^28.0.0",
     "standard": "^11.0.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }

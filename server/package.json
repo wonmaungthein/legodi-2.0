@@ -6,7 +6,8 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha",
     "dev": "nodemon server.js",
-    "lint": "standard"
+    "lint": "standard",
+    "commit": "npx git-cz"
   },
   "husky": {
     "hooks": {
