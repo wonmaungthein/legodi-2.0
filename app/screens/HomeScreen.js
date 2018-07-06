@@ -1,6 +1,5 @@
 import React from 'react'
 import {
-  Image,
   ScrollView,
   StyleSheet,
   Text,
@@ -8,6 +7,7 @@ import {
 } from 'react-native'
 import { WebBrowser } from 'expo'
 import * as api from '../helpers/api'
+import CategoriesList from './CategoriesList'
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -33,20 +33,13 @@ export default class HomeScreen extends React.Component {
           style={styles.container}
           contentContainerStyle={styles.contentContainer}
         >
-          <View style={styles.welcomeContainer}>
-            <Image
-              source={
-                __DEV__
-                  ? require('../assets/images/robot-dev.png')
-                  : require('../assets/images/robot-prod.png')
-              }
-              style={styles.welcomeImage}
-            />
-          </View>
 
           <View>
             <Text style={styles.legodiTitle}>Legodi</Text>
           </View>
+
+          <CategoriesList />
+
         </ScrollView>
       </View>
     )
