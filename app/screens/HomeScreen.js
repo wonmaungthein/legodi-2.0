@@ -6,7 +6,6 @@ import {
   View
 } from 'react-native'
 import { WebBrowser } from 'expo'
-import * as api from '../helpers/api'
 import CategoriesList from './CategoriesList'
 
 export default class HomeScreen extends React.Component {
