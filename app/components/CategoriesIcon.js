@@ -71,4 +71,3 @@ const styles = StyleSheet.create({
     paddingTop: 10
   }
 })
-
