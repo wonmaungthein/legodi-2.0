@@ -13,11 +13,7 @@ server.route({
   method: "GET",
   path: "/",
   handler: function(request, h) {
-    return "Legodi server";
-  host: 'localhost',
-  port: process.env.PORT || 8000,
-})
-
+    return "Legodi server"
   }
 });
 
