@@ -10,7 +10,7 @@ import CategoriesList from './CategoriesList'
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
-    title: 'Glasgow welcome back',
+    title: 'Glasgow Welcome Pack',
     headerStyle: { backgroundColor: '#0f352f' },
     headerTitleStyle: { color: '#e6bc44' }
   };
@@ -66,7 +66,7 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff'
+    backgroundColor: '#e5ba4f'
   },
   developmentModeText: {
     marginBottom: 20,
