@@ -15,16 +15,6 @@ export default class HomeScreen extends React.Component {
     headerTitleStyle: { color: '#e6bc44' }
   };
 
-  state = {
-    categories: []
-  };
-
-  async componentDidMount () {
-    const { data: categories } = await api.getCategories()
-    console.log(categories)
-    this.setState({ categories })
-  }
-
   render () {
     return (
       <View style={styles.container}>
@@ -32,13 +22,7 @@ export default class HomeScreen extends React.Component {
           style={styles.container}
           contentContainerStyle={styles.contentContainer}
         >
-
-          <View>
-            <Text style={styles.legodiTitle}>Legodi</Text>
-          </View>
-
           <CategoriesList />
-
         </ScrollView>
       </View>
     )

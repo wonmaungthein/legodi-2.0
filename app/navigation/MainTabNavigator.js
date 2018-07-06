@@ -17,7 +17,7 @@ HomeStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? `ios-home-outline${focused ? '' : '-outline'}` : 'md-home'}
+      name={Platform.OS === 'ios' ? `ios-home${focused ? '' : '-outline'}` : 'md-home'}
     />
   )
 }
@@ -31,7 +31,7 @@ WeegieGameStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? `ios-game-controller-b-outline${focused ? '' : '-outline'}` : 'md-game-controller-b'}
+      name={Platform.OS === 'ios' ? `ios-game-controller-b${focused ? '' : '-outline'}` : 'md-game-controller-b'}
     />
   )
 }
@@ -45,7 +45,7 @@ LinksStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? `ios-information-circle-outline${focused ? '' : '-outline'}` : 'md-information-circle'}
+      name={Platform.OS === 'ios' ? `ios-information-circle${focused ? '' : '-outline'}` : 'md-information-circle'}
     />
   )
 }
