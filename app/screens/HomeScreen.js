@@ -19,7 +19,6 @@ export default class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         <ScrollView
-          style={styles.container}
           contentContainerStyle={styles.contentContainer}
         >
           <CategoriesList />
@@ -76,7 +75,7 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   contentContainer: {
-    paddingTop: 30
+    paddingTop: 0
   },
   welcomeContainer: {
     alignItems: 'center',
