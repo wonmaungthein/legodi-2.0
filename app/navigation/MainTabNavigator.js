@@ -16,6 +16,7 @@ HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
+      color='#0f352f'
       focused={focused}
       name={Platform.OS === 'ios' ? `ios-home${focused ? '' : '-outline'}` : 'md-home'}
     />
@@ -30,6 +31,7 @@ WeegieGameStack.navigationOptions = {
   tabBarLabel: 'Game',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
+      color='#0f352f'
       focused={focused}
       name={Platform.OS === 'ios' ? `ios-game-controller-b${focused ? '' : '-outline'}` : 'md-game-controller-b'}
     />
@@ -44,6 +46,7 @@ LinksStack.navigationOptions = {
   tabBarLabel: 'About',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
+      color='#0f352f'
       focused={focused}
       name={Platform.OS === 'ios' ? `ios-information-circle${focused ? '' : '-outline'}` : 'md-information-circle'}
     />
@@ -58,6 +61,7 @@ SettingsStack.navigationOptions = {
   tabBarLabel: 'Settings',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
+      color='#0f352f'
       focused={focused}
       name={Platform.OS === 'ios' ? `ios-settings${focused ? '' : '-outline'}` : 'md-settings'}
     />
@@ -69,4 +73,16 @@ export default createBottomTabNavigator({
   LinksStack,
   SettingsStack,
   WeegieGameStack
-})
+},
+{
+  navigationOptions: {
+    tabBarVisible: true
+  },
+  tabBarOptions: {
+    activeTintColor: '#e6bc44',
+    activeBackgroundColor: '#215e55',
+    inactiveBackgroundColor: '#0f352f',
+    inactiveTintColor: '#e6bc44'
+  }
+}
+)
