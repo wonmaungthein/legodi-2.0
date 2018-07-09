@@ -12,7 +12,7 @@ import Article from '../screens/Article'
 const HomeStack = createStackNavigator(
   {
     Home: HomeScreen,
-    Article: Article
+    Welcome: Article
   },
   {
     initialRouteName: 'Home'
@@ -31,7 +31,7 @@ HomeStack.navigationOptions = {
 }
 
 const WeegieGameStack = createStackNavigator({
-  Home: WeegieGameScreen
+  Game: WeegieGameScreen
 })
 
 WeegieGameStack.navigationOptions = {

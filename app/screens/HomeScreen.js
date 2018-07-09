@@ -16,12 +16,13 @@ export default class HomeScreen extends React.Component {
   };
 
   render () {
+    const { navigate } = this.props.navigation
     return (
       <View style={styles.container}>
         <ScrollView
           contentContainerStyle={styles.contentContainer}
         >
-          <CategoriesList />
+          <CategoriesList onPressHandle={navigate} />
         </ScrollView>
       </View>
     )
