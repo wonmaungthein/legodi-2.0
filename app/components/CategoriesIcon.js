@@ -47,7 +47,7 @@ const CategoriesList = (props) => {
   }
 
   return (
-    <TouchableOpacity style={styles.box} onPress={() => props.onPressHandle(props.title)}>
+    <TouchableOpacity style={styles.box} onPress={() => props.navigation('Articles')}>
       <Ionicons name={getIconName(props.title)} size={36} color='#e5ba4f' />
       <Text style={styles.title}>{props.title}</Text>
     </TouchableOpacity>

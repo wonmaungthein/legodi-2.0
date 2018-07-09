@@ -8,11 +8,13 @@ import AboutScreen from '../screens/AboutScreen'
 import SettingsScreen from '../screens/SettingsScreen'
 import WeegieGameScreen from '../screens/WeegieGameScreen'
 import Article from '../screens/Article'
+import ArticlesListScreen from '../screens/ArticlesListScreen'
 
 const HomeStack = createStackNavigator(
   {
     Home: HomeScreen,
-    Welcome: Article
+    Articles: ArticlesListScreen,
+    Article: Article
   },
   {
     initialRouteName: 'Home'
