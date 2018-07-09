@@ -36,11 +36,11 @@ WeegieGameStack.navigationOptions = {
   )
 }
 
-const LinksStack = createStackNavigator({
+const AboutScreenStack = createStackNavigator({
   Links: AboutScreen
 })
 
-LinksStack.navigationOptions = {
+AboutScreenStack.navigationOptions = {
   tabBarLabel: 'About',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
@@ -66,7 +66,7 @@ SettingsStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   HomeStack,
-  LinksStack,
+  AboutScreenStack,
   SettingsStack,
   WeegieGameStack
 })
