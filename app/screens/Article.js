@@ -6,7 +6,7 @@ import {
 
 export default class Article extends React.Component {
   static navigationOptions = {
-    title: 'Glasgow welcome back',
+    title: 'Glasgow Welcome Pack',
     headerStyle: { backgroundColor: '#0f352f' },
     headerTitleStyle: { color: '#e6bc44' }
   };
@@ -14,7 +14,7 @@ export default class Article extends React.Component {
   render () {
     return (
       <View>
-        <Text>Weegie Game Screen</Text>
+        <Text>Article Text</Text>
       </View>
     )
   }

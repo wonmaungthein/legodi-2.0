@@ -7,10 +7,17 @@ import HomeScreen from '../screens/HomeScreen'
 import AboutScreen from '../screens/AboutScreen'
 import SettingsScreen from '../screens/SettingsScreen'
 import WeegieGameScreen from '../screens/WeegieGameScreen'
+import Article from '../screens/Article'
 
-const HomeStack = createStackNavigator({
-  Home: HomeScreen
-})
+const HomeStack = createStackNavigator(
+  {
+    Home: HomeScreen,
+    Article: Article
+  },
+  {
+    initialRouteName: 'Home'
+  }
+)
 
 HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
@@ -37,7 +44,7 @@ WeegieGameStack.navigationOptions = {
 }
 
 const AboutScreenStack = createStackNavigator({
-  Links: AboutScreen
+  About: AboutScreen
 })
 
 AboutScreenStack.navigationOptions = {
