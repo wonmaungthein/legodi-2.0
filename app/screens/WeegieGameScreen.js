@@ -6,7 +6,7 @@ import {
 import { Constants } from 'expo'
 export default class WeegieGame extends React.Component {
   static navigationOptions = {
-    title: 'Glasgow welcome back',
+    title: 'Glasgow Welcome Pack',
     headerStyle: { backgroundColor: '#0f352f', paddingTop: Constants.statusBarHeight },
     headerTitleStyle: { color: '#e6bc44' }
   };
