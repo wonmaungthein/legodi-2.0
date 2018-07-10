@@ -1,18 +1,18 @@
-import React from "react";
-import { ScrollView, StyleSheet, Text, View, Image } from "react-native";
-import { Constants } from "expo";
+import React from 'react'
+import { ScrollView, StyleSheet, Text, View, Image } from 'react-native'
+import { Constants } from 'expo'
 
 export default class AboutScreen extends React.Component {
   static navigationOptions = {
-    title: "Glasgow Welcome Pack",
+    title: 'Glasgow Welcome Pack',
     headerStyle: {
-      backgroundColor: "#0f352f",
+      backgroundColor: '#0f352f',
       paddingTop: Constants.statusBarHeight
     },
-    headerTitleStyle: { color: "#e6bc44" }
+    headerTitleStyle: { color: '#e6bc44' }
   };
 
-  render() {
+  render () {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.textContainer}>
@@ -32,19 +32,19 @@ export default class AboutScreen extends React.Component {
         <View style={styles.center}>
           <Image
             style={styles.firstImage}
-            source={require("../assets/images/codeyourfuture.png")}
-            resizeMode="contain"
+            source={require('../assets/images/codeyourfuture.png')}
+            resizeMode='contain'
           />
         </View>
         <View style={styles.center}>
           <Image
             style={styles.secandImage}
-            source={require("../assets/images/refuweegee.png")}
-            resizeMode="contain"
+            source={require('../assets/images/refuweegee.png')}
+            resizeMode='contain'
           />
         </View>
       </ScrollView>
-    );
+    )
   }
 }
 
@@ -52,13 +52,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 15,
-    backgroundColor: "#e6bb44"
+    backgroundColor: '#e6bb44'
   },
   center: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center"
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   paragraph: {
     marginTop: 1,
@@ -76,4 +76,4 @@ const styles = StyleSheet.create({
     height: 400,
     marginTop: -100
   }
-});
+})

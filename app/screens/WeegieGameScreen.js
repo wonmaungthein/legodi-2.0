@@ -4,7 +4,7 @@ import {
   View
 } from 'react-native'
 import { Constants } from 'expo'
-import { connect } from "react-redux";
+import { connect } from 'react-redux'
 
 class WeegieGame extends React.Component {
   static navigationOptions = {
@@ -22,11 +22,11 @@ class WeegieGame extends React.Component {
   }
 }
 
-const stateToProps=(state)=>{
+const stateToProps = (state) => {
   console.log(state)
-  return({
+  return ({
     state
   })
 }
 
-export default connect(stateToProps)(WeegieGame);
+export default connect(stateToProps)(WeegieGame)
