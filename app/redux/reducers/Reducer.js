@@ -1,4 +1,4 @@
-import categoriesListEnglish from '../../__mock-api/categoriesListEnglish';
+import categoriesListEnglish from '../../__mock-api/categories-list-en.json';
 const categoryList=categoriesListEnglish;
 
 const CategoryList=(state=categoryList,action)=>{
