@@ -7,7 +7,7 @@ import {
   View
 } from 'react-native'
 
-const CategoriesList = (props) => {
+const ArticlesList = (props) => {
   return (
     <TouchableOpacity
       style={[styles.container, styles.text]}
@@ -22,7 +22,7 @@ const CategoriesList = (props) => {
   )
 }
 
-export default CategoriesList
+export default ArticlesList
 
 const styles = StyleSheet.create({
   container: {
