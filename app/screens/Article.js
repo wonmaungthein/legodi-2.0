@@ -19,17 +19,17 @@ export default class Article extends React.Component {
     return (
       <View style={styles.container}>
         <ScrollView>
-          <View>
+          <View style={styles.center}>
             <Image
               style={styles.image}
               source={{ uri: 'http://placehold.it/300x200' }}
             />
           </View>
-          <View style={{ padding: 10 }}>
-            <Text style={styles.title}>Article Title</Text>
+          <View style={[styles.center, { padding: 15 }]}>
+            <Text style={styles.title}>{this.props.navigation.getParam('title', 'Default Title')}</Text>
           </View>
           <View style={styles.paddingSides}>
-            <Text style={{ fontSize: 20 }}>Sunt aliquip velit magna occaecat eiusmod aliquip ipsum velit qui est ut velit est.</Text>
+            <Text style={{ fontSize: 20 }}>{this.props.navigation.getParam('description', 'Default description')}</Text>
           </View>
         </ScrollView>
       </View>
@@ -44,6 +44,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#e5ba4f',
     paddingTop: 10
+  },
+  center: {
+    flex: 1,
+    alignItems: 'center'
   },
   image: {
     width: 300,

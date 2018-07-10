@@ -11,7 +11,11 @@ const ArticlesList = (props) => {
   return (
     <TouchableOpacity
       style={[styles.container, styles.text]}
-      onPress={() => props.navigation.navigate('Article')}>
+      onPress={() => props.navigation.navigate('Article', {
+        title: props.title,
+        image: props.image,
+        description: props.description
+      })}>
     >
       <Image style={styles.image} source={{uri: 'http://placehold.it/100x80'}} />
       <View style={styles.content}>
