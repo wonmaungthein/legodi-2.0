@@ -1,0 +1,346 @@
+[
+  {
+    "_id": "5a44f018277f8f0014d504f4",
+    "title": "Transport Museum",
+    "order": null,
+    "category": {
+      "_id": "5a256e431aefb70014e3a24b",
+      "title": "Welcome",
+      "shortDescription": "Refuweege letters",
+      "description": "Refuweegee is a community-led charity set up to ensure that all refugees arriving in Glasgow are welcomed to the city in true Glaswegian style.  We want to make sure that when people arrive in Scotland they receive the welcome they deserve and few useful tips too! We also want to provide everyone who wishes to get involved and make a difference, the opportunity to do so.\r\n\r\nThe heart and soul of Refuweegee's welcome packs are the \"letters fae the locals\". Here are few of them to welcome you to the wonderful city of Glasgow.",
+      "__v": 0,
+      "order": 1,
+      "icon": "",
+      "visible": true,
+      "amharngaDescription": "arabic translation",
+      "arabicDescription": "منظمة Refuweege تقوم باستقبال القادمين الجدد لجلاسجو بأسلوب. هذه بعض من الرسائل التي يكتبها أصدقاء المنظمة للترحيب بالاسكتلنديين الجدد.",
+      "titleTranslation": {
+        "am": "Amharic  translation",
+        "ar": "مرحبا"
+      }
+    },
+    "fullContent": "Welcome to Glasgow. I hope you enjoy living in our City. I enjoy going to the transport museum.\r\n     \r\n     \r\n     \r\n     \r\n     \r\n     \r\n     \r\n     \r\n    ",
+    "articleImage": "refuweegee_3.jpg",
+    "__v": 0,
+    "status": "Approved",
+    "language": "en",
+    "visible": true
+  },
+  {
+    "_id": "5a5626baaffc38002ff43e13",
+    "title": "Police Scotland",
+    "order": null,
+    "category": {
+      "_id": "59fdb09cb9c9d00012d0fff5",
+      "title": "Emergency",
+      "shortDescription": "This category contains articles about Emergency services in Glasgow",
+      "description": "Proin eu dignissim justo. Donec dapibus turpis purus, eu rutrum nisi euismod nec. Praesent fermentum dui nibh, a vestibulum erat tristique non. Proin vitae risus nec diam vulputate bibendum ac sollicitudin nulla. Quisque ac euismod eros, suscipit feugiat dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque finibus, dui vel auctor finibus, magna tellus porttitor nunc, vel mollis nunc est sed diam. Etiam commodo vitae orci ultrices imperdiet. Fusce vehicula, quam eu condimentum dapibus, magna risus porttitor metus, dictum vulputate lacus massa vel libero. In quis interdum dui, sit amet vestibulum mauris. Praesent a purus nisl. Phasellus et laoreet turpis. Etiam vestibulum vehicula nibh, eget tincidunt mi dapibus vitae.\r\n\r\n",
+      "__v": 0,
+      "order": 45,
+      "icon": "menu-emergency",
+      "visible": true,
+      "amharngaDescription": "arabic translation",
+      "arabicDescription": "arabic translation",
+      "titleTranslation": {
+        "am": "Amharic translation",
+        "ar": "الطوارئ"
+      }
+    },
+    "fullContent": "Police Scotland are the national police service. Their website states “Police Scotland’s purpose is to improve the safety and wellbeing of people, places and communities in Scotland. Our focus is on Keeping People Safe which is the heart of everything we do.”\r\n\r\nYou can contact the Police on any phone using 999 in an emergency or 101 for general enquiries or non-emergencies. An emergency would be defined as a crime in progress or a risk to personal safety or loss of life.\r\n\r\nPolice Officers are male and female and can be seen on foot, on bikes and in cars in and around Glasgow.  \r\n\r\nhttp://www.scotland.police.uk/about-us/\r\n     \r\n    ",
+    "__v": 0,
+    "status": "Approved",
+    "language": "en",
+    "visible": true
+  },
+  {
+    "_id": "5a562a69affc38002ff43e14",
+    "title": "Scottish Ambulance Service",
+    "order": null,
+    "category": {
+      "_id": "59fdb09cb9c9d00012d0fff5",
+      "title": "Emergency",
+      "shortDescription": "This category contains articles about Emergency services in Glasgow",
+      "description": "Proin eu dignissim justo. Donec dapibus turpis purus, eu rutrum nisi euismod nec. Praesent fermentum dui nibh, a vestibulum erat tristique non. Proin vitae risus nec diam vulputate bibendum ac sollicitudin nulla. Quisque ac euismod eros, suscipit feugiat dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque finibus, dui vel auctor finibus, magna tellus porttitor nunc, vel mollis nunc est sed diam. Etiam commodo vitae orci ultrices imperdiet. Fusce vehicula, quam eu condimentum dapibus, magna risus porttitor metus, dictum vulputate lacus massa vel libero. In quis interdum dui, sit amet vestibulum mauris. Praesent a purus nisl. Phasellus et laoreet turpis. Etiam vestibulum vehicula nibh, eget tincidunt mi dapibus vitae.\r\n\r\n",
+      "__v": 0,
+      "order": 45,
+      "icon": "menu-emergency",
+      "visible": true,
+      "amharngaDescription": "arabic translation",
+      "arabicDescription": "arabic translation",
+      "titleTranslation": {
+        "am": "Amharic translation",
+        "ar": "الطوارئ"
+      }
+    },
+    "fullContent": "If someone is seriously injured or their life is at risk call an ambulance on 999. \r\n\r\nYou will be asked the address where you are including the postcode. If you do not know this give the person on the phone as much information as possible to help them get to you. \r\nThey will ask you for your telephone number in case the call is disconnected for any reason.\r\nThey will ask you what has happened.\r\n\r\nThe person on the phone will be getting an ambulance to you. In the meantime they will try and get more information.\r\nThey will ask you the age, sex and medical history of the person who needs the ambulance.\r\nIf the person is breathing, consious or has chest pain.\r\nHow the injury happened.\r\n\r\nThe more information you can give over the phone the more help they are able to provide. The people on the phone are trained to get as much information as possible and can help you to make the person more comfortable or safer until an ambulance arrives.\r\n\r\nhttp://www.scottishambulance.com/WhatWeDo/Default.aspx\r\n\r\n \r\n     \r\n    ",
+    "__v": 0,
+    "status": "Approved",
+    "language": "en",
+    "visible": true
+  },
+  {
+    "_id": "5a562cf6affc38002ff43e15",
+    "title": "Scottish Fire and Rescue Service",
+    "order": null,
+    "category": {
+      "_id": "59fdb09cb9c9d00012d0fff5",
+      "title": "Emergency",
+      "shortDescription": "This category contains articles about Emergency services in Glasgow",
+      "description": "Proin eu dignissim justo. Donec dapibus turpis purus, eu rutrum nisi euismod nec. Praesent fermentum dui nibh, a vestibulum erat tristique non. Proin vitae risus nec diam vulputate bibendum ac sollicitudin nulla. Quisque ac euismod eros, suscipit feugiat dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque finibus, dui vel auctor finibus, magna tellus porttitor nunc, vel mollis nunc est sed diam. Etiam commodo vitae orci ultrices imperdiet. Fusce vehicula, quam eu condimentum dapibus, magna risus porttitor metus, dictum vulputate lacus massa vel libero. In quis interdum dui, sit amet vestibulum mauris. Praesent a purus nisl. Phasellus et laoreet turpis. Etiam vestibulum vehicula nibh, eget tincidunt mi dapibus vitae.\r\n\r\n",
+      "__v": 0,
+      "order": 45,
+      "icon": "menu-emergency",
+      "visible": true,
+      "amharngaDescription": "arabic translation",
+      "arabicDescription": "arabic translation",
+      "titleTranslation": {
+        "am": "Amharic translation",
+        "ar": "الطوارئ"
+      }
+    },
+    "fullContent": "The Scottish Fire and Rescue Service are responsible for preventing and controlling fires, assisting at road traffic accidents, rope rescue, water rescue and in case of flooding. In an emergency they can be contacted on 999.\r\n\r\nTo prevent accidents from happening the Scottish Fire and Rescue Service offer a free home safety visit. If your home needs them they will also supply and fit smoke alarms free of charge. You can contact them to arrange this on 0800 0731 999.\r\n\r\nhttp://www.firescotland.gov.uk/about-us.aspx",
+    "__v": 0,
+    "status": "Approved",
+    "language": "en",
+    "visible": true
+  },
+  {
+    "_id": "5a568d4450d906002f9f3764",
+    "title": "Welcome to our Beautiful city",
+    "order": null,
+    "category": {
+      "_id": "5a256e431aefb70014e3a24b",
+      "title": "Welcome",
+      "shortDescription": "Refuweege letters",
+      "description": "Refuweegee is a community-led charity set up to ensure that all refugees arriving in Glasgow are welcomed to the city in true Glaswegian style.  We want to make sure that when people arrive in Scotland they receive the welcome they deserve and few useful tips too! We also want to provide everyone who wishes to get involved and make a difference, the opportunity to do so.\r\n\r\nThe heart and soul of Refuweegee's welcome packs are the \"letters fae the locals\". Here are few of them to welcome you to the wonderful city of Glasgow.",
+      "__v": 0,
+      "order": 1,
+      "icon": "",
+      "visible": true,
+      "amharngaDescription": "arabic translation",
+      "arabicDescription": "منظمة Refuweege تقوم باستقبال القادمين الجدد لجلاسجو بأسلوب. هذه بعض من الرسائل التي يكتبها أصدقاء المنظمة للترحيب بالاسكتلنديين الجدد.",
+      "titleTranslation": {
+        "am": "Amharic  translation",
+        "ar": "مرحبا"
+      }
+    },
+    "fullContent": "Welcome to Glasgow. Welcome to our beautiful city. We are so happy you are now part of our community and this is now your city too. The sun doesn't always shine, and it may rain quite a lot but the people are happy. Enjoy you new home :) \r\n     \r\n     \r\n    ",
+    "articleImage": "refuweegee_1.jpg",
+    "__v": 0,
+    "status": "Approved",
+    "language": "en",
+    "visible": true
+  },
+  {
+    "_id": "5a56902f50d906002f9f3765",
+    "title": "Glasgow full of wonder",
+    "order": null,
+    "category": {
+      "_id": "5a256e431aefb70014e3a24b",
+      "title": "Welcome",
+      "shortDescription": "Refuweege letters",
+      "description": "Refuweegee is a community-led charity set up to ensure that all refugees arriving in Glasgow are welcomed to the city in true Glaswegian style.  We want to make sure that when people arrive in Scotland they receive the welcome they deserve and few useful tips too! We also want to provide everyone who wishes to get involved and make a difference, the opportunity to do so.\r\n\r\nThe heart and soul of Refuweegee's welcome packs are the \"letters fae the locals\". Here are few of them to welcome you to the wonderful city of Glasgow.",
+      "__v": 0,
+      "order": 1,
+      "icon": "",
+      "visible": true,
+      "amharngaDescription": "arabic translation",
+      "arabicDescription": "منظمة Refuweege تقوم باستقبال القادمين الجدد لجلاسجو بأسلوب. هذه بعض من الرسائل التي يكتبها أصدقاء المنظمة للترحيب بالاسكتلنديين الجدد.",
+      "titleTranslation": {
+        "am": "Amharic  translation",
+        "ar": "مرحبا"
+      }
+    },
+    "fullContent": "Hell, I hope you will find Glasgow full of wonder, hope & inspiration. I know at times a foreign land may seem short of these things but if you look, you will find them. They are all of you, just as everything in Glasgow. \r\n     \r\n     \r\n    ",
+    "articleImage": "refuweegee_2.jpg",
+    "__v": 0,
+    "status": "Approved",
+    "language": "en",
+    "visible": true
+  },
+  {
+    "_id": "5a5695ff50d906002f9f3767",
+    "title": "ps: you should get a raincoat",
+    "order": null,
+    "category": {
+      "_id": "5a256e431aefb70014e3a24b",
+      "title": "Welcome",
+      "shortDescription": "Refuweege letters",
+      "description": "Refuweegee is a community-led charity set up to ensure that all refugees arriving in Glasgow are welcomed to the city in true Glaswegian style.  We want to make sure that when people arrive in Scotland they receive the welcome they deserve and few useful tips too! We also want to provide everyone who wishes to get involved and make a difference, the opportunity to do so.\r\n\r\nThe heart and soul of Refuweegee's welcome packs are the \"letters fae the locals\". Here are few of them to welcome you to the wonderful city of Glasgow.",
+      "__v": 0,
+      "order": 1,
+      "icon": "",
+      "visible": true,
+      "amharngaDescription": "arabic translation",
+      "arabicDescription": "منظمة Refuweege تقوم باستقبال القادمين الجدد لجلاسجو بأسلوب. هذه بعض من الرسائل التي يكتبها أصدقاء المنظمة للترحيب بالاسكتلنديين الجدد.",
+      "titleTranslation": {
+        "am": "Amharic  translation",
+        "ar": "مرحبا"
+      }
+    },
+    "fullContent": "Welcome to Glasgow!\r\n\r\nI hope you find the city to be an open and friendly new experience. We hope that you are finally able to find some peace and rest after your journey. It is difficult for us to imagine what you have experienced, but we hope that you find comfort here in Glasgow. Ossian and I also moved here from our home countries. For me, personally, it was difficult to adapt to my new life first, but after meeting warm-hearted and friendly people, I started to feel more at home. I hope that happens to you as well. Glasgow is called the friendliest city in Europe! We hope that you find Glasgow to be as lovely as we do.\r\n\r\nPS: you should get a raincoat \r\n     \r\n     \r\n    ",
+    "articleImage": "refuweege_5.jpg",
+    "__v": 0,
+    "status": "Approved",
+    "language": "en",
+    "visible": true
+  },
+  {
+    "_id": "5a573ad5b2f7d4002f53615c",
+    "title": "Hope",
+    "order": null,
+    "category": {
+      "_id": "5a256e431aefb70014e3a24b",
+      "title": "Welcome",
+      "shortDescription": "Refuweege letters",
+      "description": "Refuweegee is a community-led charity set up to ensure that all refugees arriving in Glasgow are welcomed to the city in true Glaswegian style.  We want to make sure that when people arrive in Scotland they receive the welcome they deserve and few useful tips too! We also want to provide everyone who wishes to get involved and make a difference, the opportunity to do so.\r\n\r\nThe heart and soul of Refuweegee's welcome packs are the \"letters fae the locals\". Here are few of them to welcome you to the wonderful city of Glasgow.",
+      "__v": 0,
+      "order": 1,
+      "icon": "",
+      "visible": true,
+      "amharngaDescription": "arabic translation",
+      "arabicDescription": "منظمة Refuweege تقوم باستقبال القادمين الجدد لجلاسجو بأسلوب. هذه بعض من الرسائل التي يكتبها أصدقاء المنظمة للترحيب بالاسكتلنديين الجدد.",
+      "titleTranslation": {
+        "am": "Amharic  translation",
+        "ar": "مرحبا"
+      }
+    },
+    "fullContent": "Never give up ... Welcome to Glasgow. A new life awaits. A new adventure. Love, peace. Gayle McNicol \r\n     \r\n    ",
+    "articleImage": "IMG_hhu9d9.jpg",
+    "__v": 0,
+    "status": "Approved",
+    "language": "en",
+    "visible": true
+  },
+  {
+    "_id": "5a573b0cb2f7d4002f53615d",
+    "title": "Ref Yogees",
+    "order": null,
+    "category": {
+      "_id": "5a256e431aefb70014e3a24b",
+      "title": "Welcome",
+      "shortDescription": "Refuweege letters",
+      "description": "Refuweegee is a community-led charity set up to ensure that all refugees arriving in Glasgow are welcomed to the city in true Glaswegian style.  We want to make sure that when people arrive in Scotland they receive the welcome they deserve and few useful tips too! We also want to provide everyone who wishes to get involved and make a difference, the opportunity to do so.\r\n\r\nThe heart and soul of Refuweegee's welcome packs are the \"letters fae the locals\". Here are few of them to welcome you to the wonderful city of Glasgow.",
+      "__v": 0,
+      "order": 1,
+      "icon": "",
+      "visible": true,
+      "amharngaDescription": "arabic translation",
+      "arabicDescription": "منظمة Refuweege تقوم باستقبال القادمين الجدد لجلاسجو بأسلوب. هذه بعض من الرسائل التي يكتبها أصدقاء المنظمة للترحيب بالاسكتلنديين الجدد.",
+      "titleTranslation": {
+        "am": "Amharic  translation",
+        "ar": "مرحبا"
+      }
+    },
+    "fullContent": "Luv, Max \r\n     \r\n     \r\n    ",
+    "__v": 0,
+    "articleImage": "Refuweegee  06.jpg",
+    "status": "Approved",
+    "language": "en",
+    "visible": true
+  },
+  {
+    "_id": "5a568bf250d906002f9f3761",
+    "title": "Persecution",
+    "order": 10,
+    "category": {
+      "_id": "5a180fa0cbb54500148c1cc1",
+      "title": "Asylum",
+      "shortDescription": "Asylum in the UK",
+      "description": "Asylum claims are considered under the 1951 UN Refugee Convention, and its incorporation into European and UK immigration law. To be granted asylum (to get refugee status), it’s necessary to show that you have a well-founded fear of persecution for reasons of race, religion, nationality, political opinion or membership of a particular social group you are outside your country of origin or normal residence and you cannot get protection in your own country.\r\n\r\nDo you have a well-founded fear (will it happen?) of persecution (what will happen?) for a Refugee Convention reason (why will it happen?) and no protection available to you in your home country (what will stop it happening?)\r\n\r\nContent from Right to Remain toolkit - https://righttoremain.org.uk\r\n     \r\n     \r\n     \r\n    ",
+      "__v": 0,
+      "order": 5,
+      "icon": "menu-residency",
+      "visible": true,
+      "amharngaDescription": "አማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña \r\nአማርኛ amarəñña አማርኛ amarəññaአማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña.",
+      "arabicDescription": "وبدأت ابتدعها كلا قد. أن إبّان الصفحة المشتّتون عدم, ان الجو كنقطة تعد, تم ضمنها مشاركة باستحداث بعد. أسر وجزر لإنعدام أم, هذا تونس جيوب ٠٨٠٤ كل, هو أفاق الواقعة بعض. شيء و مهمّات المتّبعة.\r\nبل بين أعلنت سليمان، للإتحاد, تم بتخصيص البرية الطرفين نفس. هذه ما يطول مسارح. حول ٣٠ بولندا، الدنمارك. عدد أحكم تسمّى بالفشل ٣٠. في جعل سياسة وبحلول واُسدل, مكن ببعض فكانت وبغطاء ثم, بحث تم للسيطرة والفلبين. عن جُل وسفن مشارف, أثره، حاملات لم وصل.",
+      "titleTranslation": {
+        "am": "Amharnga ",
+        "ar": "اللجوء"
+      }
+    },
+    "fullContent": "Persecution, in terms of claiming asylum, is serious, targeted mistreatment of an individual because of who they are, or what they do, or what people think they are or do.\r\n\r\nThe Refugee Convention itself does not define \"persecution\". The Refugee Convention is international law. It is translated into EU law as the Qualification Directive. This is part of UK law (though this is likely to change once the UK leaves the EU) under rules known as the Qualification Regulations. The definition of persecution in the Qualification Regulations (and any relevant case law) is what the Home Office should use to assess whether a person is at risk of persecution if removed from the UK.\r\n\r\nThe Qualification Regulations state:\r\n5.— (1) In deciding whether a person is a refugee an act of persecution must be:\r\n\r\n(a) sufficiently serious by its nature or repetition as to constitute a severe violation of a basic human right, in particular a right from which derogation cannot be made under Article 15 of the Convention for the Protection of Human Rights and Fundamental Freedoms(1); or\r\n\r\n(b) an accumulation of various measures, including a violation of a human right which is sufficiently severe as to affect an individual in a similar manner as specified in (a).\r\n\r\n(2) An act of persecution may, for example, take the form of:\r\n\r\n(a) an act of physical or mental violence, including an act of sexual violence;\r\n\r\n(b) a legal, administrative, police, or judicial measure which in itself is discriminatory or which is implemented in a discriminatory manner;\r\n\r\n(c ) prosecution or punishment, which is disproportionate or discriminatory;\r\n\r\n(d) denial of judicial redress resulting in a disproportionate or discriminatory punishment;\r\n\r\n(e) prosecution or punishment for refusal to perform military service in a conflict, where performing military service would include crimes or acts falling under regulation 7 [exclusion clauses, see below]\r\n\r\n(3) An act of persecution must be committed for at least one of the reasons in Article 1(A) of the Geneva Convention [reasons of race, religion, nationality, political opinion or membership of a particular social group]. \r\n    ",
+    "__v": 0,
+    "status": "Approved",
+    "language": "en",
+    "visible": true
+  },
+  {
+    "_id": "5a5691a850d906002f9f3766",
+    "title": "CodeYourFuture",
+    "order": 10,
+    "category": {
+      "_id": "5a181b4df192270014960243",
+      "title": "Volunteering",
+      "shortDescription": "Working and Volunteering in Glasgow",
+      "description": "Work and volunteering opportunities in Glasgow.",
+      "__v": 0,
+      "order": 10,
+      "icon": "menu-working",
+      "visible": true,
+      "amharngaDescription": "arabic translation",
+      "arabicDescription": "arabic translation",
+      "titleTranslation": {
+        "am": "Amharic translation",
+        "ar": "تطوع"
+      }
+    },
+    "fullContent": "CodeYourFuture is a school that teaches programming to refugees and asylum seekers (http://codeyourfuture.co/) in the UK. We have been running in London since October 2016, and we now have classes in Glasgow and Manchester. The project relies on volunteer software developers - if you know any programming language and would like to benefit other members of the community, then contact them to join - scotland@codeyourfuture.io.\r\n",
+    "__v": 0,
+    "status": "Approved",
+    "language": "en",
+    "visible": true
+  },
+  {
+    "_id": "5a568c1950d906002f9f3762",
+    "title": "Well founded fear",
+    "order": 20,
+    "category": {
+      "_id": "5a180fa0cbb54500148c1cc1",
+      "title": "Asylum",
+      "shortDescription": "Asylum in the UK",
+      "description": "Asylum claims are considered under the 1951 UN Refugee Convention, and its incorporation into European and UK immigration law. To be granted asylum (to get refugee status), it’s necessary to show that you have a well-founded fear of persecution for reasons of race, religion, nationality, political opinion or membership of a particular social group you are outside your country of origin or normal residence and you cannot get protection in your own country.\r\n\r\nDo you have a well-founded fear (will it happen?) of persecution (what will happen?) for a Refugee Convention reason (why will it happen?) and no protection available to you in your home country (what will stop it happening?)\r\n\r\nContent from Right to Remain toolkit - https://righttoremain.org.uk\r\n     \r\n     \r\n     \r\n    ",
+      "__v": 0,
+      "order": 5,
+      "icon": "menu-residency",
+      "visible": true,
+      "amharngaDescription": "አማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña \r\nአማርኛ amarəñña አማርኛ amarəññaአማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña.",
+      "arabicDescription": "وبدأت ابتدعها كلا قد. أن إبّان الصفحة المشتّتون عدم, ان الجو كنقطة تعد, تم ضمنها مشاركة باستحداث بعد. أسر وجزر لإنعدام أم, هذا تونس جيوب ٠٨٠٤ كل, هو أفاق الواقعة بعض. شيء و مهمّات المتّبعة.\r\nبل بين أعلنت سليمان، للإتحاد, تم بتخصيص البرية الطرفين نفس. هذه ما يطول مسارح. حول ٣٠ بولندا، الدنمارك. عدد أحكم تسمّى بالفشل ٣٠. في جعل سياسة وبحلول واُسدل, مكن ببعض فكانت وبغطاء ثم, بحث تم للسيطرة والفلبين. عن جُل وسفن مشارف, أثره، حاملات لم وصل.",
+      "titleTranslation": {
+        "am": "Amharnga ",
+        "ar": "اللجوء"
+      }
+    },
+    "fullContent": "An asylum claim should be based on a \"well-founded fear\" of persecution if you were returned to your country of origin/country of residence. This means you do not need to show that the persecution would definitely happen, but that there is a real risk it could happen.\r\n\r\nHaving been persecuted in the past does not necessarily mean you will get refugee status. You need to show there is a future risk.\r\n\r\nTo show this fear is well-founded, you will need to provide evidence.\r\n\r\nThe evidence that everyone has is their story – what has happened to you, what have you been threatened with, what has happened to your family/colleagues/people you know – do these things mean you are at risk? Why did you leave? Why can't you go back?\r\n\r\ntestimony\r\nIn most cases, the UK Home Office (the government department who makes the decision on your asylum claim), will not believe your story. If you are able to go to court and appeal the Home Office refusal of your claim, the judge may also not believe your story.\r\n\r\nTry and obtain other evidence to support your story. You should not wait for the Home Office or courts to say they do not believe you before you try and get evidence to support what you have said.\r\n\r\nAre there witnesses to things that happened to you? Have you got documents that prove any part of your story? These might include arrest warrants, court documents, letters from friends/organisations showing you are in danger. Is there newspaper coverage of an event you are talking about? Are there human rights reports that show the situation in your country is like you say it is? \r\n    ",
+    "__v": 0,
+    "status": "Approved",
+    "language": "en",
+    "visible": true
+  },
+  {
+    "_id": "5a568c4f50d906002f9f3763",
+    "title": "Grounds for an asylum claim",
+    "order": 30,
+    "category": {
+      "_id": "5a180fa0cbb54500148c1cc1",
+      "title": "Asylum",
+      "shortDescription": "Asylum in the UK",
+      "description": "Asylum claims are considered under the 1951 UN Refugee Convention, and its incorporation into European and UK immigration law. To be granted asylum (to get refugee status), it’s necessary to show that you have a well-founded fear of persecution for reasons of race, religion, nationality, political opinion or membership of a particular social group you are outside your country of origin or normal residence and you cannot get protection in your own country.\r\n\r\nDo you have a well-founded fear (will it happen?) of persecution (what will happen?) for a Refugee Convention reason (why will it happen?) and no protection available to you in your home country (what will stop it happening?)\r\n\r\nContent from Right to Remain toolkit - https://righttoremain.org.uk\r\n     \r\n     \r\n     \r\n    ",
+      "__v": 0,
+      "order": 5,
+      "icon": "menu-residency",
+      "visible": true,
+      "amharngaDescription": "አማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña \r\nአማርኛ amarəñña አማርኛ amarəññaአማርኛ amarəñña አማርኛ amarəñña አማርኛ amarəñña.",
+      "arabicDescription": "وبدأت ابتدعها كلا قد. أن إبّان الصفحة المشتّتون عدم, ان الجو كنقطة تعد, تم ضمنها مشاركة باستحداث بعد. أسر وجزر لإنعدام أم, هذا تونس جيوب ٠٨٠٤ كل, هو أفاق الواقعة بعض. شيء و مهمّات المتّبعة.\r\nبل بين أعلنت سليمان، للإتحاد, تم بتخصيص البرية الطرفين نفس. هذه ما يطول مسارح. حول ٣٠ بولندا، الدنمارك. عدد أحكم تسمّى بالفشل ٣٠. في جعل سياسة وبحلول واُسدل, مكن ببعض فكانت وبغطاء ثم, بحث تم للسيطرة والفلبين. عن جُل وسفن مشارف, أثره، حاملات لم وصل.",
+      "titleTranslation": {
+        "am": "Amharnga ",
+        "ar": "اللجوء"
+      }
+    },
+    "fullContent": "To qualify for refugee status, you need to show that the reasons for which you have been persecuted or will be persecuted come under one of the Refugee Convention grounds: reasons of race; religion; nationality; political opinion; or membership of a particular social group.\r\n\r\nYou do not need to specify or say in legal language which Refugee Convention grounds you are applying under. Your case may actually come under more than one of these grounds. You tell the Home Office your reasons for fleeing, and they then consider which grounds this comes under. If you feel you have been refused because they applied the wrong grounds, this could be challenged.\r\n\r\nNationality, race, and religion are relatively straightforward grounds (if often difficult to evidence), but imputed beliefs and particular social group require further explanation.\r\n\r\nImputed identity or beliefs: what people think you are or do\r\n“Imputed” identity or beliefs means what people think you are or do. What people think you are, or do, could put you at risk of persecution even if it’s not true.\r\n\r\nFor example, if your local community thinks or says you are a Christian or an atheist, this may put you in danger even if you are not actually a Christian or atheist. If your family and neighbours believe you are gay or lesbian, you might be at risk irrespective of whether you are gay or straight. You may not actually be a member of an at-risk political group, but someone might spread rumours that you are, to try and get you in trouble.\r\n\r\nImputed beliefs might be a factor if a family member or friend is politically active or a member of a religious minority, and it is assumed you also hold these beliefs (this often applies to women asylum applicants). It may be because you are a gay rights campaigner, and therefore would be at risk in a homophobic country because people assume you are gay. Or it may be that because of your lifestyle (for example, you are unmarried in a country/culture where this is unusual) people assume you are gay and you would be at risk of persecution because of that.\r\n\r\nImputed beliefs may be assumed because of where you live, the job you do, and many other things outside of your control.\r\n\r\nParticular social group (PSG)\r\nParticular social group is the most complicated area of the Refugee Convention grounds. This is because it is quite vague and can cover a variety of situations. This category is heavily reliant on case law to explain what it currently means. Case law is the body of available writings explaining the verdicts in a case, and is used to explain the meaning of laws and policy.\r\n\r\nGender and sexuality are not distinct Refugee Convention grounds but come under particular social group. Gender as a particular social group needs to be more narrowly defined than just \"being a woman\" or \"being a man\". A certain category of women or men who face gender-specific persecution may fall under this category, such as \"women at risk of domestic violence in Pakistan\".\r\n\r\nThe category of particular social group is particularly important when dealing with non-state actors of persecution (see below), because it can be argued by the Home Office that while a person may be at risk, it is not for a Refugee Convention reason; therefore the UK has no obligation to offer protection. This may include claims involving domestic violence, honour killings, and gang violence/blood feuds. \r\n    ",
+    "__v": 0,
+    "status": "Approved",
+    "language": "en",
+    "visible": true
+  }
+]
