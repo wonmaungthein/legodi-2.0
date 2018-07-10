@@ -17,7 +17,17 @@ export default class CategoriesList extends React.Component {
   }
 
   renderCategories = () => {
-    return this.state.categories.map((category, i) => <CategoriesIcon key={i} title={category.title} id={category._id} navigation={this.props.onPressHandle} />)
+    return this.state.categories.map((category, i) => {
+      return (
+        <CategoriesIcon
+          key={i}
+          title={category.title}
+          id={category._id}
+          description={category.description}
+          navigation={this.props.onPressHandle}
+        />
+      )
+    })
   }
 
   render () {
