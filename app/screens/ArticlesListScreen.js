@@ -17,19 +17,22 @@ export default class ArticlesListScreen extends React.Component {
   };
 
   async componentDidMount () {
-    const { data: articles } = await api.getArticles('5a256e431aefb70014e3a24b')
+    const categoryId = this.props.navigation.getParam('id', '123')
+    const { data: articles } = await api.getArticles(categoryId)
     this.setState({ articles })
   }
 
-  renderArticles = () => {
-    return this.state.articles.map((article, i) => <Text key={i}>{article.title}</Text>)
-  }
-
   render () {
+    const title = this.props.navigation.getParam('category', 'No category')
     return (
       <ScrollView style={styles.container}>
         <View style={styles.layout}>
-          {this.renderArticles()}
+          <Text>{title}</Text>
+          {
+            this.state.articles.length > 0
+              ? this.state.articles.map((article, i) => <Text key={i}>{article.title}</Text>)
+              : <Text>There are no articles in this category</Text>
+          }
         </View>
       </ScrollView>
     )
