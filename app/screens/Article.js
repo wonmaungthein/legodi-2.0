@@ -6,11 +6,12 @@ import {
   StyleSheet,
   ScrollView
 } from 'react-native'
+import { Constants } from 'expo'
 
 export default class Article extends React.Component {
   static navigationOptions = {
     title: 'Glasgow Welcome Pack',
-    headerStyle: { backgroundColor: '#0f352f' },
+    headerStyle: { backgroundColor: '#0f352f', paddingTop: Constants.statusBarHeight },
     headerTitleStyle: { color: '#e6bc44' }
   };
 
@@ -24,11 +25,11 @@ export default class Article extends React.Component {
               source={{ uri: 'http://placehold.it/300x200' }}
             />
           </View>
-          <View style={{padding: 10}}>
+          <View style={{ padding: 10 }}>
             <Text style={styles.title}>Article Title</Text>
           </View>
           <View style={styles.paddingSides}>
-            <Text style={{fontSize: 20}}>Sunt aliquip velit magna occaecat eiusmod aliquip ipsum velit qui est ut velit est.</Text>
+            <Text style={{ fontSize: 20 }}>Sunt aliquip velit magna occaecat eiusmod aliquip ipsum velit qui est ut velit est.</Text>
           </View>
         </ScrollView>
       </View>

@@ -5,6 +5,7 @@ import {
   Picker,
   StyleSheet
 } from 'react-native'
+import { Constants } from 'expo'
 
 export default class SettingsScreen extends React.Component {
   state = {
@@ -12,8 +13,8 @@ export default class SettingsScreen extends React.Component {
   }
 
   static navigationOptions = {
-    title: 'Glasgow welcome back',
-    headerStyle: { backgroundColor: '#0f352f' },
+    title: 'Glasgow Welcome Pack',
+    headerStyle: { backgroundColor: '#0f352f', paddingTop: Constants.statusBarHeight },
     headerTitleStyle: { color: '#e6bc44' }
   };
 

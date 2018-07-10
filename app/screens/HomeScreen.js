@@ -5,13 +5,13 @@ import {
   Text,
   View
 } from 'react-native'
-import { WebBrowser } from 'expo'
+import { WebBrowser, Constants } from 'expo'
 import CategoriesList from './CategoriesList'
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     title: 'Glasgow Welcome Pack',
-    headerStyle: { backgroundColor: '#0f352f' },
+    headerStyle: { backgroundColor: '#0f352f', paddingTop: Constants.statusBarHeight },
     headerTitleStyle: { color: '#e6bc44' }
   };
 
@@ -66,7 +66,8 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#e5ba4f'
+    backgroundColor: '#e5ba4f',
+    paddingTop: Constants.statusBarHeight
   },
   developmentModeText: {
     marginBottom: 20,

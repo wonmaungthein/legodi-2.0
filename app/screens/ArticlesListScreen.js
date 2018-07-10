@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet, View, Text } from 'react-native'
 import * as api from '../helpers/api'
 import ArticlesList from '../components/ArticlesList'
 
+import { Constants } from 'expo'
 export default class ArticlesListScreen extends React.Component {
   constructor (props) {
     super(props)
@@ -13,7 +14,7 @@ export default class ArticlesListScreen extends React.Component {
 
   static navigationOptions = {
     title: 'Glasgow Welcome Pack',
-    headerStyle: { backgroundColor: '#0f352f' },
+    headerStyle: { backgroundColor: '#0f352f', paddingTop: Constants.statusBarHeight },
     headerTitleStyle: { color: '#e6bc44' }
   };
 
