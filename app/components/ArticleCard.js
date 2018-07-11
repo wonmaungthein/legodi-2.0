@@ -7,16 +7,11 @@ import {
   View
 } from 'react-native'
 
-const ArticlesList = (props) => {
+const ArticleCard = (props) => {
   return (
     <TouchableOpacity
       style={[styles.container, styles.text]}
-      onPress={() => props.navigation.navigate('Article', {
-        title: props.title,
-        image: props.image,
-        description: props.description
-      })}>
-    >
+      onPress={props.navigateToArticle}>
       <Image style={styles.image} source={{uri: 'http://placehold.it/100x80'}} />
       <View style={styles.content}>
         <Text style={styles.title}>{props.title}</Text>
@@ -26,7 +21,7 @@ const ArticlesList = (props) => {
   )
 }
 
-export default ArticlesList
+export default ArticleCard
 
 const styles = StyleSheet.create({
   container: {
