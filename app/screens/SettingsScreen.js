@@ -2,7 +2,7 @@ import React from 'react'
 import { Text, View, Picker, StyleSheet } from 'react-native'
 import { Constants } from 'expo'
 import { connect } from 'react-redux'
-import Action from '../redux/actions/Language'
+import { updateLanguage } from '../redux/actions/languageActions'
 
 class SettingsScreen extends React.Component {
   static navigationOptions = {
@@ -22,7 +22,7 @@ class SettingsScreen extends React.Component {
         <Picker
           selectedValue={this.props.language}
           style={{ height: 50, width: 100 }}
-          onValueChange={itemValue => Action.updateLanguage(itemValue)}
+          onValueChange={itemValue => this.props.onLanguageChange(itemValue)}
         >
           <Picker.Item label='English' value='English' />
           <Picker.Item label='Arabic' value='Arabic' />
@@ -33,13 +33,21 @@ class SettingsScreen extends React.Component {
   }
 }
 
-const stateToProps = state => {
+const mapStateToProps = state => {
   return ({
-    language: state.Language.language
+    language: state.language.language
   })
 }
 
-export default connect(stateToProps)(SettingsScreen)
+const dispatchToProps = dispatch => {
+  return {
+    onLanguageChange: language => {
+      dispatch(updateLanguage(language))
+    }
+  }
+}
+
+export default connect(mapStateToProps, dispatchToProps)(SettingsScreen)
 
 const styles = StyleSheet.create({
   container: {

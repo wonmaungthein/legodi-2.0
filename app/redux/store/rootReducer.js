@@ -1,10 +1,10 @@
 import {combineReducers} from 'redux'
-import CategoryList from '../reducers/CategoryList'
-import Language from '../reducers/Language'
+import categories from '../reducers/categories'
+import language from '../reducers/language'
 
 const rootReducer = combineReducers({
-  CategoryList,
-  Language
+  categories,
+  language
 })
 
 export default rootReducer
