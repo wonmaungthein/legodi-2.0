@@ -4,7 +4,9 @@ import {
   View
 } from 'react-native'
 import { Constants } from 'expo'
-export default class WeegieGame extends React.Component {
+import { connect } from 'react-redux'
+
+class WeegieGame extends React.Component {
   static navigationOptions = {
     title: 'Glasgow Welcome Pack',
     headerStyle: { backgroundColor: '#0f352f', paddingTop: Constants.statusBarHeight },
@@ -19,3 +21,9 @@ export default class WeegieGame extends React.Component {
     )
   }
 }
+
+const stateToProps = (state) => ({
+  state
+})
+
+export default connect(stateToProps)(WeegieGame)

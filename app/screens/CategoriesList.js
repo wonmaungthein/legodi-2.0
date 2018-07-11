@@ -1,9 +1,10 @@
 import React from 'react'
 import { ScrollView, StyleSheet, View } from 'react-native'
-import * as api from '../helpers/api'
 import CategoriesIcon from '../components/CategoriesIcon'
+import { connect } from 'react-redux'
+import { fetchCategories } from '../redux/actions/categoriesActions'
 
-export default class CategoriesList extends React.Component {
+class CategoriesList extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -12,12 +13,11 @@ export default class CategoriesList extends React.Component {
   }
 
   async componentDidMount () {
-    const { data: categories } = await api.getCategories()
-    this.setState({ categories })
+    this.props.fetchCategories()
   }
 
   renderCategories = () => {
-    return this.state.categories.map((category, i) => {
+    return this.props.categories.map((category, i) => {
       return (
         <CategoriesIcon
           key={i}
@@ -40,6 +40,20 @@ export default class CategoriesList extends React.Component {
     )
   }
 }
+
+const dispatchToProps = dispatch => {
+  return {
+    fetchCategories: () => {
+      return dispatch(fetchCategories())
+    }
+  }
+}
+
+const mapStateToProps = ({ categories }) => ({
+  categories: categories.categoriesList
+})
+
+export default connect(mapStateToProps, dispatchToProps)(CategoriesList)
 
 const styles = StyleSheet.create({
   container: {

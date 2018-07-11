@@ -1,9 +1,10 @@
-import {combineReducers} from "redux";
-import CategoryList from '../reducers/Reducer';
+import {combineReducers} from 'redux'
+import categories from '../reducers/categories'
+import language from '../reducers/language'
 
 const rootReducer = combineReducers({
-    CategoryList
-});
+  categories,
+  language
+})
 
-
-export default rootReducer;
+export default rootReducer
