@@ -22,11 +22,8 @@ class WeegieGame extends React.Component {
   }
 }
 
-const stateToProps = (state) => {
-  console.log(state)
-  return ({
-    state
-  })
-}
+const stateToProps = (state) => ({
+  state
+})
 
 export default connect(stateToProps)(WeegieGame)
