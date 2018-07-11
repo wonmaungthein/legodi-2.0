@@ -5,13 +5,6 @@ import { connect } from 'react-redux'
 import { fetchCategories } from '../redux/actions/categoriesActions'
 
 class CategoriesList extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      categories: []
-    }
-  }
-
   async componentDidMount () {
     this.props.fetchCategories()
   }

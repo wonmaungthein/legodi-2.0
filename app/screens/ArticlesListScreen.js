@@ -1,17 +1,11 @@
 import React from 'react'
 import { ScrollView, StyleSheet, View, Text } from 'react-native'
-import * as api from '../helpers/api'
 import ArticleCard from '../components/ArticleCard'
+import { connect } from 'react-redux'
+import { fetchArticles } from '../redux/actions/categoriesActions'
 
 import { Constants } from 'expo'
-export default class ArticlesListScreen extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      articles: []
-    }
-  }
-
+class ArticlesListScreen extends React.Component {
   static navigationOptions = {
     title: 'Glasgow Welcome Pack',
     headerStyle: { backgroundColor: '#0f352f', paddingTop: Constants.statusBarHeight },
@@ -20,12 +14,12 @@ export default class ArticlesListScreen extends React.Component {
 
   async componentDidMount () {
     const categoryId = this.props.navigation.getParam('id', '123')
-    const { data: articles } = await api.getArticles(categoryId)
-    this.setState({ articles })
+
+    this.props.listArticles(categoryId)
   }
 
   renderArticlesListPage = () => {
-    const { articles } = this.state
+    const { articles } = this.props
     const title = this.props.navigation.getParam('categoryTitle', 'No category')
     const description = this.props.navigation.getParam('description', 'No description')
 
@@ -39,7 +33,7 @@ export default class ArticlesListScreen extends React.Component {
             const navigateToArticle = () => this.props.navigation.navigate('Article', {
               title: article.title,
               image: article.articleImage,
-              description: article.description
+              description: article.fullContent
             })
 
             return (
@@ -62,7 +56,7 @@ export default class ArticlesListScreen extends React.Component {
       <ScrollView style={styles.container}>
         <View style={styles.layout}>
           {
-            this.state.articles.length > 0
+            this.props.articles.length > 0
               ? this.renderArticlesListPage()
               : <Text style={styles.title}>There are no articles in this category</Text>
           }
@@ -71,6 +65,17 @@ export default class ArticlesListScreen extends React.Component {
     )
   }
 }
+
+const mapStateToProps = (state) => ({
+  articles: state.categories.articlesInCategory
+})
+
+const dispatchToProps = dispatch => {
+  return {
+    listArticles: (categoryId) => dispatch(fetchArticles(categoryId))
+  }
+}
+export default connect(mapStateToProps, dispatchToProps)(ArticlesListScreen)
 
 const styles = StyleSheet.create({
   container: {
