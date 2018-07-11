@@ -3,10 +3,10 @@ const categoryList = categoriesListEnglish
 
 const CategoryList = (state = categoryList, action) => {
   switch (action.type) {
-    case 'update':
+    case 'updateCategories':
       return {...state, ...{categoryList: action.data}}
 
-    case 'reset':
+    case 'resetCategories':
       return {...state, ...{categoriesListEnglish}}
 
     default:
