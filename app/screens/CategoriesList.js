@@ -10,8 +10,8 @@ class CategoriesList extends React.Component {
   }
 
   renderCategories = () => {
-    const language = this.props.language;  
-    return this.props.categories.map((category, i) => {  
+    const language = this.props.language
+    return this.props.categories.map((category, i) => {
       if (language === 'ar') {
         return (
           <CategoriesIcon
@@ -24,7 +24,7 @@ class CategoriesList extends React.Component {
             navigation={this.props.onPressHandle}
           />
         )
-      }else if (language === 'am') {
+      } else if (language === 'am') {
         return (
           <CategoriesIcon
             key={i}
@@ -35,7 +35,7 @@ class CategoriesList extends React.Component {
             navigation={this.props.onPressHandle}
           />
         )
-      }else{
+      } else {
         return (
           <CategoriesIcon
             key={i}

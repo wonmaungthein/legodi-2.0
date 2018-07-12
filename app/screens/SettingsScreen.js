@@ -15,17 +15,16 @@ class SettingsScreen extends React.Component {
   };
 
   renderLanguage = () => {
-    const { language } = this.props;
+    const { language } = this.props
     if (language === 'ar') {
       return 'Arabic'
-    }else if (language === 'am') {
+    } else if (language === 'am') {
       return 'Amharic'
     }
     return 'English'
   }
 
   render () {
-    
     return (
       <View style={styles.container}>
         <Text style={styles.language}>{this.renderLanguage()} Is Selected</Text>

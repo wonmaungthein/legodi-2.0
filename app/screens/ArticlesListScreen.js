@@ -19,36 +19,35 @@ class ArticlesListScreen extends React.Component {
   }
 
   renderArticlesListPage = () => {
-    const language = this.props.language;  
+    const language = this.props.language
     const { articles } = this.props
     const title = this.props.navigation.getParam('categoryTitle', 'No category')
     const description = this.props.navigation.getParam('description', 'No description')
-    
+
     return (
       <View>
-        <Text style={ language === 'ar'? styles.arabicTitle : styles.title} >{title}</Text>
-        <Text style={ language === 'ar'? styles.arabicDescription : styles.description} >{description}</Text>
+        <Text style={language === 'ar' ? styles.arabicTitle : styles.title} >{title}</Text>
+        <Text style={language === 'ar' ? styles.arabicDescription : styles.description} >{description}</Text>
         {
 
           articles.map((article, i) => {
-           console.log(article);
-           
-              const navigateToArticle = () => this.props.navigation.navigate('Article', {
-                title: article.title,
-                image: article.articleImage,
-                description: article.fullContent
-              })
-  
-              return (
-                <ArticleCard
-                  key={i}
-                  title={article.title}
-                  image={article.articleImage}
-                  description={article.fullContent}
-                  navigateToArticle={navigateToArticle}
-                />
-              )
-            
+            console.log(article)
+
+            const navigateToArticle = () => this.props.navigation.navigate('Article', {
+              title: article.title,
+              image: article.articleImage,
+              description: article.fullContent
+            })
+
+            return (
+              <ArticleCard
+                key={i}
+                title={article.title}
+                image={article.articleImage}
+                description={article.fullContent}
+                navigateToArticle={navigateToArticle}
+              />
+            )
           })
         }
       </View>
@@ -87,7 +86,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#e5ba4f'
   },
-  arabicTitle:{
+  arabicTitle: {
     textAlign: 'right',
     fontSize: 20,
     fontWeight: 'bold',
