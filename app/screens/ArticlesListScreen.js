@@ -19,32 +19,36 @@ class ArticlesListScreen extends React.Component {
   }
 
   renderArticlesListPage = () => {
+    const language = this.props.language;  
     const { articles } = this.props
     const title = this.props.navigation.getParam('categoryTitle', 'No category')
     const description = this.props.navigation.getParam('description', 'No description')
-
+    
     return (
       <View>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.description}>{description}</Text>
+        <Text style={ language === 'ar'? styles.arabicTitle : styles.title} >{title}</Text>
+        <Text style={ language === 'ar'? styles.arabicDescription : styles.description} >{description}</Text>
         {
 
           articles.map((article, i) => {
-            const navigateToArticle = () => this.props.navigation.navigate('Article', {
-              title: article.title,
-              image: article.articleImage,
-              description: article.fullContent
-            })
-
-            return (
-              <ArticleCard
-                key={i}
-                title={article.title}
-                image={article.articleImage}
-                description={article.fullContent}
-                navigateToArticle={navigateToArticle}
-              />
-            )
+           console.log(article);
+           
+              const navigateToArticle = () => this.props.navigation.navigate('Article', {
+                title: article.title,
+                image: article.articleImage,
+                description: article.fullContent
+              })
+  
+              return (
+                <ArticleCard
+                  key={i}
+                  title={article.title}
+                  image={article.articleImage}
+                  description={article.fullContent}
+                  navigateToArticle={navigateToArticle}
+                />
+              )
+            
           })
         }
       </View>
@@ -67,7 +71,8 @@ class ArticlesListScreen extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  articles: state.categories.articlesInCategory
+  articles: state.categories.articlesInCategory,
+  language: state.language.language
 })
 
 const dispatchToProps = dispatch => {
@@ -81,6 +86,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#e5ba4f'
+  },
+  arabicTitle:{
+    textAlign: 'right',
+    fontSize: 20,
+    fontWeight: 'bold',
+    paddingBottom: 10
+  },
+  arabicDescription: {
+    textAlign: 'right',
+    paddingBottom: 20,
+    fontSize: 15
   },
   layout: {
     flex: 1,

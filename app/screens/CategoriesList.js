@@ -10,16 +10,43 @@ class CategoriesList extends React.Component {
   }
 
   renderCategories = () => {
-    return this.props.categories.map((category, i) => {
-      return (
-        <CategoriesIcon
-          key={i}
-          title={category.title}
-          id={category._id}
-          description={category.description}
-          navigation={this.props.onPressHandle}
-        />
-      )
+    const language = this.props.language;  
+    return this.props.categories.map((category, i) => {  
+      if (language === 'ar') {
+        return (
+          <CategoriesIcon
+            key={i}
+            id={category._id}
+            language={language}
+            iconName={category.title}
+            title={category.titleTranslation[language]}
+            description={category.arabicDescription}
+            navigation={this.props.onPressHandle}
+          />
+        )
+      }else if (language === 'am') {
+        return (
+          <CategoriesIcon
+            key={i}
+            id={category._id}
+            iconName={category.title}
+            title={category.titleTranslation[language]}
+            description={category.amharngaDescription}
+            navigation={this.props.onPressHandle}
+          />
+        )
+      }else{
+        return (
+          <CategoriesIcon
+            key={i}
+            id={category._id}
+            title={category.title}
+            iconName={category.title}
+            description={category.description}
+            navigation={this.props.onPressHandle}
+          />
+        )
+      }
     })
   }
 
@@ -42,8 +69,9 @@ const dispatchToProps = dispatch => {
   }
 }
 
-const mapStateToProps = ({ categories }) => ({
-  categories: categories.categoriesList
+const mapStateToProps = ({ categories, language }) => ({
+  categories: categories.categoriesList,
+  language: language.language
 })
 
 export default connect(mapStateToProps, dispatchToProps)(CategoriesList)
