@@ -14,7 +14,7 @@ class ArticlesListScreen extends React.Component {
 
   async componentDidMount () {
     const categoryId = this.props.navigation.getParam('id', '123')
-    const { language } = this.props;
+    const { language } = this.props
 
     this.props.listArticles(categoryId, language)
   }

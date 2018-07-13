@@ -17,7 +17,6 @@ const welcomeArticles = listOfArticles.filter(article => {
 // mock end point for welcome articles
 mock.onGet('/api/en/5a256e431aefb70014e3a24b').reply(200, welcomeArticles)
 
-
 // mock data for welcome articles in Aarabic
 const welcomeArticlesInArabic = listOfArticlesInArabic.filter(article => {
   return article.category._id === '5a256e431aefb70014e3a24b'
