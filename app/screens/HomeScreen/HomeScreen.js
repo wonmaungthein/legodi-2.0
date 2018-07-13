@@ -1,12 +1,12 @@
 import React from 'react'
 import {
   ScrollView,
-  StyleSheet,
   Text,
   View
 } from 'react-native'
 import { WebBrowser, Constants } from 'expo'
-import CategoriesList from './CategoriesList'
+import CategoriesList from '../CategoriesList/CategoriesList'
+import styles from './HomeStyles'
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -62,25 +62,3 @@ export default class HomeScreen extends React.Component {
     )
   };
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#e5ba4f',
-    paddingTop: Constants.statusBarHeight
-  },
-  developmentModeText: {
-    marginBottom: 20,
-    color: 'rgba(0,0,0,0.4)',
-    fontSize: 14,
-    lineHeight: 19,
-    textAlign: 'center'
-  },
-  contentContainer: {
-    paddingTop: 0
-  },
-  helpLinkText: {
-    fontSize: 14,
-    color: '#2e78b7'
-  }
-})

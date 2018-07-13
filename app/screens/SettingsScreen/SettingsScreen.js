@@ -1,8 +1,9 @@
 import React from 'react'
-import { Text, View, Picker, StyleSheet } from 'react-native'
+import { Text, View, Picker } from 'react-native'
 import { Constants } from 'expo'
 import { connect } from 'react-redux'
-import { updateLanguage } from '../redux/actions/languageActions'
+import { updateLanguage } from '../../redux/actions/languageActions'
+import styles from './SettingStyles'
 
 class SettingsScreen extends React.Component {
   static navigationOptions = {
@@ -58,24 +59,3 @@ const dispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps, dispatchToProps)(SettingsScreen)
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 10,
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'center'
-  },
-  language: {
-    fontSize: 20,
-    backgroundColor: '#e5ba4f',
-    width: 330,
-    padding: 10,
-    textAlign: 'center'
-  },
-  changeLanguage: {
-    fontSize: 18,
-    marginTop: 15
-  }
-})

@@ -1,10 +1,11 @@
 import React from 'react'
-import { ScrollView, StyleSheet, View, Text } from 'react-native'
-import ArticleCard from '../components/ArticleCard'
+import { ScrollView, View, Text } from 'react-native'
+import ArticleCard from '../../components/ArticleCard/ArticleCard'
 import { connect } from 'react-redux'
-import { fetchArticles } from '../redux/actions/categoriesActions'
-
+import { fetchArticles } from '../../redux/actions/categoriesActions'
 import { Constants } from 'expo'
+import styles from './ArticleListStyles'
+
 class ArticlesListScreen extends React.Component {
   static navigationOptions = {
     title: 'Glasgow Welcome Pack',
@@ -81,34 +82,3 @@ const dispatchToProps = dispatch => {
   }
 }
 export default connect(mapStateToProps, dispatchToProps)(ArticlesListScreen)
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#e5ba4f'
-  },
-  arabicTitle: {
-    textAlign: 'right',
-    fontSize: 20,
-    fontWeight: 'bold',
-    paddingBottom: 10
-  },
-  arabicDescription: {
-    textAlign: 'right',
-    paddingBottom: 20,
-    fontSize: 15
-  },
-  layout: {
-    flex: 1,
-    padding: 10
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    paddingBottom: 10
-  },
-  description: {
-    paddingBottom: 20,
-    fontSize: 15
-  }
-})

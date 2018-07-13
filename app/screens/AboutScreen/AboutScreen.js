@@ -1,6 +1,7 @@
 import React from 'react'
-import { ScrollView, StyleSheet, Text, View, Image } from 'react-native'
+import { ScrollView, Text, View, Image } from 'react-native'
 import { Constants } from 'expo'
+import styles from './AboutScreenStyle'
 
 export default class AboutScreen extends React.Component {
   static navigationOptions = {
@@ -32,14 +33,14 @@ export default class AboutScreen extends React.Component {
         <View style={styles.center}>
           <Image
             style={styles.firstImage}
-            source={require('../assets/images/codeyourfuture.png')}
+            source={require('../../assets/images/codeyourfuture.png')}
             resizeMode='contain'
           />
         </View>
         <View style={styles.center}>
           <Image
             style={styles.secandImage}
-            source={require('../assets/images/refuweegee.png')}
+            source={require('../../assets/images/refuweegee.png')}
             resizeMode='contain'
           />
         </View>
@@ -47,33 +48,3 @@ export default class AboutScreen extends React.Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 15,
-    backgroundColor: '#e6bb44'
-  },
-  center: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  paragraph: {
-    marginTop: 1,
-    fontSize: 20,
-    marginLeft: 10,
-    padding: 2
-  },
-  firstImage: {
-    width: 280,
-    height: 200,
-    marginTop: -30
-  },
-  secandImage: {
-    width: 260,
-    height: 400,
-    marginTop: -100
-  }
-})
