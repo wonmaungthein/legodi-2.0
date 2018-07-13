@@ -1,11 +1,10 @@
 import React from 'react'
 import {
   Text,
-  StyleSheet,
   TouchableOpacity
 } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
-
+import styles from './IconStyles'
 const CategoriesList = (props) => {
   const getIconName = (name) => {
     let iconName = ''
@@ -63,19 +62,3 @@ const CategoriesList = (props) => {
 }
 
 export default CategoriesList
-
-const styles = StyleSheet.create({
-  box: {
-    width: 100,
-    height: 100,
-    marginTop: 20,
-    backgroundColor: '#245e55',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  title: {
-    color: '#fff',
-    fontWeight: 'bold',
-    paddingTop: 10
-  }
-})

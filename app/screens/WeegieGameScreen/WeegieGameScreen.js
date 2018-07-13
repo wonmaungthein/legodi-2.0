@@ -5,7 +5,7 @@ import {
 } from 'react-native'
 import { Constants } from 'expo'
 import { connect } from 'react-redux'
-
+import styles from './WeegieGame'
 class WeegieGame extends React.Component {
   static navigationOptions = {
     title: 'Glasgow Welcome Pack',
@@ -15,7 +15,7 @@ class WeegieGame extends React.Component {
 
   render () {
     return (
-      <View>
+      <View styles={styles.container}>
         <Text>Weegie Game Screen</Text>
       </View>
     )

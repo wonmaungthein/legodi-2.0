@@ -1,9 +1,9 @@
 import React from 'react'
-import { ScrollView, StyleSheet, View } from 'react-native'
-import CategoriesIcon from '../components/CategoriesIcon'
+import { ScrollView, View } from 'react-native'
+import CategoriesIcon from '../../components/CategoriesIcon/CategoriesIcon'
 import { connect } from 'react-redux'
-import { fetchCategories } from '../redux/actions/categoriesActions'
-
+import { fetchCategories } from '../../redux/actions/categoriesActions'
+import styles from './CategoryListStyles'
 class CategoriesList extends React.Component {
   async componentDidMount () {
     this.props.fetchCategories()
@@ -47,18 +47,3 @@ const mapStateToProps = ({ categories }) => ({
 })
 
 export default connect(mapStateToProps, dispatchToProps)(CategoriesList)
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#e5ba4f'
-  },
-  layout: {
-    flex: 1,
-    flexWrap: 'wrap',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    marginTop: 20
-  }
-})

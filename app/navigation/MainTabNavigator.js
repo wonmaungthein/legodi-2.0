@@ -1,14 +1,13 @@
 import React from 'react'
 import { Platform } from 'react-native'
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation'
-
 import TabBarIcon from '../components/TabBarIcon'
-import HomeScreen from '../screens/HomeScreen'
-import AboutScreen from '../screens/AboutScreen'
-import SettingsScreen from '../screens/SettingsScreen'
-import WeegieGameScreen from '../screens/WeegieGameScreen'
-import Article from '../screens/Article'
-import ArticlesListScreen from '../screens/ArticlesListScreen'
+import HomeScreen from '../screens/HomeScreen/HomeScreen'
+import AboutScreen from '../screens/AboutScreen/AboutScreen'
+import SettingsScreen from '../screens/SettingsScreen/SettingsScreen'
+import WeegieGameScreen from '../screens/WeegieGameScreen/WeegieGameScreen'
+import Article from '../screens/Article/Article'
+import ArticlesListScreen from '../screens/ArticlesListScreen/ArticlesListScreen'
 
 const HomeStack = createStackNavigator(
   {

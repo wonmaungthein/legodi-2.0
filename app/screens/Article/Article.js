@@ -3,11 +3,10 @@ import {
   Text,
   View,
   Image,
-  StyleSheet,
   ScrollView
 } from 'react-native'
 import { Constants } from 'expo'
-
+import styles from './ArticleStyle'
 export default class Article extends React.Component {
   static navigationOptions = {
     title: 'Glasgow Welcome Pack',
@@ -36,28 +35,3 @@ export default class Article extends React.Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    backgroundColor: '#e5ba4f',
-    paddingTop: 10
-  },
-  center: {
-    flex: 1,
-    alignItems: 'center'
-  },
-  image: {
-    width: 300,
-    height: 200
-  },
-  title: {
-    fontSize: 28
-  },
-  paddingSides: {
-    paddingLeft: 10,
-    paddingRight: 10
-  }
-})
