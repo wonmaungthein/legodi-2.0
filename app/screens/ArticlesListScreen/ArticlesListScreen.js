@@ -21,7 +21,7 @@ class ArticlesListScreen extends React.Component {
   }
 
   renderArticlesListPage = () => {
-    const language = this.props.language
+    const { language } = this.props
     const { articles } = this.props
     const title = this.props.navigation.getParam('categoryTitle', 'No category')
     const description = this.props.navigation.getParam('description', 'No description')

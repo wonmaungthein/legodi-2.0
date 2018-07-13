@@ -24,6 +24,14 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 15
+  },
+  arabicTitle: {
+    fontWeight: 'bold',
+    textAlign: 'right'
+  },
+  arabicDescription: {
+    fontSize: 15,
+    textAlign: 'right'
   }
 })
 

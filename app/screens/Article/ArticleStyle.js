@@ -21,6 +21,17 @@ const styles = StyleSheet.create({
   paddingSides: {
     paddingLeft: 10,
     paddingRight: 10
+  },
+  description: {
+    fontSize: 18
+  },
+  arabicTitle: {
+    fontSize: 28,
+    textAlign: 'right'
+  },
+  arabicDescription: {
+    textAlign: 'right',
+    fontSize: 18
   }
 })
 export default styles
