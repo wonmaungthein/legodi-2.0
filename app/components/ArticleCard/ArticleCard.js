@@ -25,7 +25,7 @@ const ArticleCard = (props) => {
 ArticleCard.propTypes = {
   navigateToArticle: PropTypes.func,
   title: PropTypes.string,
-  description: PropTypes.string,
+  description: PropTypes.string
 }
 
 export default ArticleCard
