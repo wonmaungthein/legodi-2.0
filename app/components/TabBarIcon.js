@@ -1,10 +1,11 @@
 import React from 'react'
 import { Icon } from 'expo'
+import PropTypes from 'prop-types';
 
 import Colors from '../constants/Colors'
 
 export default class TabBarIcon extends React.Component {
-  render () {
+  render() {
     return (
       <Icon.Ionicons
         name={this.props.name}
@@ -15,3 +16,7 @@ export default class TabBarIcon extends React.Component {
     )
   }
 }
+
+TabBarIcon.propTypes = {
+  name: PropTypes.string
+} 
