@@ -4,8 +4,10 @@ import CategoriesIcon from '../../components/CategoriesIcon/CategoriesIcon'
 import { connect } from 'react-redux'
 import { fetchCategories } from '../../redux/actions/categoriesActions'
 import styles from './CategoryListStyles'
+import PropTypes from 'prop-types'
+
 class CategoriesList extends React.Component {
-  async componentDidMount () {
+  async componentDidMount() {
     this.props.fetchCategories()
   }
 
@@ -23,7 +25,7 @@ class CategoriesList extends React.Component {
     })
   }
 
-  render () {
+  render() {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.layout}>
@@ -45,5 +47,11 @@ const dispatchToProps = dispatch => {
 const mapStateToProps = ({ categories }) => ({
   categories: categories.categoriesList
 })
+
+CategoriesList.propTypes = {
+  fetchCategories: PropTypes.func,
+  categories: PropTypes.array,
+  onPressHandle: PropTypes.func
+}
 
 export default connect(mapStateToProps, dispatchToProps)(CategoriesList)

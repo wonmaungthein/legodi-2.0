@@ -4,6 +4,7 @@ import { Constants } from 'expo'
 import { connect } from 'react-redux'
 import { updateLanguage } from '../../redux/actions/languageActions'
 import styles from './SettingStyles'
+import PropTypes from 'prop-types'
 
 class SettingsScreen extends React.Component {
   static navigationOptions = {
@@ -15,7 +16,7 @@ class SettingsScreen extends React.Component {
     headerTitleStyle: { color: '#e6bc44' }
   };
 
-  render () {
+  render() {
     return (
       <View style={styles.container}>
         <Text style={styles.language}>{this.props.language} Is Selected</Text>
@@ -46,6 +47,11 @@ const dispatchToProps = dispatch => {
       dispatch(updateLanguage(language))
     }
   }
+}
+
+SettingsScreen.propTypes = {
+  language: PropTypes.string,
+  onLanguageChange: PropTypes.func
 }
 
 export default connect(mapStateToProps, dispatchToProps)(SettingsScreen)

@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { fetchArticles } from '../../redux/actions/categoriesActions'
 import { Constants } from 'expo'
 import styles from './ArticleListStyles'
+import PropTypes from 'prop-types'
 
 class ArticlesListScreen extends React.Component {
   static navigationOptions = {
@@ -13,7 +14,7 @@ class ArticlesListScreen extends React.Component {
     headerTitleStyle: { color: '#e6bc44' }
   };
 
-  async componentDidMount () {
+  async componentDidMount() {
     const categoryId = this.props.navigation.getParam('id', '123')
 
     this.props.listArticles(categoryId)
@@ -52,7 +53,7 @@ class ArticlesListScreen extends React.Component {
     )
   }
 
-  render () {
+  render() {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.layout}>
@@ -76,4 +77,10 @@ const dispatchToProps = dispatch => {
     listArticles: (categoryId) => dispatch(fetchArticles(categoryId))
   }
 }
+
+ArticlesListScreen.propTypes = {
+  listArticles: PropTypes.func,
+  articles: PropTypes.array
+}
+
 export default connect(mapStateToProps, dispatchToProps)(ArticlesListScreen)
