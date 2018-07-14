@@ -78,9 +78,10 @@ SettingsStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   HomeStack,
+  WeegieGameStack,
   AboutScreenStack,
-  SettingsStack,
-  WeegieGameStack
+  SettingsStack
+
 },
 {
   navigationOptions: {
