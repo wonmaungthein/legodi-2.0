@@ -16,7 +16,7 @@ class SettingsScreen extends React.Component {
     headerTitleStyle: { color: '#e6bc44' }
   };
 
-  render() {
+  render () {
     return (
       <View style={styles.container}>
         <Text style={styles.language}>{this.props.language} Is Selected</Text>

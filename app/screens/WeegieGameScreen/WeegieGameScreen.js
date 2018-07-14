@@ -14,7 +14,7 @@ class WeegieGame extends React.Component {
     headerTitleStyle: { color: '#e6bc44' }
   };
 
-  render() {
+  render () {
     return (
       <View styles={styles.container}>
         <Text>Weegie Game Screen</Text>

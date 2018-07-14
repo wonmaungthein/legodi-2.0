@@ -14,7 +14,7 @@ class ArticlesListScreen extends React.Component {
     headerTitleStyle: { color: '#e6bc44' }
   };
 
-  async componentDidMount() {
+  async componentDidMount () {
     const categoryId = this.props.navigation.getParam('id', '123')
 
     this.props.listArticles(categoryId)
@@ -53,7 +53,7 @@ class ArticlesListScreen extends React.Component {
     )
   }
 
-  render() {
+  render () {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.layout}>
