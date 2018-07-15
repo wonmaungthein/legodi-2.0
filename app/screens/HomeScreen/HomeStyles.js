@@ -1,11 +1,9 @@
 import { StyleSheet } from 'react-native'
-import { Constants } from 'expo'
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#e5ba4f',
-    paddingTop: Constants.statusBarHeight
+    backgroundColor: '#e5ba4f'
   },
   developmentModeText: {
     marginBottom: 20,
