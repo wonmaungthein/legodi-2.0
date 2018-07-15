@@ -17,6 +17,17 @@ const styles = StyleSheet.create({
   description: {
     paddingBottom: 20,
     fontSize: 15
+  },
+  arabicTitle: {
+    fontSize: 20,
+    textAlign: 'right',
+    fontWeight: 'bold',
+    paddingBottom: 10
+  },
+  arabicDescription: {
+    paddingBottom: 20,
+    textAlign: 'right',
+    fontSize: 15
   }
 })
 

@@ -16,24 +16,27 @@ class ArticlesListScreen extends React.Component {
 
   async componentDidMount () {
     const categoryId = this.props.navigation.getParam('id', '123')
+    const { language } = this.props
 
-    this.props.listArticles(categoryId)
+    this.props.listArticles(categoryId, language)
   }
 
   renderArticlesListPage = () => {
+    const { language } = this.props
     const { articles } = this.props
     const title = this.props.navigation.getParam('categoryTitle', 'No category')
     const description = this.props.navigation.getParam('description', 'No description')
 
     return (
       <View>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.description}>{description}</Text>
+        <Text style={language === 'ar' ? styles.arabicTitle : styles.title} >{title}</Text>
+        <Text style={language === 'ar' ? styles.arabicDescription : styles.description} >{description}</Text>
         {
 
           articles.map((article, i) => {
             const navigateToArticle = () => this.props.navigation.navigate('Article', {
               title: article.title,
+              language: language,
               image: article.articleImage,
               description: article.fullContent
             })
@@ -41,6 +44,7 @@ class ArticlesListScreen extends React.Component {
             return (
               <ArticleCard
                 key={i}
+                language={language}
                 title={article.title}
                 image={article.articleImage}
                 description={article.fullContent}
@@ -69,12 +73,13 @@ class ArticlesListScreen extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  articles: state.categories.articlesInCategory
+  articles: state.categories.articlesInCategory,
+  language: state.language.language
 })
 
 const dispatchToProps = dispatch => {
   return {
-    listArticles: (categoryId) => dispatch(fetchArticles(categoryId))
+    listArticles: (categoryId, language) => dispatch(fetchArticles(categoryId, language))
   }
 }
 

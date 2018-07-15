@@ -16,19 +16,29 @@ class SettingsScreen extends React.Component {
     headerTitleStyle: { color: '#e6bc44' }
   };
 
+  renderLanguage = () => {
+    const { language } = this.props
+    if (language === 'ar') {
+      return 'Arabic'
+    } else if (language === 'am') {
+      return 'Amharic'
+    }
+    return 'English'
+  }
+
   render () {
     return (
       <View style={styles.container}>
-        <Text style={styles.language}>{this.props.language} Is Selected</Text>
+        <Text style={styles.language}>{this.renderLanguage()} Is Selected</Text>
         <Text style={styles.changeLanguage}>Change Language:</Text>
         <Picker
           selectedValue={this.props.language}
           style={{ height: 50, width: 100 }}
           onValueChange={itemValue => this.props.onLanguageChange(itemValue)}
         >
-          <Picker.Item label='English' value='English' />
-          <Picker.Item label='Arabic' value='Arabic' />
-          <Picker.Item label='Amharic' value='Amharic' />
+          <Picker.Item label='English' value='en' />
+          <Picker.Item label='Arabic' value='ar' />
+          <Picker.Item label='Amharic' value='am' />
         </Picker>
       </View>
     )

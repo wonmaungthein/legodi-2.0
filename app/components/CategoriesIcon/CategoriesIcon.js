@@ -57,7 +57,7 @@ const CategoriesIcon = (props) => {
           description: props.description
         }
       )}>
-      <Ionicons name={getIconName(props.title)} size={36} color='#e5ba4f' />
+      <Ionicons name={getIconName(props.iconName)} size={36} color='#e5ba4f' />
       <Text style={styles.title}>{props.title}</Text>
     </TouchableOpacity>
   )
