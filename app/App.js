@@ -11,7 +11,7 @@ export default class App extends React.Component {
     isLoadingComplete: false
   };
 
-  render () {
+  render() {
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
       return (
         <AppLoading
@@ -24,7 +24,7 @@ export default class App extends React.Component {
       return (
         <Provider store={store}>
           <View style={styles.container}>
-            {Platform.OS === 'ios' && <StatusBar barStyle='default' />}
+            {Platform.OS === 'ios' && <StatusBar barStyle='light-content' />}
             <AppNavigator />
           </View>
         </Provider>
