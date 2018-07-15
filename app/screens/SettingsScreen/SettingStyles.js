@@ -3,15 +3,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 10,
-    flexDirection: 'column',
+    backgroundColor: '#e5ba4f',
     justifyContent: 'flex-start',
     alignItems: 'center'
   },
   language: {
     fontSize: 20,
-    backgroundColor: '#e5ba4f',
+    fontWeight: 'bold',
+    backgroundColor: '#0f352e',
+    color: '#e5ba4f',
     width: 330,
-    padding: 10,
+    padding: 15,
     textAlign: 'center'
   },
   changeLanguage: {

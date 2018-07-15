@@ -29,7 +29,7 @@ class SettingsScreen extends React.Component {
   render () {
     return (
       <View style={styles.container}>
-        <Text style={styles.language}>{this.renderLanguage()} Is Selected</Text>
+        <Text style={styles.language}>{this.renderLanguage()} is selected</Text>
         <Text style={styles.changeLanguage}>Change Language:</Text>
         <Picker
           selectedValue={this.props.language}
