@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { fetchArticles } from '../../redux/actions/categoriesActions'
 import { Constants } from 'expo'
 import styles from './ArticleListStyles'
+import PropTypes from 'prop-types'
 
 class ArticlesListScreen extends React.Component {
   static navigationOptions = {
@@ -76,4 +77,10 @@ const dispatchToProps = dispatch => {
     listArticles: (categoryId) => dispatch(fetchArticles(categoryId))
   }
 }
+
+ArticlesListScreen.propTypes = {
+  listArticles: PropTypes.func,
+  articles: PropTypes.array
+}
+
 export default connect(mapStateToProps, dispatchToProps)(ArticlesListScreen)

@@ -5,7 +5,9 @@ import {
 } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import styles from './IconStyles'
-const CategoriesList = (props) => {
+import PropTypes from 'prop-types'
+
+const CategoriesIcon = (props) => {
   const getIconName = (name) => {
     let iconName = ''
     switch (name) {
@@ -61,4 +63,15 @@ const CategoriesList = (props) => {
   )
 }
 
-export default CategoriesList
+CategoriesIcon.propTypes = {
+  navigation: PropTypes.func,
+  id: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
+  categoryTitle: PropTypes.string,
+  description: PropTypes.string,
+  title: PropTypes.string
+}
+
+export default CategoriesIcon

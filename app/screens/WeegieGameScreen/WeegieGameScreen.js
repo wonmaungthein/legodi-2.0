@@ -6,6 +6,7 @@ import {
 import { Constants } from 'expo'
 import { connect } from 'react-redux'
 import styles from './WeegieGame'
+
 class WeegieGame extends React.Component {
   static navigationOptions = {
     title: 'Glasgow Welcome Pack',
