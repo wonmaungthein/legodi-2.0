@@ -42,7 +42,7 @@ const dispatchToProps = dispatch => {
 }
 
 WeegieGame.propTypes = {
-  // weegieGameQuestions: PropTypes.object.isRequired,
+  weegieGameQuestions: PropTypes.object,
   onGetWeegieQuestions: PropTypes.func.isRequired
 }
 
