@@ -21,9 +21,9 @@ helper.generateNavigation(SettingsStack, 'Settings', '#0f352f', 'ios-settings', 
 
 export default createBottomTabNavigator({
   HomeStack,
-  AboutScreenStack,
+  WeegieGameStack,
   SettingsStack,
-  WeegieGameStack
+  AboutScreenStack
 },
 {
   navigationOptions: ({navigation}) => helper.tabBarVisibility(navigation),
