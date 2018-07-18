@@ -5,19 +5,19 @@ import Settings from '../screens/SettingsScreen/SettingsScreen'
 import Game from '../screens/WeegieGameScreen/WeegieGameScreen'
 import Article from '../screens/Article/Article'
 import Articles from '../screens/ArticlesListScreen/ArticlesListScreen'
-import generateNavigation from './GenerateNavigation'
+import * as helper from './helpers'
 
 const HomeStack = createStackNavigator({Home, Articles, Article}, {initialRouteName: 'Home'})
-generateNavigation(HomeStack, 'Home', '#0f352f', 'ios-home', 'md-home')
+helper.generateNavigation(HomeStack, 'Home', '#0f352f', 'ios-home', 'md-home')
 
 const WeegieGameStack = createStackNavigator({Game})
-generateNavigation(WeegieGameStack, 'Game', '#0f352f', 'ios-game-controller-b', 'md-game-controller-b')
+helper.generateNavigation(WeegieGameStack, 'Game', '#0f352f', 'ios-game-controller-b', 'md-game-controller-b')
 
 const AboutScreenStack = createStackNavigator({About})
-generateNavigation(AboutScreenStack, 'About', '#0f352f', 'ios-information-circle', 'md-information-circle')
+helper.generateNavigation(AboutScreenStack, 'About', '#0f352f', 'ios-information-circle', 'md-information-circle')
 
 const SettingsStack = createStackNavigator({Settings})
-generateNavigation(SettingsStack, 'Settings', '#0f352f', 'ios-settings', 'md-settings')
+helper.generateNavigation(SettingsStack, 'Settings', '#0f352f', 'ios-settings', 'md-settings')
 
 export default createBottomTabNavigator({
   HomeStack,
@@ -26,9 +26,8 @@ export default createBottomTabNavigator({
   WeegieGameStack
 },
 {
-  navigationOptions: {
-    tabBarVisible: true
-  },
+  navigationOptions: ({navigation}) => helper.tabBarVisibility(navigation),
+
   tabBarOptions: {
     activeTintColor: '#e6bc44',
     activeBackgroundColor: '#215e55',
