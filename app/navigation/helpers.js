@@ -32,5 +32,5 @@ export const tabBarVisibility = (navigation) => {
       return initialValue
     }
   })
-  return !initialValue ? { tabBarVisible: false } : null
+  return initialValue ? null : { tabBarVisible: false }
 }
