@@ -1,15 +1,21 @@
 import React from 'react'
 import {
   Text,
-  View
+  View,
+  ScrollView
 } from 'react-native'
 import PropTypes from 'prop-types'
+import { CheckBox, Button } from 'react-native-elements'
 import { Constants } from 'expo'
 import { connect } from 'react-redux'
-import styles from './WeegieGame'
+import styles from './WeegieGameStyle'
 import {fetchWeegieGameQuestions} from '../../redux/actions/weegieGame'
 
 class WeegieGame extends React.Component {
+  state = {
+    checked: false,
+    open: false
+  }
   static navigationOptions = {
     title: 'Glasgow Welcome Pack',
     headerStyle: { backgroundColor: '#0f352f', paddingTop: Constants.statusBarHeight },
@@ -19,19 +25,95 @@ class WeegieGame extends React.Component {
   componentDidMount () {
     this.props.onGetWeegieQuestions()
   }
+
+  handleCheckBox = (e) => {
+    this.setState({checked: !this.state.checked})
+  }
+
+  handleOpen = (e) => {
+    this.setState({open: true})
+  }
+
+  showGame = (data) => {
+    return data.map((question, index) => {
+      const questionNum = index + 1
+      return (
+        <View key={question._id} styles={styles.content} >
+          <Text style={styles.question}>{questionNum}- {question.title}</Text>
+          <Text>
+            <CheckBox
+              title={question.choices.a}
+              checked={this.state.checked}
+              onPress={this.handleCheckBox}
+              containerStyle={styles.checkBoxContainer}
+              uncheckedColor='#0f352f'
+              textStyle={styles.label}
+            />
+          </Text>
+          <Text>
+            <CheckBox
+              title={question.choices.b}
+              checked={this.state.checked}
+              onPress={this.handleCheckBox}
+              containerStyle={styles.checkBoxContainer}
+              uncheckedColor='#0f352f'
+              textStyle={styles.label}
+            />
+          </Text>
+          <Text>
+            <CheckBox
+              title={question.choices.c}
+              checked={this.state.checked}
+              onPress={this.handleCheckBox}
+              containerStyle={styles.checkBoxContainer}
+              uncheckedColor='#0f352f'
+              textStyle={styles.label}
+            />
+          </Text>
+          <Text>
+            <CheckBox
+              title={question.choices.d}
+              checked={this.state.checked}
+              onPress={this.handleCheckBox}
+              containerStyle={styles.checkBoxContainer}
+              uncheckedColor='#0f352f'
+              textStyle={styles.label}
+            />
+          </Text>
+        </View>
+      )
+    })
+  }
+
   render () {
+    const data = this.props.WeegieGameQuestions
+
     return (
-      <View styles={styles.container}>
-        <Text>Weegie Game Screen</Text>
-      </View>
+      <ScrollView style={styles.container}>
+        {this.state.open ? null : <Button
+          onPress={this.handleOpen}
+          title='Start'
+          raised
+          titleStyle={{color: '#000'}}
+          buttonStyle={{
+            backgroundColor: '#0f352f',
+            width: 300,
+            height: 45,
+            borderColor: 'transparent',
+            borderWidth: 0,
+            borderRadius: 5
+          }}
+        />
+        }
+        {this.state.open ? this.showGame(data) : null}
+      </ScrollView>
     )
   }
 }
 
 const mapStateToProps = ({WeegieGame}) => {
-  console.log(WeegieGame.weegieQuestions)
   return {
-    WeegieGame
+    WeegieGameQuestions: WeegieGame.weegieQuestions
   }
 }
 
