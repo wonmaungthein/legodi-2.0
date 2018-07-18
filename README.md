@@ -25,3 +25,44 @@ When you commit with Commitizen, you'll be prompted to fill out any required com
 To run all the test use the command **npm test**
 
 > to run a specific test **npm test theNameOfTheFile** for example *npm test mock-api*
+
+## APP navigation 
+we've update the navigation function, we've created a helper file to reduce and simplify the code currentley there is two functions inside helper
+
+1-GenerateNavigation
+GenerateNavigation function created to reduce the code in MainTabNavigator and make it easy to use and unerstand
+GenerateNavigation takes 5 parameters we can update it take more or less parameters
+
+const generateNavigation = (routeStack, label, color, iosIcon, androidIcon) => {
+  routeStack.navigationOptions = {
+    tabBarLabel: label,
+    tabBarIcon: ({ focused }) => (
+      <TabBarIcon
+        focused={focused}
+        color={color}
+        name={
+          Platform.OS === 'ios'
+            ? `${iosIcon}${focused ? '' : '-outline'}`
+            : androidIcon
+        }
+      />
+    )
+  }
+}
+
+2-tabBarVisibility
+We've created this function to hide the footer (tabBarVisibility) when we open Articles and Article page.
+We can update this function to hide the footer from another screens just by the screen route name to the condition.
+
+Control tab bar visibility at different screens
+
+export const tabBarVisibility =  (navigation) => {
+  let initialValue = true;
+  navigation.state.routes.map(route => {
+    const { routeName } = route;
+    if (routeName === 'Article' || routeName === 'Articles') {
+      return initialValue= false;
+    }
+  })
+  !initialValue ? { tabBarVisible: false } : null;
+}
