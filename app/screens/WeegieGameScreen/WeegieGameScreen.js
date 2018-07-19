@@ -102,21 +102,6 @@ class WeegieGame extends React.Component {
           </View>
 
         )
-
-        // <Button
-        //   onPress={this.handleOpen}
-        //   title='Start'
-        //   raised
-        //   titleStyle={{color: '#000'}}
-        //   buttonStyle={{
-        //     backgroundColor: '#0f352f',
-        //     width: 300,
-        //     height: 45,
-        //     borderColor: 'transparent',
-        //     borderWidth: 0,
-        //     borderRadius: 5
-        //   }}
-        // />
         }
         {this.state.open ? this.showGame(data) : null}
       </ScrollView>
