@@ -44,8 +44,8 @@ const tabHeader = {
   headerTitleStyle: { color: '#e6bc44' }
 }
 // generateSingleStackNavigator takes one parmeter the screen
-//generateSingleStackNavigator generate the navigator with screen header
-//it's work now only for single screens (component have only one screen like about screen)
+// generateSingleStackNavigator generate the navigator with screen header
+// it's work now only for single screens (component have only one screen like about screen)
 export const generateSingleStackNavigator = (screen) =>
   createStackNavigator({
     MyTab: {
