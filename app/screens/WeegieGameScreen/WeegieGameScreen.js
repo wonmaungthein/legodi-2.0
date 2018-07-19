@@ -1,24 +1,24 @@
 import React from 'react'
-import {
-  Text,
-  View,
-  ScrollView
-} from 'react-native'
+import { Text, View, ScrollView } from 'react-native'
 import PropTypes from 'prop-types'
-import { CheckBox, Button } from 'react-native-elements'
+import { CheckBox } from 'react-native-elements'
 import { Constants } from 'expo'
 import { connect } from 'react-redux'
 import styles from './WeegieGameStyle'
-import {fetchWeegieGameQuestions} from '../../redux/actions/weegieGame'
+import { fetchWeegieGameQuestions } from '../../redux/actions/weegieGame'
+import Button from 'apsl-react-native-button'
 
 class WeegieGame extends React.Component {
   state = {
     checked: false,
     open: false
-  }
+  };
   static navigationOptions = {
     title: 'Glasgow Welcome Pack',
-    headerStyle: { backgroundColor: '#0f352f', paddingTop: Constants.statusBarHeight },
+    headerStyle: {
+      backgroundColor: '#0f352f',
+      paddingTop: Constants.statusBarHeight
+    },
     headerTitleStyle: { color: '#e6bc44' }
   };
 
@@ -26,20 +26,22 @@ class WeegieGame extends React.Component {
     this.props.onGetWeegieQuestions()
   }
 
-  handleCheckBox = (e) => {
-    this.setState({checked: !this.state.checked})
-  }
+  handleCheckBox = e => {
+    this.setState({ checked: !this.state.checked })
+  };
 
-  handleOpen = (e) => {
-    this.setState({open: true})
-  }
+  handleOpen = e => {
+    this.setState({ open: true })
+  };
 
-  showGame = (data) => {
+  showGame = data => {
     return data.map((question, index) => {
       const questionNum = index + 1
       return (
-        <View key={question._id} styles={styles.content} >
-          <Text style={styles.question}>{questionNum}- {question.title}</Text>
+        <View key={question._id} styles={styles.content}>
+          <Text style={styles.question}>
+            {questionNum}- {question.title}
+          </Text>
           <Text>
             <CheckBox
               title={question.choices.a}
@@ -83,27 +85,23 @@ class WeegieGame extends React.Component {
         </View>
       )
     })
-  }
+  };
 
   render () {
     const data = this.props.WeegieGameQuestions
 
     return (
       <ScrollView style={styles.container}>
-        {this.state.open ? null : <Button
-          onPress={this.handleOpen}
-          title='Start'
-          raised
-          titleStyle={{color: '#000'}}
-          buttonStyle={{
-            backgroundColor: '#0f352f',
-            width: 300,
-            height: 45,
-            borderColor: 'transparent',
-            borderWidth: 0,
-            borderRadius: 5
-          }}
-        />
+
+        {this.state.open ? null : (
+          <View style={styles.viewButton}>
+            <Button style={styles.startButton} onPress={this.handleOpen} textStyle={{color: '#e5ba4f', fontSize: 20, fontWeight: 'bold'}}>
+              Start
+            </Button>
+
+          </View>
+
+        )
         }
         {this.state.open ? this.showGame(data) : null}
       </ScrollView>
@@ -111,7 +109,7 @@ class WeegieGame extends React.Component {
   }
 }
 
-const mapStateToProps = ({WeegieGame}) => {
+const mapStateToProps = ({ WeegieGame }) => {
   return {
     WeegieGameQuestions: WeegieGame.weegieQuestions
   }
@@ -128,4 +126,7 @@ WeegieGame.propTypes = {
   onGetWeegieQuestions: PropTypes.func.isRequired
 }
 
-export default connect(mapStateToProps, dispatchToProps)(WeegieGame)
+export default connect(
+  mapStateToProps,
+  dispatchToProps
+)(WeegieGame)

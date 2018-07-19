@@ -25,6 +25,17 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 15,
     color: '#000'
+  },
+  viewButton: {
+    backgroundColor: '#0f352f',
+    width: 300,
+    height: 45,
+    borderColor: 'transparent',
+    borderWidth: 0,
+    borderRadius: 5,
+    marginTop: 10
+
   }
+
 })
 export default styles
