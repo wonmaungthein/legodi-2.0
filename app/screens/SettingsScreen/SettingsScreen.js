@@ -1,21 +1,11 @@
 import React from 'react'
 import { Text, View, Picker } from 'react-native'
-import { Constants } from 'expo'
 import { connect } from 'react-redux'
 import { updateLanguage } from '../../redux/actions/languageActions'
 import styles from './SettingStyles'
 import PropTypes from 'prop-types'
 
 class SettingsScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Glasgow Welcome Pack',
-    headerStyle: {
-      backgroundColor: '#0f352f',
-      paddingTop: Constants.statusBarHeight
-    },
-    headerTitleStyle: { color: '#e6bc44' }
-  };
-
   renderLanguage = () => {
     const { language } = this.props
     if (language === 'ar') {

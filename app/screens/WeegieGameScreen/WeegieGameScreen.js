@@ -6,7 +6,6 @@ import {
 } from 'react-native'
 import PropTypes from 'prop-types'
 import { CheckBox, Button } from 'react-native-elements'
-import { Constants } from 'expo'
 import { connect } from 'react-redux'
 import styles from './WeegieGameStyle'
 import {fetchWeegieGameQuestions} from '../../redux/actions/weegieGame'
@@ -16,11 +15,6 @@ class WeegieGame extends React.Component {
     checked: false,
     open: false
   }
-  static navigationOptions = {
-    title: 'Glasgow Welcome Pack',
-    headerStyle: { backgroundColor: '#0f352f', paddingTop: Constants.statusBarHeight },
-    headerTitleStyle: { color: '#e6bc44' }
-  };
 
   componentDidMount () {
     this.props.onGetWeegieQuestions()

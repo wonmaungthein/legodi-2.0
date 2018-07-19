@@ -1,18 +1,8 @@
 import React from 'react'
 import { ScrollView, Text, View, Image } from 'react-native'
-import { Constants } from 'expo'
 import styles from './AboutScreenStyle'
 
 export default class AboutScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Glasgow Welcome Pack',
-    headerStyle: {
-      backgroundColor: '#0f352f',
-      paddingTop: Constants.statusBarHeight
-    },
-    headerTitleStyle: { color: '#e6bc44' }
-  };
-
   render () {
     return (
       <ScrollView style={styles.container}>
