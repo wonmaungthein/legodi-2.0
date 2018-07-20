@@ -1,5 +1,157 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ArticleCard Compnent renders correctly 1`] = `
+<View
+  accessibilityComponentType={undefined}
+  accessibilityLabel={undefined}
+  accessibilityTraits={undefined}
+  accessible={true}
+  collapsable={undefined}
+  hasTVPreferredFocus={undefined}
+  hitSlop={undefined}
+  isTVSelectable={true}
+  nativeID={undefined}
+  onLayout={undefined}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "flex": 1,
+      "flexDirection": "row",
+      "opacity": 1,
+      "paddingBottom": 10,
+      "width": 250,
+    }
+  }
+  testID={undefined}
+  tvParallaxProperties={undefined}
+>
+  <Image
+    source={
+      Object {
+        "uri": "http://placehold.it/100x80",
+      }
+    }
+    style={
+      Object {
+        "height": 80,
+        "width": 100,
+      }
+    }
+  />
+  <View
+    style={
+      Object {
+        "flexDirection": "column",
+        "paddingLeft": 5,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "fontWeight": "bold",
+        }
+      }
+    />
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      numberOfLines={2}
+      style={
+        Object {
+          "fontSize": 15,
+        }
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`ArticleCard Component renders correctly 1`] = `
+<View
+  accessibilityComponentType={undefined}
+  accessibilityLabel={undefined}
+  accessibilityTraits={undefined}
+  accessible={true}
+  collapsable={undefined}
+  hasTVPreferredFocus={undefined}
+  hitSlop={undefined}
+  isTVSelectable={true}
+  nativeID={undefined}
+  onLayout={undefined}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "flex": 1,
+      "flexDirection": "row",
+      "opacity": 1,
+      "paddingBottom": 10,
+      "width": 250,
+    }
+  }
+  testID={undefined}
+  tvParallaxProperties={undefined}
+>
+  <Image
+    source={
+      Object {
+        "uri": "http://placehold.it/100x80",
+      }
+    }
+    style={
+      Object {
+        "height": 80,
+        "width": 100,
+      }
+    }
+  />
+  <View
+    style={
+      Object {
+        "flexDirection": "column",
+        "paddingLeft": 5,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "fontWeight": "bold",
+        }
+      }
+    />
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      numberOfLines={2}
+      style={
+        Object {
+          "fontSize": 15,
+        }
+      }
+    />
+  </View>
+</View>
+`;
+
 exports[`renders correctly 1`] = `
 <View
   accessibilityComponentType={undefined}

@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`TabBarIcon Component renders correctly 1`] = `
+<Text
+  accessible={true}
+  allowFontScaling={true}
+  ellipsizeMode="tail"
+/>
+`;
+
 exports[`renders correctly 1`] = `
 <Text
   accessible={true}
