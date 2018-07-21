@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { CheckBox } from 'react-native-elements'
 import { connect } from 'react-redux'
 import styles from './WeegieGameStyle'
-import { fetchWeegieGameQuestions } from '../../redux/actions/weegieGame'
+import { fetchWeegieGameQuestions, fetchWeegieGameAnswer } from '../../redux/actions/weegieGame'
 import Button from 'apsl-react-native-button'
 
 class WeegieGame extends React.Component {
@@ -15,7 +15,8 @@ class WeegieGame extends React.Component {
     checked4: false,
     question: [],
     open: false,
-    dataIndex: 0
+    dataIndex: 0,
+    isAnswerScreen: false
   };
 
   componentDidMount () {
@@ -41,7 +42,9 @@ class WeegieGame extends React.Component {
   };
 
   handleSubmitQuestion = () => {
-    console.log(this.state.question)
+    const { question } = this.state
+    this.props.onGetWeegieAnswers(question)
+      .then(() => this.setState({ open: false, isAnswerScreen: true }))
   }
 
   showGame = data => {
@@ -127,32 +130,65 @@ class WeegieGame extends React.Component {
     }
   };
 
+  renderAnswers = (data) => {
+    return (
+      <View>
+        <Text>Correct answers {data.weegieGameAnsers.correctAnswers}</Text>
+        <Text>Wrong answers {data.weegieGameAnsers.wrongAnswers}</Text>
+        {
+          data.weegieGameAnsers.wrongAnswersList.map(answer => {
+            return (
+              <View key={answer._id}>
+                <Text>{answer.title}</Text>
+                <Text>A: {answer.choices.d}</Text>
+                <Text>B: {answer.choices.a}</Text>
+                <Text>C: {answer.choices.b}</Text>
+                <Text>D: {answer.choices.c}</Text>
+                <Text>Answer: {answer.answer}</Text>
+              </View>
+            )
+          })
+        }
+      </View>
+    )
+  }
+
+  showGameContent = (data, WeegieGameAnswers) => {
+    if (this.state.open) {
+      return this.showGame(data)
+    } else if (this.state.isAnswerScreen) {
+      return this.renderAnswers(WeegieGameAnswers)
+    }
+    return (
+      <View style={styles.viewButton}>
+        <Button style={styles.startButton} onPress={this.handleOpen} textStyle={{color: '#e5ba4f', fontSize: 20, fontWeight: 'bold'}}>
+        Start
+        </Button>
+      </View>
+    )
+  }
+
   render () {
     const data = this.props.WeegieGameQuestions
+    const { WeegieGameAnswers } = this.props
     return (
       <ScrollView style={styles.container}>
-        {this.state.open ? null : (
-          <View style={styles.viewButton}>
-            <Button style={styles.startButton} onPress={this.handleOpen} textStyle={{color: '#e5ba4f', fontSize: 20, fontWeight: 'bold'}}>
-            Start
-            </Button>
-          </View>
-        )
-        }
-        {this.state.open ? this.showGame(data) : null}
+        {this.showGameContent(data, WeegieGameAnswers)}
       </ScrollView>
     )
   }
 }
 
-const mapStateToProps = ({ WeegieGame }) => {
+const mapStateToProps = (state) => {
   return {
-    WeegieGameQuestions: WeegieGame.weegieQuestions
+    WeegieGameQuestions: state.WeegieGame.weegieQuestions,
+    WeegieGameAnswers: state.WeegieGameAnswers
   }
 }
 
 const dispatchToProps = dispatch => {
   return {
+    onGetWeegieAnswers: (userAnswers) => dispatch(fetchWeegieGameAnswer(userAnswers)),
     onGetWeegieQuestions: () => dispatch(fetchWeegieGameQuestions())
   }
 }
