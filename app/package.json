@@ -13,7 +13,9 @@
     "globals": [
       "it",
       "expect",
-      "__DEV__"
+      "__DEV__",
+      "describe",
+      "test"
     ],
     "parser": "babel-eslint"
   },

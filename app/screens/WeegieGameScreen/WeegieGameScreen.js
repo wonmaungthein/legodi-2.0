@@ -6,15 +6,23 @@ import { connect } from 'react-redux'
 import styles from './WeegieGameStyle'
 import { fetchWeegieGameQuestions, fetchWeegieGameAnswer } from '../../redux/actions/weegieGame'
 import Button from 'apsl-react-native-button'
+import { Constants } from 'expo'
 
 class WeegieGame extends React.Component {
+  static navigationOptions = {
+    title: 'Weegie Game',
+    headerStyle: { backgroundColor: '#0f352f', paddingTop: Constants.statusBarHeight },
+    headerTitleStyle: { color: '#e6bc44' },
+    headerTintColor: '#e6bc44'
+  };
+
   state = {
     checked1: false,
     checked2: false,
     checked3: false,
     checked4: false,
     question: [],
-    open: false,
+    open: true,
     dataIndex: 0,
     isAnswerScreen: false
   };

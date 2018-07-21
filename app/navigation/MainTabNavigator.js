@@ -9,12 +9,10 @@ import Game from '../screens/WeegieGameScreen/WeegieGameScreen'
 import Article from '../screens/Article/Article'
 import Articles from '../screens/ArticlesListScreen/ArticlesListScreen'
 import * as helper from './helpers'
+import StartGame from '../screens/WeegieGameScreen/StartWeegieGame'
 
 const HomeStack = createStackNavigator({ Home, Articles, Article }, { initialRouteName: 'Home' })
 helper.generateNavigation(HomeStack, 'Home', '#0f352f', 'ios-home', 'md-home')
-
-const WeegieGameStack = helper.generateSingleStackNavigator(Game)
-helper.generateNavigation(WeegieGameStack, 'Game', '#0f352f', 'ios-game-controller-b', 'md-game-controller-b')
 
 const AboutScreenStack = helper.generateSingleStackNavigator(About)
 helper.generateNavigation(AboutScreenStack, 'About', '#0f352f', 'ios-information-circle', 'md-information-circle')
@@ -22,10 +20,13 @@ helper.generateNavigation(AboutScreenStack, 'About', '#0f352f', 'ios-information
 const SettingsStack = helper.generateSingleStackNavigator(Settings)
 helper.generateNavigation(SettingsStack, 'Settings', '#0f352f', 'ios-settings', 'md-settings')
 
+const WeggieGameStack = createStackNavigator({ StartGame, Game }, { initialRouteName: 'StartGame' })
+helper.generateNavigation(WeggieGameStack, 'Game', '#0f352f', 'ios-game-controller-b', 'md-game-controller-b')
+
 export default createBottomTabNavigator(
   {
     HomeStack,
-    WeegieGameStack,
+    WeggieGameStack,
     SettingsStack,
     AboutScreenStack
   },
