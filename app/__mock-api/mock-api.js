@@ -5,7 +5,7 @@ import listOfArticles from './list-of-articles.json'
 import listOfArticlesInArabic from './list-of-articles-in-arabic.json'
 import wegeGameQuestions from './game-weegie-questions.json'
 
-// This sets the mock adapter on the default instance
+// // This sets the mock adapter on the default instance
 const mock = new MockAdapter(axios)
 
 // arguments for reply are (status, data, headers)
@@ -44,3 +44,6 @@ mock.onGet('/api/ar/5a180fa0cbb54500148c1cc1').reply(200, asylumArticlesInArabic
 
 // mock end poing for Weegie Game Questions
 mock.onGet('/api/weegie').reply(200, wegeGameQuestions)
+
+// mock end poing for Weegie Game Answers
+mock.onGet('/api/weegie/user/answer').reply(200)
