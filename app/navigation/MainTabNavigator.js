@@ -8,10 +8,11 @@ import Settings from '../screens/SettingsScreen/SettingsScreen'
 import Game from '../screens/WeegieGameScreen/WeegieGameScreen'
 import Article from '../screens/Article/Article'
 import Articles from '../screens/ArticlesListScreen/ArticlesListScreen'
+import AddArticle from '../screens/AddArticle/AddArticle'
 import * as helper from './helpers'
 import StartGame from '../screens/WeegieGameScreen/StartWeegieGame'
 
-const HomeStack = createStackNavigator({ Home, Articles, Article }, { initialRouteName: 'Home' })
+const HomeStack = createStackNavigator({ Home, Articles, Article, AddArticle }, { initialRouteName: 'Home' })
 helper.generateNavigation(HomeStack, 'Home', '#0f352f', 'ios-home', 'md-home')
 
 const AboutScreenStack = helper.generateSingleStackNavigator(About)

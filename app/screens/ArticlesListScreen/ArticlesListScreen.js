@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScrollView, View, Text } from 'react-native'
+import { ScrollView, View, Text, Button } from 'react-native'
 import ArticleCard from '../../components/ArticleCard/ArticleCard'
 import { connect } from 'react-redux'
 import { fetchArticles } from '../../redux/actions/categoriesActions'
@@ -8,11 +8,20 @@ import styles from './ArticleListStyles'
 import PropTypes from 'prop-types'
 
 class ArticlesListScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Glasgow Welcome Pack',
-    headerStyle: { backgroundColor: '#0f352f', paddingTop: Constants.statusBarHeight },
-    headerTitleStyle: { color: '#e6bc44' },
-    headerTintColor: '#e6bc44'
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: 'Glasgow Welcome Pack',
+      headerStyle: { backgroundColor: '#0f352f', paddingTop: Constants.statusBarHeight },
+      headerRight: (
+        <Button
+          onPress={() => navigation.navigate('AddArticle')}
+          title='Info'
+          color='#fff'
+        />
+      ),
+      headerTitleStyle: { color: '#e6bc44' },
+      headerTintColor: '#e6bc44'
+    }
   };
 
   async componentDidMount () {
