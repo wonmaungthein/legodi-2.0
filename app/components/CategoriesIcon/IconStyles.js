@@ -15,6 +15,17 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: 'bold',
     paddingTop: 10
+  },
+  corner: {
+    width: 20,
+    height: 20,
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    borderWidth: 10,
+    borderColor: 'black',
+    borderTopColor: '#e5ba4f',
+    borderRightColor: '#e5ba4f'
   }
 })
 
