@@ -14,7 +14,7 @@ export default class AddArticle extends React.Component {
     headerTintColor: '#e6bc44'
   };
 
-  render() {
+  render () {
     return (
       <View style={styles.container}>
         <ScrollView>

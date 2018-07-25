@@ -1,7 +1,9 @@
 const tintColor = '#e5ba4f'
+const primaryColor = '#e6bc44' // yellow
 
 export default {
   tintColor,
+  primaryColor,
   tabIconDefault: '#ccc',
   tabIconSelected: tintColor,
   tabBar: '#fefefe',

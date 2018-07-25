@@ -6,6 +6,9 @@ import { fetchArticles } from '../../redux/actions/categoriesActions'
 import { Constants } from 'expo'
 import styles from './ArticleListStyles'
 import PropTypes from 'prop-types'
+import { Ionicons } from '@expo/vector-icons'
+import Colors from '../../constants/Colors'
+const { primaryColor } = Colors
 
 class ArticlesListScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
@@ -16,11 +19,11 @@ class ArticlesListScreen extends React.Component {
         <Button
           onPress={() => navigation.navigate('AddArticle')}
           title='Info'
-          color='#fff'
+          color={primaryColor}
         />
       ),
-      headerTitleStyle: { color: '#e6bc44' },
-      headerTintColor: '#e6bc44'
+      headerTitleStyle: { color: primaryColor },
+      headerTintColor: primaryColor
     }
   };
 
