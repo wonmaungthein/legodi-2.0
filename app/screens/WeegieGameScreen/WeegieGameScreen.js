@@ -17,10 +17,7 @@ class WeegieGame extends React.Component {
   };
 
   state = {
-    checked1: false,
-    checked2: false,
-    checked3: false,
-    checked4: false,
+    checked: 'a',
     question: [],
     open: true,
     dataIndex: 0,
@@ -32,16 +29,22 @@ class WeegieGame extends React.Component {
   }
 
   handleNextQuestion = (e) => {
-    const { dataIndex } = this.state
+    const data = this.props.WeegieGameQuestions
+    const { dataIndex, checked } = this.state
+    const answer = checked
+    const title = data[dataIndex]._id
+
+    this.state.question.push({title, answer})
+
     e.preventDefault()
-    if (dataIndex < 10) {
+    if (dataIndex < 13) {
       this.setState({
-        dataIndex: dataIndex + 1,
-        checked1: false,
-        checked2: false,
-        checked3: false,
-        checked4: false
+        dataIndex: dataIndex + 1
       })
+    } else {
+      const { question } = this.state
+      this.props.onGetWeegieAnswers(question)
+        .then(() => this.setState({ open: false, isAnswerScreen: true }))
     }
   };
 
@@ -49,10 +52,8 @@ class WeegieGame extends React.Component {
     this.setState({ open: true })
   };
 
-  handleSubmitQuestion = () => {
-    const { question } = this.state
-    this.props.onGetWeegieAnswers(question)
-      .then(() => this.setState({ open: false, isAnswerScreen: true }))
+  handleCheckBox = (value) => {
+    this.setState({ checked: value })
   }
 
   showGame = data => {
@@ -68,39 +69,34 @@ class WeegieGame extends React.Component {
           <Text>
             <CheckBox
               title={question.choices.a}
-              checked={this.state.checked1}
+              checked={this.state.checked === 'a'}
               onPress={() => {
-                this.state.question.push({ title: question._id, answer: 'a' })
-                this.setState({ checked1: !this.state.checked1 })
+                this.handleCheckBox('a')
               }}
               containerStyle={styles.checkBoxContainer}
               uncheckedColor='#0f352f'
               textStyle={styles.label}
-              value='a'
             />
           </Text>
           <Text>
             <CheckBox
               title={question.choices.b}
-              checked={this.state.checked2}
+              checked={this.state.checked === 'b'}
               onPress={() => {
-                this.state.question.push({ title: question._id, answer: 'b' })
-                this.setState({ checked2: !this.state.checked2 })
+                this.handleCheckBox('b')
               }
               }
               containerStyle={styles.checkBoxContainer}
               uncheckedColor='#0f352f'
               textStyle={styles.label}
-              value='b'
             />
           </Text>
           <Text>
             <CheckBox
               title={question.choices.c}
-              checked={this.state.checked3}
+              checked={this.state.checked === 'c'}
               onPress={() => {
-                this.state.question.push({ title: question._id, answer: 'c' })
-                this.setState({ checked3: !this.state.checked3 })
+                this.handleCheckBox('c')
               }
               }
               containerStyle={styles.checkBoxContainer}
@@ -112,10 +108,9 @@ class WeegieGame extends React.Component {
           <Text>
             <CheckBox
               title={question.choices.d}
-              checked={this.state.checked4}
+              checked={this.state.checked === 'd'}
               onPress={() => {
-                this.state.question.push({ title: question._id, answer: 'd' })
-                this.setState({ checked4: !this.state.checked4 })
+                this.handleCheckBox('d')
               }
               }
               containerStyle={styles.checkBoxContainer}
@@ -124,15 +119,7 @@ class WeegieGame extends React.Component {
               value='c'
             />
           </Text>
-          {
-            questionNum === 11
-              ? <Button onPress={this.handleSubmitQuestion} >
-              Submit
-              </Button>
-              : <Button onPress={this.handleNextQuestion} >
-            Next
-              </Button>
-          }
+          <Button onPress={this.handleNextQuestion} >{questionNum === 13 ? 'Submit' : 'Next'}</Button>
         </View>
       )
     }
