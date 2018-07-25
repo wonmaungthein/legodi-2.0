@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScrollView, View, Text, Button } from 'react-native'
+import { ScrollView, View, Text } from 'react-native'
 import ArticleCard from '../../components/ArticleCard/ArticleCard'
 import { connect } from 'react-redux'
 import { fetchArticles } from '../../redux/actions/categoriesActions'
@@ -16,10 +16,12 @@ class ArticlesListScreen extends React.Component {
       title: 'Glasgow Welcome Pack',
       headerStyle: { backgroundColor: '#0f352f', paddingTop: Constants.statusBarHeight },
       headerRight: (
-        <Button
-          onPress={() => navigation.navigate('AddArticle')}
-          title='Info'
+        <Ionicons
+          name='md-add'
+          size={28}
           color={primaryColor}
+          style={{ paddingRight: 10, paddingTop: 5 }}
+          onPress={() => navigation.navigate('AddArticle')}
         />
       ),
       headerTitleStyle: { color: primaryColor },
