@@ -27,7 +27,7 @@ class WeegieGame extends React.Component {
     isAnswerScreen: false
   };
 
-  componentDidMount() {
+  componentDidMount () {
     this.props.onGetWeegieQuestions()
   }
 
@@ -133,12 +133,14 @@ class WeegieGame extends React.Component {
                 Next
               </Button>
           }
+
         </View>
       )
     }
   };
 
   renderAnswers = (data) => {
+    const { goBack } = this.props.navigation
     return (
       <View>
         <Text>Correct answers {data.weegieGameAnsers.correctAnswers}</Text>
@@ -157,6 +159,9 @@ class WeegieGame extends React.Component {
             )
           })
         }
+        <Button style={{marginBottom: 20}}onPress={() => goBack()} >
+            Back To Start
+        </Button>
       </View>
     )
   }
@@ -176,7 +181,7 @@ class WeegieGame extends React.Component {
     )
   }
 
-  render() {
+  render () {
     const data = this.props.WeegieGameQuestions
     const { WeegieGameAnswers } = this.props
     return (
