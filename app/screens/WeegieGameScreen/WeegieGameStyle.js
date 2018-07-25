@@ -34,8 +34,19 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     borderRadius: 5,
     marginTop: 10
-
+  },
+  correctAnswers: {
+    fontSize: 24,
+    textAlign: 'center'
+  },
+  wrongAnswers: {
+    fontSize: 24, textAlign: 'center'
+  },
+  questionTitle: {
+    fontSize: 20, paddingTop: 10, paddingBottom: 10
+  },
+  answer: {
+    fontSize: 20, paddingTop: 10, color: 'green'
   }
-
 })
 export default styles

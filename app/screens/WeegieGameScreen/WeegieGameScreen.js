@@ -34,7 +34,7 @@ class WeegieGame extends React.Component {
   handleNextQuestion = (e) => {
     const { dataIndex } = this.state
     e.preventDefault()
-    if (dataIndex < 10) {
+    if (dataIndex < 9) {
       this.setState({
         dataIndex: dataIndex + 1,
         checked1: false,
@@ -125,7 +125,7 @@ class WeegieGame extends React.Component {
             />
           </View>
           {
-            questionNum === 11
+            questionNum === 10
               ? <Button onPress={this.handleSubmitQuestion} >
                 Submit
               </Button>
@@ -141,18 +141,24 @@ class WeegieGame extends React.Component {
   renderAnswers = (data) => {
     return (
       <View>
-        <Text>Correct answers {data.weegieGameAnsers.correctAnswers}</Text>
-        <Text>Wrong answers {data.weegieGameAnsers.wrongAnswers}</Text>
+        <Text style={styles.correctAnswers}>
+          Correct &#x2714; : <Text style={{color: 'green'}}>{data.weegieGameAnsers.correctAnswers}</Text>
+        </Text>
+        <Text style={styles.wrongAnswers}>
+          Wrong &#x2716; : <Text style={{color: 'red'}}>{data.weegieGameAnsers.wrongAnswers}</Text>
+        </Text>
         {
           data.weegieGameAnsers.wrongAnswersList.map(answer => {
             return (
               <View key={answer._id}>
-                <Text>{answer.title}</Text>
-                <Text>A: {answer.choices.d}</Text>
-                <Text>B: {answer.choices.a}</Text>
-                <Text>C: {answer.choices.b}</Text>
-                <Text>D: {answer.choices.c}</Text>
-                <Text>Answer: {answer.answer}</Text>
+                <Text style={styles.questionTitle}>{answer.title}</Text>
+                <View style={{marginLeft: 20}}>
+                  <Text>A: {answer.choices.d}</Text>
+                  <Text>B: {answer.choices.a}</Text>
+                  <Text>C: {answer.choices.b}</Text>
+                  <Text>D: {answer.choices.c}</Text>
+                  <Text style={styles.answer}>Answer: {answer.answer}</Text>
+                </View>
               </View>
             )
           })
