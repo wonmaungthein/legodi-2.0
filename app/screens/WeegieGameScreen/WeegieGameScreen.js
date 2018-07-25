@@ -27,7 +27,7 @@ class WeegieGame extends React.Component {
     isAnswerScreen: false
   };
 
-  componentDidMount() {
+  componentDidMount () {
     this.props.onGetWeegieQuestions()
   }
 
@@ -176,7 +176,7 @@ class WeegieGame extends React.Component {
     )
   }
 
-  render() {
+  render () {
     const data = this.props.WeegieGameQuestions
     const { WeegieGameAnswers } = this.props
     return (

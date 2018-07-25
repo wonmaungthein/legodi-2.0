@@ -1,13 +1,18 @@
 import axios from 'axios'
 import library from '../__mock-api/library'
 
-export const getCategories = async (language = 'en') => axios.get(`/api/${language}`)
+// Create base URL for the old Heroku api
+const instance = axios.create({
+  baseURL: 'http://legodi-server.herokuapp.com/api'
+})
 
-export const getArticles = async (categoryId, language) => axios.get(`/api/${language}/${categoryId}`)
+export const getCategories = async (language = 'en') => instance.get(`/categories`)
 
-export const getWeegieQuestions = async () => axios.get('/api/weegie')
+export const getArticles = async (categoryId, language) => instance.get(`/categories/${categoryId}`)
+
+export const getWeegieQuestions = async () => instance.get('/weegie')
 
 export const getWeegieGameAnswers = async (data) => {
-  return axios.get('/api/weegie/user/answer', {params: data})
+  return instance.get('/weegie/user/answer', { params: data })
     .then((response) => library.compareAnswers(response.config.params))
 }
