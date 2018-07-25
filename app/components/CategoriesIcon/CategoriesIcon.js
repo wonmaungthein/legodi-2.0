@@ -1,7 +1,8 @@
 import React from 'react'
 import {
   Text,
-  TouchableOpacity
+  TouchableOpacity,
+  View
 } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import styles from './IconStyles'
@@ -57,6 +58,7 @@ const CategoriesIcon = (props) => {
           description: props.description
         }
       )}>
+      <View style={styles.corner} />
       <Ionicons name={getIconName(props.iconName)} size={36} color='#e5ba4f' />
       <Text style={styles.title}>{props.title}</Text>
     </TouchableOpacity>

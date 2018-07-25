@@ -37,14 +37,16 @@ class WeegieGame extends React.Component {
     this.state.question.push({title, answer})
 
     e.preventDefault()
-    if (dataIndex < 13) {
+    if (dataIndex <= 12) {
       this.setState({
         dataIndex: dataIndex + 1
       })
     } else {
       const { question } = this.state
       this.props.onGetWeegieAnswers(question)
-        .then(() => this.setState({ open: false, isAnswerScreen: true }))
+        .then(() => {
+          this.setState({ open: false, isAnswerScreen: true })
+        })
     }
   };
 
@@ -61,12 +63,13 @@ class WeegieGame extends React.Component {
       const { dataIndex } = this.state
       const question = data[dataIndex]
       const questionNum = dataIndex + 1
+
       return (
         <View styles={styles.content}>
           <Text style={styles.question}>
             {questionNum}- {question.title}
           </Text>
-          <Text>
+          <View>
             <CheckBox
               title={question.choices.a}
               checked={this.state.checked === 'a'}
@@ -77,8 +80,8 @@ class WeegieGame extends React.Component {
               uncheckedColor='#0f352f'
               textStyle={styles.label}
             />
-          </Text>
-          <Text>
+          </View>
+          <View>
             <CheckBox
               title={question.choices.b}
               checked={this.state.checked === 'b'}
@@ -90,8 +93,8 @@ class WeegieGame extends React.Component {
               uncheckedColor='#0f352f'
               textStyle={styles.label}
             />
-          </Text>
-          <Text>
+          </View>
+          <View>
             <CheckBox
               title={question.choices.c}
               checked={this.state.checked === 'c'}
@@ -104,8 +107,8 @@ class WeegieGame extends React.Component {
               textStyle={styles.label}
               value='c'
             />
-          </Text>
-          <Text>
+          </View>
+          <View>
             <CheckBox
               title={question.choices.d}
               checked={this.state.checked === 'd'}
@@ -118,8 +121,8 @@ class WeegieGame extends React.Component {
               textStyle={styles.label}
               value='c'
             />
-          </Text>
-          <Button onPress={this.handleNextQuestion} >{questionNum === 13 ? 'Submit' : 'Next'}</Button>
+          </View>
+          <Button onPress={this.handleNextQuestion} >{questionNum === 14 ? 'Submit' : 'Next'}</Button>
         </View>
       )
     }
@@ -128,18 +131,24 @@ class WeegieGame extends React.Component {
   renderAnswers = (data) => {
     return (
       <View>
-        <Text>Correct answers {data.weegieGameAnsers.correctAnswers}</Text>
-        <Text>Wrong answers {data.weegieGameAnsers.wrongAnswers}</Text>
+        <Text style={styles.correctAnswers}>
+          Correct &#x2714; : <Text style={{color: 'green'}}>{data.weegieGameAnsers.correctAnswers}</Text>
+        </Text>
+        <Text style={styles.wrongAnswers}>
+          Wrong &#x2716; : <Text style={{color: 'red'}}>{data.weegieGameAnsers.wrongAnswers}</Text>
+        </Text>
         {
           data.weegieGameAnsers.wrongAnswersList.map(answer => {
             return (
               <View key={answer._id}>
-                <Text>{answer.title}</Text>
-                <Text>A: {answer.choices.d}</Text>
-                <Text>B: {answer.choices.a}</Text>
-                <Text>C: {answer.choices.b}</Text>
-                <Text>D: {answer.choices.c}</Text>
-                <Text>Answer: {answer.answer}</Text>
+                <Text style={styles.questionTitle}>{answer.title}</Text>
+                <View style={{marginLeft: 20}}>
+                  <Text>A: {answer.choices.d}</Text>
+                  <Text>B: {answer.choices.a}</Text>
+                  <Text>C: {answer.choices.b}</Text>
+                  <Text>D: {answer.choices.c}</Text>
+                  <Text style={styles.answer}>Answer: {answer.answer}</Text>
+                </View>
               </View>
             )
           })
@@ -156,8 +165,8 @@ class WeegieGame extends React.Component {
     }
     return (
       <View style={styles.viewButton}>
-        <Button style={styles.startButton} onPress={this.handleOpen} textStyle={{color: '#e5ba4f', fontSize: 20, fontWeight: 'bold'}}>
-        Start
+        <Button style={styles.startButton} onPress={this.handleOpen} textStyle={{ color: '#e5ba4f', fontSize: 20, fontWeight: 'bold' }}>
+          Start
         </Button>
       </View>
     )
