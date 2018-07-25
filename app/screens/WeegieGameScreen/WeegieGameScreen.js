@@ -27,7 +27,7 @@ class WeegieGame extends React.Component {
     isAnswerScreen: false
   };
 
-  componentDidMount () {
+  componentDidMount() {
     this.props.onGetWeegieQuestions()
   }
 
@@ -65,7 +65,7 @@ class WeegieGame extends React.Component {
           <Text style={styles.question}>
             {questionNum}- {question.title}
           </Text>
-          <Text>
+          <View>
             <CheckBox
               title={question.choices.a}
               checked={this.state.checked1}
@@ -78,8 +78,8 @@ class WeegieGame extends React.Component {
               textStyle={styles.label}
               value='a'
             />
-          </Text>
-          <Text>
+          </View>
+          <View>
             <CheckBox
               title={question.choices.b}
               checked={this.state.checked2}
@@ -93,8 +93,8 @@ class WeegieGame extends React.Component {
               textStyle={styles.label}
               value='b'
             />
-          </Text>
-          <Text>
+          </View>
+          <View>
             <CheckBox
               title={question.choices.c}
               checked={this.state.checked3}
@@ -108,8 +108,8 @@ class WeegieGame extends React.Component {
               textStyle={styles.label}
               value='c'
             />
-          </Text>
-          <Text>
+          </View>
+          <View>
             <CheckBox
               title={question.choices.d}
               checked={this.state.checked4}
@@ -123,14 +123,14 @@ class WeegieGame extends React.Component {
               textStyle={styles.label}
               value='c'
             />
-          </Text>
+          </View>
           {
             questionNum === 11
               ? <Button onPress={this.handleSubmitQuestion} >
-              Submit
+                Submit
               </Button>
               : <Button onPress={this.handleNextQuestion} >
-            Next
+                Next
               </Button>
           }
         </View>
@@ -169,14 +169,14 @@ class WeegieGame extends React.Component {
     }
     return (
       <View style={styles.viewButton}>
-        <Button style={styles.startButton} onPress={this.handleOpen} textStyle={{color: '#e5ba4f', fontSize: 20, fontWeight: 'bold'}}>
-        Start
+        <Button style={styles.startButton} onPress={this.handleOpen} textStyle={{ color: '#e5ba4f', fontSize: 20, fontWeight: 'bold' }}>
+          Start
         </Button>
       </View>
     )
   }
 
-  render () {
+  render() {
     const data = this.props.WeegieGameQuestions
     const { WeegieGameAnswers } = this.props
     return (
