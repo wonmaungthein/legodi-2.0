@@ -21,7 +21,10 @@ class ArticlesListScreen extends React.Component {
           size={28}
           color={primaryColor}
           style={{ paddingRight: 10, paddingTop: 5 }}
-          onPress={() => navigation.navigate('AddArticle')}
+          onPress={() => navigation.navigate(
+            'AddArticle',
+            { categoryTitle: navigation.getParam('categoryTitle') }
+          )}
         />
       ),
       headerTitleStyle: { color: primaryColor },
