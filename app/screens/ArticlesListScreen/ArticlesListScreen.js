@@ -75,7 +75,7 @@ class ArticlesListScreen extends React.Component {
 
 const mapStateToProps = (state) => ({
   articles: state.categories.articlesInCategory,
-  language: state.language.language
+  language: state.Setting.language
 })
 
 const dispatchToProps = dispatch => {

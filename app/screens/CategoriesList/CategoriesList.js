@@ -71,9 +71,9 @@ const dispatchToProps = dispatch => {
   }
 }
 
-const mapStateToProps = ({ categories, language }) => ({
+const mapStateToProps = ({ categories, Setting }) => ({
   categories: categories.categoriesList,
-  language: language.language
+  language: Setting.language
 })
 
 CategoriesList.propTypes = {
