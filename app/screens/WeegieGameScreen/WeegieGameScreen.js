@@ -160,7 +160,7 @@ class WeegieGame extends React.Component {
           })
         }
         <Button style={{marginBottom: 20}}onPress={() => goBack()} >
-            Back To Start
+            Start New Game
         </Button>
       </View>
     )
