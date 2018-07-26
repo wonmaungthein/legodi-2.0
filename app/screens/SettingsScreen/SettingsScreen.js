@@ -19,17 +19,31 @@ class SettingsScreen extends React.Component {
   render () {
     return (
       <View style={styles.container}>
-        <Text style={styles.language}>{this.renderLanguage()} is selected</Text>
-        <Text style={styles.changeLanguage}>Change Language:</Text>
-        <Picker
-          selectedValue={this.props.language}
-          style={{ height: 50, width: 100 }}
-          onValueChange={itemValue => this.props.onLanguageChange(itemValue)}
-        >
-          <Picker.Item label='English' value='en' />
-          <Picker.Item label='Arabic' value='ar' />
-          <Picker.Item label='Amharic' value='am' />
-        </Picker>
+        <View style={styles.container}>
+          <Text style={styles.language}>{this.renderLanguage()} is selected</Text>
+          <Text style={styles.changeLanguage}>Change Language:</Text>
+          <Picker
+            selectedValue={this.props.language}
+            style={{ height: 50, width: 100 }}
+            onValueChange={itemValue => this.props.onLanguageChange(itemValue)}
+          >
+            <Picker.Item label='English' value='en' />
+            <Picker.Item label='Arabic' value='ar' />
+            <Picker.Item label='Amharic' value='am' />
+          </Picker>
+        </View>
+        <View style={styles.container}>
+          <Text style={styles.language}>Glasgow is selected</Text>
+          <Text style={styles.changeLanguage}>Change City:</Text>
+          <Picker
+            selectedValue={this.props.language}
+            style={{ height: 50, width: 100 }}
+          >
+            <Picker.Item label='Glasgow' value='Gl' />
+            <Picker.Item label='Edinburgh' value='Ed' />
+            <Picker.Item label='Paisley' value='Pa' />
+          </Picker>
+        </View>
       </View>
     )
   }

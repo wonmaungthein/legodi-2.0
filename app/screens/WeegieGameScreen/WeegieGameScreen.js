@@ -17,10 +17,7 @@ class WeegieGame extends React.Component {
   };
 
   state = {
-    checked1: false,
-    checked2: false,
-    checked3: false,
-    checked4: false,
+    checked: 'a',
     question: [],
     open: true,
     dataIndex: 0,
@@ -32,16 +29,24 @@ class WeegieGame extends React.Component {
   }
 
   handleNextQuestion = (e) => {
-    const { dataIndex } = this.state
+    const data = this.props.WeegieGameQuestions
+    const { dataIndex, checked } = this.state
+    const answer = checked
+    const title = data[dataIndex]._id
+
+    this.state.question.push({title, answer})
+
     e.preventDefault()
-    if (dataIndex < 10) {
+    if (dataIndex <= 12) {
       this.setState({
-        dataIndex: dataIndex + 1,
-        checked1: false,
-        checked2: false,
-        checked3: false,
-        checked4: false
+        dataIndex: dataIndex + 1
       })
+    } else {
+      const { question } = this.state
+      this.props.onGetWeegieAnswers(question)
+        .then(() => {
+          this.setState({ open: false, isAnswerScreen: true })
+        })
     }
   };
 
@@ -49,10 +54,8 @@ class WeegieGame extends React.Component {
     this.setState({ open: true })
   };
 
-  handleSubmitQuestion = () => {
-    const { question } = this.state
-    this.props.onGetWeegieAnswers(question)
-      .then(() => this.setState({ open: false, isAnswerScreen: true }))
+  handleCheckBox = (value) => {
+    this.setState({ checked: value })
   }
 
   showGame = data => {
@@ -60,6 +63,7 @@ class WeegieGame extends React.Component {
       const { dataIndex } = this.state
       const question = data[dataIndex]
       const questionNum = dataIndex + 1
+
       return (
         <View styles={styles.content}>
           <Text style={styles.question}>
@@ -68,39 +72,34 @@ class WeegieGame extends React.Component {
           <View>
             <CheckBox
               title={question.choices.a}
-              checked={this.state.checked1}
+              checked={this.state.checked === 'a'}
               onPress={() => {
-                this.state.question.push({ title: question._id, answer: 'a' })
-                this.setState({ checked1: !this.state.checked1 })
+                this.handleCheckBox('a')
               }}
               containerStyle={styles.checkBoxContainer}
               uncheckedColor='#0f352f'
               textStyle={styles.label}
-              value='a'
             />
           </View>
           <View>
             <CheckBox
               title={question.choices.b}
-              checked={this.state.checked2}
+              checked={this.state.checked === 'b'}
               onPress={() => {
-                this.state.question.push({ title: question._id, answer: 'b' })
-                this.setState({ checked2: !this.state.checked2 })
+                this.handleCheckBox('b')
               }
               }
               containerStyle={styles.checkBoxContainer}
               uncheckedColor='#0f352f'
               textStyle={styles.label}
-              value='b'
             />
           </View>
           <View>
             <CheckBox
               title={question.choices.c}
-              checked={this.state.checked3}
+              checked={this.state.checked === 'c'}
               onPress={() => {
-                this.state.question.push({ title: question._id, answer: 'c' })
-                this.setState({ checked3: !this.state.checked3 })
+                this.handleCheckBox('c')
               }
               }
               containerStyle={styles.checkBoxContainer}
@@ -112,10 +111,9 @@ class WeegieGame extends React.Component {
           <View>
             <CheckBox
               title={question.choices.d}
-              checked={this.state.checked4}
+              checked={this.state.checked === 'd'}
               onPress={() => {
-                this.state.question.push({ title: question._id, answer: 'd' })
-                this.setState({ checked4: !this.state.checked4 })
+                this.handleCheckBox('d')
               }
               }
               containerStyle={styles.checkBoxContainer}
@@ -124,16 +122,7 @@ class WeegieGame extends React.Component {
               value='c'
             />
           </View>
-          {
-            questionNum === 11
-              ? <Button onPress={this.handleSubmitQuestion} >
-                Submit
-              </Button>
-              : <Button onPress={this.handleNextQuestion} >
-                Next
-              </Button>
-          }
-
+          <Button onPress={this.handleNextQuestion} >{questionNum === 14 ? 'Submit' : 'Next'}</Button>
         </View>
       )
     }
@@ -143,18 +132,24 @@ class WeegieGame extends React.Component {
     const { goBack } = this.props.navigation
     return (
       <View>
-        <Text>Correct answers {data.weegieGameAnsers.correctAnswers}</Text>
-        <Text>Wrong answers {data.weegieGameAnsers.wrongAnswers}</Text>
+        <Text style={styles.correctAnswers}>
+          Correct &#x2714; : <Text style={{color: 'green'}}>{data.weegieGameAnsers.correctAnswers}</Text>
+        </Text>
+        <Text style={styles.wrongAnswers}>
+          Wrong &#x2716; : <Text style={{color: 'red'}}>{data.weegieGameAnsers.wrongAnswers}</Text>
+        </Text>
         {
           data.weegieGameAnsers.wrongAnswersList.map(answer => {
             return (
               <View key={answer._id}>
-                <Text>{answer.title}</Text>
-                <Text>A: {answer.choices.d}</Text>
-                <Text>B: {answer.choices.a}</Text>
-                <Text>C: {answer.choices.b}</Text>
-                <Text>D: {answer.choices.c}</Text>
-                <Text>Answer: {answer.answer}</Text>
+                <Text style={styles.questionTitle}>{answer.title}</Text>
+                <View style={{marginLeft: 20}}>
+                  <Text>A: {answer.choices.d}</Text>
+                  <Text>B: {answer.choices.a}</Text>
+                  <Text>C: {answer.choices.b}</Text>
+                  <Text>D: {answer.choices.c}</Text>
+                  <Text style={styles.answer}>Answer: {answer.answer}</Text>
+                </View>
               </View>
             )
           })

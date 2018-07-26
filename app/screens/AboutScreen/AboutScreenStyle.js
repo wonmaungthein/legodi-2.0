@@ -18,6 +18,13 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     padding: 2
   },
+  arabicParagraph: {
+    marginTop: 1,
+    fontSize: 20,
+    marginRight: 10,
+    padding: 2,
+    textAlign: 'right'
+  },
   firstImage: {
     width: 280,
     height: 200,
