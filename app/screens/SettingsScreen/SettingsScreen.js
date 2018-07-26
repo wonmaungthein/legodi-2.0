@@ -39,9 +39,9 @@ class SettingsScreen extends React.Component {
             selectedValue={this.props.language}
             style={{ height: 50, width: 100 }}
           >
-            <Picker.Item label='Glasgow' value='gl' />
-            <Picker.Item label='Edinburgh' value='ed' />
-            <Picker.Item label='Paisley' value='pa' />
+            <Picker.Item label='Glasgow' value='Gl' />
+            <Picker.Item label='Edinburgh' value='Ed' />
+            <Picker.Item label='Paisley' value='Pa' />
           </Picker>
         </View>
       </View>
