@@ -129,6 +129,7 @@ class WeegieGame extends React.Component {
   };
 
   renderAnswers = (data) => {
+    const { goBack } = this.props.navigation
     return (
       <View>
         <Text style={styles.correctAnswers}>
@@ -153,6 +154,9 @@ class WeegieGame extends React.Component {
             )
           })
         }
+        <Button style={{marginBottom: 20}}onPress={() => goBack()} >
+            Start New Game
+        </Button>
       </View>
     )
   }
