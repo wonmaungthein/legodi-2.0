@@ -54,8 +54,8 @@ class SettingsScreen extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    language: state.language.language,
-    city: state.City.city
+    language: state.Setting.language,
+    city: state.Setting.city
   }
 }
 
