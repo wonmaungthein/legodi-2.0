@@ -76,8 +76,8 @@ function AboutScreen (props) {
   )
 }
 
-const mapStateToProps = ({ language }) => ({
-  language: language.language
+const mapStateToProps = (state) => ({
+  language: state.Setting.language
 })
 
 AboutScreen.propTypes = {
