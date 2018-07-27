@@ -1,16 +1,18 @@
 import { StyleSheet } from 'react-native'
+import Colors from '../../constants/Colors'
+const { primaryColor, secondaryColor } = Colors
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#e5ba4f'
+    backgroundColor: primaryColor
   },
   layout: {
     flex: 1,
     padding: 10
   },
   inputTitle: {
-    color: '#0f352f'
+    color: secondaryColor
   },
   pickerContainer: {
     paddingTop: 20,
@@ -19,8 +21,8 @@ const styles = StyleSheet.create({
   language: {
     fontSize: 17,
     fontWeight: 'bold',
-    backgroundColor: '#0f352e',
-    color: '#e5ba4f',
+    backgroundColor: secondaryColor,
+    color: primaryColor,
     padding: 10,
     textAlign: 'center'
   },
@@ -29,7 +31,7 @@ const styles = StyleSheet.create({
     marginTop: 10
   },
   submitButton: {
-    backgroundColor: '#0f352f',
+    backgroundColor: secondaryColor,
     height: 45,
     borderRadius: 5,
     marginTop: 10

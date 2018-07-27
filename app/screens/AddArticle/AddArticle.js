@@ -100,7 +100,7 @@ export default class AddArticle extends React.Component {
           <Button
             onPress={() => this.sendData()}
             style={styles.submitButton}
-            textStyle={{ color: '#e5ba4f', fontSize: 20, fontWeight: 'bold' }}
+            textStyle={{ color: primaryColor, fontSize: 20, fontWeight: 'bold' }}
           >
             Submit
           </Button>
