@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from 'apsl-react-native-button'
 import {
   View,
   ScrollView,
@@ -9,7 +10,7 @@ import styles from './AddArticleStyle'
 import { Constants } from 'expo'
 import Colors from '../../constants/Colors'
 import { FormLabel, FormInput } from 'react-native-elements'
-
+// Colors passed from the Constants => yellow and green
 const { primaryColor, secondaryColor } = Colors
 
 export default class AddArticle extends React.Component {
@@ -26,6 +27,8 @@ export default class AddArticle extends React.Component {
     this.state = {
       title: '',
       content: '',
+      categoryId: this.props.navigation.getParam('categoryId'),
+      status: 'Not Approved',
       language: {
         text: 'English',
         short: 'en'
@@ -52,9 +55,12 @@ export default class AddArticle extends React.Component {
     }
   }
 
+  sendData () {
+    console.log('Pressed')
+  }
+
   render () {
-    // const categoryTitle = this.props.navigation.getParam('categoryTitle', 'No category')
-    console.log(this.state.language.text)
+    console.log(this.state)
     return (
       <ScrollView style={styles.container}>
         <View style={styles.layout}>
@@ -66,7 +72,6 @@ export default class AddArticle extends React.Component {
               containerStyle={{ borderBottomColor: secondaryColor }}
             />
           </View>
-
           <View>
             <FormLabel labelStyle={styles.inputTitle}>Content</FormLabel>
             <FormInput
@@ -76,12 +81,11 @@ export default class AddArticle extends React.Component {
               containerStyle={{ borderBottomColor: secondaryColor }}
             />
           </View>
-
           <View style={styles.pickerContainer}>
             <Text style={styles.language}>
               {this.state.language.text} is selected
             </Text>
-            <Text style={styles.changeLanguage}>Change Language:</Text>
+            <Text style={styles.changeLanguage}>Select Language:</Text>
             <Picker
               selectedValue={this.state.language.short}
               style={{ height: 50, width: 100 }}
@@ -93,6 +97,13 @@ export default class AddArticle extends React.Component {
             </Picker>
           </View>
 
+          <Button
+            onPress={() => this.sendData()}
+            style={styles.submitButton}
+            textStyle={{ color: '#e5ba4f', fontSize: 20, fontWeight: 'bold' }}
+          >
+            Submit
+          </Button>
         </View>
       </ScrollView>
     )

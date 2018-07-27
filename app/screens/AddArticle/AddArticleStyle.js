@@ -17,16 +17,22 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   language: {
-    fontSize: 20,
+    fontSize: 17,
     fontWeight: 'bold',
     backgroundColor: '#0f352e',
     color: '#e5ba4f',
-    padding: 15,
+    padding: 10,
     textAlign: 'center'
   },
   changeLanguage: {
-    fontSize: 18,
-    marginTop: 15
+    fontSize: 15,
+    marginTop: 10
+  },
+  submitButton: {
+    backgroundColor: '#0f352f',
+    height: 45,
+    borderRadius: 5,
+    marginTop: 10
   }
 })
 
