@@ -9,6 +9,6 @@ export const getWeegieQuestions = async () => axios.get('/api/weegie')
 
 export const getWeegieGameAnswers = async (data) => {
   const response = await axios.get('/api/weegie/user/answer', {params: data})
-  const result= library.compareAnswers(response.config.params)
-  return result;
+  const result = library.compareAnswers(response.config.params)
+  return result
 }
