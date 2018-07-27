@@ -22,6 +22,7 @@ export default class AddArticle extends React.Component {
 
   constructor (props) {
     super(props)
+    // state for the form of adding article
     this.state = {
       title: '',
       content: '',
@@ -40,21 +41,23 @@ export default class AddArticle extends React.Component {
   onHandleChangeLanguage = value => {
     switch (value) {
       case 'en':
-        return this.setState({ language: { text: 'Enlish', short: 'en' } })
+        this.setState({ language: { text: 'Enlish', short: 'en' } })
+        return this.state.language.short
       case 'ar':
-        return this.setState({ language: { text: 'Arabic', short: 'ar' } })
+        this.setState({ language: { text: 'Arabic', short: 'ar' } })
+        return this.state.language.short
       case 'am':
-        return this.setState({ language: { text: 'Amharic', short: 'am' } })
+        this.setState({ language: { text: 'Amharic', short: 'am' } })
+        return this.state.language.short
     }
   }
 
   render () {
-    const title = this.props.navigation.getParam('categoryTitle', 'No category')
-    console.log(this.state.language)
+    // const categoryTitle = this.props.navigation.getParam('categoryTitle', 'No category')
+    console.log(this.state.language.text)
     return (
       <ScrollView style={styles.container}>
         <View style={styles.layout}>
-          <Text>Category: {title}</Text>
           <View>
             <FormLabel labelStyle={styles.inputTitle}>Title</FormLabel>
             <FormInput
@@ -74,13 +77,13 @@ export default class AddArticle extends React.Component {
             />
           </View>
 
-          <View>
-            <Text>
+          <View style={styles.pickerContainer}>
+            <Text style={styles.language}>
               {this.state.language.text} is selected
             </Text>
-            <Text>Change Language:</Text>
+            <Text style={styles.changeLanguage}>Change Language:</Text>
             <Picker
-              selectedValue={this.state.language.text}
+              selectedValue={this.state.language.short}
               style={{ height: 50, width: 100 }}
               onValueChange={itemValue => this.onHandleChangeLanguage(itemValue)}
             >
