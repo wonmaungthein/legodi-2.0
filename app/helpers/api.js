@@ -8,6 +8,7 @@ export const getArticles = async (categoryId, language) => axios.get(`/api/${lan
 export const getWeegieQuestions = async () => axios.get('/api/weegie')
 
 export const getWeegieGameAnswers = async (data) => {
-  return axios.get('/api/weegie/user/answer', {params: data})
-    .then((response) => library.compareAnswers(response.config.params))
+  const response = await axios.get('/api/weegie/user/answer', {params: data})
+  const result= library.compareAnswers(response.config.params)
+  return result;
 }
