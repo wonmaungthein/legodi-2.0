@@ -24,6 +24,14 @@ class WeegieGame extends React.Component {
     isAnswerScreen: false
   };
 
+  resetGame=()=>(this.setState({
+    checked: 'a',
+    question: [],
+    open: true,
+    dataIndex: 0,
+    isAnswerScreen: false
+  }))
+
   componentDidMount () {
     this.props.onGetWeegieQuestions()
   }
@@ -157,7 +165,7 @@ class WeegieGame extends React.Component {
         <View style={styles.playAgain}>
           <Button
             textStyle={{ color: '#e5ba4f', fontSize: 20, fontWeight: 'bold' }}
-            style={styles.PlayAgainBtn} onPress={() => goBack()} >
+            style={styles.PlayAgainBtn} onPress={this.resetGame} >
             Play Again
           </Button></View>
       </View>
