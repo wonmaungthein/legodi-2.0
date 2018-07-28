@@ -13,6 +13,17 @@ const styles = StyleSheet.create({
     lineHeight: 19,
     textAlign: 'center'
   },
+  playAgain: {
+    padding: 40
+  },
+  PlayAgainBtn: {
+    backgroundColor: '#0f352f',
+    height: 45,
+    borderColor: 'transparent',
+    borderWidth: 0,
+    borderRadius: 5,
+    marginTop: 10
+  },
   question: {
     fontSize: 20,
     color: '#0f352f',

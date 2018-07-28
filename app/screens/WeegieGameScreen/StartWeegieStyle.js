@@ -7,12 +7,7 @@ const styles = StyleSheet.create({
     padding: 40
   },
   viewButton: {
-    backgroundColor: '#0f352f',
-    height: 45,
-    borderColor: 'transparent',
-    borderWidth: 0,
-    borderRadius: 5,
-    marginTop: 10
+    backgroundColor: '#0f352f'
 
   }
 })

@@ -154,9 +154,12 @@ class WeegieGame extends React.Component {
             )
           })
         }
-        <Button style={{marginBottom: 20}}onPress={() => goBack()} >
-            Start New Game
-        </Button>
+        <View style={styles.playAgain}>
+          <Button
+            textStyle={{ color: '#e5ba4f', fontSize: 20, fontWeight: 'bold' }}
+            style={styles.PlayAgainBtn} onPress={() => goBack()} >
+            Play Again
+          </Button></View>
       </View>
     )
   }
