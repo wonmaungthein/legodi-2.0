@@ -7,8 +7,7 @@ const styles = StyleSheet.create({
     padding: 40
   },
   viewButton: {
-    backgroundColor: '#0f352f',
-    
+    backgroundColor: '#0f352f'
 
   }
 })
