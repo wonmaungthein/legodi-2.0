@@ -54,6 +54,14 @@ class WeegieGame extends React.Component {
     this.setState({ open: true })
   };
 
+  resetGame=() => (this.setState({
+    checked: 'a',
+    question: [],
+    open: true,
+    dataIndex: 0,
+    isAnswerScreen: false
+  }))
+
   handleCheckBox = (value) => {
     this.setState({ checked: value })
   }
@@ -129,7 +137,6 @@ class WeegieGame extends React.Component {
   };
 
   renderAnswers = (data) => {
-    const { goBack } = this.props.navigation
     return (
       <View>
         <Text style={styles.correctAnswers}>
@@ -157,7 +164,7 @@ class WeegieGame extends React.Component {
         <View style={styles.playAgain}>
           <Button
             textStyle={{ color: '#e5ba4f', fontSize: 20, fontWeight: 'bold' }}
-            style={styles.PlayAgainBtn} onPress={() => goBack()} >
+            style={styles.PlayAgainBtn} onPress={this.resetGame} >
             Play Again
           </Button></View>
       </View>
