@@ -24,14 +24,6 @@ class WeegieGame extends React.Component {
     isAnswerScreen: false
   };
 
-  resetGame=()=>(this.setState({
-    checked: 'a',
-    question: [],
-    open: true,
-    dataIndex: 0,
-    isAnswerScreen: false
-  }))
-
   componentDidMount () {
     this.props.onGetWeegieQuestions()
   }
@@ -61,6 +53,14 @@ class WeegieGame extends React.Component {
   handleOpen = () => {
     this.setState({ open: true })
   };
+
+  resetGame=() => (this.setState({
+    checked: 'a',
+    question: [],
+    open: true,
+    dataIndex: 0,
+    isAnswerScreen: false
+  }))
 
   handleCheckBox = (value) => {
     this.setState({ checked: value })
@@ -137,7 +137,6 @@ class WeegieGame extends React.Component {
   };
 
   renderAnswers = (data) => {
-    const { goBack } = this.props.navigation
     return (
       <View>
         <Text style={styles.correctAnswers}>
