@@ -1,11 +1,9 @@
-import React from 'react';
 import {
   reduxifyNavigator,
-  createReactNavigationReduxMiddleware,
-} from 'react-navigation-redux-helpers';
-import PropTypes from 'prop-types';
-import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
-import { connect } from 'react-redux';
+  createReactNavigationReduxMiddleware
+} from 'react-navigation-redux-helpers'
+import { createStackNavigator, createBottomTabNavigator } from 'react-navigation'
+import { connect } from 'react-redux'
 
 import Home from '../screens/HomeScreen/HomeScreen'
 import About from '../screens/AboutScreen/AboutScreen'
@@ -19,7 +17,7 @@ import StartGame from '../screens/WeegieGameScreen/StartWeegieGame'
 const middleware = createReactNavigationReduxMiddleware(
   'root',
   state => state.nav
-);
+)
 
 const HomeStack = createStackNavigator({ Home, Articles, Article }, { initialRouteName: 'Home' })
 helper.generateNavigation(HomeStack, 'Home', '#0f352f', 'ios-home', 'md-home')
@@ -52,14 +50,14 @@ const RootNavigator = createBottomTabNavigator(
   }
 )
 
-const AppWithNavigationState = reduxifyNavigator(RootNavigator, 'root');
+const AppWithNavigationState = reduxifyNavigator(RootNavigator, 'root')
 
 const mapStateToProps = state => {
   return {
-    state: state.nav,
+    state: state.nav
   }
 }
 
-const AppNavigator = connect(mapStateToProps)(AppWithNavigationState);
+const AppNavigator = connect(mapStateToProps)(AppWithNavigationState)
 
-export { RootNavigator, AppNavigator, middleware };
+export { RootNavigator, AppNavigator, middleware }
