@@ -8,6 +8,7 @@ import {
   Image
 } from 'react-native'
 import styles from './AddArticleStyle'
+import { addArticle } from '../../helpers/api'
 import { Constants, ImagePicker, Permissions } from 'expo'
 import Colors from '../../constants/Colors'
 import { FormLabel, FormInput } from 'react-native-elements'
@@ -58,7 +59,10 @@ export default class AddArticle extends React.Component {
   }
 
   sendData () {
-    console.log('Pressed')
+    const { title, content, categoryId, status, image } = this.state
+    const language = this.state.language.short
+    const data = { title, content, categoryId, language, status, image }
+    addArticle(data)
   }
 
   pickImage = async () => {
