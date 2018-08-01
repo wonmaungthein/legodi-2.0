@@ -6,13 +6,30 @@ import { fetchArticles } from '../../redux/actions/categoriesActions'
 import { Constants } from 'expo'
 import styles from './ArticleListStyles'
 import PropTypes from 'prop-types'
+import { Ionicons } from '@expo/vector-icons'
+import Colors from '../../constants/Colors'
+const { primaryColor } = Colors
 
 class ArticlesListScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Glasgow Welcome Pack',
-    headerStyle: { backgroundColor: '#0f352f', paddingTop: Constants.statusBarHeight },
-    headerTitleStyle: { color: '#e6bc44' },
-    headerTintColor: '#e6bc44'
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: 'Glasgow Welcome Pack',
+      headerStyle: { backgroundColor: '#0f352f', paddingTop: Constants.statusBarHeight },
+      headerRight: (
+        <Ionicons
+          name='md-add'
+          size={28}
+          color={primaryColor}
+          style={{ paddingRight: 10, paddingTop: 5 }}
+          onPress={() => navigation.navigate(
+            'AddArticle',
+            { categoryId: navigation.getParam('id') }
+          )}
+        />
+      ),
+      headerTitleStyle: { color: primaryColor },
+      headerTintColor: primaryColor
+    }
   };
 
   async componentDidMount () {
