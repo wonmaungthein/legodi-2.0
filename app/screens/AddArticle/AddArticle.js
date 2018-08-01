@@ -116,7 +116,7 @@ export default class AddArticle extends React.Component {
             </Picker>
           </View>
 
-          <View>
+          <View style={styles.imagePicker}>
             <Button
               onPress={this.pickImage}
             >

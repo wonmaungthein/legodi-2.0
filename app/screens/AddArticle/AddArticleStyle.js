@@ -1,6 +1,7 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Dimensions } from 'react-native'
 import Colors from '../../constants/Colors'
 const { primaryColor, secondaryColor } = Colors
+const height = Dimensions.get('window').height
 
 const styles = StyleSheet.create({
   container: {
@@ -29,6 +30,10 @@ const styles = StyleSheet.create({
   changeLanguage: {
     fontSize: 15,
     marginTop: 10
+  },
+  imagePicker: {
+    marginTop: height - 500,
+    alignItems: 'center'
   },
   submitButton: {
     backgroundColor: secondaryColor,
