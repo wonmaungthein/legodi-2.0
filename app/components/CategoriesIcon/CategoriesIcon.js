@@ -1,65 +1,53 @@
 import React from 'react'
-import {
-  Text,
-  TouchableOpacity,
-  View
-} from 'react-native'
-import { Ionicons } from '@expo/vector-icons'
+import { Text, TouchableOpacity, View } from 'react-native'
+import { Ionicons, MaterialIcons, FontAwesome, Entypo, MaterialCommunityIcons, Foundation
+} from '@expo/vector-icons'
 import styles from './IconStyles'
 import PropTypes from 'prop-types'
 
-const CategoriesIcon = (props) => {
-  const getIconName = (name) => {
-    let iconName = ''
+const CategoriesIcon = props => {
+  const getIconName = name => {
+    console.log(name)
     switch (name) {
       case 'Welcome':
-        iconName = 'md-information-circle'
-        break
+        return <Entypo name='hand' size={36} color='#e5ba4f' />
       case 'Asylum':
-        iconName = 'md-paper'
-        break
+        return <FontAwesome name='balance-scale' size={32} color='#e5ba4f' />
       case 'Volunteering':
-        iconName = 'md-briefcase'
-        break
+        return <FontAwesome name='child' size={36} color='#e5ba4f' />
       case 'Food':
-        iconName = 'md-pizza'
-        break
+        return <MaterialCommunityIcons name='food' size={43} color='#e5ba4f' />
       case 'Parks':
-        iconName = 'md-paw'
-        break
+        return <Foundation name='guide-dog' size={47} color='#e5ba4f' />
       case 'Sport':
-        iconName = 'md-tennisball'
-        break
+        return <MaterialIcons name='directions-run' size={39} color='#e5ba4f' />
       case 'Shopping':
-        iconName = 'md-cart'
-        break
+        return <Ionicons name='md-cart' size={36} color='#e5ba4f' />
       case 'Transport':
-        iconName = 'md-bus'
-        break
+        return <Ionicons name='ios-train' size={40} color='#e5ba4f' />
       case 'Children':
-        iconName = 'md-contacts'
-        break
+        return <Ionicons name='md-contacts' size={36} color='#e5ba4f' />
       case 'Emergency':
-        iconName = 'md-warning'
-        break
+        return <FontAwesome name='heartbeat' size={36} color='#e5ba4f' />
       default:
-        iconName = 'md-help'
+        return <Ionicons name='md-help' size={36} color='#e5ba4f' />
     }
-    return iconName
   }
 
   return (
     <TouchableOpacity
       style={styles.box}
-      onPress={() => props.navigation('Articles',
-        {
+      onPress={() =>
+        props.navigation('Articles', {
           id: props.id,
           categoryTitle: props.title,
           description: props.description
-        }
-      )}>
+        })
+      }
+    >
       <View style={styles.corner} />
-      <Ionicons name={getIconName(props.iconName)} size={36} color='#e5ba4f' />
+      {getIconName(props.iconName)}
+
       <Text style={styles.title}>{props.title}</Text>
     </TouchableOpacity>
   )
@@ -67,10 +55,7 @@ const CategoriesIcon = (props) => {
 
 CategoriesIcon.propTypes = {
   navigation: PropTypes.func,
-  id: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number
-  ]),
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   categoryTitle: PropTypes.string,
   description: PropTypes.string,
   title: PropTypes.string
