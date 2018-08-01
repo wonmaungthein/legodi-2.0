@@ -4,10 +4,11 @@ import {
   View,
   ScrollView,
   Text,
-  Picker
+  Picker,
+  Image
 } from 'react-native'
 import styles from './AddArticleStyle'
-import { Constants } from 'expo'
+import { Constants, ImagePicker, Permissions } from 'expo'
 import Colors from '../../constants/Colors'
 import { FormLabel, FormInput } from 'react-native-elements'
 // Colors passed from the Constants => yellow and green
@@ -32,7 +33,8 @@ export default class AddArticle extends React.Component {
       language: {
         text: 'English',
         short: 'en'
-      }
+      },
+      image: null
     }
   }
 
@@ -58,6 +60,23 @@ export default class AddArticle extends React.Component {
   sendData () {
     console.log('Pressed')
   }
+
+  pickImage = async () => {
+    const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL)
+    // console.log('permissions and status of CAMERA: ', status);
+
+    if (status === 'granted') {
+      let result = await ImagePicker.launchImageLibraryAsync({
+        allowsEditing: true,
+        aspect: [4, 3],
+        mediaTypes: 'Images'
+      })
+      // console.log(result);
+      if (!result.cancelled) {
+        this.setState({ image: result.uri })
+      }
+    }
+  };
 
   render () {
     console.log(this.state)
@@ -95,6 +114,16 @@ export default class AddArticle extends React.Component {
               <Picker.Item label='Arabic' value='ar' />
               <Picker.Item label='Amharic' value='am' />
             </Picker>
+          </View>
+
+          <View>
+            <Button
+              onPress={this.pickImage}
+            >
+              Choose an image
+            </Button>
+            {this.state.image &&
+              <Image source={{ uri: this.state.image }} style={{ width: 200, height: 200 }} />}
           </View>
 
           <Button
