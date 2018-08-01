@@ -63,8 +63,6 @@ export default class AddArticle extends React.Component {
 
   pickImage = async () => {
     const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL)
-    // console.log('permissions and status of CAMERA: ', status);
-
     if (status === 'granted') {
       let result = await ImagePicker.launchImageLibraryAsync({
         allowsEditing: true,
