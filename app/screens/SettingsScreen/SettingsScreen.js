@@ -9,22 +9,45 @@ class SettingsScreen extends React.Component {
   renderLanguage = () => {
     const { language } = this.props
     if (language === 'ar') {
-      return 'Arabic'
+      return 'عربي'
     } else if (language === 'am') {
-      return 'Amharic'
+      return 'አማርኛ'
     }
     return 'English'
   };
 
+  translateContent = (language) => {
+    if (language === 'ar') {
+      return 'اخترت '
+    } else if (language === 'am') {
+      return 'ተመርጧል'
+    } else {
+      return 'is selected'
+    }
+  }
+
+  translateHeaderContent = (language) => {
+    if (language === 'ar') {
+      return 'اختار اللغة'
+    } else if (language === 'am') {
+      return 'ተመርጧል'
+    } else {
+      return 'is selected'
+    }
+  }
+
   render () {
+    console.log(this.props.language)
+    const {language} = this.props
     return (
       <View style={styles.container}>
         <View style={styles.container}>
           <Text style={styles.language}>
-            {this.renderLanguage()} is selected
+            {this.renderLanguage()} {}
           </Text>
-          <Text style={styles.changeLanguage}>Change Language:</Text>
+          <Text style={styles.changeLanguage}>{this.translateHeaderContent(language)}</Text>
           <Picker
+
             selectedValue={this.props.language}
             style={{ height: 50, width: 100 }}
             onValueChange={itemValue => this.props.onLanguageChange(itemValue)}
