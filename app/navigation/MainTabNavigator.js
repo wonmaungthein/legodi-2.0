@@ -1,7 +1,10 @@
 import {
-  createStackNavigator,
-  createBottomTabNavigator
-} from 'react-navigation'
+  reduxifyNavigator,
+  createReactNavigationReduxMiddleware
+} from 'react-navigation-redux-helpers'
+import { createStackNavigator, createBottomTabNavigator } from 'react-navigation'
+import { connect } from 'react-redux'
+
 import Home from '../screens/HomeScreen/HomeScreen'
 import About from '../screens/AboutScreen/AboutScreen'
 import Settings from '../screens/SettingsScreen/SettingsScreen'
@@ -10,6 +13,11 @@ import Article from '../screens/Article/Article'
 import Articles from '../screens/ArticlesListScreen/ArticlesListScreen'
 import * as helper from './helpers'
 import StartGame from '../screens/WeegieGameScreen/StartWeegieGame'
+
+const middleware = createReactNavigationReduxMiddleware(
+  'root',
+  state => state.nav
+)
 
 const HomeStack = createStackNavigator({ Home, Articles, Article }, { initialRouteName: 'Home' })
 helper.generateNavigation(HomeStack, 'Home', '#0f352f', 'ios-home', 'md-home')
@@ -23,7 +31,7 @@ helper.generateNavigation(SettingsStack, 'Settings', '#0f352f', 'ios-settings', 
 const WeggieGameStack = createStackNavigator({ StartGame, Game }, { initialRouteName: 'StartGame' })
 helper.generateNavigation(WeggieGameStack, 'Game', '#0f352f', 'ios-game-controller-b', 'md-game-controller-b')
 
-export default createBottomTabNavigator(
+const RootNavigator = createBottomTabNavigator(
   {
     HomeStack,
     WeggieGameStack,
@@ -41,3 +49,15 @@ export default createBottomTabNavigator(
     }
   }
 )
+
+const AppWithNavigationState = reduxifyNavigator(RootNavigator, 'root')
+
+const mapStateToProps = state => {
+  return {
+    state: state.nav
+  }
+}
+
+const AppNavigator = connect(mapStateToProps)(AppWithNavigationState)
+
+export { RootNavigator, AppNavigator, middleware }
