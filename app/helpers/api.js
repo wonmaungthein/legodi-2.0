@@ -5,9 +5,9 @@ const instance = axios.create({
   baseURL: 'http://legodi-server.herokuapp.com/api'
 })
 
-export const getCategories = async (language = 'en') => instance.get(`/categories`)
+export const getCategories = async (language = 'en') => instance.get(`/categories?language=${language}`)
 
-export const getArticles = async (categoryId, language) => instance.get(`/categories/${categoryId}`)
+export const getArticles = async (categoryId, language) => instance.get(`/categories/${categoryId}/?language=${language}`)
 
 export const getWeegieQuestions = async () => axios.get('/api/weegie')
 
