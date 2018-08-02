@@ -1,6 +1,5 @@
 import axios from 'axios'
 import FormData from 'form-data'
-import library from '../__mock-api/library'
 
 const instance = axios.create({
   baseURL: 'http://legodi-server.herokuapp.com/api'
@@ -10,12 +9,15 @@ export const getCategories = async (language = 'en') => instance.get(`/categorie
 
 export const getArticles = async (categoryId, language) => instance.get(`/categories/${categoryId}/?language=${language}`)
 
-export const getWeegieQuestions = async () => axios.get('/api/weegie')
+export const getWeegieQuestions = async () => instance.get('/weegie')
 
 export const getWeegieGameAnswers = async (data) => {
-  const response = await axios.get('/api/weegie/user/answer', { params: data })
-  const result = library.compareAnswers(response.config.params)
-  return result
+  try {
+    const res = await instance.post('/weegie/user/answer', data)
+    return res.data
+  } catch (error) {
+    console.error(error)
+  }
 }
 
 export const addArticle = async (article, file) => {
