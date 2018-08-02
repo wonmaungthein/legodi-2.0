@@ -35,6 +35,6 @@ export const addArticle = async (article, file) => {
   if (file) {
     data.append('image', file)
   }
-  console.log(data)
+
   return instance.post('/addArticle', data, config)
 }

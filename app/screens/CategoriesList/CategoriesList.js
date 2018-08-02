@@ -18,6 +18,7 @@ class CategoriesList extends React.Component {
         return (
           <CategoriesIcon
             key={i}
+            category={category}
             id={category._id}
             language={language}
             iconName={category.title}
@@ -30,6 +31,7 @@ class CategoriesList extends React.Component {
         return (
           <CategoriesIcon
             key={i}
+            category={category}
             id={category._id}
             iconName={category.title}
             title={category.titleTranslation[language]}
@@ -41,6 +43,7 @@ class CategoriesList extends React.Component {
         return (
           <CategoriesIcon
             key={i}
+            category={category}
             id={category._id}
             title={category.title}
             iconName={category.title}

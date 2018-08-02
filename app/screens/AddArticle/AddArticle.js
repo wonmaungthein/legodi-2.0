@@ -59,10 +59,9 @@ export default class AddArticle extends React.Component {
   }
 
   sendData () {
-    const { title, fullContent, status, articleImage, category } = this.state
+    const { title, fullContent, category, status, articleImage } = this.state
     const language = this.state.language.short
-    const data = { title, fullContent, language, status, articleImage, category }
-    console.log(data)
+    const data = { title, fullContent, category, language, status, articleImage }
     addArticle(data, articleImage).catch(err => console.log(err))
   }
 
