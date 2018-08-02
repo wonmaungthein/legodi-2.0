@@ -1,6 +1,7 @@
 import React from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
-import { Ionicons, MaterialIcons, FontAwesome, Entypo, MaterialCommunityIcons, Foundation
+import {
+  Ionicons, MaterialIcons, FontAwesome, Entypo, MaterialCommunityIcons, Foundation
 } from '@expo/vector-icons'
 import styles from './IconStyles'
 import PropTypes from 'prop-types'
@@ -41,7 +42,8 @@ const CategoriesIcon = props => {
         props.navigation('Articles', {
           id: props.id,
           categoryTitle: props.title,
-          description: props.description
+          description: props.description,
+          category: props.category
         })
       }
     >

@@ -23,7 +23,7 @@ class ArticlesListScreen extends React.Component {
           style={{ paddingRight: 10, paddingTop: 5 }}
           onPress={() => navigation.navigate(
             'AddArticle',
-            { category: navigation.getParam('categoryTitle') }
+            { category: navigation.getParam('category') }
           )}
         />
       ),
