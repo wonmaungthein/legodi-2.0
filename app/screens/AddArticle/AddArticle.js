@@ -68,7 +68,7 @@ export default class AddArticle extends React.Component {
       'Thank you!',
       'We will review your article.',
       [
-        { text: 'OK', onPress: () => console.log('OK Pressed') }
+        { text: 'OK', onPress: () => this.props.navigation.goBack() }
       ],
       { cancelable: false }
     )
