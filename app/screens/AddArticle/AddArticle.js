@@ -30,8 +30,8 @@ export default class AddArticle extends React.Component {
     this.state = {
       title: '',
       fullContent: '',
-      category: this.props.navigation.getParam('category'),
-      status: 'Not Approved',
+      category: this.props.navigation.getParam('categoryId'),
+      status: 'Pending',
       language: {
         text: 'English',
         short: 'en'
@@ -63,7 +63,7 @@ export default class AddArticle extends React.Component {
     const { title, fullContent, category, status, articleImage } = this.state
     const language = this.state.language.short
     const data = { title, fullContent, category, language, status, articleImage }
-    addArticle(data, articleImage).catch(err => console.log(err))
+    addArticle(data, articleImage)
     Alert.alert(
       'Thank you!',
       'We will review your article.',

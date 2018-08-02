@@ -18,7 +18,6 @@ class CategoriesList extends React.Component {
         return (
           <CategoriesIcon
             key={i}
-            category={category}
             id={category._id}
             language={language}
             iconName={category.title}

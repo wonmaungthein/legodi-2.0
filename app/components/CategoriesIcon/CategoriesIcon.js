@@ -8,7 +8,6 @@ import PropTypes from 'prop-types'
 
 const CategoriesIcon = props => {
   const getIconName = name => {
-    console.log(name)
     switch (name) {
       case 'Welcome':
         return <Entypo name='hand' size={36} color='#e5ba4f' />
@@ -43,7 +42,7 @@ const CategoriesIcon = props => {
           id: props.id,
           categoryTitle: props.title,
           description: props.description,
-          category: props.category
+          categoryId: props.id
         })
       }
     >
