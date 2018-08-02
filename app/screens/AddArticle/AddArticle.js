@@ -5,7 +5,8 @@ import {
   ScrollView,
   Text,
   Picker,
-  Image
+  Image,
+  Alert
 } from 'react-native'
 import styles from './AddArticleStyle'
 import { addArticle } from '../../helpers/api'
@@ -63,6 +64,14 @@ export default class AddArticle extends React.Component {
     const language = this.state.language.short
     const data = { title, fullContent, category, language, status, articleImage }
     addArticle(data, articleImage).catch(err => console.log(err))
+    Alert.alert(
+      'Thank you!',
+      'We will review your article.',
+      [
+        { text: 'OK', onPress: () => this.props.navigation.goBack() }
+      ],
+      { cancelable: false }
+    )
   }
 
   pickImage = async () => {
