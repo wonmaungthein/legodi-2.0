@@ -1,4 +1,5 @@
 import axios from 'axios'
+import FormData from 'form-data'
 
 const instance = axios.create({
   baseURL: 'http://legodi-server.herokuapp.com/api'
@@ -19,4 +20,21 @@ export const getWeegieGameAnswers = async (data) => {
   }
 }
 
-export const addArticle = async (data) => instance.post('/api/addArticle', data)
+export const addArticle = async (article, file) => {
+  const config = {
+    headers: {
+      'accept': 'application/json',
+      'Accept-Language': 'en-US,en;q=0.8',
+      'Content-Type': 'multipart/form-data'
+    }
+  }
+
+  let data = new FormData()
+  data.append('article', JSON.stringify(article))
+
+  if (file) {
+    data.append('image', file)
+  }
+  console.log(data)
+  return instance.post('/addArticle', data, config)
+}
