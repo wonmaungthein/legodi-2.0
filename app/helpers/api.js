@@ -1,4 +1,5 @@
 import axios from 'axios'
+import FormData from 'form-data'
 import library from '../__mock-api/library'
 
 const instance = axios.create({
@@ -17,4 +18,21 @@ export const getWeegieGameAnswers = async (data) => {
   return result
 }
 
-export const addArticle = async (data) => instance.post('/api/addArticle', data)
+export const addArticle = async (article, file) => {
+  const config = {
+    headers: {
+      'accept': 'application/json',
+      'Accept-Language': 'en-US,en;q=0.8',
+      'Content-Type': 'multipart/form-data'
+    }
+  }
+
+  let data = new FormData()
+  data.append('article', JSON.stringify(article))
+
+  if (file) {
+    data.append('image', file)
+  }
+  console.log(data)
+  return instance.post('/addArticle', data, config)
+}

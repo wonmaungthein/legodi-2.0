@@ -28,14 +28,14 @@ export default class AddArticle extends React.Component {
     // state for the form of adding article
     this.state = {
       title: '',
-      content: '',
-      categoryId: this.props.navigation.getParam('categoryId'),
+      fullContent: '',
+      category: this.props.navigation.getParam('category'),
       status: 'Not Approved',
       language: {
         text: 'English',
         short: 'en'
       },
-      image: null
+      articleImage: null
     }
   }
 
@@ -59,10 +59,11 @@ export default class AddArticle extends React.Component {
   }
 
   sendData () {
-    const { title, content, categoryId, status, image } = this.state
+    const { title, fullContent, status, articleImage, category } = this.state
     const language = this.state.language.short
-    const data = { title, content, categoryId, language, status, image }
-    addArticle(data)
+    const data = { title, fullContent, language, status, articleImage, category }
+    console.log(data)
+    addArticle(data, articleImage).catch(err => console.log(err))
   }
 
   pickImage = async () => {
@@ -75,13 +76,12 @@ export default class AddArticle extends React.Component {
       })
       // console.log(result);
       if (!result.cancelled) {
-        this.setState({ image: result.uri })
+        this.setState({ articleImage: result.uri })
       }
     }
   };
 
   render () {
-    console.log(this.state)
     return (
       <ScrollView style={styles.container}>
         <View style={styles.layout}>
@@ -97,7 +97,7 @@ export default class AddArticle extends React.Component {
             <FormLabel labelStyle={styles.inputTitle}>Content</FormLabel>
             <FormInput
               multiline
-              onChangeText={this.handleChange('content')}
+              onChangeText={this.handleChange('fullContent')}
               inputStyle={{ color: secondaryColor, width: Constants.width }}
               containerStyle={{ borderBottomColor: secondaryColor }}
             />
@@ -124,8 +124,8 @@ export default class AddArticle extends React.Component {
             >
               Choose an image
             </Button>
-            {this.state.image &&
-              <Image source={{ uri: this.state.image }} style={{ width: 200, height: 200 }} />}
+            {this.state.articleImage &&
+              <Image source={{ uri: this.state.articleImage }} style={{ width: 200, height: 200 }} />}
           </View>
 
           <Button
