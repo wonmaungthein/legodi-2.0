@@ -36,5 +36,10 @@ export const addArticle = async (article, file) => {
     data.append('image', file)
   }
 
-  return instance.post('/addArticle', data, config)
+  try {
+    const response = await instance.post('/addArticle', data, config)
+    return response
+  } catch (error) {
+    console.log(error)
+  }
 }
