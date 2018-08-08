@@ -1,30 +1,39 @@
 {
   "name": "server",
-  "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "./node_modules/.bin/mocha",
-    "dev": "nodemon server.js",
+    "start": "node ./bin/www",
+    "dev": "nodemon --inspect ./bin/www",
     "lint": "standard",
-    "commit": "npx git-cz"
+    "migrate": "knex migrate:latest && knex seed:run",
+    "create-migration": "knex migrate:make $1",
+    "create-seed": "knex seed:make $1"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint"
-    }
-  },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "hapi": "^17.5.2"
+    "bcryptjs": "^2.4.3",
+    "body-parser": "~1.18.2",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "~1.4.3",
+    "cors": "^2.8.4",
+    "debug": "~2.6.9",
+    "express": "^4.15.5",
+    "express-fileupload": "^0.3.0",
+    "express-messages": "^1.0.1",
+    "express-session": "^1.15.6",
+    "express-validator": "^4.3.0",
+    "hbs": "~4.0.1",
+    "knex": "^0.15.2",
+    "mongodb": "^2.2.33",
+    "morgan": "~1.9.0",
+    "passport": "^0.4.0",
+    "passport-http": "^0.3.0",
+    "passport-local": "^1.0.0",
+    "pg": "^7.4.3",
+    "serve-favicon": "~2.4.5",
+    "standard": "^11.0.1"
   },
   "devDependencies": {
-    "chai": "^4.1.2",
-    "mocha": "^5.2.0",
-    "nodemon": "^1.17.5",
-    "standard": "^11.0.1",
-    "supertest": "^3.1.0",
-    "husky": "^1.0.0-rc.9"
+    "nodemon": "^1.12.1"
   }
 }
