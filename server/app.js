@@ -13,7 +13,7 @@ const index = require('./routes/index')
 // const adminArticles = require('./routes/admin/articles/articles')
 // const adminCategories = require('./routes/admin/categories/categories')
 const autentication = require('./routes/admin/authentication/login')
-const weegie = require('./routes/admin/weegie/weegie')
+// const weegie = require('./routes/admin/weegie/weegie')
 const fileUpload = require('express-fileupload')
 
 const app = express()
@@ -33,33 +33,37 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 // Express Session
-app.use(session({
-  secret: 'secret',
-  saveUninitialized: true,
-  resave: true
-}))
+app.use(
+  session({
+    secret: 'secret',
+    saveUninitialized: true,
+    resave: true
+  })
+)
 
 // Passport init
 app.use(passport.initialize())
 app.use(passport.session())
 
 // Express Validator
-app.use(expressValidator({
-  errorFormatter: (param, msg, value) => {
-    var namespace = param.split('.')
-    var root = namespace.shift()
-    var formParam = root
+app.use(
+  expressValidator({
+    errorFormatter: (param, msg, value) => {
+      var namespace = param.split('.')
+      var root = namespace.shift()
+      var formParam = root
 
-    while (namespace.length) {
-      formParam += '[' + namespace.shift() + ']'
+      while (namespace.length) {
+        formParam += '[' + namespace.shift() + ']'
+      }
+      return {
+        param: formParam,
+        msg: msg,
+        value: value
+      }
     }
-    return {
-      param: formParam,
-      msg: msg,
-      value: value
-    }
-  }
-}))
+  })
+)
 
 // Connect Flash
 app.use(flash())
@@ -78,7 +82,7 @@ app.use('/', index)
 //  app.use('/admin/categories', ensureAuthenticated, adminCategories)
 app.use('/api', router)
 app.use('/users', autentication)
-app.use('/admin/weegie', weegie)
+// app.use('/admin/weegie', weegie)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
