@@ -7,21 +7,29 @@ const imagesDir = path.dirname(require.main.filename) + '/../public/images'
 
 router.get('/', (req, res, next) => {
   const callback = (error, articles) => {
-    res.render('articles-list', {
-      articles: articles,
-      addArticle: 'true',
-      articlehome: 'homeNav'
-    })
+    if (error) {
+      next(error)
+    } else {
+      res.render('articles-list', {
+        articles: articles,
+        addArticle: 'true',
+        articlehome: 'homeNav'
+      })
+    }
   }
   articleClient.findArticles({}, callback)
 })
 
 router.get('/add', (req, res, next) => {
   const callback = (error, categories) => {
-    res.render('admin-add-article', {
-      categories,
-      addArticlehome: 'homeNav'
-    })
+    if (error) {
+      next(error)
+    } else {
+      res.render('admin-add-article', {
+        categories,
+        addArticlehome: 'homeNav'
+      })
+    }
   }
   categoryClient.findCategories(callback)
 })
@@ -32,8 +40,8 @@ router.post('/add', function (req, res, next) {
   const callBack = (articleData) => {
     if (Object.keys(req.files).length > 0) {
       query.articleImage = req.files.articleImage.name
-      const articleImage = req.files.articleImage,
-        filename = articleData._id
+      const articleImage = req.files.articleImage
+      // const filename = articleData._id
       articleImage.mv(`${imagesDir}/${articleData._id}.png`, function (err) {
         if (err) {
           console.log(err)
@@ -47,43 +55,55 @@ router.post('/add', function (req, res, next) {
   }
   articleClient.addArticle(query, callBack)
 })
-
-router.get('/edit/:articleId', ensureAuthenticated, (req, res) => {
+let ensureAuthenticated
+router.get('/edit/:articleId', ensureAuthenticated, (req, res, next) => {
   const { articleId } = req.params
   const categoriesCallback = (error, categories) => {
-    articleCallback = (error, article) => {
-      let CategorySelected = ''
-      let categoriesList = []
-
-      categories.map((category) => {
-        if (article.category.equals(category._id)) {
-          CategorySelected = category.title
+    if (error) {
+      next(error)
+    } else {
+      let articleCallback = (error, article) => {
+        if (error) {
+          next(error)
         } else {
-          categoriesList.push(category)
+          let CategorySelected = ''
+          let categoriesList = []
+
+          categories.map((category) => {
+            if (article.category.equals(category._id)) {
+              CategorySelected = category.title
+            } else {
+              categoriesList.push(category)
+            }
+          })
+          res.render('admin-edit-article', {
+            article: article,
+            categories: categoriesList,
+            CategorySelected: CategorySelected,
+            editArticleHome: 'homeNav'
+          })
         }
-      })
-      res.render('admin-edit-article', {
-        article: article,
-        categories: categoriesList,
-        CategorySelected: CategorySelected,
-        editArticleHome: 'homeNav'
-      })
+      }
+      articleClient.findArticleById(articleId, articleCallback)
     }
-    articleClient.findArticleById(articleId, articleCallback)
   }
   categoryClient.findCategories(categoriesCallback)
 })
 
-router.post('/delete/:articleId', (req, res) => {
+router.post('/delete/:articleId', (req, res, next) => {
   const { articleId } = req.params
-  callBack = (error, data) => {
-    if (data.title === req.body.validationTitle) {
-      deleteCallBack = () => {
-        res.redirect('/')
-      }
-      articleClient.removeArticle(articleId, deleteCallBack)
+  const callBack = (error, data) => {
+    if (error) {
+      next(error)
     } else {
-      res.render('delete-title-wrong')
+      if (data.title === req.body.validationTitle) {
+        let deleteCallBack = () => {
+          res.redirect('/')
+        }
+        articleClient.removeArticle(articleId, deleteCallBack)
+      } else {
+        res.render('delete-title-wrong')
+      }
     }
   }
   articleClient.findArticleById(articleId, callBack)
@@ -96,8 +116,8 @@ router.post('/edit/:articleId', function (req, res, next) {
   console.log(query)
   const callBack = (articleData) => {
     if (Object.keys(req.files).length > 0) {
-      const articleImage = req.files.articleImage,
-        filename = articleId
+      const articleImage = req.files.articleImage
+      const filename = articleId
       articleImage.mv(`${imagesDir}/${filename}.png`, function (err) {
         if (err) {
           console.log(err)

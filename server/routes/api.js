@@ -2,7 +2,6 @@ const express = require('express')
 const router = express.Router()
 const categoryClient = require('../dbClients/categoriesDB')
 const articleClient = require('../dbClients/articlesDB')
-const ObjectId = require('mongodb').ObjectID
 const WeegieDB = require('./../dbClients/weegieQuestionDB')
 const path = require('path')
 const imagesDir = path.dirname(require.main.filename) + '/../public/images'
@@ -46,7 +45,7 @@ router.post('/addArticle', function (req, res) {
 })
 
 router.post('/weegie/user/answer', (req, res) => {
-  findQuestionCb = (err, data) => {
+  const findQuestionCb = (err, data) => {
     if (err) { return err }
     let similarQuestions = []
     let allQuestions = data
@@ -54,20 +53,20 @@ router.post('/weegie/user/answer', (req, res) => {
 
     allQuestions.map((question) => {
       userAnswer.map((answer) => {
-        if (question._id == answer.title) {
+        if (question._id === answer.title) {
           similarQuestions.push(question)
         }
       })
     })
 
-    checkAnswers = (questions, answers) => {
+    const checkAnswers = (questions, answers) => {
       let result = {}
       let wrongAnswersList = []
       let corretAnswers = 0
       let wrongAnswers = 0
       answers.map((answer) => {
         questions.map((question) => {
-          if (question._id == answer.title) {
+          if (question._id === answer.title) {
             if (question.answer === answer.answer) {
               corretAnswers++
             } else {
@@ -102,7 +101,13 @@ router.get('/articles/:articleId', function (req, res, next) {
   articleClient.findArticleById(articleId, callBack)
 })
 router.get('/categories', function (req, res, next) {
-  const callback = (error, data) => { res.json(data) }
+  const callback = (error, data) => {
+    if (error) {
+      next(error)
+    } else {
+      res.json(data)
+    }
+  }
   categoryClient.findCategories({ visible: true }, callback)
 })
 
@@ -122,29 +127,34 @@ router.get('/categories/:categoryId', function (req, res, next) {
   articleClient.findArticles({ category: categoryId, 'visible': true, language: language }, callBack)
 })
 
-router.get('/weegie', (req, res) => {
-  callback = (error, question) => {
-    shuffle = (array) => {
-      var currentIndex = array.length, temporaryValue, randomIndex
+router.get('/weegie', (req, res, next) => {
+  const callback = (error, question) => {
+    if (error) {
+      next(error)
+    } else {
+      let shuffle = (array) => {
+        let temporaryValue
+        let randomIndex
+        let currentIndex = array.length
 
-      // While there remain elements to shuffle...
-      while (currentIndex !== 0) {
+        // While there remain elements to shuffle...
+        while (currentIndex !== 0) {
         // Pick a remaining element...
-        randomIndex = Math.floor(Math.random() * currentIndex)
-        currentIndex -= 1
+          randomIndex = Math.floor(Math.random() * currentIndex)
+          currentIndex -= 1
 
-        // And swap it with the current element.
-        temporaryValue = array[currentIndex]
-        array[currentIndex] = array[randomIndex]
-        array[randomIndex] = temporaryValue
+          // And swap it with the current element.
+          temporaryValue = array[currentIndex]
+          array[currentIndex] = array[randomIndex]
+          array[randomIndex] = temporaryValue
+        }
+
+        return res.json(question)
       }
 
-      return res.json(question)
+      shuffle(question)
     }
-
-    shuffle(question)
   }
-
   WeegieDB.findQuestions({}, callback)
 })
 module.exports = router

@@ -1,6 +1,5 @@
 const express = require('express')
 const path = require('path')
-const favicon = require('serve-favicon')
 const logger = require('morgan')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
@@ -8,12 +7,11 @@ const expressValidator = require('express-validator')
 const flash = require('connect-flash')
 const session = require('express-session')
 const passport = require('passport')
-const LocalStrategy = require('passport-local').Strategy
 const cors = require('cors')
 const router = require('./routes/api')
 const index = require('./routes/index')
-const adminArticles = require('./routes/admin/articles/articles')
-const adminCategories = require('./routes/admin/categories/categories')
+// const adminArticles = require('./routes/admin/articles/articles')
+// const adminCategories = require('./routes/admin/categories/categories')
 const autentication = require('./routes/admin/authentication/login')
 const weegie = require('./routes/admin/weegie/weegie')
 const fileUpload = require('express-fileupload')
@@ -48,9 +46,9 @@ app.use(passport.session())
 // Express Validator
 app.use(expressValidator({
   errorFormatter: (param, msg, value) => {
-    var namespace = param.split('.'),
-      root = namespace.shift(),
-      formParam = root
+    var namespace = param.split('.')
+    var root = namespace.shift()
+    var formParam = root
 
     while (namespace.length) {
       formParam += '[' + namespace.shift() + ']'
@@ -76,8 +74,8 @@ app.use(function (req, res, next) {
 })
 
 app.use('/', index)
-app.use('/admin/articles', ensureAuthenticated, adminArticles)
-app.use('/admin/categories', ensureAuthenticated, adminCategories)
+// .use('/admin/articles', ensureAuthenticated, adminArticles)
+//  app.use('/admin/categories', ensureAuthenticated, adminCategories)
 app.use('/api', router)
 app.use('/users', autentication)
 app.use('/admin/weegie', weegie)

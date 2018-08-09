@@ -17,9 +17,9 @@ router.get('/register', (req, res) => {
 })
 
 // Register
-router.get('/register', ensureAuthenticated, (req, res) => {
-  res.render('register')// Register
-})
+// router.get('/register', ensureAuthenticated, (req, res) => {
+//   res.render('register')// Register
+// })
 
 // Login
 router.get('/login', (req, res) => {
@@ -32,7 +32,7 @@ router.post('/register', (req, res) => {
   const email = req.body.email
   const username = req.body.username
   const password = req.body.password
-  const password2 = req.body.password2
+  // const password2 = req.body.password2
   const isAdmin = req.body.isAdmin
 
   // Validation
