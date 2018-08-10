@@ -1,6 +1,4 @@
-const config = require("../knexfile")[process.env.NODE_ENV || "development"];
-
-const knex = require("knex")(config);
+const knex = require("./connection");
 
 function getLanguages(){
   return knex.select().from("languages");
