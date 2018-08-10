@@ -82,7 +82,7 @@ app.use('/', index)
 // .use('/admin/articles', ensureAuthenticated, adminArticles)
 //  app.use('/admin/categories', ensureAuthenticated, adminCategories)
 //app.use('/api', router)
-app.use('/languages', language)
+app.use('/api/languages', language)
 //app.use('/users', autentication)
 // app.use('/admin/weegie', weegie)
 

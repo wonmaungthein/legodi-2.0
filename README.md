@@ -10,6 +10,17 @@
 
 -To run the server, make sure you have strapi installed `npm install strapi@alpha -g` then `strapi start` from the _server_ folder
 
+### What is docker-compose file do
+
+It includes postgreSQL database image so if you do not have postgreSQL installed locally
+this file will create one for you.
+
+### How to use docker-compose file
+
+To use this file you need first to install docker
+then go to main directory of legodi then run: `docker-compose up`
+for more details go to `https://docs.docker.com/compose/overview`
+
 ### Linting
 
 StandardJs has been setup as a linter in both app and server.
