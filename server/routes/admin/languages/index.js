@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.get('/', async (req, res) => {
     try {
-        const response = await db.getLanguages();
+        const response = await db.getLanguages()
         res.status(200).json({ success: true, response })
     } catch (error) {
         console.log(error);
@@ -13,10 +13,10 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.post('/add', async (req, res) => {
+router.post('/', async (req, res) => {
     const data = req.body
     try {
-        const response = await db.addLanguage(data);
+        const response = await db.addLanguage(data)
         res.status(200).json({ success: true, response })
     } catch (error) {
         console.log(error);
@@ -24,4 +24,26 @@ router.post('/add', async (req, res) => {
     }
 })
 
-module.exports = router;
+router.put('/', async (req, res) => {
+    const data = req.body
+    try {
+        const response = await db.editLanguage(data)
+        res.status(200).json({ success: true, response })
+    } catch (error) {
+        console.log(error)
+        res.status(502).json({ success: false, error })
+    }
+})
+
+router.delete('/', async (req, res) => {
+    const languageId = req.body
+    try {
+        const response = await db.deleteLanguage(languageId)
+        res.status(200).json({ success: true, response })
+    } catch (error) {
+        console.log(error)
+        res.status(502).json({ success: false, error })
+    }
+})
+
+module.exports = router
