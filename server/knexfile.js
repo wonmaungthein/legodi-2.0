@@ -16,6 +16,22 @@ module.exports = {
       tableName: 'knex_migrations'
     }
   },
+  test: {
+    client: 'postgresql',
+    connection: {
+      host: process.env.DB_HOST || '127.0.0.1',
+      database: process.env.DB_NAME || 'legodi',
+      user: process.env.DB_USER || 'cyf',
+      password: process.env.DB_PASSWORD || 'password'
+    },
+    pool: {
+      min: 2,
+      max: 10
+    },
+    migrations: {
+      tableName: 'knex_migrations'
+    }
+  },
 
   staging: {
     client: 'postgresql',

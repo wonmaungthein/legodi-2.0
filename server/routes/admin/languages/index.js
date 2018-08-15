@@ -8,7 +8,6 @@ router.get('/', async (req, res) => {
         const response = await db.getLanguages()
         res.status(200).json({ success: true, response })
     } catch (error) {
-        console.log(error);
         res.status(502).json({ success: false, error })
     }
 })
@@ -16,10 +15,9 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     const data = req.body
     try {
-        const response = await db.addLanguage(data)
-        res.status(200).json({ success: true, response })
+        await db.addLanguage(data)
+        res.status(200).json({ success: true })
     } catch (error) {
-        console.log(error);
         res.status(502).json({ success: false, error })
     }
 })
@@ -27,21 +25,19 @@ router.post('/', async (req, res) => {
 router.put('/', async (req, res) => {
     const data = req.body
     try {
-        const response = await db.editLanguage(data)
-        res.status(200).json({ success: true, response })
+        await db.editLanguage(data)
+        res.status(200).json({ success: true })
     } catch (error) {
-        console.log(error)
         res.status(502).json({ success: false, error })
     }
 })
 
 router.delete('/', async (req, res) => {
-    const languageId = req.body
+    const { languageId } = req.query
     try {
-        const response = await db.deleteLanguage(languageId)
-        res.status(200).json({ success: true, response })
+        await db.deleteLanguage(languageId)
+        res.status(200).json({ success: true })
     } catch (error) {
-        console.log(error)
         res.status(502).json({ success: false, error })
     }
 })
