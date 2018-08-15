@@ -15,6 +15,7 @@ const index = require('./routes/index')
 const autentication = require('./routes/admin/authentication/login')
 // const weegie = require('./routes/admin/weegie/weegie')
 const fileUpload = require('express-fileupload')
+const categories = require('./routes/admin/categories')
 
 const app = express()
 app.use(cors())
@@ -82,6 +83,7 @@ app.use('/', index)
 //  app.use('/admin/categories', ensureAuthenticated, adminCategories)
 app.use('/api', router)
 app.use('/users', autentication)
+app.use('/api/categories', categories)
 // app.use('/admin/weegie', weegie)
 
 // catch 404 and forward to error handler

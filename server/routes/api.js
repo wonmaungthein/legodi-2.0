@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const categoryClient = require('../dbClients/categoriesDB')
+// const categoryClient = require('../dbClients/categoriesDB')
 const articleClient = require('../dbClients/articlesDB')
 const WeegieDB = require('./../dbClients/weegieQuestionDB')
 const path = require('path')
@@ -100,16 +100,16 @@ router.get('/articles/:articleId', function (req, res, next) {
   }
   articleClient.findArticleById(articleId, callBack)
 })
-router.get('/categories', function (req, res, next) {
-  const callback = (error, data) => {
-    if (error) {
-      next(error)
-    } else {
-      res.json(data)
-    }
-  }
-  categoryClient.findCategories({ visible: true }, callback)
-})
+// router.get('/categories', function (req, res, next) {
+//   const callback = (error, data) => {
+//     if (error) {
+//       next(error)
+//     } else {
+//       res.json(data)
+//     }
+//   }
+//   categoryClient.findCategories({ visible: true }, callback)
+// })
 
 /* GET Single Category's articles */
 router.get('/categories/:categoryId', function (req, res, next) {

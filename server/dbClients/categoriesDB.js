@@ -1,31 +1,12 @@
-// require('./connection')
-// const mongoose = require('mongoose')
-// const CategoryModel = require('../models/Category')
-// const ObjectId = require('mongodb').ObjectID
-
-// const addCategory = (query, callback) => {
-//   CategoryModel.create(query).then(callback)
-// }
-
-// const findCategories = (query, callback) => {
-//   CategoryModel.find(query, callback).sort({ 'order': 1 })
-// }
-// const findCategoryById = (id, callback) => {
-//   CategoryModel.findById(id).exec(callback)
-// }
-
-// const editCategory = (CategoryId, query, upsertOption, sucessCallBack) => {
-//   CategoryModel.update({ '_id': ObjectId(CategoryId) }, query, { upsert: upsertOption }, sucessCallBack)
-// }
-
-// const removeCategory = (categoryId, callback) => {
-//   CategoryModel.remove({ '_id': ObjectId(categoryId) }, callback)
-// }
-
-// module.exports = {
-//   addCategory,
-//   findCategories,
-//   editCategory,
-//   findCategoryById,
-//   removeCategory
-// }
+const config = require('../knexfile')[process.env.NODE_ENV || 'development']
+const knex = require('knex')(config)
+function getCategories () {
+  return knex.select().from('categories')
+};
+function addCategory (data) {
+  return knex.table('categories').insert(data)
+};
+module.exports = {
+  getCategories,
+  addCategory
+}
