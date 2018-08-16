@@ -1,6 +1,7 @@
-// const mongoose = require('mongoose')
-// mongoose.Promise = global.Promise
+const environment = process.env.NODE_ENV || 'development';
+const config = require('../knexfile');
+const environmentConfig = config[environment];
+const knex = require('knex');
+const connection = knex(environmentConfig);
 
-// var promise = mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/legodi', {
-//   useMongoClient: true
-// })
+module.exports = connection;
