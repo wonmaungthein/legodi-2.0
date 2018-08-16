@@ -6,7 +6,7 @@
     "start": "node ./bin/www",
     "dev": "nodemon --inspect ./bin/www",
     "lint": "standard",
-    "test": "jest .",
+    "test": "npm run migrate && jest .",
     "migrate": "knex migrate:latest && knex seed:run",
     "create-migration": "knex migrate:make $1",
     "create-seed": "knex seed:make $1"

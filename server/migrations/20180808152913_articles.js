@@ -14,7 +14,10 @@ exports.up = async (knex, Promise) => {
     table.enum('status', ['pending', 'approved', 'rejected', 'hidden'])
     table.string('icon')
     table.string('language_id').defaultTo('en')
-    table.foreign('language_id').references('language_id').inTable('languages')
+    table.foreign('language_id')
+    .references('language_id')
+    .inTable('languages')
+    .onDelete('CASCADE')
   })
 
   return knex.schema.createTable('articles', table => {
