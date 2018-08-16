@@ -82,7 +82,6 @@ export default class AddArticle extends React.Component {
         aspect: [4, 3],
         mediaTypes: 'Images'
       })
-      // console.log(result);
       if (!result.cancelled) {
         this.setState({ articleImage: result.uri })
       }
