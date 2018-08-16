@@ -1,6 +1,6 @@
 exports.up = async (knex, Promise) => {
   await knex.schema.createTable('languages', table => {
-    table.string('language_id').primary()
+    table.string('language_id').primary().defaultTo('en')
     table.string('short_name')
     table.string('long_name')
     table.string('original_name')
