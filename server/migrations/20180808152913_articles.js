@@ -20,7 +20,7 @@ exports.up = async (knex, Promise) => {
     .onDelete('CASCADE')
   })
 
-  return knex.schema.createTable('articles', table => {
+  await knex.schema.createTable('articles', table => {
     table.increments('article_id')
     table.string('title').notNullable()
     table.string('short_content').notNullable()
@@ -31,6 +31,14 @@ exports.up = async (knex, Promise) => {
     table.enum('status', ['pending', 'approved', 'rejected', 'hidden'])
 
     table.integer('sort_order')
+    table.timestamps(true, true)
+  })
+
+  return knex.schema.createTable('users', table => {
+    table.increments('user_id')
+    table.string('full_name').notNullable()
+    table.string('email').notNullable()
+    table.string('password').notNullable()
     table.timestamps(true, true)
   })
 }

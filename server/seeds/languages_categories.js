@@ -44,7 +44,7 @@ exports.seed = async (knex, Promise) => {
       }
     ])
   })
-  return knex('categories').del().then(function () {
+  await knex('categories').del().then(function () {
     // Inserts seed entries
     return knex('categories').insert([
       {
@@ -67,6 +67,31 @@ exports.seed = async (knex, Promise) => {
         description: 'لاجيء تعبان طالع دينه واسمه خالد',
         status: 'approved',
         language_id: 'ar'
+      }
+    ])
+  })
+
+  return knex('users').del().then(() => {
+    return knex('users').insert([
+      {
+        full_name: 'Mohammed Dwina',
+        email: 'dwinatech@hotmail.com',
+        password: 1234
+      },
+      {
+        full_name: 'Khaled',
+        email: 'khaled@hotmail.com',
+        password: 1234
+      },
+      {
+        full_name: 'Jason',
+        email: 'jason@hotmail.com',
+        password: 1234
+      },
+      {
+        full_name: 'Won',
+        email: 'won@hotmail.com',
+        password: 1234
       }
     ])
   })

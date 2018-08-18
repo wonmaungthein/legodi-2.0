@@ -17,6 +17,7 @@ export default class Article extends React.Component {
 
   render () {
     const language = this.props.navigation.getParam('language', 'en')
+    const description = this.props.navigation.getParam('description', 'Default description')
     return (
       <View style={styles.container}>
         <ScrollView>
@@ -30,7 +31,7 @@ export default class Article extends React.Component {
             <Text style={language === 'ar' ? styles.arabicTitle : styles.title}>{this.props.navigation.getParam('title', 'Default Title')}</Text>
           </View>
           <View style={styles.paddingSides}>
-            <Text style={language === 'ar' ? styles.arabicDescription : styles.description}>{this.props.navigation.getParam('description', 'Default description')}</Text>
+            <Text style={language === 'ar' ? styles.arabicDescription : styles.description}>{description}</Text>
           </View>
         </ScrollView>
       </View>

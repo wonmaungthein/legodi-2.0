@@ -31,7 +31,8 @@ const styles = StyleSheet.create({
   },
   arabicDescription: {
     textAlign: 'right',
-    fontSize: 18
+    fontSize: 16,
+    lineHeight: 22
   }
 })
 export default styles
