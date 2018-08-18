@@ -12,26 +12,34 @@ function getQuestion(id) {
 }
 
 function editQuestion(data) {
-  return knex.table('weegie')
-    .where('question_id', '=', data.questionId)
+  return knex
+    .table("weegie")
+    .where("question_id", "=", data.questionId)
     .update({
       question_id: data.questionId,
       title: data.title,
-      answer: data.answer,
-    })
-};
+      answer: data.answer
+    });
+}
 
 function addQuestion(data) {
-  return knex.table('weegie').insert({
+  return knex.table("weegie").insert({
     question_id: data.questionId,
     title: data.title,
-    answer: data.answer,
+    answer: data.answer
   });
+}
+
+function deleteQuestion(questionId) {
+  return knex.table('weegie')
+    .where('question_id', '=', questionId)
+    .del()
 };
 
 module.exports = {
   getQuestions,
   getQuestion,
   editQuestion,
-  addQuestion
+  addQuestion,
+  deleteQuestion
 };
