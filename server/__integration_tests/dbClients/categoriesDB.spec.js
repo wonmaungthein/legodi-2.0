@@ -2,7 +2,7 @@ const Category = require('../../dbClients/categoriesDB')
 
 describe('CRUD /categories', () => {
   it('should respond with 200', async () => {
-    const result = [
+    const result =
       {
         'category_name': 'asylum',
         'short_description': 'english hi ',
@@ -10,7 +10,7 @@ describe('CRUD /categories', () => {
         'status': 'pending',
         'icon': 'null',
         'language_id': 'en'
-      }]
+      }
     const response = await Category.getCategories()
     expect(response).toEqual(result)
   })
