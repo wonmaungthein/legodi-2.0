@@ -16,7 +16,7 @@ const language = require('./routes/admin/languages')
 // const autentication = require('./routes/admin/authentication/login')
 // const weegie = require('./routes/admin/weegie/weegie')
 const fileUpload = require('express-fileupload')
-const categories = require('./routes/admin/categories')
+const users = require('./routes/admin/users')
 
 const app = express()
 app.use(cors())
@@ -80,6 +80,7 @@ app.use(function (req, res, next) {
 })
 
 app.use('/', index)
+app.use('/admin/users', users)
 // .use('/admin/articles', ensureAuthenticated, adminArticles)
 //  app.use('/admin/categories', ensureAuthenticated, adminCategories)
 // app.use('/api', router)

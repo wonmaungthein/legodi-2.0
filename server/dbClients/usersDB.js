@@ -1,29 +1,64 @@
-// const User = require('../models/User')
-// const bcrypt = require('bcryptjs')
 
-// createUser = (newUser, callback) => {
-//   bcrypt.genSalt(10, (err, salt) => {
-//     bcrypt.hash(newUser.password, salt, function (err, hash) {
-//       newUser.password = hash
-//       newUser.save(callback)
-//     })
-//   })
-// }
+const knex = require("./connection");
+const bcrypt = require('bcryptjs')
 
-// getUserByUsername = (username, callback) => {
-//   const query = { username: username }
-//   User.findOne(query, callback)
-// }
+function getUsers() {
+    return knex.select().from("users");
+};
 
-// getUserById = (id, callback) => {
-//   User.findById(id, callback)
-// }
+function getUserByEmail(userEmail) {
+    return knex.select().from("users").where('email', '=', userEmail)
+};
 
-// comparePassword = function (candidatePassword, hash, callback) {
-//   bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
-//     if (err) throw err
-//     callback(null, isMatch)
-//   })
-// }
+function addUser(data) {
+    let { password } = data;
+    const { fullName, email } = data;
+    bcrypt.genSalt(10, (err, salt) => {
+        return bcrypt.hash(password, salt, async (error, hash) => {
+            if (error) {
+                throw error;
+            }
+            password = hash;
+            await knex.table('users').insert({
+                full_name: fullName,
+                email: email,
+                password: password,
+            });
+        })
+    })
+};
 
-// module.exports = { createUser, getUserByUsername, comparePassword, getUserById }
+function editUser(data) {
+    let { password } = data;
+    const { fullName, email, userId } = data;
+    return bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(password, salt, async (error, hash) => {
+            if (error) {
+                throw error;
+            }
+            password = hash;
+            await knex.table('users')
+                .where('user_id', '=', userId)
+                .update({
+                    full_name: fullName,
+                    email: email,
+                    password: password,
+
+                })
+        })
+    })
+};
+
+function deleteUser(userId) {
+    return knex.table('users')
+        .where('user_id', '=', userId)
+        .del()
+};
+
+module.exports = {
+    getUserByEmail,
+    deleteUser,
+    editUser,
+    getUsers,
+    addUser
+}
