@@ -14,6 +14,7 @@ const weegieApi = require('./routes/api/weegie')
 const weegieAdmin = require('./routes/admin/weegie')
 
 const fileUpload = require('express-fileupload')
+const users = require('./routes/admin/users')
 
 const app = express()
 app.use(cors())
@@ -80,6 +81,7 @@ app.use('/', index)
 app.use('/api/languages', languageApi)
 app.use('/api/weegie', weegieApi)
 app.use('/admin/weegie', weegieAdmin)
+app.use('/admin/users', users)
 
 
 // catch 404 and forward to error handler
