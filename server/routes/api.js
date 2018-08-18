@@ -79,7 +79,6 @@ router.post('/weegie/user/answer', (req, res) => {
       result.wrongAnswersList = wrongAnswersList
       result.correctAnswers = corretAnswers
       result.wrongAnswers = wrongAnswers
-      console.log(result)
       res.send(result)
     }
     checkAnswers(similarQuestions, userAnswer)
