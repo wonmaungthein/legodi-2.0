@@ -20,6 +20,13 @@ exports.up = async (knex, Promise) => {
     .onDelete('CASCADE')
   })
 
+  await knex.schema.createTable('weegie', table => {
+    table.increments('question_id')
+    table.string('title').notNullable()
+    table.string('answer').notNullable()
+  })
+ 
+
   await knex.schema.createTable('articles', table => {
     table.increments('article_id')
     table.string('title').notNullable()

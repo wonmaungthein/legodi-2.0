@@ -1,20 +1,47 @@
-// const WeegieQuestion = require('../models/WeegieQuestions')
-// const ObjectId = require('mongodb').ObjectID
+const knex = require("./connection");
 
-// addNewQuestion = (query, callback) => {
-//   WeegieQuestion.create(query, callback)
-// }
-// findSingleQuestion = (questionId, callback) => {
-//   WeegieQuestion.findById(questionId, callback)
-// }
-// findQuestions = (query, callback) => {
-//   WeegieQuestion.find(query, callback)
-// }
-// removeQuestions = (questionId, callback) => {
-//   WeegieQuestion.remove({ '_id': ObjectId(questionId) }, callback)
-// }
-// editQuestions = (questionId, query, callback) => {
-//   WeegieQuestion.update({ '_id': ObjectId(questionId) }, query, {upsert: true}, callback)
-// }
+function getQuestions() {
+  return knex.select().from("weegie");
+}
 
-// module.exports = {addNewQuestion, findQuestions, removeQuestions, editQuestions, findSingleQuestion}
+function getQuestion(id) {
+  return knex
+    .select()
+    .from("weegie")
+    .where("question_id", "=", id);
+}
+
+function editQuestion(questionId,data) {
+  console.log('data knexs')
+  console.log(data)
+  return knex
+    .table("weegie")
+    .where("question_id", "=", questionId)
+    .update({
+      // question_id: data.questionId,
+      title: data.title,
+      answer: data.answer
+    });
+}
+
+function addQuestion(data) {
+  return knex.table("weegie").insert({
+    question_id: data.questionId,
+    title: data.title,
+    answer: data.answer
+  });
+}
+
+function deleteQuestion(questionId) {
+  return knex.table('weegie')
+    .where('question_id', '=', questionId)
+    .del()
+};
+
+module.exports = {
+  getQuestions,
+  getQuestion,
+  editQuestion,
+  addQuestion,
+  deleteQuestion
+};
