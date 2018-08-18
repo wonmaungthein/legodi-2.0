@@ -1,57 +1,63 @@
-const user = require('../../dbClients/usersDB')
+const users = require('../../dbClients/usersDB')
 
 describe('CRUD /users', () => {
-    it('should get list of users and respond with 200', async () => {
+    it('should get list of users and respond with 200', () => {
         const result = [
             {
-                full_name: 'Mohammed Dwina',
-                email: 'dwinatech@hotmail.com',
-                password: 1234
+                "email": "dwinatech@hotmail.com",
+                "full_name": "Mohammed Dwina",
+                "password": "1234", "user_id": 1
             },
             {
-                full_name: 'Khaled',
-                email: 'khaled@hotmail.com',
-                password: 1234
+                "email": "khaled@hotmail.com",
+                "full_name": "Khaled", "password": "1234",
+                "user_id": 2
             },
+
             {
-                full_name: 'Jason',
-                email: 'jason@hotmail.com',
-                password: 1234
-            },
-            {
-                full_name: 'Won',
-                email: 'won@hotmail.com',
-                password: 1234
+                "email": "jason@hotmail.com",
+                "full_name": "Jason",
+                "password": "1234",
+                "user_id": 3
+            }, {
+                "email": "won@hotmail.com",
+                "full_name": "Won",
+                "password": "1234",
+                "user_id": 4
             }
         ]
-        const response = await user.getUsers();
-        expect(response).toEqual(result)
+        users.getUsers().then(response => {
+            expect(response).toEqual(result)
+        })
     })
 
-    it('should add new user and return number of inserted row', async () => {
+    it('should add new user and return number of inserted row', () => {
         const data = {
-            full_name: 'Mohammed Dwina',
+            fullName: 'Mohammed Dwina',
             email: 'dwinatech@hotmail.com',
             password: 1234
         }
-        const response = await language.addUser(data);
-        expect(response.rowCount).toEqual(1)
+        users.addUser(data).then(response => {
+            expect(response.rowCount).toEqual(1)
+        })
     })
 
     it('should edit user and return number of edited row', async () => {
         const data = {
-            userId: 1,
-            full_name: 'Mohammed Dwina',
+            userId: 3,
+            fullName: 'Mohammed Dwina',
             emaill: 'dwinatech@hotmail.com',
             password: 12345
         }
-        const response = await language.editUser(data)
-        expect(response).toEqual(1)
+        users.editUser(data).then(response => {
+            expect(response).toEqual(1)
+        })
     })
 
     it('should delete user and return number of deleted row', async () => {
-        const userId = 'en'
-        const response = await language.deleteUser(languageId);
-        expect(response).toEqual(1)
+        const userId = 4
+        users.deleteUser(userId).then(response => {
+            expect(response).toEqual(1)
+        })
     })
 })
