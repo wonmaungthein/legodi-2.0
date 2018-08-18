@@ -8,14 +8,11 @@ const flash = require('connect-flash')
 const session = require('express-session')
 const passport = require('passport')
 const cors = require('cors')
-//const router = require('./routes/api')
 const index = require('./routes/index')
-const language = require('./routes/api/languages')
-// const adminArticles = require('./routes/admin/articles/articles')
-// const adminCategories = require('./routes/admin/categories/categories')
-//const autentication = require('./routes/admin/authentication/login')
-// const api = require('./routes/api')
-const weegie = require('./routes/api/weegie')
+const languageApi = require('./routes/api/languages')
+const weegieApi = require('./routes/api/weegie')
+const weegieAdmin = require('./routes/admin/weegie')
+
 const fileUpload = require('express-fileupload')
 
 const app = express()
@@ -80,8 +77,9 @@ app.use(function (req, res, next) {
 })
 
 app.use('/', index)
-app.use('/api/languages', language)
-app.use('/api/weegie', weegie)
+app.use('/api/languages', languageApi)
+app.use('/api/weegie', weegieApi)
+app.use('/admin/weegie', weegieAdmin)
 
 
 // catch 404 and forward to error handler
