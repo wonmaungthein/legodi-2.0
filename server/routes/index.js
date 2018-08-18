@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-const articleClient = require('../dbClients/articlesDB')
 
 var ensureAuthenticated = (req, res, next) => {
   if (req.isAuthenticated()) {
@@ -14,17 +13,6 @@ var ensureAuthenticated = (req, res, next) => {
 
 // Get Homepage
 router.get('/', ensureAuthenticated, (req, res, next) => {
-  // const callback = (error, articles) => {
-  //   if (error) {
-  //     next(error)
-  //   } else {
-  //     res.render('articles-list', {
-  //       articles: articles,
-  //       home: 'homeNav'
-  //     })
-  //   }
-  // }
-  // articleClient.findArticles({}, callback)
   res.render('index')
 })
 
