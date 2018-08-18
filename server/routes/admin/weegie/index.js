@@ -40,19 +40,51 @@ router.post("/questions/add", async (req, res) => {
 });
 
 router.get("/questions/edit", async (req, res) => {
+  try {
+    const data = await db.getQuestions();
+    res.render("weegie-table-edit", { data });
+  } catch (error) {
+    res.render("error", { error });
+  }
+});
+
+router.get("/questions/delete/:questionId", async (req, res) => {
+  const { questionId } = req.params;
+  try {
+    await db.deleteQuestion(questionId);
+    res.redirect("/admin/weegie/questions/edit");
+  } catch (error) {
+    res.render("error", { error });
+  }
+});
+
+router.get("/questions/edit/:questionId", async (req, res) => {
+  const { questionId } = req.params;
+  try {
+    const question = await db.getQuestion(questionId);
+    const data = question[0];
+    res.render("weegie-add", { data });
+  } catch (error) {
+    res.render("error", { error });
+  }
+});
+
+router.post("/questions/edit/:questionId", async (req, res) => {
+    const { questionId } = req.params;
+    const { body } = req;
     try {
-      const data = await db.getQuestions();
-      res.render("weegie-table-edit", { data });
-    } catch (error) {
-      res.render("error", { error });
-    }
+        await db.editQuestion(questionId,body);
+        res.redirect("/admin/weegie/questions/edit");
+      } catch (error) {
+        res.render("error", { error });
+      }
   });
 
-  router.get("/questions/delete/:questionId", async (req, res) => {
-    const { questionId } = req.params;
+  router.post("/questions/add", async (req, res) => {
+    const { body } = req;
     try {
-        await db.deleteQuestion(questionId);
-        res.redirect("/admin/weegie/questions/edit");
+      await db.addQuestion(body);
+      res.redirect("/admin/weegie/questions/view");
     } catch (error) {
       res.render("error", { error });
     }
