@@ -1,0 +1,103 @@
+<div class="container">
+{{#if data}}
+<h3 class="text-success">Edit Weegie Question</h3>
+<form method="post" >
+
+ <div class="form-group has-success">
+    <label class="text-primary">
+       Question: 
+    </label>
+    <textarea rows="3" class="form-control form-control-success mb-4"  name="title">{{this.weegieData.title}}</textarea>
+  </div>
+
+  <div class="form-group has-success">
+    <label class="text-primary">
+         chooise a: 
+    </label>
+    <textarea rows="3" class="form-control form-control-success mb-4"  name="a">{{this.weegieData.choices.a}}</textarea>
+  </div>
+
+   <div class="form-group has-success">
+    <label class="text-primary">
+          chooise b:
+    </label>
+    <textarea rows="3" class="form-control form-control-success mb-4"  name="b">{{this.weegieData.choices.b}}</textarea>
+  </div>
+
+   <div class="form-group has-success">
+    <label class="text-success">
+      <h3 class="text-primary"> chooise c: 
+    </label>
+    <textarea rows="3" class="form-control form-control-success mb-4"  name="c">{{this.weegieData.choices.c}}</textarea>
+  </div>
+
+   <div class="form-group has-success">
+    <label class="text-primary"> chooise d: 
+    </label>
+    <textarea rows="3" class="form-control form-control-success mb-4"  name="d">{{this.weegieData.choices.d}}</textarea>
+  </div>
+
+  <div class="form-group has-success">
+    <label class="text-primary">
+         answer<span class="text-danger">(write the correct choice letter: a,b,c,d):</span> 
+    </label>
+    <textarea rows="3" class="form-control form-control-success mb-4"  name="answer">{{this.weegieData.answer}}</textarea>
+  </div>
+
+    <button class="btn btn-lg btn-danger" type="submit">Edit Question</button>
+   
+</form>
+{{else}}
+<h3 class="text-success">Add a New Weegie Question</h3>
+<form method="post">
+ <div class="form-group has-success">
+    <label class="text-primary">
+         Question:
+    </label>
+    <textarea rows="3" class="form-control form-control-success mb-4"  name="title"></textarea>
+  </div>
+ <div class="form-group has-success">
+    <label class="text-primary">
+         Question id:
+    </label>
+    <textarea rows="3" class="form-control form-control-success mb-4"  name="questionId"></textarea>
+  </div>
+  <div class="form-group has-success">
+    <label class="text-primary">
+         chooise a: 
+    </label>
+    <textarea rows="3" class="form-control form-control-success mb-4" ></textarea>
+  </div>
+
+   <div class="form-group has-success">
+    <label class="text-primary">
+        chooise b:
+    </label>
+    <textarea rows="3" class="form-control form-control-success mb-4" ></textarea>
+  </div>
+
+   <div class="form-group has-success">
+    <label class="text-primary">
+         chooise c: 
+    </label>
+    <textarea rows="3" class="form-control form-control-success mb-4" ></textarea>
+  </div>
+
+   <div class="form-group has-success">
+    <label class="text-primary"> chooise d:
+    </label>
+    <textarea rows="3" class="form-control form-control-success mb-4"  ></textarea>
+  </div>
+
+  <div class="form-group has-success">
+    <label class="text-primary">
+    answer<span class="text-danger">(write the correct choice letter: a,b,c,d):</span> 
+    </label>
+    <textarea rows="3" class="form-control form-control-success mb-4"  name="answer"></textarea>
+  </div>
+
+    <button class="btn btn-lg btn-danger" type="submit">Add New Question</button>
+   
+</form>
+{{/if}}
+</div>
