@@ -9,9 +9,19 @@ describe('CRUD /users', () => {
             .expect(200)
     })
 
+    it('should respond with 200', () => {
+        return request(users)
+            .get('/admin/users/email/?email=dwinatech@hotmail.com')
+            .set('Accept', 'application/json')
+            .expect(200)
+            .then(response => {
+                expect(response.statusCode).toEqual(200)
+            })
+    })
+
     it('should add new user and respond with value equal true', () => {
         const data = {
-            full_name: 'Mohammed Dwina',
+            fullName: 'Mohammed Dwina',
             email: 'dwinatech@hotmail.com',
             password: 1234
         }
@@ -28,7 +38,7 @@ describe('CRUD /users', () => {
     it('should edit user and respond with value equal true', () => {
         const data = {
             userId: 1,
-            full_name: 'Mohammed Dwina',
+            fullName: 'Mohammed Dwina',
             email: 'dwinatech@hotmail.com',
             password: 12345
         }
