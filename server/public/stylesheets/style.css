@@ -165,6 +165,12 @@ button,
   color:red;
   cursor: pointer;
  }
+ .weegie-question h3{
+   font-weight: bold
+ }
+ .weegie-question h4{
+  color: #3c3f41
+}
 @media (min-width: 680px) {
   .legodi-menu {
     max-width: 30%;
