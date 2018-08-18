@@ -10,11 +10,12 @@ const passport = require('passport')
 const cors = require('cors')
 //const router = require('./routes/api')
 const index = require('./routes/index')
-const language = require('./routes/admin/languages')
+const language = require('./routes/api/languages')
 // const adminArticles = require('./routes/admin/articles/articles')
 // const adminCategories = require('./routes/admin/categories/categories')
 //const autentication = require('./routes/admin/authentication/login')
-const weegie = require('./routes/admin/weegie/weegie')
+// const api = require('./routes/api')
+const weegie = require('./routes/api/weegie')
 const fileUpload = require('express-fileupload')
 
 const app = express()
@@ -79,13 +80,9 @@ app.use(function (req, res, next) {
 })
 
 app.use('/', index)
-// .use('/admin/articles', ensureAuthenticated, adminArticles)
-//  app.use('/admin/categories', ensureAuthenticated, adminCategories)
-//app.use('/api', router)
 app.use('/api/languages', language)
 app.use('/api/weegie', weegie)
-//app.use('/users', autentication)
-// app.use('/admin/weegie', weegie)
+
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
