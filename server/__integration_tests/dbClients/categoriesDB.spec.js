@@ -1,49 +1,49 @@
-const language = require('../../dbClients/languageDB')
+const Category = require('../../dbClients/categoriesDB')
 
-describe('CRUD /languages', () => {
-    it('should respond with 200', async () => {
-        const result = [
-            {
-                "language_id": "en",
-                "long_name": "english",
-                "original_name": "english",
-                "short_name": "en"
-            },
-            {
-                "language_id": "ar",
-                "long_name": "arabic",
-                "original_name": "عربي",
-                "short_name": "ar"
-            }]
-        const response = await language.getLanguages();
-        expect(response).toEqual(result)
-    })
+describe('CRUD /categories', () => {
+  it('should respond with 200', async () => {
+    const result = [
+      {
+        'category_name': 'asylum',
+        'short_description': 'english hi ',
+        'description': 'english hih i',
+        'status': 'pending',
+        'icon': 'null',
+        'language_id': 'en'
+      }]
+    const response = await Category.getCategories()
+    expect(response).toEqual(result)
+  })
 
-    it('should respond with 200', async () => {
-        const data = {
-            languageId: 'in',
-            shortName: 'in',
-            longName: 'indian',
-            originalName: 'indian'
-        }
-        const response = await language.addLanguage(data);
-        expect(response.rowCount).toEqual(1)
-    })
+  it('should respond with 200', async () => {
+    const data = {
+      'category_name': 'asylum',
+      'short_description': 'english hi ',
+      'description': 'english hih i',
+      'status': 'pending',
+      'icon': 'null',
+      'language_id': 'en'
+    }
+    const response = await Category.addCategory(data)
+    expect(response.rowCount).toEqual(1)
+  })
 
-    it('should respond with 200', async () => {
-        const data = {
-            languageId: 'en',
-            shortName: 'ar',
-            longName: 'arabic',
-            originalName: 'arabic'
-        }
-        const response = await language.editLanguage(data)
-        expect(response).toEqual(1)
-    })
+  it('should respond with 200', async () => {
+    const data = {
+      'categoryName': 'asylum',
+      'shortDescription': 'english hi ',
+      'description': 'english hih i',
+      'status': 'pending',
+      'icon': 'null',
+      'language_id': 'en'
+    }
+    const response = await Category.editCategory(data)
+    expect(response).toEqual(1)
+  })
 
-    it('should respond with 200', async () => {
-        const languageId = 'en'
-        const response = await language.deleteLanguage(languageId);
-        expect(response).toEqual(1)
-    })
+  it('should respond with 200', async () => {
+    const CategoryId = '19'
+    const response = await Category.deleteCategory(CategoryId)
+    expect(response).toEqual(1)
+  })
 })
