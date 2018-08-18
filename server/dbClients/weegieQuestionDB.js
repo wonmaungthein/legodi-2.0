@@ -21,8 +21,17 @@ function editQuestion(data) {
     })
 };
 
+function addQuestion(data) {
+  return knex.table('weegie').insert({
+    question_id: data.questionId,
+    title: data.title,
+    answer: data.answer,
+  });
+};
+
 module.exports = {
   getQuestions,
   getQuestion,
-  editQuestion
+  editQuestion,
+  addQuestion
 };
