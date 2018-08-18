@@ -13,11 +13,11 @@ function getQuestion(id) {
 
 function editQuestion(data) {
   return knex.table('weegie')
-    .where('question_id', '=', data.question_id)
+    .where('question_id', '=', data.questionId)
     .update({
-      question_id: data.question_id,
+      question_id: data.questionId,
       title: data.title,
-      answer: data.anser,
+      answer: data.answer,
     })
 };
 
