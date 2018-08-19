@@ -1,57 +1,82 @@
-const express = require('express')
-const db = require('../../../dbClients/usersDB')
+const express = require("express");
+const db = require("../../../dbClients/usersDB");
 
-const router = express.Router()
+const router = express.Router();
 
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => await res.render("user-menu"));
+
+router.get("/view", async (req, res) => {
   try {
-    const response = await db.getUsers()
-    res.status(200).json({ success: true, response })
+    const data = await db.getUsers();
+    // res.json(data)
+    res.render("user-table-view", { data });
   } catch (error) {
-    res.status(502).json({ success: false, error })
+    res.render("error", { error });
   }
-})
+});
 
-router.get('/email', async (req, res) => {
-  const { email } = req.query
+router.get("/view/:userId", async (req, res) => {
+  const { userId } = req.params;
   try {
-    const response = await db.getUserByEmail(email)
-    res.status(200).json({ success: true, response })
+    const data = await db.getUserById(userId);
+    res.render("user-view", { data:data[0] });
   } catch (error) {
-    res.status(502).json({ success: false, error })
+    res.render("error", { error });
   }
-})
+});
 
-router.post('/', async (req, res) => {
-  const data = req.body
-  console.log(data)
+router.get("/add", async (req, res) => await res.render("user-add"));
 
+
+  router.post("/add", async (req, res) => {
+    const { body } = req;
+    try {
+      await db.addUser(body);
+      res.redirect("/admin/users/view");
+    } catch (error) {
+      res.render("error", { error });
+    }
+  });
+
+  router.get("/edit", async (req, res) => {
+    try {
+      const data = await db.getUsers();
+      res.render("user-table-edit", { data });
+    } catch (error) {
+      res.render("error", { error });
+    }
+  });
+
+router.get("/edit/:userId", async (req, res) => {
+   const { userId } = req.params;
+   const user = await db.getUserById(userId);
   try {
-    await db.addUser(data)
-    res.status(200).json({ success: true })
+    const data = await db.getUsers();
+    res.render("user-add", { data:user[0] });
   } catch (error) {
-    res.status(502).json({ success: false, error })
+    res.render("error", { error });
   }
-})
+});
 
-router.put('/', async (req, res) => {
-  const data = req.body
+router.post("/edit/:userId", async (req, res) => {
+    const { userId } = req.params;
+    const { body } = req;
+    try {
+        await db.editUser(userId,body);
+        res.redirect("/admin/users/edit");
+      } catch (error) {
+        res.render("error", { error });
+      }
+  });
+
+router.get("/delete/:userId", async (req, res) => {
+  const { userId } = req.params;
   try {
-    await db.editUser(data)
-    res.status(200).json({ success: true })
+    await db.deleteUser(userId);
+    res.redirect("/admin/users/edit");
   } catch (error) {
-    res.status(502).json({ success: false, error })
+    res.render("error", { error });
   }
-})
+});
 
-router.delete('/', async (req, res) => {
-  const { userId } = req.query
-  try {
-    await db.deleteUser(userId)
-    res.status(200).json({ success: true })
-  } catch (error) {
-    res.status(502).json({ success: false, error })
-  }
-})
-
-module.exports = router
+module.exports = router;

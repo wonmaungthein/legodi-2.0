@@ -3,6 +3,20 @@ body {
   background-color: rgb(219, 216, 201) !important;
   font-family: "Times New Roman", Times, serif;
 }
+#legodiNav .navbar-brand{
+  font-weight:bold; 
+  color:#6b9fd6;
+  font-size: 1.8em
+}
+#legodiNav .navbar-brand:hover{
+  color:#1a5ca3 
+}
+#legodiNav .nav-link{
+   font-size: 1.4em
+}
+#legodiNav .nav-link:hover{
+  color:#6b9fd6;
+}
 .admin-panel h3 {
   color: black;
   font-weight: bold;
@@ -151,11 +165,11 @@ button,
 .legodi-menu-header h2:last-child{
   color:black;
 }
-.admin-weegie table{
+.admin-legodi table{
   width:90%;
   margin:auto;
  }
- .admin-weegie table thead th{
+ .admin-legodi table thead th{
   text-align: center;
   background:#2ec0ec;
   font-weight: bold;
