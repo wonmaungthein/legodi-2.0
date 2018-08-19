@@ -1,6 +1,6 @@
 exports.up = async (knex, Promise) => {
   await knex.schema.createTable('languages', table => {
-    table.string('language_id').primary()
+    table.string('language_id').primary().defaultTo('en')
     table.string('short_name')
     table.string('long_name')
     table.string('original_name')
@@ -15,10 +15,17 @@ exports.up = async (knex, Promise) => {
     table.string('icon')
     table.string('language_id').defaultTo('en')
     table.foreign('language_id')
-    .references('language_id')
-    .inTable('languages')
-    .onDelete('CASCADE')
+      .references('language_id')
+      .inTable('languages')
+      .onDelete('CASCADE')
   })
+
+  await knex.schema.createTable('weegie', table => {
+    table.increments('question_id')
+    table.string('title').notNullable()
+    table.string('answer').notNullable()
+  })
+ 
 
   await knex.schema.createTable('articles', table => {
     table.increments('article_id')

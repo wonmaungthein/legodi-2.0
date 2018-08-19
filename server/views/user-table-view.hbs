@@ -1,0 +1,27 @@
+<div class="admin-legodi">
+    <table class="table bg-primary table-bordered  mt-4 pd-4">
+        <thead class="table ">
+            <tr class="text-center align-middle">
+                <th>#</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>View</th>
+            </tr>
+        </thead>
+        <tbody class="table bg-info text-white">
+            {{#each data}}
+            <tr>
+                <th scope="row" class="text-center align-middle">{{this.user_id}}</th>
+                <td class="text-center align-middle">{{this.full_name}}</td>
+                <td class="text-center align-middle">{{this.email}}</td>
+                <td class="text-center align-middle">
+                    <a href='view/{{this.user_id}}'>
+                       <button class="btn btn-sm eye"><i class="far fa-eye" ></i></button>                         
+                    </a>
+                </td>
+            </tr>
+            {{/each}}
+
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,55 @@
+<div class="container">
+{{#if data}}
+<h3 class="text-success">Edit Language</h3>
+<form method="post">
+   <div class="form-group has-success">
+    <label class="text-primary">
+         Original Name :
+    </label>
+    <textarea rows="3" class="form-control form-control-success mb-4"  name="original_name">{{data.original_name}}</textarea>
+  </div>
+   <div class="form-group has-success">
+    <label class="text-primary">
+         Long Name:
+    </label>
+    <textarea rows="3" class="form-control form-control-success mb-4"  name="long_name">{{data.long_name}}</textarea>
+  </div>
+   <div class="form-group has-success">
+    <label class="text-primary">
+         Short Name:
+    </label>
+    <textarea rows="3" class="form-control form-control-success mb-4"  name="short_name">{{data.short_name}}</textarea>
+  </div>
+    <button class="btn btn-lg btn-danger" type="submit">Submit</button>
+</form>
+{{else}}
+<h3 class="text-success">Add Language</h3>
+<form method="post">
+ <div class="form-group has-success">
+    <label class="text-primary">
+         Language Id:
+    </label>
+    <textarea rows="3" class="form-control form-control-success mb-4"  name="language_id"></textarea>
+  </div>
+   <div class="form-group has-success">
+    <label class="text-primary">
+         Original Name :
+    </label>
+    <textarea rows="3" class="form-control form-control-success mb-4"  name="original_name"></textarea>
+  </div>
+   <div class="form-group has-success">
+    <label class="text-primary">
+         Long Name:
+    </label>
+    <textarea rows="3" class="form-control form-control-success mb-4"  name="long_name"></textarea>
+  </div>
+   <div class="form-group has-success">
+    <label class="text-primary">
+         Short Name:
+    </label>
+    <textarea rows="3" class="form-control form-control-success mb-4"  name="short_name"></textarea>
+  </div>
+    <button class="btn btn-lg btn-danger" type="submit">Submit</button>
+</form>
+{{/if}}
+</div>
