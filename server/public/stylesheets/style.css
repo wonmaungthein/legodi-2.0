@@ -151,11 +151,11 @@ button,
 .legodi-menu-header h2:last-child{
   color:black;
 }
-.admin-weegie table{
+.admin-legodi table{
   width:90%;
   margin:auto;
  }
- .admin-weegie table thead th{
+ .admin-legodi table thead th{
   text-align: center;
   background:#2ec0ec;
   font-weight: bold;
