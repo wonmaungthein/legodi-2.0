@@ -12,17 +12,11 @@ const index = require('./routes/index')
 const languageApi = require('./routes/api/languages')
 const weegieApi = require('./routes/api/weegie')
 const weegieAdmin = require('./routes/admin/weegie')
-<<<<<<< HEAD
-const fileUpload = require('express-fileupload')
-const users = require('./routes/admin/users')
-const categories = require('./routes/admin/categories')
-=======
 const languageAdmin = require('./routes/admin/language')
 const usersApi = require('./routes/api/users')
 const usersAdmin = require('./routes/admin/users')
 
 const fileUpload = require('express-fileupload')
->>>>>>> caa523b923bb26f87616e46cc39ff74e90cceee7
 
 const app = express()
 app.use(cors())
