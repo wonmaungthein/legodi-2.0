@@ -5,22 +5,32 @@ function getLanguages() {
 };
 
 function addLanguage(data) {
+  console.log('dd data')
+  console.log(data)
   return knex.table('languages').insert({
-    language_id: data.languageId,
-    long_name: data.longName,
-    short_name: data.shortName,
-    original_name: data.originalName
+    language_id: data.language_id,
+    long_name: data.long_name,
+    short_name: data.short_name,
+    original_name: data.original_name
   });
 };
 
-function editLanguage(data) {
+function getLanguage(id) {
+  return knex
+    .select()
+    .from("languages")
+    .where("language_id", "=", id);
+}
+
+function editLanguage(id,data) {
+  console.log(data)
   return knex.table('languages')
-    .where('language_id', '=', data.languageId)
+    .where('language_id', '=', id)
     .update({
-      language_id: data.languageId,
-      long_name: data.longName,
-      short_name: data.shortName,
-      original_name: data.originalName
+      language_id: data.language_id,
+      long_name: data.long_name,
+      short_name: data.short_name,
+      original_name: data.original_name
     })
 };
 
@@ -34,5 +44,6 @@ module.exports = {
   deleteLanguage,
   editLanguage,
   getLanguages,
-  addLanguage
+  addLanguage,
+  getLanguage
 }
