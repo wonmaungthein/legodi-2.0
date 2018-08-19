@@ -12,6 +12,7 @@ const index = require('./routes/index')
 const languageApi = require('./routes/api/languages')
 const weegieApi = require('./routes/api/weegie')
 const weegieAdmin = require('./routes/admin/weegie')
+const languageAdmin = require('./routes/admin/language')
 
 const fileUpload = require('express-fileupload')
 const users = require('./routes/admin/users')
@@ -82,7 +83,7 @@ app.use('/api/languages', languageApi)
 app.use('/api/weegie', weegieApi)
 app.use('/admin/weegie', weegieAdmin)
 app.use('/admin/users', users)
-
+app.use('/admin/language', languageAdmin)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
