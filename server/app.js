@@ -9,13 +9,13 @@ const session = require('express-session')
 const passport = require('passport')
 const cors = require('cors')
 const index = require('./routes/index')
-const languageApi = require('./routes/api/languages')
 const weegieApi = require('./routes/api/weegie')
 const weegieAdmin = require('./routes/admin/weegie')
-const languageAdmin = require('./routes/admin/language')
+const languagesAdmin = require('./routes/admin/language')
+const languagesApi = require('./routes/api/languages')
 const usersApi = require('./routes/api/users')
 const usersAdmin = require('./routes/admin/users')
-const categories= require('./routes/admin/categories')
+const categoriesApi= require('./routes/api/categories')
 
 
 const fileUpload = require('express-fileupload')
@@ -82,12 +82,12 @@ app.use(function (req, res, next) {
 })
 
 app.use('/', index)
-app.use('/api/languages', languageApi)
-app.use('/api/categories', categories)
+app.use('/api/languages', languagesApi)
+app.use('/admin/language', languagesAdmin)
+app.use('/api/categories', categoriesApi)
 app.use('/api/weegie', weegieApi)
 app.use('/api/users', usersApi)
 app.use('/admin/weegie', weegieAdmin)
-app.use('/admin/language', languageAdmin)
 app.use('/admin/users', usersAdmin)
 
 // catch 404 and forward to error handler
