@@ -15,6 +15,8 @@ const weegieAdmin = require('./routes/admin/weegie')
 const languageAdmin = require('./routes/admin/language')
 const usersApi = require('./routes/api/users')
 const usersAdmin = require('./routes/admin/users')
+const categories= require('./routes/admin/categories')
+
 
 const fileUpload = require('express-fileupload')
 

@@ -83,11 +83,6 @@ module.exports = {
   deleteUser,
   editUser,
   getUsers,
-<<<<<<< HEAD
-  addUser
-}
-=======
   addUser,
   getUserById
 };
->>>>>>> caa523b923bb26f87616e46cc39ff74e90cceee7
