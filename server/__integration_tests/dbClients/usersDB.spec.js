@@ -1,4 +1,4 @@
-const users = require('../../dbClients/usersDB')
+qconst users = require('../../dbClients/usersDB')
 
 describe('CRUD /users', () => {
     it('should get list of users and respond with 200', () => {

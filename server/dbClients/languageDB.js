@@ -1,7 +1,7 @@
-const knex = require("./connection");
+const knex = require('./connection')
 
-function getLanguages() {
-  return knex.select().from("languages");
+function getLanguages () {
+  return knex.select().from('languages')
 };
 
 function addLanguage(data) {
@@ -34,7 +34,7 @@ function editLanguage(id,data) {
     })
 };
 
-function deleteLanguage(languageId) {
+function deleteLanguage (languageId) {
   return knex.table('languages')
     .where('language_id', '=', languageId)
     .del()

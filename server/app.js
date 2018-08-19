@@ -15,6 +15,8 @@ const weegieAdmin = require('./routes/admin/weegie')
 const languageAdmin = require('./routes/admin/language')
 const usersApi = require('./routes/api/users')
 const usersAdmin = require('./routes/admin/users')
+const categories= require('./routes/admin/categories')
+
 
 const fileUpload = require('express-fileupload')
 
@@ -81,6 +83,7 @@ app.use(function (req, res, next) {
 
 app.use('/', index)
 app.use('/api/languages', languageApi)
+app.use('/api/categories', categories)
 app.use('/api/weegie', weegieApi)
 app.use('/api/users', usersApi)
 app.use('/admin/weegie', weegieAdmin)
