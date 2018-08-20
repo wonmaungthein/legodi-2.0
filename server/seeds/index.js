@@ -1,33 +1,6 @@
 exports.seed = async (knex, Promise) => {
   // Deletes ALL existing entries
 
-  // await knex('articles').del().then(function () {
-  //   // Inserts seed entries
-  //   return knex('articles').insert([
-  //     {
-  //       title: 'Asylum 101',
-  //       category_id: 1,
-  //       description: 'Asylum Process in UK bla bla bla',
-  //       status: 'approved',
-  //       language_id: 'en'
-  //     },
-  //     {
-  //       category_name: 'Welcome',
-  //       short_description: 'Welcome to Glasgow',
-  //       description: 'Welcome to Glasgow',
-  //       status: 'approved',
-  //       language_id: 'en'
-  //     },
-  //     {
-  //       category_name: 'اللجوء',
-  //       short_description: 'لجوء معلومات  كتيرة جداا',
-  //       description: 'لاجيء تعبان طالع دينه واسمه خالد',
-  //       status: 'approved',
-  //       language_id: 'ar'
-  //     }
-  //   ])
-  // })
-
   await knex('languages').del().then(() => {
     return knex('languages').insert([
       {
@@ -67,6 +40,33 @@ exports.seed = async (knex, Promise) => {
         description: 'لاجيء تعبان طالع دينه واسمه خالد',
         status: 'approved',
         language_id: 'ar'
+      }
+    ])
+  })
+
+  await knex('articles').del().then(function () {
+    // Inserts seed entries
+    return knex('articles').insert([
+      {
+        title: 'Asylum 101',
+        category_id: 1,
+        short_content: 'Asylum Process in UK bla bla bla',
+        full_content: 'Asylum Process in UK bla bla bla',
+        status: 'approved',
+      },
+      {
+        title: 'Asylum 101',
+        category_id: 2,
+        short_content: 'Welcome to Glasgow',
+        full_content: 'Welcome to Glasgow',
+        status: 'approved',
+      },
+      {
+        title: 'Asylum 101',
+        category_id: 3,
+        short_content: 'لجوء معلومات  كتيرة جداا',
+        full_content: 'لاجيء تعبان طالع دينه واسمه خالد',
+        status: 'approved',
       }
     ])
   })

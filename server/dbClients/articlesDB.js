@@ -1,30 +1,50 @@
-require('./connection')
-const Article = require('../models/Article')
-const ObjectId = require('mongodb').ObjectID
+const knex = require('./connection')
 
-const addArticle = (query, callback) => {
-  Article.create(query).then(callback)
-}
+function getArticles () {
+  return knex.select().from('articles')
+};
 
-const findArticles = (query, sucessCallBack) => {
-  Article.find(query).sort({ 'order': 1 }).populate('category').exec(sucessCallBack)
-}
-const findArticleById = (id, callback) => {
-  Article.findById(id).exec(callback)
+function getArticleById(id) {
+  return knex
+    .select()
+    .from("articles")
+    .where("article_id", "=", id);
 }
 
-const editArticle = (articleId, query, upsertOption, sucessCallBack) => {
-  Article.update({ '_id': ObjectId(articleId) }, query, { upsert: upsertOption }, sucessCallBack)
-}
+function addArticle (data) {
+  return knex.table('articles').insert({
+    image: data.image,
+    title: data.title,
+    status: data.status,
+    category_id: data.categoryId,
+    full_content: data.fullContent,
+    short_content: data.shortContent,
+  })
+};
 
-const removeArticle = (articleId, callback) => {
-  Article.remove({ '_id': ObjectId(articleId) }, callback)
-}
+function editArticle (articleId, data) {
+  return knex.table('articles')
+    .where('article_id', '=', articleId)
+    .update({
+      image: data.image,
+      title: data.title,
+      status: data.status,
+      category_id: data.categoryId,
+      full_content: data.fullContent,
+      short_content: data.shortContent,
+    })
+};
+
+function deleteArticle (articleId) {
+  return knex.table('articles')
+    .where('article_id', '=', articleId)
+    .del()
+};
 
 module.exports = {
+  getArticleById,
+  deleteArticle,
   addArticle,
-  findArticles,
-  findArticleById,
   editArticle,
-  removeArticle
+  getArticles
 }
