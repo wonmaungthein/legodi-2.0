@@ -1,9 +1,18 @@
 const config = require('../knexfile')[process.env.NODE_ENV || 'development']
 const knex = require('knex')(config)
-function getCategories () {
+
+function getCategories() {
   return knex.select().from('categories')
 };
-function addCategory (data) {
+
+
+const getCategoryByName = async (category_name) => {
+  const category = await knex('categories').where({ category_name }).first()
+
+  return category
+};
+
+function addCategory(data) {
   return knex.table('categories').insert({
     category_id: data.categoryId,
     category_name: data.categoryName,
@@ -15,7 +24,7 @@ function addCategory (data) {
   })
 };
 
-function editCategory (data) {
+function editCategory(data) {
   return knex.table('categories')
     .where('category_id', '=', data.categoryId)
     .update({
@@ -29,7 +38,7 @@ function editCategory (data) {
     })
 };
 
-function deleteCategory (categoryId) {
+function deleteCategory(categoryId) {
   return knex.table('categories')
     .where('category_id', '=', categoryId)
     .del()
@@ -39,5 +48,6 @@ module.exports = {
   getCategories,
   addCategory,
   editCategory,
-  deleteCategory
+  deleteCategory,
+  getCategoryByName
 }

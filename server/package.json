@@ -9,7 +9,10 @@
     "test": "npm run migrate && jest .",
     "migrate": "knex migrate:latest && knex seed:run",
     "create-migration": "knex migrate:make $1",
-    "create-seed": "knex seed:make $1"
+    "create-seed": "knex seed:make $1",
+    "rollback": "knex migrate:rollback",
+    "recreate-db": "npm run rollback && npm run migrate",
+    "ci-recreate-db": "npm run rollback && npm run migrate"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

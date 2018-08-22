@@ -4,10 +4,10 @@ const router = express.Router()
 router.get('/', async (req, res) => {
   try {
     const response = await db.getCategories()
-    res.status(200).json({ success: true, response })
+    res.status(200).json(response)
   } catch (error) {
     console.log(error)
-    res.status(502).json({ success: false, error })
+    res.status(502).json(error)
   }
 })
 router.post('/', async (req, res) => {
