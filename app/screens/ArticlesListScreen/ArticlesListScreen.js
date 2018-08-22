@@ -50,7 +50,6 @@ class ArticlesListScreen extends React.Component {
         <Text style={language === 'ar' ? styles.arabicTitle : styles.title} >{title}</Text>
         <Text style={language === 'ar' ? styles.arabicDescription : styles.description} >{description}</Text>
         {
-
           articles.map((article, i) => {
             const navigateToArticle = () => this.props.navigation.navigate('Article', {
               title: article.title,
@@ -80,9 +79,9 @@ class ArticlesListScreen extends React.Component {
       <ScrollView style={styles.container}>
         <View style={styles.layout}>
           {
-            this.props.articles.length > 0
-              ? this.renderArticlesListPage()
-              : <Text style={styles.title}>There are no articles in this category</Text>
+            // this.props.articles.length > 0
+            this.renderArticlesListPage()
+            // : <Text style={styles.title}>There are no articles in this category</Text>
           }
         </View>
       </ScrollView>

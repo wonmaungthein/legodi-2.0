@@ -12,8 +12,6 @@ function getQuestion(id) {
 }
 
 function editQuestion(questionId,data) {
-  console.log('data knexs')
-  console.log(data)
   return knex
     .table("weegie")
     .where("question_id", "=", questionId)
