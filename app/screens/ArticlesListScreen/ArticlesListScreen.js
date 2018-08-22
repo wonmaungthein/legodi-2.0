@@ -33,10 +33,8 @@ class ArticlesListScreen extends React.Component {
   };
 
   async componentDidMount () {
-    const categoryId = this.props.navigation.getParam('id', '123')
-    const { language } = this.props
-
-    this.props.listArticles(categoryId, language)
+    const categoryId = this.props.navigation.getParam('id')
+    this.props.listArticles(categoryId)
   }
 
   renderArticlesListPage = () => {
@@ -55,7 +53,7 @@ class ArticlesListScreen extends React.Component {
               title: article.title,
               language: language,
               image: article.articleImage,
-              description: article.fullContent
+              description: article.short_content || article.full_content
             })
 
             return (
@@ -63,8 +61,8 @@ class ArticlesListScreen extends React.Component {
                 key={i}
                 language={language}
                 title={article.title}
-                image={article.articleImage}
-                description={article.fullContent}
+                image={article.image}
+                description={article.full_content}
                 navigateToArticle={navigateToArticle}
               />
             )
@@ -96,7 +94,7 @@ const mapStateToProps = (state) => ({
 
 const dispatchToProps = dispatch => {
   return {
-    listArticles: (categoryId, language) => dispatch(fetchArticles(categoryId, language))
+    listArticles: (categoryId) => dispatch(fetchArticles(categoryId))
   }
 }
 

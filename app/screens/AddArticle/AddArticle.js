@@ -73,8 +73,7 @@ export default class AddArticle extends React.Component {
         ],
         { cancelable: false }
       )
-    }
-    else {
+    } else {
       Alert.alert(
         'Please check the form!',
         'Title, Content and Language are required.',
