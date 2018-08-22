@@ -1,6 +1,8 @@
 const express = require('express')
 const db = require('../../../dbClients/categoriesDB')
+
 const router = express.Router()
+
 router.get('/', async (req, res) => {
   try {
     const response = await db.getCategories()
@@ -10,6 +12,18 @@ router.get('/', async (req, res) => {
     res.status(502).json({ success: false, error })
   }
 })
+
+router.get('/:categoryId/articles', async (req, res) => {
+  const { categoryId } = req.params;
+  try {
+    const response = await db.getArticlesByCategoryId(categoryId)
+    res.status(200).json(response)
+  } catch (error) {
+    console.log(error)
+    res.status(502).json(error)
+  }
+})
+
 router.post('/', async (req, res) => {
   const data = req.body
   console.log(data)
@@ -44,4 +58,5 @@ router.delete('/', async (req, res) => {
     res.status(502).json({ success: false, error })
   }
 })
+
 module.exports = router
