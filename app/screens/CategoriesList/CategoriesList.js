@@ -14,38 +14,14 @@ class CategoriesList extends React.Component {
   renderCategories = () => {
     const language = this.props.language
     return this.props.categories.map((category, i) => {
-      if (language === 'ar') {
+      if (category) {
         return (
           <CategoriesIcon
             key={i}
             id={category._id}
             language={language}
-            iconName={category.title}
-            title={category.titleTranslation[language]}
-            description={category.arabicDescription}
-            navigation={this.props.onPressHandle}
-          />
-        )
-      } else if (language === 'am') {
-        return (
-          <CategoriesIcon
-            key={i}
-            category={category}
-            id={category._id}
-            iconName={category.title}
-            title={category.titleTranslation[language]}
-            description={category.amharngaDescription}
-            navigation={this.props.onPressHandle}
-          />
-        )
-      } else {
-        return (
-          <CategoriesIcon
-            key={i}
-            category={category}
-            id={category._id}
-            title={category.title}
-            iconName={category.title}
+            iconName={category.category_name}
+            title={category.category_name}
             description={category.description}
             navigation={this.props.onPressHandle}
           />

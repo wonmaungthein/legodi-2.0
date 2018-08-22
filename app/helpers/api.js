@@ -2,10 +2,10 @@ import axios from 'axios'
 import FormData from 'form-data'
 
 const instance = axios.create({
-  baseURL: 'http://legodi-server.herokuapp.com/api'
+  baseURL: 'http://localhost:3001/api'
 })
 
-export const getCategories = async (language = 'en') => instance.get(`/categories?language=${language}`)
+export const getCategories = async (language = 'en') => instance.get(`/categories/language?language=${language}`)
 
 export const getArticles = async (categoryId, language) => instance.get(`/categories/${categoryId}/?language=${language}`)
 
