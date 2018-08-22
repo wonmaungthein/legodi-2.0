@@ -1,10 +1,21 @@
 const express = require('express')
 const db = require('../../../dbClients/categoriesDB')
+
 const router = express.Router()
 
 router.get('/', async (req, res) => {
   try {
     const response = await db.getCategories()
+    res.status(200).json(response)
+  } catch (error) {
+    res.status(502).json(error)
+  }
+})
+
+router.get('/:categoryId/articles', async (req, res) => {
+  const { categoryId } = req.params;
+  try {
+    const response = await db.getArticlesByCategoryId(categoryId)
     res.status(200).json(response)
   } catch (error) {
     res.status(502).json(error)
@@ -51,4 +62,5 @@ router.delete('/', async (req, res) => {
     res.status(502).json({ success: false, error })
   }
 })
+
 module.exports = router

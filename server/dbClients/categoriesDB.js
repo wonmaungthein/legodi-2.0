@@ -5,12 +5,16 @@ const getCategories = () => {
   return knex.select().from('categories')
 };
 
+const getArticlesByCategoryId = (category_id) => {
+  return knex.select().from('articles').where({ category_id })
+};
+
 const getCategoryByName = async (category_name) => {
   const category = await knex('categories').where({ category_name }).first()
   return category
 };
 
-const getCategoryByLanguage= async (language_id) => {
+const getCategoryByLanguage = async (language_id) => {
   return knex('categories').where({ language_id })
 };
 
@@ -47,6 +51,7 @@ const deleteCategory = (categoryId) => {
 };
 
 module.exports = {
+  getArticlesByCategoryId,
   getCategoryByLanguage,
   getCategories,
   addCategory,
