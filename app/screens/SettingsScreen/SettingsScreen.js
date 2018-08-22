@@ -37,7 +37,6 @@ class SettingsScreen extends React.Component {
   }
 
   render () {
-    console.log(this.props.language)
     const {language} = this.props
     return (
       <View style={styles.container}>

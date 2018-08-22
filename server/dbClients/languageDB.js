@@ -5,8 +5,6 @@ function getLanguages () {
 };
 
 function addLanguage(data) {
-  console.log('dd data')
-  console.log(data)
   return knex.table('languages').insert({
     language_id: data.language_id,
     long_name: data.long_name,
@@ -23,7 +21,6 @@ function getLanguage(id) {
 }
 
 function editLanguage(id,data) {
-  console.log(data)
   return knex.table('languages')
     .where('language_id', '=', id)
     .update({

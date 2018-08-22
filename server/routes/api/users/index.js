@@ -24,8 +24,6 @@ router.get('/email', async (req, res) => {
 
 router.post('/', async (req, res) => {
     const data = req.body
-    console.log(data);
-    
     try {
         await db.addUser(data)
         res.status(200).json({ success: true })
