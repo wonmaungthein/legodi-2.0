@@ -3,49 +3,28 @@ import { ScrollView, View } from 'react-native'
 import CategoriesIcon from '../../components/CategoriesIcon/CategoriesIcon'
 import { connect } from 'react-redux'
 import { fetchCategories } from '../../redux/actions/categoriesActions'
+import { fetchLanguages } from '../../redux/actions/languagesActions'
 import styles from './CategoryListStyles'
 import PropTypes from 'prop-types'
 
 class CategoriesList extends React.Component {
   async componentDidMount () {
-    this.props.fetchCategories()
+    const language = 'en'
+    this.props.fetchCategories(language)
+    this.props.fetchLanguages()
   }
 
   renderCategories = () => {
     const language = this.props.language
     return this.props.categories.map((category, i) => {
-      if (language === 'ar') {
+      if (category) {
         return (
           <CategoriesIcon
             key={i}
-            id={category._id}
+            id={category.category_id}
             language={language}
-            iconName={category.title}
-            title={category.titleTranslation[language]}
-            description={category.arabicDescription}
-            navigation={this.props.onPressHandle}
-          />
-        )
-      } else if (language === 'am') {
-        return (
-          <CategoriesIcon
-            key={i}
-            category={category}
-            id={category._id}
-            iconName={category.title}
-            title={category.titleTranslation[language]}
-            description={category.amharngaDescription}
-            navigation={this.props.onPressHandle}
-          />
-        )
-      } else {
-        return (
-          <CategoriesIcon
-            key={i}
-            category={category}
-            id={category._id}
-            title={category.title}
-            iconName={category.title}
+            iconName={category.icon}
+            title={category.category_name}
             description={category.description}
             navigation={this.props.onPressHandle}
           />
@@ -67,8 +46,11 @@ class CategoriesList extends React.Component {
 
 const dispatchToProps = dispatch => {
   return {
-    fetchCategories: () => {
-      return dispatch(fetchCategories())
+    fetchCategories: (language) => {
+      return dispatch(fetchCategories(language))
+    },
+    fetchLanguages: () => {
+      return dispatch(fetchLanguages())
     }
   }
 }

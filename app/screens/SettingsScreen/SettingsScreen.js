@@ -1,6 +1,7 @@
 import React from 'react'
 import { Text, View, Picker } from 'react-native'
 import { connect } from 'react-redux'
+import { fetchCategories } from '../../redux/actions/categoriesActions'
 import { updateLanguage, updateCity } from '../../redux/actions/settingActions'
 import styles from './SettingStyles'
 import PropTypes from 'prop-types'
@@ -37,8 +38,8 @@ class SettingsScreen extends React.Component {
   }
 
   render () {
-    console.log(this.props.language)
     const {language} = this.props
+    const {languages} = this.props
     return (
       <View style={styles.container}>
         <View style={styles.container}>
@@ -50,11 +51,13 @@ class SettingsScreen extends React.Component {
 
             selectedValue={this.props.language}
             style={{ height: 50, width: 100 }}
-            onValueChange={itemValue => this.props.onLanguageChange(itemValue)}
+            onValueChange={itemValue => { this.props.onLanguageChange(itemValue); this.props.fetchCategories(itemValue) }}
           >
-            <Picker.Item label='English' value='en' />
-            <Picker.Item label='Arabic' value='ar' />
-            <Picker.Item label='Amharic' value='am' />
+            {
+              languages.map((language, value) => {
+                return <Picker.Item key={value} label={language.long_name} value={language.short_name} />
+              })
+            }
           </Picker>
         </View>
         <View style={styles.container}>
@@ -78,7 +81,8 @@ class SettingsScreen extends React.Component {
 const mapStateToProps = state => {
   return {
     language: state.Setting.language,
-    city: state.Setting.city
+    city: state.Setting.city,
+    languages: state.languages.languagesList
   }
 }
 
@@ -89,6 +93,9 @@ const dispatchToProps = dispatch => {
     },
     onCityChange: city => {
       dispatch(updateCity(city))
+    },
+    fetchCategories: (language) => {
+      return dispatch(fetchCategories(language))
     }
   }
 }
