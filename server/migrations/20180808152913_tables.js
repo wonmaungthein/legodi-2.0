@@ -30,7 +30,6 @@ exports.up = async (knex, Promise) => {
     table.string('d').notNullable()
     table.bool('visible').defaultTo(false)
   })
- 
 
   await knex.schema.createTable('articles', table => {
     table.increments('article_id')

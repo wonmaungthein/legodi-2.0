@@ -1,36 +1,36 @@
-const db = require('../../dbClients/categoriesDB');
+const db = require('../../dbClients/categoriesDB')
 
 const getIDs = async () => {
-    const categories = {
-        en: {
+  const categories = {
+    en: {
 
-        },
-        am: {
+    },
+    am: {
 
-        },
-        ar: {
+    },
+    ar: {
 
-        }
     }
+  }
 
-    categories.en.asylum = (await db.getCategoryByName('Asylum')).category_id
-    categories.am.asylum = (await db.getCategoryByName('ጥገኝነት')).category_id
-    categories.ar.asylum = (await db.getCategoryByName('اللجوء')).category_id
-    categories.en.welcome = (await db.getCategoryByName('Welcome')).category_id
-    categories.am.welcome = (await db.getCategoryByName('እንኳን ደህና መጣህ')).category_id
-    categories.ar.welcome = (await db.getCategoryByName('مرحبا')).category_id
+  categories.en.asylum = (await db.getCategoryByName('Asylum')).category_id
+  categories.am.asylum = (await db.getCategoryByName('ጥገኝነት')).category_id
+  categories.ar.asylum = (await db.getCategoryByName('اللجوء')).category_id
+  categories.en.welcome = (await db.getCategoryByName('Welcome')).category_id
+  categories.am.welcome = (await db.getCategoryByName('እንኳን ደህና መጣህ')).category_id
+  categories.ar.welcome = (await db.getCategoryByName('مرحبا')).category_id
 
-    return categories;
+  return categories
 }
 
 const generateArticles = async () => {
-    const categories = await getIDs();
-    return [
-        {
-            title: 'Persecution',
-            category_id: categories.en.asylum,
-            short_content: '',
-            full_content: `Persecution, in terms of claiming asylum, is serious, targeted mistreatment of an individual because of who they are, or what they do, or what people think they are or do.
+  const categories = await getIDs()
+  return [
+    {
+      title: 'Persecution',
+      category_id: categories.en.asylum,
+      short_content: '',
+      full_content: `Persecution, in terms of claiming asylum, is serious, targeted mistreatment of an individual because of who they are, or what they do, or what people think they are or do.
  
             The Refugee Convention itself does not define "persecution". The Refugee Convention is international law. It is translated into EU law as the Qualification Directive. This is part of UK law (though this is likely to change once the UK leaves the EU) under rules known as the Qualification Regulations. The definition of persecution in the Qualification Regulations (and any relevant case law) is what the Home Office should use to assess whether a person is at risk of persecution if removed from the UK.
             
@@ -38,13 +38,13 @@ const generateArticles = async () => {
             5.— (1) In deciding whether a person is a refugee an act of persecution must be:
             
             (a) sufficiently serious by its nature or repetition as to constitute a severe violation of a basic `,
-            status: 'approved',
-        },
-        {
-            title: 'Grounds for an asylum claim',
-            category_id: categories.en.asylum,
-            short_content: '',
-            full_content: `To qualify for refugee status, you need to show that the reasons for which you have been persecuted or will be persecuted come under one of the Refugee Convention grounds: reasons of race; religion; nationality; political opinion; or membership of a particular social group.
+      status: 'approved'
+    },
+    {
+      title: 'Grounds for an asylum claim',
+      category_id: categories.en.asylum,
+      short_content: '',
+      full_content: `To qualify for refugee status, you need to show that the reasons for which you have been persecuted or will be persecuted come under one of the Refugee Convention grounds: reasons of race; religion; nationality; political opinion; or membership of a particular social group.
 
             You do not need to specify or say in legal language which Refugee Convention grounds you are applying under. Your case may actually come under more than one of these grounds. You tell the Home Office your reasons for fleeing, and they then consider which grounds this comes under. If you feel you have been refused because they applied the wrong grounds, this could be challenged.
             
@@ -66,13 +66,13 @@ const generateArticles = async () => {
             
             The category of particular social group is particularly important when dealing with non-state actors of persecution (see below), because it can be argued by the Home Office that while a person may be at risk, it is not for a Refugee Convention reason; therefore the UK has no obligation to offer protection. This may include claims involving domestic violence, honour killings, and gang violence/blood feuds. 
                 `,
-            status: 'approved',
-        },
-        {
-            title: 'Well founded fear',
-            category_id: categories.en.asylum,
-            short_content: '',
-            full_content: `An asylum claim should be based on a "well-founded fear" of persecution if you were returned to your country of origin/country of residence. This means you do not need to show that the persecution would definitely happen, but that there is a real risk it could happen.
+      status: 'approved'
+    },
+    {
+      title: 'Well founded fear',
+      category_id: categories.en.asylum,
+      short_content: '',
+      full_content: `An asylum claim should be based on a "well-founded fear" of persecution if you were returned to your country of origin/country of residence. This means you do not need to show that the persecution would definitely happen, but that there is a real risk it could happen.
 
             Having been persecuted in the past does not necessarily mean you will get refugee status. You need to show there is a future risk.
             
@@ -87,13 +87,13 @@ const generateArticles = async () => {
             
             Are there witnesses to things that happened to you? Have you got documents that prove any part of your story? These might include arrest warrants, court documents, letters from friends/organisations showing you are in danger. Is there newspaper coverage of an event you are talking about? Are there human rights reports that show the situation in your country is like you say it is? 
                 `,
-            status: 'approved',
-        },
-        {
-            title: 'اللجوء في بريطانا',
-            category_id: categories.ar.asylum,
-            short_content: '',
-            full_content: `شرح لمراحل طلب اللجوء في بريطانيا 
+      status: 'approved'
+    },
+    {
+      title: 'اللجوء في بريطانا',
+      category_id: categories.ar.asylum,
+      short_content: '',
+      full_content: `شرح لمراحل طلب اللجوء في بريطانيا 
             طلب اللجوء: ماذا يحدث عندما أقوم بتقديم طلب؟
             سوف تمر بمراحل عديدة وسوف تحدث لك أشياء عديدة أثناء الفترة التى ينظر فيها فى طلبك. ولا تخضع كل طلبات اللجوء لنفس الإجراءات.
             
@@ -188,64 +188,64 @@ const generateArticles = async () => {
             ملء الإستمارة؛
             إبراز الوثائق التى طلب منك إحضارها؛ أو
             الحضور للمقابلة`,
-            status: 'approved',
-        },
-        {
-            title: 'Transport Museum',
-            category_id: categories.en.welcome,
-            short_content: `Welcome to Glasgow. I hope you enjoy living in our City. I enjoy going to the transport museum.
+      status: 'approved'
+    },
+    {
+      title: 'Transport Museum',
+      category_id: categories.en.welcome,
+      short_content: `Welcome to Glasgow. I hope you enjoy living in our City. I enjoy going to the transport museum.
             `,
-            full_content: `Welcome to Glasgow. I hope you enjoy living in our City. I enjoy going to the transport museum.
+      full_content: `Welcome to Glasgow. I hope you enjoy living in our City. I enjoy going to the transport museum.
  
             `,
-            status: 'approved',
-        },
-        {
-            title: 'Welcome to our Beautiful city',
-            category_id: categories.en.welcome,
-            short_content: `Welcome to Glasgow. Welcome to our beautiful city. We are so happy you are now part of our community and this is now your city too. The sun doesn't always shine, and it may rain quite a lot but the people are happy. Enjoy you new home :)
+      status: 'approved'
+    },
+    {
+      title: 'Welcome to our Beautiful city',
+      category_id: categories.en.welcome,
+      short_content: `Welcome to Glasgow. Welcome to our beautiful city. We are so happy you are now part of our community and this is now your city too. The sun doesn't always shine, and it may rain quite a lot but the people are happy. Enjoy you new home :)
             `,
-            full_content: `Welcome to Glasgow. Welcome to our beautiful city. We are so happy you are now part of our community and this is now your city too. The sun doesn't always shine, and it may rain quite a lot but the people are happy. Enjoy you new home :)
+      full_content: `Welcome to Glasgow. Welcome to our beautiful city. We are so happy you are now part of our community and this is now your city too. The sun doesn't always shine, and it may rain quite a lot but the people are happy. Enjoy you new home :)
             `,
-            status: 'approved',
-        },
-        {
-            title: 'Welcome to our Beautiful city',
-            category_id: categories.en.welcome,
-            short_content: `Hell, I hope you will find Glasgow full of wonder, hope & inspiration. I know at times a foreign land may seem short of these things but if you look, you will find them. They are all of you, just as everything in Glasgow. 
+      status: 'approved'
+    },
+    {
+      title: 'Welcome to our Beautiful city',
+      category_id: categories.en.welcome,
+      short_content: `Hell, I hope you will find Glasgow full of wonder, hope & inspiration. I know at times a foreign land may seem short of these things but if you look, you will find them. They are all of you, just as everything in Glasgow. 
             `,
-            full_content: `Hell, I hope you will find Glasgow full of wonder, hope & inspiration. I know at times a foreign land may seem short of these things but if you look, you will find them. They are all of you, just as everything in Glasgow. 
+      full_content: `Hell, I hope you will find Glasgow full of wonder, hope & inspiration. I know at times a foreign land may seem short of these things but if you look, you will find them. They are all of you, just as everything in Glasgow. 
             `,
-            status: 'approved',
-        },
-        {
-            title: 'Hope',
-            category_id: categories.en.welcome,
-            short_content: `Never give up ... Welcome to Glasgow. A new life awaits. A new adventure. Love, peace. Gayle McNicol 
+      status: 'approved'
+    },
+    {
+      title: 'Hope',
+      category_id: categories.en.welcome,
+      short_content: `Never give up ... Welcome to Glasgow. A new life awaits. A new adventure. Love, peace. Gayle McNicol 
             `,
-            full_content: `Never give up ... Welcome to Glasgow. A new life awaits. A new adventure. Love, peace. Gayle McNicol 
+      full_content: `Never give up ... Welcome to Glasgow. A new life awaits. A new adventure. Love, peace. Gayle McNicol 
             `,
-            status: 'approved',
-        },
-        {
-            title: 'متحف المواصلات',
-            category_id: categories.ar.welcome,
-            short_content: `مرحبا بك في جلاسجو! أتمنى أن تسمتع بمدينتنا. أنا أحب الذهاب لمتحف المواصلات. 
+      status: 'approved'
+    },
+    {
+      title: 'متحف المواصلات',
+      category_id: categories.ar.welcome,
+      short_content: `مرحبا بك في جلاسجو! أتمنى أن تسمتع بمدينتنا. أنا أحب الذهاب لمتحف المواصلات. 
             `,
-            full_content: `مرحبا بك في جلاسجو! أتمنى أن تسمتع بمدينتنا. أنا أحب الذهاب لمتحف المواصلات. 
+      full_content: `مرحبا بك في جلاسجو! أتمنى أن تسمتع بمدينتنا. أنا أحب الذهاب لمتحف المواصلات. 
             `,
-            status: 'approved',
-        },
-        {
-            title: 'جلاسجو الأمل',
-            category_id: categories.ar.welcome,
-            short_content: `أتمنى أن تجد جلاسجو مليئة بالدهشة والأمل والإلهام. أعلم أن مدينة غريبة قد تبدو خاوية من هذه الأشياء، لكن ابحث جيدا وستجدها. وعندما تجدها فهي لك، كما كل شيء آخر في مدينتِك جلاسجو.  
+      status: 'approved'
+    },
+    {
+      title: 'جلاسجو الأمل',
+      category_id: categories.ar.welcome,
+      short_content: `أتمنى أن تجد جلاسجو مليئة بالدهشة والأمل والإلهام. أعلم أن مدينة غريبة قد تبدو خاوية من هذه الأشياء، لكن ابحث جيدا وستجدها. وعندما تجدها فهي لك، كما كل شيء آخر في مدينتِك جلاسجو.  
             `,
-            full_content: `أتمنى أن تجد جلاسجو مليئة بالدهشة والأمل والإلهام. أعلم أن مدينة غريبة قد تبدو خاوية من هذه الأشياء، لكن ابحث جيدا وستجدها. وعندما تجدها فهي لك، كما كل شيء آخر في مدينتِك جلاسجو.  
+      full_content: `أتمنى أن تجد جلاسجو مليئة بالدهشة والأمل والإلهام. أعلم أن مدينة غريبة قد تبدو خاوية من هذه الأشياء، لكن ابحث جيدا وستجدها. وعندما تجدها فهي لك، كما كل شيء آخر في مدينتِك جلاسجو.  
             `,
-            status: 'approved',
-        }
-    ]
+      status: 'approved'
+    }
+  ]
 }
 
-module.exports = generateArticles;
+module.exports = generateArticles

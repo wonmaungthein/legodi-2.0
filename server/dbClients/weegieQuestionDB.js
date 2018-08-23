@@ -1,36 +1,36 @@
-const knex = require("./connection");
+const knex = require('./connection')
 
-function getQuestions() {
-  return knex.select().from("weegie");
+function getQuestions () {
+  return knex.select().from('weegie')
 }
 
-function getQuestion(id) {
+function getQuestion (id) {
   return knex
     .select()
-    .from("weegie")
-    .where("question_id", "=", id);
+    .from('weegie')
+    .where('question_id', '=', id)
 }
 
-function editQuestion(questionId,data) {
+function editQuestion (questionId, data) {
   return knex
-    .table("weegie")
-    .where("question_id", "=", questionId)
+    .table('weegie')
+    .where('question_id', '=', questionId)
     .update({
       // question_id: data.questionId,
       title: data.title,
       answer: data.answer
-    });
+    })
 }
 
-function addQuestion(data) {
-  return knex.table("weegie").insert({
+function addQuestion (data) {
+  return knex.table('weegie').insert({
     question_id: data.questionId,
     title: data.title,
     answer: data.answer
-  });
+  })
 }
 
-function deleteQuestion(questionId) {
+function deleteQuestion (questionId) {
   return knex.table('weegie')
     .where('question_id', '=', questionId)
     .del()
@@ -42,4 +42,4 @@ module.exports = {
   editQuestion,
   addQuestion,
   deleteQuestion
-};
+}

@@ -2,12 +2,12 @@
 import * as Types from './types'
 import * as api from '../../helpers/api'
 
-export const fetchCategories = () => {
+export const fetchCategories = (language) => {
   return async dispatch => {
     dispatch({ type: Types.FETCH_CATEGORIES })
 
     try {
-      const { data: categories } = await api.getCategories()
+      const { data: categories } = await api.getCategories(language)
 
       dispatch({
         type: Types.FETCH_CATEGORIES_SUCCESS,

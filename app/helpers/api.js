@@ -7,6 +7,8 @@ const instance = axios.create({
 
 export const getCategories = async (language = 'en') => instance.get(`/categories/language?language=${language}`)
 
+export const getLanguages = async () => instance.get('/languages')
+
 export const getArticles = async (categoryId) => instance.get(`/categories/${categoryId}/articles`)
 
 export const getWeegieQuestions = async () => instance.get('/weegie/quiz')
