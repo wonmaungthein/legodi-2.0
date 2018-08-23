@@ -24,6 +24,8 @@ exports.up = async (knex, Promise) => {
     table.increments('question_id')
     table.string('title').notNullable()
     table.string('answer').notNullable()
+    table.string('choices').notNullable()
+    table.bool('visible').defaultTo(false)
   })
  
 
