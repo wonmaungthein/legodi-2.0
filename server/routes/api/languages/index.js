@@ -6,39 +6,39 @@ const router = express.Router()
 router.get('/', async (req, res) => {
   try {
     const response = await db.getLanguages()
-    res.status(200).json({ success: true, response })
+    res.status(200).json(response)
   } catch (error) {
-    res.status(502).json({ success: false, error })
+    res.status(502).json(error)
   }
 })
 
 router.post('/', async (req, res) => {
   const data = req.body
   try {
-    await db.addLanguage(data)
-    res.status(200).json({ success: true })
+    const response = await db.addLanguage(data)
+    res.status(200).json(response)
   } catch (error) {
-    res.status(502).json({ success: false, error })
+    res.status(502).json(error)
   }
 })
 
 router.put('/', async (req, res) => {
   const data = req.body
   try {
-    await db.editLanguage(data)
-    res.status(200).json({ success: true })
+    const response = await db.editLanguage(data)
+    res.status(200).json(response)
   } catch (error) {
-    res.status(502).json({ success: false, error })
+    res.status(502).json(error)
   }
 })
 
 router.delete('/', async (req, res) => {
   const { languageId } = req.query
   try {
-    await db.deleteLanguage(languageId)
-    res.status(200).json({ success: true })
+    const response = await db.deleteLanguage(languageId)
+    res.status(200).json(response)
   } catch (error) {
-    res.status(502).json({ success: false, error })
+    res.status(502).json(error)
   }
 })
 

@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/:categoryId/articles', async (req, res) => {
-  const { categoryId } = req.params;
+  const { categoryId } = req.params
   try {
     const response = await db.getArticlesByCategoryId(categoryId)
     res.status(200).json(response)
@@ -37,7 +37,6 @@ router.post('/', async (req, res) => {
   try {
     const response = await db.addCategory(data)
     res.status(200).json({ success: true, response })
-
   } catch (error) {
     res.status(502).json({ success: false, error })
   }

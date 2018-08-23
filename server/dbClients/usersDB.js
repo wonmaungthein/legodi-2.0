@@ -1,25 +1,25 @@
-const knex = require("./connection");
-const bcrypt = require("bcryptjs");
+const knex = require('./connection')
+const bcrypt = require('bcryptjs')
 
-function getUsers() {
-  return knex.select().from("users");
+function getUsers () {
+  return knex.select().from('users')
 }
 
-function getUserById(id) {
+function getUserById (id) {
   return knex
     .select()
-    .from("users")
-    .where("user_id", "=", id);
+    .from('users')
+    .where('user_id', '=', id)
 }
 
-function getUserByEmail(userEmail) {
+function getUserByEmail (userEmail) {
   return knex
     .select()
-    .from("users")
-    .where("email", "=", userEmail);
+    .from('users')
+    .where('email', '=', userEmail)
 }
 
-function addUser(data) {
+function addUser (data) {
   //   let { password } = data;
   //   const { fullName, email } = data;
   // bcrypt.genSalt(10, (err, salt) => {
@@ -35,14 +35,14 @@ function addUser(data) {
   //         });
   //     })
   // })
-  return knex.table("users").insert({
+  return knex.table('users').insert({
     full_name: data.full_name,
     email: data.email,
     password: data.password
-  });
+  })
 }
 
-function editUser(id, data) {
+function editUser (id, data) {
   // let { password } = data;
   // const { fullName, email, userId } = data;
   // return bcrypt.genSalt(10, (err, salt) => {
@@ -62,20 +62,20 @@ function editUser(id, data) {
   //   });
   // });
   return knex
-    .table("users")
-    .where("user_id", "=", id)
+    .table('users')
+    .where('user_id', '=', id)
     .update({
       full_name: data.full_name,
       email: data.email,
       password: data.password
-    });
+    })
 }
 
-function deleteUser(userId) {
+function deleteUser (userId) {
   return knex
-    .table("users")
-    .where("user_id", "=", userId)
-    .del();
+    .table('users')
+    .where('user_id', '=', userId)
+    .del()
 }
 
 module.exports = {
@@ -85,4 +85,4 @@ module.exports = {
   getUsers,
   addUser,
   getUserById
-};
+}
