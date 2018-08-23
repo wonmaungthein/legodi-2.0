@@ -63,15 +63,27 @@ export default class AddArticle extends React.Component {
     const { title, fullContent, category, status, articleImage } = this.state
     const language = this.state.language.short
     const data = { title, fullContent, category, language, status, articleImage }
+    if (title.length > 0 && fullContent.length > 0 && language.length > 0) {
+      addArticle(data, articleImage)
+      Alert.alert(
+        'Thank you!',
+        'We will review your article.',
+        [
+          { text: 'OK', onPress: () => this.props.navigation.goBack() }
+        ],
+        { cancelable: false }
+      )
+    } else {
+      Alert.alert(
+        'Please check the form!',
+        'Title, Content and Language are required.',
+        [
+          { text: 'OK' }
+        ],
+        { cancelable: false }
+      )
+    }
     addArticle(data, articleImage)
-    Alert.alert(
-      'Thank you!',
-      'We will review your article.',
-      [
-        { text: 'OK', onPress: () => this.props.navigation.goBack() }
-      ],
-      { cancelable: false }
-    )
   }
 
   pickImage = async () => {

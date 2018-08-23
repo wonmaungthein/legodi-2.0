@@ -1,92 +1,90 @@
-const express = require("express");
-const db = require("../../../dbClients/languageDB");
+const express = require('express')
+const db = require('../../../dbClients/languageDB')
 
-const router = express.Router();
+const router = express.Router()
 
-router.get("/", async (req, res) => await res.render("language-menu"));
+router.get('/', async (req, res) => await res.render('language-menu'))
 
-router.get("/view", async (req, res) => {
+router.get('/view', async (req, res) => {
   try {
-    const data = await db.getLanguages();
-    res.render("language-table-view", { data });
+    const data = await db.getLanguages()
+    res.render('language-table-view', { data })
   } catch (error) {
-    res.render("error", { error });
+    res.render('error', { error })
   }
-});
+})
 
-router.get("/view/:languageId", async (req, res) => {
-  const { languageId } = req.params;
+router.get('/view/:languageId', async (req, res) => {
+  const { languageId } = req.params
   try {
-    const data = await db.getLanguage(languageId);
-    res.render("language-view", { data });
+    const data = await db.getLanguage(languageId)
+    res.render('language-view', { data })
   } catch (error) {
-    res.render("error", { error });
+    res.render('error', { error })
   }
-});
+})
 
-router.get("/add", async (req, res) => await res.render("language-add"));
+router.get('/add', async (req, res) => await res.render('language-add'))
 
-
-  router.post("/add", async (req, res) => {
-    const { body } = req;
-    try {
-      await db.addLanguage(body);
-      res.redirect("/admin/language/view");
-    } catch (error) {
-      res.render("error", { error });
-    }
-  });
- 
-router.post("/add", async (req, res) => {
-    console.log(body)
-  const { body } = req;
+router.post('/add', async (req, res) => {
+  const { body } = req
   try {
-    await db.addLanguage(body);
-    res.redirect("/admin/language/view");
+    await db.addLanguage(body)
+    res.redirect('/admin/language/view')
   } catch (error) {
-    res.render("error", { error });
+    res.render('error', { error })
   }
-});
+})
 
-router.get("/edit", async (req, res) => {
+router.post('/add', async (req, res) => {
+  const { body } = req
   try {
-    const data = await db.getLanguages();
-    res.render("language-table-edit", { data });
+    await db.addLanguage(body)
+    res.redirect('/admin/language/view')
   } catch (error) {
-    res.render("error", { error });
+    res.render('error', { error })
   }
-});
+})
 
-router.get("/delete/:languageId", async (req, res) => {
-  const { languageId } = req.params;
+router.get('/edit', async (req, res) => {
   try {
-    await db.deleteLanguage(languageId);
-    res.redirect("/admin/language/edit");
+    const data = await db.getLanguages()
+    res.render('language-table-edit', { data })
   } catch (error) {
-    res.render("error", { error });
+    res.render('error', { error })
   }
-});
+})
 
-router.get("/edit/:languageId", async (req, res) => {
-  const { languageId } = req.params;
+router.get('/delete/:languageId', async (req, res) => {
+  const { languageId } = req.params
   try {
-    const language = await db.getLanguage(languageId);
-    const data = language[0];
-    res.render("language-add", { data });
+    await db.deleteLanguage(languageId)
+    res.redirect('/admin/language/edit')
   } catch (error) {
-    res.render("error", { error });
+    res.render('error', { error })
   }
-});
+})
 
-router.post("/edit/:languageId", async (req, res) => {
-    const { languageId } = req.params;
-    const { body } = req;
-    try {
-        await db.editLanguage(languageId,body);
-        res.redirect("/admin/language/edit");
-      } catch (error) {
-        res.render("error", { error });
-      }
-  });
+router.get('/edit/:languageId', async (req, res) => {
+  const { languageId } = req.params
+  try {
+    const language = await db.getLanguage(languageId)
+    const data = language[0]
+    res.render('language-add', { data })
+  } catch (error) {
+    res.render('error', { error })
+  }
+})
 
-module.exports = router;
+router.post('/edit/:languageId', async (req, res) => {
+  const { languageId } = req.params
+  const { body } = req
+  try {
+    await db.editLanguage(languageId, body)
+    res.redirect('/admin/language/edit')
+  } catch (error) {
+    res.render('error', { error })
+  }
+})
+
+module.exports = router

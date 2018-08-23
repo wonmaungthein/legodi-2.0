@@ -1,9 +1,24 @@
 const config = require('../knexfile')[process.env.NODE_ENV || 'development']
 const knex = require('knex')(config)
-function getCategories () {
+
+const getCategories = () => {
   return knex.select().from('categories')
-};
-function addCategory (data) {
+}
+
+const getArticlesByCategoryId = (category_id) => {
+  return knex.select().from('articles').where({ category_id })
+}
+
+const getCategoryByName = async (category_name) => {
+  const category = await knex('categories').where({ category_name }).first()
+  return category
+}
+
+const getCategoryByLanguage = async (language_id) => {
+  return knex('categories').where({ language_id })
+}
+
+const addCategory = (data) => {
   return knex.table('categories').insert({
     category_id: data.categoryId,
     category_name: data.categoryName,
@@ -13,9 +28,9 @@ function addCategory (data) {
     icon: data.icon,
     language_id: data.languageId
   })
-};
+}
 
-function editCategory (data) {
+const editCategory = (data) => {
   return knex.table('categories')
     .where('category_id', '=', data.categoryId)
     .update({
@@ -27,17 +42,20 @@ function editCategory (data) {
       icon: data.icon,
       language_id: data.languageId
     })
-};
+}
 
-function deleteCategory (categoryId) {
+const deleteCategory = (categoryId) => {
   return knex.table('categories')
     .where('category_id', '=', categoryId)
     .del()
-};
+}
 
 module.exports = {
+  getArticlesByCategoryId,
+  getCategoryByLanguage,
   getCategories,
   addCategory,
   editCategory,
-  deleteCategory
+  deleteCategory,
+  getCategoryByName
 }
