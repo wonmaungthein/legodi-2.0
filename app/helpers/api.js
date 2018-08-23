@@ -7,13 +7,15 @@ const instance = axios.create({
 
 export const getCategories = async (language = 'en') => instance.get(`/categories/language?language=${language}`)
 
+export const getLanguages = async () => instance.get('/languages')
+
 export const getArticles = async (categoryId) => instance.get(`/categories/${categoryId}/articles`)
 
-export const getWeegieQuestions = async () => instance.get('/weegie')
+export const getWeegieQuestions = async () => instance.get('/weegie/quiz')
 
 export const getWeegieGameAnswers = async (data) => {
   try {
-    const res = await instance.post('/weegie/user/answer', data)
+    const res = await instance.post('/weegie/quiz/answers', data)
     return res.data
   } catch (error) {
     console.error(error)
