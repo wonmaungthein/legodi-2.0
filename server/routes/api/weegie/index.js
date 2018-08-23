@@ -3,7 +3,7 @@ const db = require('../../../dbClients/weegieQuestionDB')
 
 const router = express.Router()
 
-router.get('/quiz/questions', async (req, res) => {
+router.get('/quiz', async (req, res) => {
     try {
         const response = await db.getQuestions()
         res.status(200).json(response)
@@ -12,18 +12,14 @@ router.get('/quiz/questions', async (req, res) => {
     }
 })
 
-router.post('/quiz/answer', (req, res) => {
-
-    findQuestionCb = (err, data) => {
-
-        if (err) { return err }
+router.post('/quiz/answers', async (req, res) => {
+    findQuestionCb = (data) => {
         let similarQuestions = [];
         let allQuestions = data;
         let userAnswer = req.body;
-
         allQuestions.map((question) => {
             userAnswer.map((answer) => {
-                if (question._id == answer.title) {
+                if (question.question_id == answer.title) {
                     similarQuestions.push(question);
                 }
             })
@@ -36,7 +32,7 @@ router.post('/quiz/answer', (req, res) => {
             let wrongAnswers = 0;
             answers.map((answer) => {
                 questions.map((question) => {
-                    if (question._id == answer.title) {
+                    if (question.question_id  == answer.title) {
                         if (question.answer === answer.answer) {
                             corretAnswers++
                         } else {
@@ -49,12 +45,17 @@ router.post('/quiz/answer', (req, res) => {
             result.wrongAnswersList = wrongAnswersList;
             result.correctAnswers = corretAnswers
             result.wrongAnswers = wrongAnswers;
-            res.send(result)
+            return result;
         }
-        checkAnswers(similarQuestions, userAnswer)
+        return checkAnswers(similarQuestions, userAnswer)
     }
 
-    WeegieDB.findQuestions({}, findQuestionCb);
+    try {
+        const response = await db.getQuestions()
+        res.status(200).json(findQuestionCb(response))
+    } catch (error) {
+        res.status(502).json(error)
+    }
 })
 
 module.exports = router
