@@ -1,6 +1,6 @@
 describe("Legodi Server side testing example", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3001/");
+    cy.visit("/");
   });
 
   const WeegieTab = () => {
