@@ -33,10 +33,8 @@ class ArticlesListScreen extends React.Component {
   };
 
   async componentDidMount () {
-    const categoryId = this.props.navigation.getParam('id', '123')
-    const { language } = this.props
-
-    this.props.listArticles(categoryId, language)
+    const categoryId = this.props.navigation.getParam('id')
+    this.props.listArticles(categoryId)
   }
 
   renderArticlesListPage = () => {
@@ -50,13 +48,12 @@ class ArticlesListScreen extends React.Component {
         <Text style={language === 'ar' ? styles.arabicTitle : styles.title} >{title}</Text>
         <Text style={language === 'ar' ? styles.arabicDescription : styles.description} >{description}</Text>
         {
-
           articles.map((article, i) => {
             const navigateToArticle = () => this.props.navigation.navigate('Article', {
               title: article.title,
               language: language,
               image: article.articleImage,
-              description: article.fullContent
+              description: article.short_content || article.full_content
             })
 
             return (
@@ -64,8 +61,8 @@ class ArticlesListScreen extends React.Component {
                 key={i}
                 language={language}
                 title={article.title}
-                image={article.articleImage}
-                description={article.fullContent}
+                image={article.image}
+                description={article.full_content}
                 navigateToArticle={navigateToArticle}
               />
             )
@@ -80,9 +77,9 @@ class ArticlesListScreen extends React.Component {
       <ScrollView style={styles.container}>
         <View style={styles.layout}>
           {
-            this.props.articles.length > 0
-              ? this.renderArticlesListPage()
-              : <Text style={styles.title}>There are no articles in this category</Text>
+            // this.props.articles.length > 0
+            this.renderArticlesListPage()
+            // : <Text style={styles.title}>There are no articles in this category</Text>
           }
         </View>
       </ScrollView>
@@ -97,7 +94,7 @@ const mapStateToProps = (state) => ({
 
 const dispatchToProps = dispatch => {
   return {
-    listArticles: (categoryId, language) => dispatch(fetchArticles(categoryId, language))
+    listArticles: (categoryId) => dispatch(fetchArticles(categoryId))
   }
 }
 

@@ -1,24 +1,44 @@
 const express = require('express')
 const db = require('../../../dbClients/categoriesDB')
+
 const router = express.Router()
+
 router.get('/', async (req, res) => {
   try {
     const response = await db.getCategories()
-    res.status(200).json({ success: true, response })
+    res.status(200).json(response)
   } catch (error) {
-    console.log(error)
-    res.status(502).json({ success: false, error })
+    res.status(502).json(error)
   }
 })
+
+router.get('/:categoryId/articles', async (req, res) => {
+  const { categoryId } = req.params;
+  try {
+    const response = await db.getArticlesByCategoryId(categoryId)
+    res.status(200).json(response)
+  } catch (error) {
+    res.status(502).json(error)
+  }
+})
+
+router.get('/language', async (req, res) => {
+  const { language } = req.query
+  try {
+    const response = await db.getCategoryByLanguage(language)
+    res.status(200).json(response)
+  } catch (error) {
+    res.status(502).json(error)
+  }
+})
+
 router.post('/', async (req, res) => {
   const data = req.body
-  console.log(data)
   try {
     const response = await db.addCategory(data)
     res.status(200).json({ success: true, response })
-    console.log(data)
+
   } catch (error) {
-    console.log(error)
     res.status(502).json({ success: false, error })
   }
 })
@@ -35,13 +55,12 @@ router.put('/', async (req, res) => {
 
 router.delete('/', async (req, res) => {
   const { categoryId } = req.query
-  console.log(categoryId)
   try {
     await db.deleteCategory(categoryId)
     res.status(200).json({ success: true })
   } catch (error) {
-    console.log(error)
     res.status(502).json({ success: false, error })
   }
 })
+
 module.exports = router

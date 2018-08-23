@@ -38,7 +38,6 @@ router.get("/add", async (req, res) => await res.render("language-add"));
   });
  
 router.post("/add", async (req, res) => {
-    console.log(body)
   const { body } = req;
   try {
     await db.addLanguage(body);

@@ -33,7 +33,6 @@ const CategoriesIcon = props => {
         return <Ionicons name='md-help' size={36} color='#e5ba4f' />
     }
   }
-
   return (
     <TouchableOpacity
       style={styles.box}

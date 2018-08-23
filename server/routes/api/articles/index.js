@@ -8,7 +8,6 @@ router.get('/', async (req, res) => {
     const response = await db.getArticles()
     res.status(200).json(response)
   } catch (error) {
-    console.log(error)
     res.status(502).json(error)
   }
 })
@@ -19,7 +18,6 @@ router.get('/:articleId', async (req, res) => {
       const response = await db.getArticleById(articleId)
       res.status(200).json(response)
     } catch (error) {
-      console.log(error)
       res.status(502).json(error)
     }
   })
@@ -30,7 +28,6 @@ router.get('/:articleId', async (req, res) => {
       const response = await db.addArticle(data)
       res.status(200).json(response)
     } catch (error) {
-      console.log(error)
       res.status(502).json(error)
     }
   })
@@ -42,7 +39,6 @@ router.get('/:articleId', async (req, res) => {
       const response = await db.editArticle(articleId, data)
       res.status(200).json(response)
     } catch (error) {
-      console.log(error)
       res.status(502).json(error)
     }
   })
@@ -53,7 +49,6 @@ router.get('/:articleId', async (req, res) => {
     const response = await db.deleteArticle(articleId)
     res.status(200).json(response)
   } catch (error) {
-    console.log(error)
     res.status(502).json(error)
   }
 })
