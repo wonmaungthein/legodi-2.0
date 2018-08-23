@@ -112,4 +112,4 @@ We use `knex` for migrations, but we created alias helpers on `package.json` to 
 
 ## To Open Cypress
 
-Run `./node_modules/.bin/cypress open` in terminal and it will open a window.
+1. Go to server and run `./node_modules/.bin/cypress open` or `npx cypress open` in terminal and it will open a window.
