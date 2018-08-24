@@ -75,7 +75,7 @@ router.post('/login', async (req, res) => {
         if (isMatch) {
           const token = jwt.sign({
             sub: response[0].user_id
-          }, secret)
+          }, process.env.JWT_SECRET || secret)
           res.status(200).json({token})
         }else{
           res.status(403).json('Sorry password is not match')

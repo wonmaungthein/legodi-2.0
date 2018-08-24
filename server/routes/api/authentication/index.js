@@ -8,7 +8,7 @@ const { ExtractJwt } = require('passport-jwt');
 // JSON WEB TOKENS STRATEGY
 const option = {
   jwtFromRequest: ExtractJwt.fromHeader('authorization'),
-  secretOrKey: secret
+  secretOrKey: process.env.JWT_SECRET || secret
 }
 
 passport.use(new JwtStrategy(option, async (payload, done) => {
