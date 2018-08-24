@@ -1,84 +1,79 @@
 const knex = require('./connection')
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcrypt')
 
-function getUsers () {
+const getUsers = () => {
   return knex.select().from('users')
 }
 
-function getUserById (id) {
+const getUserById = (id) => {
   return knex
     .select()
     .from('users')
     .where('user_id', '=', id)
 }
 
-function getUserByEmail (userEmail) {
+const getUserByEmail = (userEmail) => {
   return knex
     .select()
     .from('users')
     .where('email', '=', userEmail)
 }
 
-function addUser (data) {
-  //   let { password } = data;
-  //   const { fullName, email } = data;
-  // bcrypt.genSalt(10, (err, salt) => {
-  //     return bcrypt.hash(password, salt, async (error, hash) => {
-  //         if (error) {
-  //             throw error;
-  //         }
-  //         password = hash;
-  //         await knex.table('users').insert({
-  //             full_name: fullName,
-  //             email: email,
-  //             password: password,
-  //         });
-  //     })
-  // })
-  return knex.table('users').insert({
-    full_name: data.full_name,
-    email: data.email,
-    password: data.password
+const addUser = (data) => {
+    let { password } = data;
+    const { fullName, email } = data;
+  bcrypt.genSalt(10, (err, salt) => {
+      return bcrypt.hash(password, salt, async (error, hash) => {
+          if (error) {
+              throw error;
+          }
+          password = hash;
+          await knex.table('users').insert({
+              full_name: fullName,
+              email: email,
+              password: password,
+          });
+      })
   })
 }
 
-function editUser (id, data) {
-  // let { password } = data;
-  // const { fullName, email, userId } = data;
-  // return bcrypt.genSalt(10, (err, salt) => {
-  //   bcrypt.hash(password, salt, async (error, hash) => {
-  //     if (error) {
-  //       throw error;
-  //     }
-  //     password = hash;
-  //     await knex
-  //       .table("users")
-  //       .where("user_id", "=", userId)
-  //       .update({
-  //         full_name: fullName,
-  //         email: email,
-  //         password: password
-  //       });
-  //   });
-  // });
-  return knex
-    .table('users')
-    .where('user_id', '=', id)
-    .update({
-      full_name: data.full_name,
-      email: data.email,
-      password: data.password
-    })
+const editUser = (id, data) => {
+  let { password } = data;
+  const { fullName, email, userId } = data;
+  return bcrypt.genSalt(10, (err, salt) => {
+    bcrypt.hash(password, salt, async (error, hash) => {
+      if (error) {
+        throw error;
+      }
+      password = hash;
+      await knex
+        .table("users")
+        .where("user_id", "=", userId)
+        .update({
+          full_name: fullName,
+          email: email,
+          password: password
+        });
+    });
+  });
 }
 
-function deleteUser (userId) {
+const deleteUser = (userId) => {
   return knex
     .table('users')
     .where('user_id', '=', userId)
     .del()
 }
 
+const comparePassword = (password, hash, callBack) => {
+  bcrypt.compare(password, hash, (err, isMatch) => {
+    if (err) throw err;
+    callBack(null, isMatch)
+  })
+}
+
 module.exports = {
+  comparePassword,
   getUserByEmail,
   deleteUser,
   editUser,
