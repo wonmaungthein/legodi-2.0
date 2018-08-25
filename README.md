@@ -19,7 +19,7 @@ The endpoints are:
 
 `https://api.legodi.codeyourfuture.io`
 
-`https://api.staging.codeyourfuture.io`
+`https://api.staging.legodi.codeyourfuture.io`
 
 All the automation configuration can be found in `.circleci/config.yml`. Feel free to change and adapt to your needs (ex.: run tests before deployment, etc).
 
