@@ -2,16 +2,97 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:latest
-    working_directory: ~/tmp
+      - image: circleci/node:8
     steps:
       - checkout
-      - run: npm --prefix app install
-      - run: npm --prefix server install
-      # - run: npm --prefix app test
-      # - run: npm --prefix server test
-      - save_cache:
-          key: repo-client-{{ .Environment.CIRCLE_SHA1 }}
-          paths:
-            - ~/tmp
+      - setup_remote_docker
+      - run:
+          name: Set env variables
+          command: echo 'export VERSION=$(echo $CIRCLE_SHA1 | cut -c -7)' >> $BASH_ENV
+      - run:
+          name: Docker build api 
+          command: docker build -t codeyourfuture/legodi-api:$VERSION --build-arg version=$VERSION ./server && docker tag codeyourfuture/legodi-api:$VERSION codeyourfuture/legodi-api:latest
+      - run:
+          name: Docker login
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run:
+          name: Docker push api 
+          command: docker push codeyourfuture/legodi-api
+
+  deploy_staging:
+    docker:
+      - image: circleci/python:2.7-jessie
+    working_directory: ~/repo
+    steps:
+      - setup_remote_docker
+      - run:
+          name: Set env variables
+          command: echo 'export VERSION=$(echo $CIRCLE_SHA1 | cut -c -7)' >> $BASH_ENV
+      - run:
+          name: Install awscli
+          command: sudo pip install awscli
+      - run:
+          name: Install kubectl
+          command: curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x kubectl
+      - run:
+          name: Install gnupg
+          command: sudo apt-get -y install gnupg
+      - run:
+          name: Get kubeconfig
+          command: aws s3 cp s3://$SECRETS_BUCKET/kubectl/config_cyfbot_staging.gpg ./config.gpg
+      - run:
+          name: Decrypt kubeconfig and set KUBECONFIG
+          command: gpg --yes --passphrase="$GPG_KEY" config.gpg
+      - run:
+          name: Update k8s deployment
+          command: KUBECONFIG=$(pwd)/config ./kubectl -n staging set image deployment/legodi-dep-api legodi-api=codeyourfuture/legodi-api:$VERSION
+
+  deploy_production:
+    docker:
+      - image: circleci/python:2.7-jessie
+    working_directory: ~/repo
+    steps:
+      - setup_remote_docker
+      - run:
+          name: Set env variables
+          command: echo 'export VERSION=$(echo $CIRCLE_SHA1 | cut -c -7)' >> $BASH_ENV
+      - run:
+          name: Install awscli
+          command: sudo pip install awscli
+      - run:
+          name: Install kubectl
+          command: curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x kubectl
+      - run:
+          name: Install gnupg
+          command: sudo apt-get -y install gnupg
+      - run:
+          name: Get kubeconfig
+          command: aws s3 cp s3://$SECRETS_BUCKET/kubectl/config_cyfbot.gpg ./config.gpg
+      - run:
+          name: Decrypt kubeconfig and set KUBECONFIG
+          command: gpg --yes --passphrase="$GPG_KEY" config.gpg
+      - run:
+          name: Update k8s deployment
+          command: KUBECONFIG=$(pwd)/config ./kubectl set image deployment/legodi-dep-api legodi-api=codeyourfuture/legodi-api:$VERSION
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build:
+          context: build
+      - deploy_staging:
+          context: deployments_staging
+          requires:
+            - build
+          filters:
+            branches:
+              only: develop
+      - deploy_production:
+          context: deployments
+          requires:
+            - build
+          filters:
+            branches:
+              only: master 
 
