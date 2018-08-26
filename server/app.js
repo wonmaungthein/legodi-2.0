@@ -17,6 +17,7 @@ const usersApi = require('./routes/api/users')
 const usersAdmin = require('./routes/admin/users')
 const categoriesApi = require('./routes/api/categories')
 const articlesApi = require('./routes/api/articles')
+const citiesApi = require('./routes/api/cities')
 
 const fileUpload = require('express-fileupload')
 
@@ -88,6 +89,7 @@ app.use('/api/categories', categoriesApi)
 app.use('/api/articles', articlesApi)
 app.use('/api/weegie', weegieApi)
 app.use('/api/users', usersApi)
+app.use('/api/cities', citiesApi)
 app.use('/admin/weegie', weegieAdmin)
 app.use('/admin/users', usersAdmin)
 
