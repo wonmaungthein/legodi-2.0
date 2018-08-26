@@ -1,0 +1,85 @@
+<div class="container">
+{{#if data}}
+<h3 class="text-success">Edit Category</h3>
+<form method="post">
+   <div class="form-group has-success">
+    <label class="text-primary">
+         Title:
+    </label>
+    <textarea rows="3" class="form-control form-control-success mb-4"  name="category_name">{{data.category_name}}</textarea>
+  </div>
+   <div class="form-group has-success">
+    <label class="text-primary">
+         Status:
+    </label>
+    <textarea rows="3" class="form-control form-control-success mb-4"  name="status">{{data.status}}</textarea>
+  </div>
+   <div class="form-group has-success">
+    <label class="text-primary">
+         Full Content:
+    </label>
+    <textarea rows="3" class="form-control form-control-success mb-4"  name="description">{{data.description}}</textarea>
+  </div>
+  <div class="form-group has-success">
+    <label class="text-primary">
+         Short Content:
+    </label>
+    <textarea rows="3" class="form-control form-control-success mb-4"  name="short_description">{{data.short_description}}</textarea>
+  </div>
+  <div class="form-group has-success">
+    <label class="text-primary">
+         Order:
+    </label>
+    <textarea rows="3" class="form-control form-control-success mb-4"  name="order">{{data.order}}</textarea>
+  </div>
+  <div class="form-group has-success">
+    <label class="text-primary">
+         Icon:
+    </label>
+    <textarea rows="3" class="form-control form-control-success mb-4"  name="icon">{{data.icon}}</textarea>
+  </div>
+    <button class="btn btn-lg btn-danger" type="submit">Submit</button>
+</form>
+{{else}}
+<h3 class="text-success">Add Category</h3>
+<form method="post">
+ <div class="form-group has-success">
+    <label class="text-primary">
+         Category Id:
+    </label>
+    <textarea rows="3" class="form-control form-control-success mb-4"  name="categoryId"></textarea>
+  </div>
+   <div class="form-group has-success">
+    <label class="text-primary">
+         Title:
+    </label>
+    <textarea rows="3" class="form-control form-control-success mb-4"  name="title"></textarea>
+  </div>
+  <div class="form-group has-success">
+    <label class="text-primary">
+         Full Content:
+    </label>
+    <textarea rows="3" class="form-control form-control-success mb-4"  name="description"></textarea>
+  </div>
+   <div class="form-group has-success">
+    <label class="text-primary">
+         Short Content:
+    </label>
+    <textarea rows="3" class="form-control form-control-success mb-4"  name="short_description"></textarea>
+  </div>
+  <div class="form-group has-success">
+    <label class="text-primary">
+         Image:
+    </label>
+    <textarea rows="3" class="form-control form-control-success mb-4"  name="image"></textarea>
+  </div>
+  <div class="form-group has-success">
+    <label class="text-primary">
+         Status:
+    </label>
+    <textarea rows="3" class="form-control form-control-success mb-4"  name="status"></textarea>
+  </div>
+    <button class="btn btn-lg btn-danger" type="submit">Submit</button>
+</form>
+{{/if}}
+</div>
