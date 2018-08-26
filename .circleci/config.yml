@@ -45,7 +45,7 @@ jobs:
           command: gpg --yes --passphrase="$GPG_KEY" config.gpg
       - run:
           name: Update k8s deployment
-          command: KUBECONFIG=$(pwd)/config ./kubectl -n staging set image deployment/legodi-api legodi-api=codeyourfuture/legodi-api:$VERSION
+          command: KUBECONFIG=$(pwd)/config ./kubectl -n staging set image deployment/legodi-dep-api legodi-api=codeyourfuture/legodi-api:$VERSION
 
   deploy_production:
     docker:
@@ -73,7 +73,7 @@ jobs:
           command: gpg --yes --passphrase="$GPG_KEY" config.gpg
       - run:
           name: Update k8s deployment
-          command: KUBECONFIG=$(pwd)/config ./kubectl set image deployment/legodi-api legodi-api=codeyourfuture/legodi-api:$VERSION
+          command: KUBECONFIG=$(pwd)/config ./kubectl set image deployment/legodi-dep-api legodi-api=codeyourfuture/legodi-api:$VERSION
 
 workflows:
   version: 2
