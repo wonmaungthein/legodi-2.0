@@ -65,4 +65,5 @@ exports.down = async (knex, Promise) => {
   await knex.schema.dropTable('articles')
   await knex.schema.dropTable('categories')
   await knex.schema.dropTable('languages')
+  await knex.schema.dropTable('cities')
 }
