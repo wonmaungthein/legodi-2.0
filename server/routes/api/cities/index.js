@@ -23,22 +23,19 @@ router.post('/', async (req, res) => {
 })
 
 router.put('/', async (req, res) => {
-
   const data = req.body
   try {
-    await db.editCity(data)
-    res.status(200).json({ success: true })
+    const response = await db.editCity(data)
+    res.status(200).json(response)
   } catch (error) {
-    console.log(error)
-    res.status(502).json({ success: false, error })
-
+    res.status(502).json(error)
   }
 })
 
 router.delete('/', async (req, res) => {
-  const { cityId } = req.query
+  const data = req.body
   try {
-    const response = await db.deleteCity(cityId)
+    const response = await db.deleteCity(data.city_id)
     res.status(200).json(response)
   } catch (error) {
     res.status(502).json(error)

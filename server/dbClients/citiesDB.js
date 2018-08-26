@@ -18,8 +18,8 @@ function getCity (id) {
     .where('city_id', '=', id)
 }
 
-function editCity (id, data) {
-  return knex.table('cities').then(console.log)
+function editCity (data) {
+  return knex.table('cities')
     .where('city_id', '=', data.city_id)
     .update({
       city_id: data.city_id,
