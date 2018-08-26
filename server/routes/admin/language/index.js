@@ -25,17 +25,6 @@ router.get("/view/:languageId", async (req, res) => {
 });
 
 router.get("/add", async (req, res) => await res.render("language-add"));
-
-
-  router.post("/add", async (req, res) => {
-    const { body } = req;
-    try {
-      await db.addLanguage(body);
-      res.redirect("/admin/language/view");
-    } catch (error) {
-      res.render("error", { error });
-    }
-  });
  
 router.post("/add", async (req, res) => {
   const { body } = req;
