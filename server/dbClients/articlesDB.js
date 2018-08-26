@@ -16,7 +16,8 @@ function addArticle (data) {
     image: data.image,
     title: data.title,
     status: data.status,
-    category_id: data.categoryId,
+    article_id: data.articleId,
+    category_id: data.category_id,
     full_content: data.fullContent,
     short_content: data.shortContent
   })
