@@ -19,11 +19,11 @@ function getCity (id) {
 }
 
 function editCity (id, data) {
-  return knex.table('cities')
-    .where('city_id', '=', id)
+  return knex.table('cities').then(console.log)
+    .where('city_id', '=', data.city_id)
     .update({
       city_id: data.city_id,
-      city_name: data.long_name
+      city_name: data.city_name
     })
 };
 

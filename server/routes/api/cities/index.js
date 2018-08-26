@@ -23,12 +23,15 @@ router.post('/', async (req, res) => {
 })
 
 router.put('/', async (req, res) => {
+
   const data = req.body
   try {
-    const response = await db.editCity(data)
-    res.status(200).json(response)
+    await db.editCity(data)
+    res.status(200).json({ success: true })
   } catch (error) {
-    res.status(502).json(error)
+    console.log(error)
+    res.status(502).json({ success: false, error })
+
   }
 })
 
