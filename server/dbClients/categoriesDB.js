@@ -23,6 +23,7 @@ const getCategoryByName = async category_name => {
   return category;
 };
 
+
 const getCategoryByLanguage = async language_id => {
   return knex("categories").where({ language_id });
 };

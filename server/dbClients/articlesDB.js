@@ -4,11 +4,11 @@ function getArticles () {
   return knex.select().from('articles')
 };
 
-function getArticleById(id) {
+function getArticleById (id) {
   return knex
     .select()
-    .from("articles")
-    .where("article_id", "=", id);
+    .from('articles')
+    .where('article_id', '=', id)
 }
 
 function addArticle (data) {
@@ -19,7 +19,7 @@ function addArticle (data) {
     article_id: data.articleId,
     category_id: data.category_id,
     full_content: data.fullContent,
-    short_content: data.shortContent,
+    short_content: data.shortContent
   })
 };
 
@@ -32,7 +32,7 @@ function editArticle (articleId, data) {
       status: data.status,
       category_id: data.categoryId,
       full_content: data.fullContent,
-      short_content: data.shortContent,
+      short_content: data.shortContent
     })
 };
 

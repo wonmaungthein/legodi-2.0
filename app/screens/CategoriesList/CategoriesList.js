@@ -3,12 +3,15 @@ import { ScrollView, View } from 'react-native'
 import CategoriesIcon from '../../components/CategoriesIcon/CategoriesIcon'
 import { connect } from 'react-redux'
 import { fetchCategories } from '../../redux/actions/categoriesActions'
+import { fetchLanguages } from '../../redux/actions/languagesActions'
 import styles from './CategoryListStyles'
 import PropTypes from 'prop-types'
 
 class CategoriesList extends React.Component {
   async componentDidMount () {
-    this.props.fetchCategories()
+    const language = 'en'
+    this.props.fetchCategories(language)
+    this.props.fetchLanguages()
   }
 
   renderCategories = () => {
@@ -20,7 +23,7 @@ class CategoriesList extends React.Component {
             key={i}
             id={category.category_id}
             language={language}
-            iconName={category.category_name}
+            iconName={category.icon}
             title={category.category_name}
             description={category.description}
             navigation={this.props.onPressHandle}
@@ -43,8 +46,11 @@ class CategoriesList extends React.Component {
 
 const dispatchToProps = dispatch => {
   return {
-    fetchCategories: () => {
-      return dispatch(fetchCategories())
+    fetchCategories: (language) => {
+      return dispatch(fetchCategories(language))
+    },
+    fetchLanguages: () => {
+      return dispatch(fetchLanguages())
     }
   }
 }

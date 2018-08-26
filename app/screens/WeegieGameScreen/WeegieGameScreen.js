@@ -38,7 +38,7 @@ class WeegieGame extends React.Component {
     const data = this.props.WeegieGameQuestions
     const { dataIndex, checked } = this.state
     const answer = checked
-    const title = data[dataIndex]._id
+    const title = data[dataIndex].question_id
 
     this.state.question.push({ title, answer })
 
@@ -77,7 +77,6 @@ class WeegieGame extends React.Component {
       const { dataIndex } = this.state
       const question = data[dataIndex]
       const questionNum = dataIndex + 1
-
       return (
         <View styles={styles.content}>
           <Text style={styles.question}>
@@ -85,7 +84,7 @@ class WeegieGame extends React.Component {
           </Text>
           <View>
             <CheckBox
-              title={question.choices.a}
+              title={question.a}
               checked={this.state.checked === 'a'}
               onPress={() => {
                 this.handleCheckBox('a')
@@ -97,7 +96,7 @@ class WeegieGame extends React.Component {
           </View>
           <View>
             <CheckBox
-              title={question.choices.b}
+              title={question.b}
               checked={this.state.checked === 'b'}
               onPress={() => {
                 this.handleCheckBox('b')
@@ -109,7 +108,7 @@ class WeegieGame extends React.Component {
           </View>
           <View>
             <CheckBox
-              title={question.choices.c}
+              title={question.c}
               checked={this.state.checked === 'c'}
               onPress={() => {
                 this.handleCheckBox('c')
@@ -122,7 +121,7 @@ class WeegieGame extends React.Component {
           </View>
           <View>
             <CheckBox
-              title={question.choices.d}
+              title={question.d}
               checked={this.state.checked === 'd'}
               onPress={() => {
                 this.handleCheckBox('d')
@@ -165,10 +164,10 @@ class WeegieGame extends React.Component {
             <View key={answer._id}>
               <Text style={styles.questionTitle}>{answer.title}</Text>
               <View style={{ marginLeft: 20 }}>
-                <Text>A: {answer.choices.d}</Text>
-                <Text>B: {answer.choices.a}</Text>
-                <Text>C: {answer.choices.b}</Text>
-                <Text>D: {answer.choices.c}</Text>
+                <Text>A: {answer.d}</Text>
+                <Text>B: {answer.a}</Text>
+                <Text>C: {answer.b}</Text>
+                <Text>D: {answer.c}</Text>
                 <Text style={styles.answer}>Answer: {answer.answer}</Text>
               </View>
             </View>

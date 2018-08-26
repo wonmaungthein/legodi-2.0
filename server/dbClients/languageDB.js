@@ -4,23 +4,23 @@ function getLanguages () {
   return knex.select().from('languages')
 };
 
-function addLanguage(data) {
+function addLanguage (data) {
   return knex.table('languages').insert({
     language_id: data.language_id,
     long_name: data.long_name,
     short_name: data.short_name,
     original_name: data.original_name
-  });
+  })
 };
 
-function getLanguage(id) {
+function getLanguage (id) {
   return knex
     .select()
-    .from("languages")
-    .where("language_id", "=", id);
+    .from('languages')
+    .where('language_id', '=', id)
 }
 
-function editLanguage(id,data) {
+function editLanguage (id, data) {
   return knex.table('languages')
     .where('language_id', '=', id)
     .update({
