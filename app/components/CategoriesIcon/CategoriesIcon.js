@@ -11,7 +11,6 @@ import {
 import styles from "./IconStyles";
 import PropTypes from "prop-types";
 import Colors from "../../constants/Colors";
-// Color passed from the Constants => yellow
 const { primaryColor } = Colors;
 
 const CategoriesIcon = props => {

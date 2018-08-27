@@ -1,14 +1,13 @@
 import { StyleSheet } from "react-native";
 import Colors from "../../constants/Colors";
-// Colors passed from the Constants => yellow and green
-const { primaryColor, secondaryColor } = Colors;
+const { primaryColor, categoriesColor } = Colors;
 
 const styles = StyleSheet.create({
   box: {
     width: 100,
     height: 100,
     marginTop: 20,
-    backgroundColor: secondaryColor,
+    backgroundColor: categoriesColor,
     justifyContent: "center",
     alignItems: "center"
   },
