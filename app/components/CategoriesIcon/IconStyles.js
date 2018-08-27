@@ -1,6 +1,6 @@
-import { StyleSheet } from "react-native";
-import Colors from "../../constants/Colors";
-const { primaryColor, categoriesColor } = Colors;
+import { StyleSheet } from 'react-native'
+import Colors from '../../constants/Colors'
+const { primaryColor, categoriesColor } = Colors
 
 const styles = StyleSheet.create({
   box: {
@@ -8,26 +8,26 @@ const styles = StyleSheet.create({
     height: 100,
     marginTop: 20,
     backgroundColor: categoriesColor,
-    justifyContent: "center",
-    alignItems: "center"
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   title: {
-    color: "#fff",
-    fontWeight: "bold",
+    color: '#fff',
+    fontWeight: 'bold',
     paddingTop: 10
   },
   corner: {
     width: 20,
     height: 20,
-    position: "absolute",
+    position: 'absolute',
     top: 0,
     right: 0,
     borderWidth: 10,
-    borderBottomColor: "black",
-    borderLeftColor: "black",
+    borderBottomColor: 'black',
+    borderLeftColor: 'black',
     borderTopColor: primaryColor,
     borderRightColor: primaryColor
   }
-});
+})
 
-export default styles;
+export default styles

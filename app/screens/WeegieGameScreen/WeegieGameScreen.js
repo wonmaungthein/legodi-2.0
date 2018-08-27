@@ -10,16 +10,18 @@ import {
 } from '../../redux/actions/weegieGame'
 import Button from 'apsl-react-native-button'
 import { Constants } from 'expo'
+import Colors from '../../constants/Colors'
+const { primaryColor, secondaryColor } = Colors
 
 class WeegieGame extends React.Component {
   static navigationOptions = {
     title: 'Weegie Game',
     headerStyle: {
-      backgroundColor: '#0f352f',
+      backgroundColor: secondaryColor,
       paddingTop: Constants.statusBarHeight
     },
-    headerTitleStyle: { color: '#e6bc44' },
-    headerTintColor: '#e6bc44'
+    headerTitleStyle: { color: primaryColor },
+    headerTintColor: primaryColor
   };
 
   state = {
@@ -90,7 +92,7 @@ class WeegieGame extends React.Component {
                 this.handleCheckBox('a')
               }}
               containerStyle={styles.checkBoxContainer}
-              uncheckedColor='#0f352f'
+              uncheckedColor={secondaryColor}
               textStyle={styles.label}
             />
           </View>
@@ -102,7 +104,7 @@ class WeegieGame extends React.Component {
                 this.handleCheckBox('b')
               }}
               containerStyle={styles.checkBoxContainer}
-              uncheckedColor='#0f352f'
+              uncheckedColor={secondaryColor}
               textStyle={styles.label}
             />
           </View>
@@ -114,7 +116,7 @@ class WeegieGame extends React.Component {
                 this.handleCheckBox('c')
               }}
               containerStyle={styles.checkBoxContainer}
-              uncheckedColor='#0f352f'
+              uncheckedColor={secondaryColor}
               textStyle={styles.label}
               value='c'
             />
@@ -127,7 +129,7 @@ class WeegieGame extends React.Component {
                 this.handleCheckBox('d')
               }}
               containerStyle={styles.checkBoxContainer}
-              uncheckedColor='#0f352f'
+              uncheckedColor={secondaryColor}
               textStyle={styles.label}
               value='c'
             />
@@ -135,7 +137,11 @@ class WeegieGame extends React.Component {
           <Button
             style={styles.PlayAgainBtn}
             onPress={this.handleNextQuestion}
-            textStyle={{ color: '#e5ba4f', fontSize: 20, fontWeight: 'bold' }}
+            textStyle={{
+              color: primaryColor,
+              fontSize: 20,
+              fontWeight: 'bold'
+            }}
           >
             {questionNum === 14 ? 'Submit' : 'Next'}
           </Button>
@@ -175,7 +181,11 @@ class WeegieGame extends React.Component {
         })}
         <View style={styles.playAgain}>
           <Button
-            textStyle={{ color: '#e5ba4f', fontSize: 20, fontWeight: 'bold' }}
+            textStyle={{
+              color: primaryColor,
+              fontSize: 20,
+              fontWeight: 'bold'
+            }}
             style={styles.PlayAgainBtn}
             onPress={this.resetGame}
           >
@@ -197,7 +207,7 @@ class WeegieGame extends React.Component {
         <Button
           style={styles.startButton}
           onPress={this.handleOpen}
-          textStyle={{ color: '#e5ba4f', fontSize: 20, fontWeight: 'bold' }}
+          textStyle={{ color: primaryColor, fontSize: 20, fontWeight: 'bold' }}
         >
           Start
         </Button>
