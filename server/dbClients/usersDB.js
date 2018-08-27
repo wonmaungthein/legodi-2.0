@@ -20,42 +20,42 @@ const getUserByEmail = (userEmail) => {
 }
 
 const addUser = (data) => {
-    let { password } = data;
-    const { fullName, email } = data;
+  let { password } = data
+  const { fullName, email } = data
   bcrypt.genSalt(10, (err, salt) => {
-      return bcrypt.hash(password, salt, async (error, hash) => {
-          if (error) {
-              throw error;
-          }
-          password = hash;
-          await knex.table('users').insert({
-              full_name: fullName,
-              email: email,
-              password: password,
-          });
+    return bcrypt.hash(password, salt, async (error, hash) => {
+      if (error) {
+        throw error
+      }
+      password = hash
+      await knex.table('users').insert({
+        full_name: fullName,
+        email: email,
+        password: password
       })
+    })
   })
 }
 
 const editUser = (id, data) => {
-  let { password } = data;
-  const { fullName, email, userId } = data;
+  let { password } = data
+  const { fullName, email, userId } = data
   return bcrypt.genSalt(10, (err, salt) => {
     bcrypt.hash(password, salt, async (error, hash) => {
       if (error) {
-        throw error;
+        throw error
       }
-      password = hash;
+      password = hash
       await knex
-        .table("users")
-        .where("user_id", "=", userId)
+        .table('users')
+        .where('user_id', '=', userId)
         .update({
           full_name: fullName,
           email: email,
           password: password
-        });
-    });
-  });
+        })
+    })
+  })
 }
 
 const deleteUser = (userId) => {
@@ -67,7 +67,7 @@ const deleteUser = (userId) => {
 
 const comparePassword = (password, hash, callBack) => {
   bcrypt.compare(password, hash, (err, isMatch) => {
-    if (err) throw err;
+    if (err) throw err
     callBack(null, isMatch)
   })
 }

@@ -20,7 +20,6 @@ const categoriesApi = require('./routes/api/categories')
 const articlesApi = require('./routes/api/articles')
 const CategoriesAdmin = require('./routes/admin/categories')
 
-
 const fileUpload = require('express-fileupload')
 
 const app = express()
