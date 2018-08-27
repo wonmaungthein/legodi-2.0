@@ -6,8 +6,8 @@ function getCities () {
 
 function addCity (data) {
   return knex.table('cities').insert({
-    city_id: data.city_id,
-    city_name: data.city_name
+    city_id: data.cityId,
+    city_name: data.cityName
   })
 };
 
@@ -20,10 +20,10 @@ function getCity (id) {
 
 function editCity (data) {
   return knex.table('cities')
-    .where('city_id', '=', data.city_id)
+    .where('city_id', '=', data.cityId)
     .update({
-      city_id: data.city_id,
-      city_name: data.city_name
+      city_id: data.cityId,
+      city_name: data.cityName
     })
 };
 
