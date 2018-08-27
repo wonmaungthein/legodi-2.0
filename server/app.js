@@ -21,7 +21,6 @@ const articlesApi = require('./routes/api/articles')
 const citiesApi = require('./routes/api/cities')
 const CategoriesAdmin = require('./routes/admin/categories')
 
-
 const fileUpload = require('express-fileupload')
 
 const app = express()

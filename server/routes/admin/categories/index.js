@@ -1,83 +1,83 @@
-const express = require("express");
-const db = require("../../../dbClients/categoriesDB");
+const express = require('express')
+const db = require('../../../dbClients/categoriesDB')
 
-const router = express.Router();
+const router = express.Router()
 
-router.get("/", async (req, res) => await res.render("category-menu"));
+router.get('/', async (req, res) => await res.render('category-menu'))
 
-router.get("/view", async (req, res) => {
+router.get('/view', async (req, res) => {
   try {
-    const data = await db.getCategories();
-    res.render("category-table-view", { data });
+    const data = await db.getCategories()
+    res.render('category-table-view', { data })
   } catch (error) {
-    res.render("error", { error });
+    res.render('error', { error })
   }
-});
+})
 
-router.get("/view/:categoryId", async (req, res) => {
-  const { categoryId } = req.params;
+router.get('/view/:categoryId', async (req, res) => {
+  const { categoryId } = req.params
   try {
-    const data = await db.getCategoryById(categoryId);
+    const data = await db.getCategoryById(categoryId)
     console.log(data)
-    res.render("category-view", { data: data[0] });
+    res.render('category-view', { data: data[0] })
   } catch (error) {
-    res.render("error", { error });
+    res.render('error', { error })
   }
-});
+})
 
-router.get("/add", async (req, res) => await res.render("category-add"));
+router.get('/add', async (req, res) => await res.render('category-add'))
 
-router.post("/add", async (req, res) => {
-    const { body } = req;
-    console.log(body)
-    try {
-      await db.addCategory(body);
-      res.redirect("/admin/categories/view");
-    } catch (error) {
-      res.render("error", { error });
-    }
-});
-
-router.get("/edit", async (req, res) => {   
+router.post('/add', async (req, res) => {
+  const { body } = req
+  console.log(body)
   try {
-    const data = await db.getCategories();
+    await db.addCategory(body)
+    res.redirect('/admin/categories/view')
+  } catch (error) {
+    res.render('error', { error })
+  }
+})
+
+router.get('/edit', async (req, res) => {
+  try {
+    const data = await db.getCategories()
     console.log(data.length)
-    res.render("category-table-edit", { data });
+    res.render('category-table-edit', { data })
   } catch (error) {
-    res.render("error", { error });
+    res.render('error', { error })
   }
-});
+})
 
-router.get("/delete/:categoryId", async (req, res) => {
-  const { categoryId } = req.params;
+router.get('/delete/:categoryId', async (req, res) => {
+  const { categoryId } = req.params
   try {
-    await db.deleteCategory(categoryId);
-    res.redirect("/admin/categories/edit");
+    await db.deleteCategory(categoryId)
+    res.redirect('/admin/categories/edit')
   } catch (error) {
-    res.render("error", { error });
+    res.render('error', { error })
   }
-});
+})
 
-router.get("/edit/:categoryId", async (req, res) => {
-  const { categoryId } = req.params;
+router.get('/edit/:categoryId', async (req, res) => {
+  const { categoryId } = req.params
   try {
-    const category = await db.getCategoryById(categoryId);
-    const data = category[0];
-    res.render("category-add", { data });
+    const category = await db.getCategoryById(categoryId)
+    const data = category[0]
+    res.render('category-add', { data })
   } catch (error) {
-    res.render("error", { error });
+    res.render('error', { error })
   }
-});
+})
 
-router.post("/edit/:categoryId", async (req, res) => {
-    const { categoryId } = req.params;
-    const { body } = req;
-    try {
-        await db.editCategory(categoryId,body);
-        res.redirect("/admin/categories/edit");
-      } catch (error) {
-        res.render("error", { error });
-      }
-  });
+router.post('/edit/:categoryId', async (req, res) => {
+  const { categoryId } = req.params
+  const { body } = req
+  try {
+    await db.editCategory(categoryId, body)
+    res.redirect('/admin/categories/edit')
+  } catch (error) {
+    res.render('error', { error })
+  }
+})
 
-module.exports = router;
+module.exports = router
