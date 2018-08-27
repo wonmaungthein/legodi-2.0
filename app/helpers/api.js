@@ -9,6 +9,8 @@ export const getCategories = async (language = 'en') => instance.get(`/categorie
 
 export const getLanguages = async () => instance.get('/languages')
 
+export const getCities = async () => instance.get('/cities')
+
 export const getArticles = async (categoryId) => instance.get(`/categories/${categoryId}/articles`)
 
 export const getWeegieQuestions = async () => instance.get('/weegie/quiz')

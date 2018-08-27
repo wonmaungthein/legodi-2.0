@@ -5,6 +5,7 @@ import { fetchCategories } from '../../redux/actions/categoriesActions'
 import { updateLanguage, updateCity } from '../../redux/actions/settingActions'
 import styles from './SettingStyles'
 import PropTypes from 'prop-types'
+import { fetchCities } from '../../redux/actions/citiesActions'
 
 class SettingsScreen extends React.Component {
   renderLanguage = () => {
@@ -38,8 +39,9 @@ class SettingsScreen extends React.Component {
   }
 
   render () {
-    const {language} = this.props
-    const {languages} = this.props
+    const { language } = this.props
+    const { languages } = this.props
+    const { cities } = this.props
     return (
       <View style={styles.container}>
         <View style={styles.container}>
@@ -66,11 +68,13 @@ class SettingsScreen extends React.Component {
           <Picker
             selectedValue={this.props.city}
             style={{ height: 50, width: 100 }}
-            onValueChange={itemValue => this.props.onCityChange(itemValue)}
+            onValueChange={itemValue => { this.props.onCityChange(itemValue); this.props.fetchCities(itemValue) }}
           >
-            <Picker.Item label='Glasgow' value='Glasgow' />
-            <Picker.Item label='Edinburgh' value='Edinburgh' />
-            <Picker.Item label='Paisley' value='Paisley' />
+            {
+              cities.map((city, value) => {
+                return <Picker.Item key={value} label={city.city_name} value={city.city_id} />
+              })
+            }
           </Picker>
         </View>
       </View>
@@ -82,7 +86,8 @@ const mapStateToProps = state => {
   return {
     language: state.Setting.language,
     city: state.Setting.city,
-    languages: state.languages.languagesList
+    languages: state.languages.languagesList,
+    cities: state.cities.citiesList
   }
 }
 
@@ -96,6 +101,9 @@ const dispatchToProps = dispatch => {
     },
     fetchCategories: (language) => {
       return dispatch(fetchCategories(language))
+    },
+    fetchCities: (city) => {
+      return dispatch(fetchCities(city))
     }
   }
 }
