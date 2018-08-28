@@ -1,17 +1,20 @@
 import { StyleSheet } from 'react-native'
+import Colors from '../../constants/Colors'
+const { primaryColor, secondaryColor } = Colors
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 10,
-    backgroundColor: '#e5ba4f',
+    backgroundColor: primaryColor,
     justifyContent: 'flex-start',
     alignItems: 'center'
   },
   language: {
     fontSize: 20,
     fontWeight: 'bold',
-    backgroundColor: '#0f352e',
-    color: '#e5ba4f',
+    backgroundColor: secondaryColor,
+    color: primaryColor,
     width: 330,
     padding: 15,
     textAlign: 'center'
