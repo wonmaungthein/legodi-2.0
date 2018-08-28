@@ -1,10 +1,10 @@
-const express = require('express');
-const passport = require('passport');
-const jwt = require('jsonwebtoken');
-const secret = require('../authentication/config');
+const express = require('express')
+const passport = require('passport')
+const jwt = require('jsonwebtoken')
+const secret = require('../authentication/config')
 const db = require('../../../dbClients/usersDB')
 
-require('../authentication');
+require('../authentication')
 const router = express.Router()
 
 router.get('/', async (req, res) => {
@@ -56,7 +56,7 @@ router.post('/signup', async (req, res) => {
     const user = await db.getUserByEmail(data.email)
     if (user.length > 0) {
       res.status(403).json('User is already exist')
-    }else{
+    } else {
       const response = await db.addUser(data)
       res.status(200).json(response)
     }
@@ -66,25 +66,25 @@ router.post('/signup', async (req, res) => {
 })
 
 router.post('/login', async (req, res) => {
-  const { password, email } = req.body;
+  const { password, email } = req.body
   try {
-    const response = await db.getUserByEmail(email);
+    const response = await db.getUserByEmail(email)
     if (response.length > 0) {
       db.comparePassword(password, response[0].password, (err, isMatch) => {
-        if(err) throw err
+        if (err) throw err
         if (isMatch) {
           const token = jwt.sign({
             sub: response[0].user_id
           }, process.env.JWT_SECRET || secret)
           res.status(200).json({token})
-        }else{
+        } else {
           res.status(403).json('Sorry password is not match')
         }
       })
-    }else{
+    } else {
       res.status(404).json('User is not exist')
     }
-  } catch (error) { 
+  } catch (error) {
     res.status(502).json(error)
   }
 })

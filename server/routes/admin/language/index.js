@@ -24,10 +24,10 @@ router.get('/view/:languageId', async (req, res) => {
   }
 })
 
-router.get("/add", async (req, res) => await res.render("language-add"));
- 
-router.post("/add", async (req, res) => {
-  const { body } = req;
+router.get('/add', async (req, res) => await res.render('language-add'))
+
+router.post('/add', async (req, res) => {
+  const { body } = req
 
   try {
     await db.addLanguage(body)

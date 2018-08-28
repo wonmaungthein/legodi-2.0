@@ -8,23 +8,27 @@ import styles from './ArticleListStyles'
 import PropTypes from 'prop-types'
 import { Ionicons } from '@expo/vector-icons'
 import Colors from '../../constants/Colors'
-const { primaryColor } = Colors
+const { primaryColor, secondaryColor } = Colors
 
 class ArticlesListScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
     return {
       title: 'Glasgow Welcome Pack',
-      headerStyle: { backgroundColor: '#0f352f', paddingTop: Constants.statusBarHeight },
+      headerStyle: {
+        backgroundColor: secondaryColor,
+        paddingTop: Constants.statusBarHeight
+      },
       headerRight: (
         <Ionicons
           name='md-add'
           size={28}
           color={primaryColor}
           style={{ paddingRight: 10, paddingTop: 5 }}
-          onPress={() => navigation.navigate(
-            'AddArticle',
-            { categoryId: navigation.getParam('categoryId') }
-          )}
+          onPress={() =>
+            navigation.navigate('AddArticle', {
+              categoryId: navigation.getParam('categoryId')
+            })
+          }
         />
       ),
       headerTitleStyle: { color: primaryColor },
@@ -40,46 +44,58 @@ class ArticlesListScreen extends React.Component {
   renderArticlesListPage = () => {
     const { language } = this.props
     const { articles } = this.props
-    const title = this.props.navigation.getParam('categoryTitle', 'No category')
-    const description = this.props.navigation.getParam('description', 'No description')
+    const title = this.props.navigation.getParam(
+      'categoryTitle',
+      'No category'
+    )
+    const description = this.props.navigation.getParam(
+      'description',
+      'No description'
+    )
 
     return (
       <View>
-        <Text style={language === 'ar' ? styles.arabicTitle : styles.title} >{title}</Text>
-        <Text style={language === 'ar' ? styles.arabicDescription : styles.description} >{description}</Text>
-        {
-          articles.map((article, i) => {
-            const navigateToArticle = () => this.props.navigation.navigate('Article', {
+        <Text style={language === 'ar' ? styles.arabicTitle : styles.title}>
+          {title}
+        </Text>
+        <Text
+          style={
+            language === 'ar' ? styles.arabicDescription : styles.description
+          }
+        >
+          {description}
+        </Text>
+        {articles.map((article, i) => {
+          const navigateToArticle = () =>
+            this.props.navigation.navigate('Article', {
               title: article.title,
               language: language,
               image: article.articleImage,
               description: article.short_content || article.full_content
             })
 
-            return (
-              <ArticleCard
-                key={i}
-                language={language}
-                title={article.title}
-                image={article.image}
-                description={article.full_content}
-                navigateToArticle={navigateToArticle}
-              />
-            )
-          })
-        }
+          return (
+            <ArticleCard
+              key={i}
+              language={language}
+              title={article.title}
+              image={article.image}
+              description={article.full_content}
+              navigateToArticle={navigateToArticle}
+            />
+          )
+        })}
       </View>
     )
-  }
+  };
 
   render () {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.layout}>
-          {
-            // this.props.articles.length > 0
+          {// this.props.articles.length > 0
             this.renderArticlesListPage()
-            // : <Text style={styles.title}>There are no articles in this category</Text>
+          // : <Text style={styles.title}>There are no articles in this category</Text>
           }
         </View>
       </ScrollView>
@@ -87,14 +103,14 @@ class ArticlesListScreen extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   articles: state.categories.articlesInCategory,
   language: state.Setting.language
 })
 
 const dispatchToProps = dispatch => {
   return {
-    listArticles: (categoryId) => dispatch(fetchArticles(categoryId))
+    listArticles: categoryId => dispatch(fetchArticles(categoryId))
   }
 }
 
@@ -103,4 +119,7 @@ ArticlesListScreen.propTypes = {
   articles: PropTypes.array
 }
 
-export default connect(mapStateToProps, dispatchToProps)(ArticlesListScreen)
+export default connect(
+  mapStateToProps,
+  dispatchToProps
+)(ArticlesListScreen)

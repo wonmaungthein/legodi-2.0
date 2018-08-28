@@ -1,13 +1,13 @@
-import {
-  StyleSheet
-} from 'react-native'
+import { StyleSheet } from 'react-native'
+import Colors from '../../constants/Colors'
+const { primaryColor, categoriesColor } = Colors
 
 const styles = StyleSheet.create({
   box: {
     width: 100,
     height: 100,
     marginTop: 20,
-    backgroundColor: '#245e55',
+    backgroundColor: categoriesColor,
     justifyContent: 'center',
     alignItems: 'center'
   },
@@ -25,8 +25,8 @@ const styles = StyleSheet.create({
     borderWidth: 10,
     borderBottomColor: 'black',
     borderLeftColor: 'black',
-    borderTopColor: '#e5ba4f',
-    borderRightColor: '#e5ba4f'
+    borderTopColor: primaryColor,
+    borderRightColor: primaryColor
   }
 })
 

@@ -1,1 +1,1 @@
-module.exports = secret = 'legodieserver';
+module.exports = secret = 'legodieserver'
