@@ -4,10 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm --prefix server run lint && npm --prefix app run lint",
     "install": "npm --prefix server install && npm --prefix app install",
     "test": "npm --prefix server test && npm --prefix app test",
     "cypress": "open cypress"
+    "client": "npm --prefix client start",
+    "server": "npm --prefix server start",
+    "start": "npm run server",
+    "lint": "npm --prefix server run lint && npm --prefix app run lint",
+    "test": "npm --prefix server test && npm --prefix app test"
   },
   "repository": {
     "type": "git",

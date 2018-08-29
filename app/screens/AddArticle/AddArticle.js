@@ -1,25 +1,20 @@
 import React from 'react'
 import Button from 'apsl-react-native-button'
-import {
-  View,
-  ScrollView,
-  Text,
-  Picker,
-  Image,
-  Alert
-} from 'react-native'
+import { View, ScrollView, Text, Picker, Image, Alert } from 'react-native'
 import styles from './AddArticleStyle'
 import { addArticle } from '../../helpers/api'
 import { Constants, ImagePicker, Permissions } from 'expo'
 import Colors from '../../constants/Colors'
 import { FormLabel, FormInput } from 'react-native-elements'
-// Colors passed from the Constants => yellow and green
 const { primaryColor, secondaryColor } = Colors
 
 export default class AddArticle extends React.Component {
   static navigationOptions = {
     title: 'Add New Article',
-    headerStyle: { backgroundColor: secondaryColor, paddingTop: Constants.statusBarHeight },
+    headerStyle: {
+      backgroundColor: secondaryColor,
+      paddingTop: Constants.statusBarHeight
+    },
     headerTitleStyle: { color: primaryColor },
     headerTintColor: primaryColor
   };
@@ -43,7 +38,7 @@ export default class AddArticle extends React.Component {
   // The function returns another function which updates the state with passing name
   handleChange = name => text => {
     this.setState({ [name]: text })
-  }
+  };
 
   onHandleChangeLanguage = value => {
     switch (value) {
@@ -57,29 +52,32 @@ export default class AddArticle extends React.Component {
         this.setState({ language: { text: 'Amharic', short: 'am' } })
         return this.state.language.short
     }
-  }
+  };
 
   sendData () {
     const { title, fullContent, category, status, articleImage } = this.state
     const language = this.state.language.short
-    const data = { title, fullContent, category, language, status, articleImage }
+    const data = {
+      title,
+      fullContent,
+      category,
+      language,
+      status,
+      articleImage
+    }
     if (title.length > 0 && fullContent.length > 0 && language.length > 0) {
       addArticle(data, articleImage)
       Alert.alert(
         'Thank you!',
         'We will review your article.',
-        [
-          { text: 'OK', onPress: () => this.props.navigation.goBack() }
-        ],
+        [{ text: 'OK', onPress: () => this.props.navigation.goBack() }],
         { cancelable: false }
       )
     } else {
       Alert.alert(
         'Please check the form!',
         'Title, Content and Language are required.',
-        [
-          { text: 'OK' }
-        ],
+        [{ text: 'OK' }],
         { cancelable: false }
       )
     }
@@ -129,7 +127,9 @@ export default class AddArticle extends React.Component {
             <Picker
               selectedValue={this.state.language.short}
               style={{ height: 50, width: 100 }}
-              onValueChange={itemValue => this.onHandleChangeLanguage(itemValue)}
+              onValueChange={itemValue =>
+                this.onHandleChangeLanguage(itemValue)
+              }
             >
               <Picker.Item label='English' value='en' />
               <Picker.Item label='Arabic' value='ar' />
@@ -138,19 +138,23 @@ export default class AddArticle extends React.Component {
           </View>
 
           <View style={styles.imagePicker}>
-            <Button
-              onPress={this.pickImage}
-            >
-              Choose an image
-            </Button>
-            {this.state.articleImage &&
-              <Image source={{ uri: this.state.articleImage }} style={{ width: 200, height: 200 }} />}
+            <Button onPress={this.pickImage}>Choose an image</Button>
+            {this.state.articleImage && (
+              <Image
+                source={{ uri: this.state.articleImage }}
+                style={{ width: 200, height: 200 }}
+              />
+            )}
           </View>
 
           <Button
             onPress={() => this.sendData()}
             style={styles.submitButton}
-            textStyle={{ color: primaryColor, fontSize: 20, fontWeight: 'bold' }}
+            textStyle={{
+              color: primaryColor,
+              fontSize: 20,
+              fontWeight: 'bold'
+            }}
           >
             Submit
           </Button>

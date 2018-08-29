@@ -10,6 +10,24 @@
 
 -To run the server, make sure you have strapi installed `npm install strapi@alpha -g` then `strapi start` from the _server_ folder
 
+
+## Infrastructure
+
+`staging` and `production` environments are hosted in the CYF kubernetes cluster ( `https://github.com/CodeYourFuture/kubernetes`).
+
+The endpoints are:
+
+`https://api.legodi.codeyourfuture.io`
+
+`https://api.staging.legodi.codeyourfuture.io`
+
+All the automation configuration can be found in `.circleci/config.yml`. Feel free to change and adapt to your needs (ex.: run tests before deployment, etc).
+
+The container images are stored in docker hub under the `codeyourfuture` repository:
+
+`https://hub.docker.com/r/codeyourfuture/legodi-api`
+
+
 ### What is docker-compose file do
 
 It includes postgreSQL database image so if you do not have postgreSQL installed locally

@@ -1,9 +1,11 @@
 import { StyleSheet } from 'react-native'
+import Colors from '../../constants/Colors'
+const { primaryColor, secondaryColor } = Colors
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#e6bb44',
+    backgroundColor: primaryColor,
     padding: 20
   },
   content: {
@@ -17,7 +19,7 @@ const styles = StyleSheet.create({
     padding: 40
   },
   PlayAgainBtn: {
-    backgroundColor: '#0f352f',
+    backgroundColor: secondaryColor,
     height: 45,
     borderColor: 'transparent',
     borderWidth: 0,
@@ -26,7 +28,7 @@ const styles = StyleSheet.create({
   },
   question: {
     fontSize: 20,
-    color: '#0f352f',
+    color: secondaryColor,
     fontWeight: 'bold'
   },
   checkBoxContainer: {
@@ -38,7 +40,7 @@ const styles = StyleSheet.create({
     color: '#000'
   },
   viewButton: {
-    backgroundColor: '#0f352f',
+    backgroundColor: secondaryColor,
     width: 300,
     height: 45,
     borderColor: 'transparent',
@@ -51,13 +53,18 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   wrongAnswers: {
-    fontSize: 24, textAlign: 'center'
+    fontSize: 24,
+    textAlign: 'center'
   },
   questionTitle: {
-    fontSize: 20, paddingTop: 10, paddingBottom: 10
+    fontSize: 20,
+    paddingTop: 10,
+    paddingBottom: 10
   },
   answer: {
-    fontSize: 20, paddingTop: 10, color: 'green'
+    fontSize: 20,
+    paddingTop: 10,
+    color: 'green'
   }
 })
 export default styles

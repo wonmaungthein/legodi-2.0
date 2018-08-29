@@ -11,12 +11,14 @@ const cors = require('cors')
 const index = require('./routes/index')
 const weegieApi = require('./routes/api/weegie')
 const weegieAdmin = require('./routes/admin/weegie')
+const ArticlesAdmin = require('./routes/admin/articles')
 const languagesAdmin = require('./routes/admin/language')
 const languagesApi = require('./routes/api/languages')
 const usersApi = require('./routes/api/users')
 const usersAdmin = require('./routes/admin/users')
 const categoriesApi = require('./routes/api/categories')
 const articlesApi = require('./routes/api/articles')
+const CategoriesAdmin = require('./routes/admin/categories')
 
 const fileUpload = require('express-fileupload')
 
@@ -90,6 +92,8 @@ app.use('/api/weegie', weegieApi)
 app.use('/api/users', usersApi)
 app.use('/admin/weegie', weegieAdmin)
 app.use('/admin/users', usersAdmin)
+app.use('/admin/articles', ArticlesAdmin)
+app.use('/admin/categories', CategoriesAdmin)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

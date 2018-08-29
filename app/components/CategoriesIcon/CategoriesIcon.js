@@ -1,36 +1,49 @@
 import React from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import {
-  Ionicons, MaterialIcons, FontAwesome, Entypo, MaterialCommunityIcons, Foundation
+  Ionicons,
+  MaterialIcons,
+  FontAwesome,
+  Entypo,
+  MaterialCommunityIcons,
+  Foundation
 } from '@expo/vector-icons'
 import styles from './IconStyles'
 import PropTypes from 'prop-types'
+import Colors from '../../constants/Colors'
+const { primaryColor } = Colors
 
 const CategoriesIcon = props => {
   const getIconName = name => {
     switch (name) {
       case 'Welcome':
-        return <Entypo name='hand' size={36} color='#e5ba4f' />
+        return <Entypo name='hand' size={36} color={primaryColor} />
       case 'Asylum':
-        return <FontAwesome name='balance-scale' size={32} color='#e5ba4f' />
+        return (
+          <FontAwesome name='balance-scale' size={32} color={primaryColor} />
+        )
       case 'Volunteering':
-        return <FontAwesome name='child' size={36} color='#e5ba4f' />
+        return <FontAwesome name='child' size={36} color={primaryColor} />
       case 'Food':
-        return <MaterialCommunityIcons name='food' size={43} color='#e5ba4f' />
+        return (
+          <MaterialCommunityIcons name='food' size={43} color={primaryColor} />
+        )
       case 'Parks':
-        return <Foundation name='guide-dog' size={47} color='#e5ba4f' />
+        return <Foundation name='guide-dog' size={47} color={primaryColor} />
       case 'Sport':
-        return <MaterialIcons name='directions-run' size={39} color='#e5ba4f' />
+        return (
+          <MaterialIcons name='directions-run' size={39} color={primaryColor} />
+        )
       case 'Shopping':
-        return <Ionicons name='md-cart' size={36} color='#e5ba4f' />
+        return <Ionicons name='md-cart' size={36} color={primaryColor} />
       case 'Transport':
-        return <Ionicons name='ios-train' size={40} color='#e5ba4f' />
+        return <Ionicons name='ios-train' size={40} color={primaryColor} />
       case 'Children':
-        return <Ionicons name='md-contacts' size={36} color='#e5ba4f' />
+        return <Ionicons name='md-contacts' size={36} color={primaryColor} />
       case 'Emergency':
-        return <FontAwesome name='heartbeat' size={36} color='#e5ba4f' />
+        return <FontAwesome name='heartbeat' size={36} color={primaryColor} />
       default:
-        return <Ionicons name='md-help' size={36} color='#e5ba4f' />
+        return <Ionicons name='md-help' size={36} color={primaryColor} />
     }
   }
   return (
