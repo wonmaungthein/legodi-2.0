@@ -1,27 +1,26 @@
 import React from 'react'
-import {
-  ScrollView,
-  Text,
-  View
-} from 'react-native'
+import { ScrollView, Text, View } from 'react-native'
 import { WebBrowser, Constants } from 'expo'
 import CategoriesList from '../CategoriesList/CategoriesList'
 import styles from './HomeStyles'
+import Colors from '../../constants/Colors'
+const { primaryColor, secondaryColor } = Colors
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     title: 'Glasgow Welcome Pack',
-    headerStyle: { backgroundColor: '#0f352f', paddingTop: Constants.statusBarHeight },
-    headerTitleStyle: { color: '#e6bc44' }
+    headerStyle: {
+      backgroundColor: secondaryColor,
+      paddingTop: Constants.statusBarHeight
+    },
+    headerTitleStyle: { color: primaryColor }
   };
 
   render () {
     const { navigate } = this.props.navigation
     return (
       <View style={styles.container}>
-        <ScrollView
-          contentContainerStyle={styles.contentContainer}
-        >
+        <ScrollView contentContainerStyle={styles.contentContainer}>
           <CategoriesList onPressHandle={navigate} />
         </ScrollView>
       </View>
