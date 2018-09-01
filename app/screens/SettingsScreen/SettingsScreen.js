@@ -8,7 +8,6 @@ import PropTypes from 'prop-types'
 import { fetchCities } from '../../redux/actions/citiesActions'
 
 class SettingsScreen extends React.Component {
-
   renderLanguage = () => {
     const { language } = this.props
     if (language === 'ar') {
