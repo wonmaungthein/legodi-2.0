@@ -8,10 +8,6 @@ import PropTypes from 'prop-types'
 import { fetchCities } from '../../redux/actions/citiesActions'
 
 class SettingsScreen extends React.Component {
-  componentDidMount () {
-    console.log('calling fetch cities...')
-    this.props.fetchCities()
-  }
 
   renderLanguage = () => {
     const { language } = this.props
@@ -89,7 +85,7 @@ class SettingsScreen extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state)
+  console.log(state.cities)
   return {
     language: state.Setting.language,
     city: state.Setting.city,

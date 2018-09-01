@@ -2,7 +2,7 @@ import axios from 'axios'
 import FormData from 'form-data'
 
 const instance = axios.create({
-  baseURL: 'https://api.staging.legodi.codeyourfuture.io/api'
+  baseURL: 'http://localhost:3001/api' //'https://api.staging.legodi.codeyourfuture.io/api'
 })
 
 export const getCategories = async (language = 'en') => instance.get(`/categories/language?language=${language}`)
@@ -10,9 +10,7 @@ export const getCategories = async (language = 'en') => instance.get(`/categorie
 export const getLanguages = async () => instance.get('/languages')
 
 export const getCities = async () => {
-  console.log('initiating API call')
-  const response = await axios.get('http://localhost:3001/api/cities')
-  console.log('response back:', response)
+  const response = await instance.get('/cities')
   return response
 }
 
