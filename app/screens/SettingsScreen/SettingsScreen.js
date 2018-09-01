@@ -8,6 +8,11 @@ import PropTypes from 'prop-types'
 import { fetchCities } from '../../redux/actions/citiesActions'
 
 class SettingsScreen extends React.Component {
+  componentDidMount () {
+    console.log('calling fetch cities...')
+    this.props.fetchCities()
+  }
+
   renderLanguage = () => {
     const { language } = this.props
     if (language === 'ar') {
@@ -68,10 +73,11 @@ class SettingsScreen extends React.Component {
           <Picker
             selectedValue={this.props.city}
             style={{ height: 50, width: 100 }}
-            onValueChange={itemValue => { this.props.onCityChange(itemValue); this.props.fetchCities(itemValue) }}
+            onValueChange={itemValue => { this.props.onCityChange(itemValue) }}
           >
             {
               cities.map((city, value) => {
+                console.log(city, value)
                 return <Picker.Item key={value} label={city.city_name} value={city.city_id} />
               })
             }
@@ -83,6 +89,7 @@ class SettingsScreen extends React.Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state)
   return {
     language: state.Setting.language,
     city: state.Setting.city,
@@ -102,8 +109,8 @@ const dispatchToProps = dispatch => {
     fetchCategories: (language) => {
       return dispatch(fetchCategories(language))
     },
-    fetchCities: (city) => {
-      return dispatch(fetchCities(city))
+    fetchCities: () => {
+      return dispatch(fetchCities())
     }
   }
 }
