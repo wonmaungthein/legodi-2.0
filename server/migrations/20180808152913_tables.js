@@ -31,6 +31,11 @@ exports.up = async (knex, Promise) => {
     table.bool('visible').defaultTo(false)
   })
 
+  await knex.schema.createTable('cities', table => {
+    table.string('city_id').primary().defaultTo('GLA')
+    table.string('city_name').notNullable()
+  })
+
   await knex.schema.createTable('articles', table => {
     table.increments('article_id')
     table.string('title').notNullable()
@@ -60,4 +65,5 @@ exports.down = async (knex, Promise) => {
   await knex.schema.dropTable('articles')
   await knex.schema.dropTable('categories')
   await knex.schema.dropTable('languages')
+  await knex.schema.dropTable('cities')
 }
