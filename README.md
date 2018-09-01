@@ -73,12 +73,12 @@ const generateNavigation = (routeStack, label, color, iosIcon, androidIcon) => {
         focused={focused}
         color={color}
         name={
-          Platform.OS === 'ios'
-            ? `${iosIcon}${focused ? '' : '-outline'}`
+          Platform.OS === "ios"
+            ? `${iosIcon}${focused ? "" : "-outline"}`
             : androidIcon
         }
       />
-    ),
+    )
   };
 };
 ```
@@ -94,7 +94,7 @@ export const tabBarVisibility = navigation => {
   let initialValue = true;
   navigation.state.routes.map(route => {
     const { routeName } = route;
-    if (routeName === 'Article' || routeName === 'Articles') {
+    if (routeName === "Article" || routeName === "Articles") {
       return (initialValue = false);
     }
   });
@@ -127,3 +127,7 @@ We use `knex` for migrations, but we created alias helpers on `package.json` to 
 1.  Create a migration `npm run create-migration table_name`
 2.  Create a seed `npm run create-seed table_name`
 3.  To
+
+## To Open Cypress
+
+1. Go to server and run `./node_modules/.bin/cypress open` or `npx cypress open` in terminal and it will open a window.
