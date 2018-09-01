@@ -22,6 +22,6 @@
   },
   "homepage": "https://github.com/CodeYourFuture/legodi-2.0#readme",
   "dependencies": {
-    "strapi-generate-migrations": "^2.0.0"
+    "strapi-generate-migrations": "^2.0.2"
   }
 }
