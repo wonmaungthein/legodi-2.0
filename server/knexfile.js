@@ -1,7 +1,7 @@
 // Update with your config settings.
 module.exports = {
   development: {
-    client: 'postgresql',
+    client: 'pg',
     connection: {
       host: process.env.DB_HOST || '127.0.0.1',
       database: process.env.DB_NAME || 'legodi',
@@ -17,7 +17,7 @@ module.exports = {
     }
   },
   test: {
-    client: 'postgresql',
+    client: 'pg',
     connection: {
       host: process.env.DB_HOST || '127.0.0.1',
       database: process.env.DB_NAME || 'legodi',
@@ -34,7 +34,7 @@ module.exports = {
   },
 
   staging: {
-    client: 'postgresql',
+    client: 'pg',
     connection: {
       host: process.env.DB_HOST,
       database: process.env.DB_NAME,

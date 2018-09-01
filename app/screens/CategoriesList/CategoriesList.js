@@ -4,6 +4,7 @@ import CategoriesIcon from '../../components/CategoriesIcon/CategoriesIcon'
 import { connect } from 'react-redux'
 import { fetchCategories } from '../../redux/actions/categoriesActions'
 import { fetchLanguages } from '../../redux/actions/languagesActions'
+import { fetchCities } from '../../redux/actions/citiesActions'
 import styles from './CategoryListStyles'
 import PropTypes from 'prop-types'
 
@@ -12,6 +13,7 @@ class CategoriesList extends React.Component {
     const language = 'en'
     this.props.fetchCategories(language)
     this.props.fetchLanguages()
+    this.props.fetchCities()
   }
 
   renderCategories = () => {
@@ -51,7 +53,11 @@ const dispatchToProps = dispatch => {
     },
     fetchLanguages: () => {
       return dispatch(fetchLanguages())
+    },
+    fetchCities: () => {
+      return dispatch(fetchCities())
     }
+
   }
 }
 
@@ -62,6 +68,8 @@ const mapStateToProps = ({ categories, Setting }) => ({
 
 CategoriesList.propTypes = {
   fetchCategories: PropTypes.func,
+  fetchCities: PropTypes.func,
+  fetchLanguages: PropTypes.func,
   categories: PropTypes.array,
   onPressHandle: PropTypes.func
 }
