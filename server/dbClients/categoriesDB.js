@@ -23,8 +23,8 @@ const getCategoryByName = async category_name => {
   return category
 }
 
-const getCategoryByLanguage = async language_id => {
-  return knex('categories').where({ language_id })
+const getCategoryByLanguage = async (language_id, city_id) => {
+  return knex('categories').where({ language_id }).andWhere({ city_id })
 }
 
 const addCategory = data => {

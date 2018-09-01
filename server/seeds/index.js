@@ -14,8 +14,8 @@ exports.seed = async (knex, Promise) => {
   await knex('cities').del()
 
   await knex('languages').insert(languagesData)
-  await knex('categories').insert(categoriesData)
   await knex('cities').insert(citiesData)
+  await knex('categories').insert(categoriesData)
 
   const articles = await generateArticles()
   await knex('articles').insert(articles)
