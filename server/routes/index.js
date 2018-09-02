@@ -13,11 +13,6 @@ var ensureAuthenticated = (req, res, next) => {
 
 // Get Homepage
 router.get('/', ensureAuthenticated, (req, res, next) => {
-  res.render('login', {layout: false})
-})
-
-// Get Homepage
-router.get('/dashboard', ensureAuthenticated, (req, res, next) => {
   res.render('index')
 })
 
