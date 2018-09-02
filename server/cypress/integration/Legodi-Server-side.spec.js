@@ -1,3 +1,5 @@
+// const cy = require ('cy')  
+
 describe('Legodi Server side testing example', () => {
   beforeEach(() => {
     cy.visit('/')
@@ -20,7 +22,18 @@ describe('Legodi Server side testing example', () => {
       .click()
   }
 
-  it('should visit to Legodi server', () => {})
+  const ArticlesTab = () => {
+    cy.get('a.nav-link')
+      .contains('Articles')
+      .click()
+  }
+
+  const CategoriesTab = () => {
+    cy.get('a.nav-link')
+      .contains('Categories')
+      .click()
+  }
+  it('should visit to Legodi server', () => { })
 
   //  Visit Weegie Tab
   it('should visit and click Weegie Tab', () => {
@@ -51,12 +64,22 @@ describe('Legodi Server side testing example', () => {
       .click()
   })
 
+  it('should click "Add a question button"', () => {
+    WeegieTab()
+    cy.get('div.legodi-menu')
+      .find('li')
+      .contains('Add')
+      .click()
+      .url('http://localhost:3001/admin/weegie/questions/add')
+    cy.get('button.btn.btn-lg.btn-danger').click()
+  })
+
   // Visit Language Tab
   it('should visit and click Language Tab', () => {
     LanguageTab()
   })
 
-  it('should find view in Language Tab and enter', () => {
+  it('should find view button in Language Tab and enter', () => {
     LanguageTab()
     cy.get('div.legodi-menu')
       .find('li')
@@ -64,7 +87,7 @@ describe('Legodi Server side testing example', () => {
       .click()
   })
 
-  it('should find Edit in Language Tab and enter', () => {
+  it('should find Edit button in Language Tab and enter', () => {
     LanguageTab()
     cy.get('div.legodi-menu')
       .find('li')
@@ -72,12 +95,23 @@ describe('Legodi Server side testing example', () => {
       .click()
   })
 
-  it('should find Add in Language Tab and enter', () => {
+  it('should find Add button in Language Tab and enter', () => {
     LanguageTab()
     cy.get('div.legodi-menu')
       .find('li')
       .contains('Add')
       .click()
+  })
+
+
+  it('should click "Submit button"', () => {
+    LanguageTab()
+    cy.get('div.legodi-menu')
+      .find('li')
+      .contains('Add')
+      .click()
+      .url('http://localhost:3001/admin/language/add')
+    cy.get('button.btn.btn-lg.btn-danger').click()
   })
 
   // Visit Users Tab
@@ -109,17 +143,58 @@ describe('Legodi Server side testing example', () => {
       .click()
   })
 
+
+  it('should find submit button in Users Tab', () => {
+    UsersTab()
+    cy.get('div.legodi-menu')
+      .find('li')
+      .contains('Add')
+      .click()
+      .url('http://localhost:3001/admin/users/add')
+    cy.get('button.btn.btn-lg.btn-danger').click()
+  })
+
+
+
   //   Visit Articles Tab
   it('should visit and click Articles Tab', () => {
-    cy.get('a.nav-link')
-      .contains('Articles')
+    ArticlesTab()
+  })
+
+
+  // it.only('should ')
+
+  it('should find Add in Articles Tab and enter', () => {
+    ArticlesTab()
+    cy.get('div.legodi-menu')
+      .find('li')
+      .contains('Add')
       .click()
   })
+
+  it('should click Submit button in Add section in Articles', () => {
+    ArticlesTab()
+    cy.get('div.legodi-menu')
+      .find('li')
+      .contains('Add')
+      .click()
+      .url('http://localhost:3001/admin/articles/add')
+    cy.get('button.btn.btn-lg.btn-danger').click()
+  })
+
   // Visit Categories Tab
   it('should visit and click Categories Tab', () => {
-    cy.get('a.nav-link')
-      .contains('Categories')
+    CategoriesTab()
+  })
+
+  it('should click Submit button in Add section in Categories', () => {
+    CategoriesTab()
+    cy.get('div.legodi-menu')
+      .find('li')
+      .contains('Add')
       .click()
+      .url('http://localhost:3001/admin/categories/add')
+    cy.get('button.btn.btn-lg.btn-danger').click()
   })
 
   // Visit Logout Tab
