@@ -1,18 +1,12 @@
 <div class="container">
 {{#if data}}
-<h3 class="text-success">Add New User</h3>
+<h3 class="text-success">Edit New User</h3>
 <form method="post">
- <div class="form-group has-success">
-    <label class="text-primary">
-         User Id:
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="user_id" readonly> {{data.user_id}}</textarea>
-  </div>
  <div class="form-group has-success">
     <label class="text-primary">
          Full Name:
     </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="full_name">{{data.full_name}}</textarea>
+    <textarea rows="3" class="form-control form-control-success mb-4"  name="fullName">{{data.full_name}}</textarea>
   </div>
   <div class="form-group has-success">
     <label class="text-primary">
@@ -28,13 +22,6 @@
     <textarea rows="3" class="form-control form-control-success mb-4" name="password" >{{data.password}}</textarea>
   </div>
 
-  <div class="form-group has-success">
-    <label class="text-primary">
-      date 
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="created_at">{{data.created_at}}</textarea>
-  </div>
-
     <button class="btn btn-lg btn-danger" type="submit">Submit</button>
    
 </form>
@@ -43,15 +30,9 @@
 <form method="post">
  <div class="form-group has-success">
     <label class="text-primary">
-         User Id:
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="user_id"></textarea>
-  </div>
- <div class="form-group has-success">
-    <label class="text-primary">
          Full Name:
     </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="full_name"></textarea>
+    <textarea rows="3" class="form-control form-control-success mb-4"  name="fullName"></textarea>
   </div>
   <div class="form-group has-success">
     <label class="text-primary">
@@ -66,14 +47,6 @@
     </label>
     <textarea rows="3" class="form-control form-control-success mb-4" name="password" ></textarea>
   </div>
-
-  <div class="form-group has-success">
-    <label class="text-primary">
-      date 
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="created_at"></textarea>
-  </div>
-
     <button class="btn btn-lg btn-danger" type="submit">Submit</button>
    
 </form>
