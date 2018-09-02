@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   imagePicker: {
-    marginTop: height - 750,
+    marginTop: height - 630,
     alignItems: 'center'
   },
   submitButton: {
