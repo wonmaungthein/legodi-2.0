@@ -39,9 +39,8 @@ class SettingsScreen extends React.Component {
   }
 
   render () {
-    const { language } = this.props
-    const { languages } = this.props
-    const { cities } = this.props
+    const { language, languages, cities, languageId, cityId } = this.props
+
     return (
       <View style={styles.container}>
         <View style={styles.container}>
@@ -51,9 +50,9 @@ class SettingsScreen extends React.Component {
           <Text style={styles.changeLanguage}>{this.translateHeaderContent(language)}</Text>
           <Picker
 
-            selectedValue={this.props.language}
+            selectedValue={languageId}
             style={{ height: 50, width: 100 }}
-            onValueChange={itemValue => { this.props.onLanguageChange(itemValue); this.props.fetchCategories(itemValue) }}
+            onValueChange={itemValue => { this.props.onLanguageChange(itemValue) }}
           >
             {
               languages.map((language, value) => {
@@ -63,10 +62,10 @@ class SettingsScreen extends React.Component {
           </Picker>
         </View>
         <View style={styles.container}>
-          <Text style={styles.language}>{this.props.city} is selected</Text>
+          <Text style={styles.language}>{cityId} is selected</Text>
           <Text style={styles.changeLanguage}>Change City:</Text>
           <Picker
-            selectedValue={this.props.city}
+            selectedValue={cityId}
             style={{ height: 50, width: 100 }}
             onValueChange={itemValue => { this.props.onCityChange(itemValue) }}
           >
@@ -84,8 +83,8 @@ class SettingsScreen extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    language: state.Setting.language,
-    city: state.Setting.city,
+    languageId: state.Setting.language,
+    cityId: state.Setting.city,
     languages: state.languages.languagesList,
     cities: state.cities.citiesList
   }
