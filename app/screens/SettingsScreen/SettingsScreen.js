@@ -8,46 +8,25 @@ import PropTypes from 'prop-types'
 import { fetchCities } from '../../redux/actions/citiesActions'
 
 class SettingsScreen extends React.Component {
-  renderLanguage = () => {
-    const { language } = this.props
-    if (language === 'ar') {
-      return 'عربي'
-    } else if (language === 'am') {
-      return 'አማርኛ'
-    }
-    return 'English'
-  };
-
-  translateContent = (language) => {
-    if (language === 'ar') {
-      return 'اخترت '
-    } else if (language === 'am') {
-      return 'ተመርጧል'
+  renderLanguage = (languageId) => {
+    if (languageId === 'ar') {
+      return 'عربي اخترت'
+    } else if (languageId === 'am') {
+      return 'አማርኛ ተመርጧል'
     } else {
-      return 'is selected'
-    }
-  }
-
-  translateHeaderContent = (language) => {
-    if (language === 'ar') {
-      return 'اختار اللغة'
-    } else if (language === 'am') {
-      return 'ተመርጧል'
-    } else {
-      return 'is selected'
+      return 'English is selected'
     }
   }
 
   render () {
-    const { language, languages, cities, languageId, cityId } = this.props
+    const { languages, cities, languageId, cityId } = this.props
 
     return (
       <View style={styles.container}>
         <View style={styles.container}>
           <Text style={styles.language}>
-            {this.renderLanguage()} {}
+            {this.renderLanguage(languageId)} {}
           </Text>
-          <Text style={styles.changeLanguage}>{this.translateHeaderContent(language)}</Text>
           <Picker
 
             selectedValue={languageId}
@@ -62,8 +41,7 @@ class SettingsScreen extends React.Component {
           </Picker>
         </View>
         <View style={styles.container}>
-          <Text style={styles.language}>{cityId} is selected</Text>
-          <Text style={styles.changeLanguage}>Change City:</Text>
+          <Text style={styles.language}>{cities.filter(city => city.city_id === cityId)[0].city_name} is selected</Text>
           <Picker
             selectedValue={cityId}
             style={{ height: 50, width: 100 }}
