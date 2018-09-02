@@ -71,7 +71,8 @@ class ArticlesListScreen extends React.Component {
               title: article.title,
               language: language,
               image: article.articleImage,
-              description: article.short_content || article.full_content
+              description: article.short_content || article.full_content,
+              articleImage: article.articleImage
             })
 
           return (
@@ -79,7 +80,7 @@ class ArticlesListScreen extends React.Component {
               key={i}
               language={language}
               title={article.title}
-              image={article.image}
+              image={article.articleImage}
               description={article.full_content}
               navigateToArticle={navigateToArticle}
             />

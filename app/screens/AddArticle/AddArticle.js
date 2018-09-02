@@ -1,11 +1,12 @@
 import React from 'react'
 import Button from 'apsl-react-native-button'
-import { View, ScrollView, Text, Picker, Image, Alert } from 'react-native'
+import { View, ScrollView, Image, Alert } from 'react-native'
 import styles from './AddArticleStyle'
 import { addArticle } from '../../helpers/api'
 import { Constants, ImagePicker, Permissions } from 'expo'
 import Colors from '../../constants/Colors'
 import { FormLabel, FormInput } from 'react-native-elements'
+
 const { primaryColor, secondaryColor } = Colors
 
 export default class AddArticle extends React.Component {
@@ -24,14 +25,12 @@ export default class AddArticle extends React.Component {
     // state for the form of adding article
     this.state = {
       title: '',
+      shortContent: '',
       fullContent: '',
-      category: this.props.navigation.getParam('categoryId'),
+      categoryId: this.props.navigation.getParam('categoryId'),
       status: 'Pending',
-      language: {
-        text: 'English',
-        short: 'en'
-      },
-      articleImage: null
+      articleImage: '',
+      imageUrl: ''
     }
   }
 
@@ -40,33 +39,18 @@ export default class AddArticle extends React.Component {
     this.setState({ [name]: text })
   };
 
-  onHandleChangeLanguage = value => {
-    switch (value) {
-      case 'en':
-        this.setState({ language: { text: 'Enlish', short: 'en' } })
-        return this.state.language.short
-      case 'ar':
-        this.setState({ language: { text: 'Arabic', short: 'ar' } })
-        return this.state.language.short
-      case 'am':
-        this.setState({ language: { text: 'Amharic', short: 'am' } })
-        return this.state.language.short
-    }
-  };
-
   sendData () {
-    const { title, fullContent, category, status, articleImage } = this.state
-    const language = this.state.language.short
+    const { title, shortContent, fullContent, categoryId, status, articleImage } = this.state
     const data = {
       title,
+      shortContent,
       fullContent,
-      category,
-      language,
+      categoryId,
       status,
       articleImage
     }
-    if (title.length > 0 && fullContent.length > 0 && language.length > 0) {
-      addArticle(data, articleImage)
+    if (title.length > 0 && fullContent.length > 0 && shortContent.length > 0) {
+      addArticle(data)
       Alert.alert(
         'Thank you!',
         'We will review your article.',
@@ -81,7 +65,7 @@ export default class AddArticle extends React.Component {
         { cancelable: false }
       )
     }
-    addArticle(data, articleImage)
+    addArticle(data)
   }
 
   pickImage = async () => {
@@ -90,10 +74,11 @@ export default class AddArticle extends React.Component {
       let result = await ImagePicker.launchImageLibraryAsync({
         allowsEditing: true,
         aspect: [4, 3],
-        mediaTypes: 'Images'
+        mediaTypes: 'Images',
+        base64: true
       })
       if (!result.cancelled) {
-        this.setState({ articleImage: result.uri })
+        this.setState({ articleImage: result.base64, imageUrl: result.uri })
       }
     }
   };
@@ -111,7 +96,16 @@ export default class AddArticle extends React.Component {
             />
           </View>
           <View>
-            <FormLabel labelStyle={styles.inputTitle}>Content</FormLabel>
+            <FormLabel labelStyle={styles.inputTitle}>Short Description</FormLabel>
+            <FormInput
+              multiline
+              onChangeText={this.handleChange('shortContent')}
+              inputStyle={{ color: secondaryColor, width: Constants.width }}
+              containerStyle={{ borderBottomColor: secondaryColor }}
+            />
+          </View>
+          <View>
+            <FormLabel labelStyle={styles.inputTitle}>Full Description</FormLabel>
             <FormInput
               multiline
               onChangeText={this.handleChange('fullContent')}
@@ -119,32 +113,16 @@ export default class AddArticle extends React.Component {
               containerStyle={{ borderBottomColor: secondaryColor }}
             />
           </View>
-          <View style={styles.pickerContainer}>
-            <Text style={styles.language}>
-              {this.state.language.text} is selected
-            </Text>
-            <Text style={styles.changeLanguage}>Select Language:</Text>
-            <Picker
-              selectedValue={this.state.language.short}
-              style={{ height: 50, width: 100 }}
-              onValueChange={itemValue =>
-                this.onHandleChangeLanguage(itemValue)
-              }
-            >
-              <Picker.Item label='English' value='en' />
-              <Picker.Item label='Arabic' value='ar' />
-              <Picker.Item label='Amharic' value='am' />
-            </Picker>
-          </View>
-
           <View style={styles.imagePicker}>
             <Button onPress={this.pickImage}>Choose an image</Button>
-            {this.state.articleImage && (
-              <Image
-                source={{ uri: this.state.articleImage }}
-                style={{ width: 200, height: 200 }}
-              />
-            )}
+            {
+              this.state.imageUrl && (
+                <Image
+                  source={{ uri: this.state.imageUrl }}
+                  style={{ width: 200, height: 200 }}
+                />
+              )
+            }
           </View>
 
           <Button

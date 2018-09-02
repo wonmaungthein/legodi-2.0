@@ -22,13 +22,15 @@ export default class Article extends React.Component {
       'description',
       'Default description'
     )
+    const articleImage = this.props.navigation.getParam('articleImage')
+
     return (
       <View style={styles.container}>
         <ScrollView>
           <View style={styles.center}>
             <Image
               style={styles.image}
-              source={{ uri: 'http://placehold.it/300x200' }}
+              source={{ uri: articleImage ? `data:image/png;base64,${articleImage}` : 'http://placehold.it/300x200' }}
             />
           </View>
           <View style={[styles.center, { padding: 15 }]}>
