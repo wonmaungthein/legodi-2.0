@@ -13,11 +13,10 @@ function getArticleById (id) {
 
 function addArticle (data) {
   return knex.table('articles').insert({
-    image: data.image,
+    image: data.articleImage,
     title: data.title,
     status: data.status,
-    article_id: data.articleId,
-    category_id: data.category_id,
+    category_id: data.categoryId,
     full_content: data.fullContent,
     short_content: data.shortContent
   })
@@ -27,7 +26,7 @@ function editArticle (articleId, data) {
   return knex.table('articles')
     .where('article_id', '=', articleId)
     .update({
-      image: data.image,
+      image: data.articleImage,
       title: data.title,
       status: data.status,
       category_id: data.categoryId,

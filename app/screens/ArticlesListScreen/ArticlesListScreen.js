@@ -70,8 +70,8 @@ class ArticlesListScreen extends React.Component {
             this.props.navigation.navigate('Article', {
               title: article.title,
               language: language,
-              image: article.articleImage,
-              description: article.short_content || article.full_content
+              description: article.short_content || article.full_content,
+              articleImage: article.image
             })
 
           return (
