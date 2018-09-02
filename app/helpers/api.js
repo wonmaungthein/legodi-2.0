@@ -4,8 +4,8 @@ const instance = axios.create({
   baseURL: 'http://localhost:3001/api'
 })
 
-// 'https://api.staging.legodi.codeyourfuture.io/api'
-export const getCategories = async (language = 'en') => instance.get(`/categories/language?language=${language}`)
+export const getCategories = async (languageId = 'en', cityId = 'GLA') =>
+  instance.get(`/categories/language?language=${languageId}&city=${cityId}`)
 
 export const getLanguages = async () => instance.get('/languages')
 

@@ -1,7 +1,7 @@
 import * as Types from '../actions/types'
 
 export const Setting = (
-  state = { city: 'Glasgow', language: 'en' },
+  state = { city: 'GLA', language: 'en' },
   action
 ) => {
   switch (action.type) {
