@@ -28,7 +28,7 @@ export default class AddArticle extends React.Component {
       shortContent: '',
       fullContent: '',
       categoryId: this.props.navigation.getParam('categoryId'),
-      status: 'Pending',
+      status: 'pending',
       articleImage: '',
       imageUrl: ''
     }

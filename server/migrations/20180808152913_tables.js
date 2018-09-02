@@ -47,7 +47,7 @@ exports.up = async (knex, Promise) => {
     table.text('full_content').notNullable()
     table.integer('category_id').notNullable()
     table.foreign('category_id').references('category_id').inTable('categories')
-    table.string('image')
+    table.text('image')
     table.enum('status', ['pending', 'approved', 'rejected', 'hidden'])
 
     table.integer('sort_order')

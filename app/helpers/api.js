@@ -30,8 +30,6 @@ export const getWeegieGameAnswers = async (data) => {
 export const addArticle = async (data) => {
   try {
     const { data: response } = await instance.post('/articles', data)
-    console.log(response)
-
     return response
   } catch (error) {
     console.log(error)

@@ -70,9 +70,8 @@ class ArticlesListScreen extends React.Component {
             this.props.navigation.navigate('Article', {
               title: article.title,
               language: language,
-              image: article.articleImage,
               description: article.short_content || article.full_content,
-              articleImage: article.articleImage
+              articleImage: article.image
             })
 
           return (
@@ -80,7 +79,7 @@ class ArticlesListScreen extends React.Component {
               key={i}
               language={language}
               title={article.title}
-              image={article.articleImage}
+              image={article.image}
               description={article.full_content}
               navigateToArticle={navigateToArticle}
             />
