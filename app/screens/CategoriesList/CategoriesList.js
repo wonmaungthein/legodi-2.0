@@ -17,11 +17,6 @@ class CategoriesList extends React.Component {
     this.props.fetchCities()
   }
 
-  async componentWillReceiveProps (newProps) {
-    const {languageId, cityId} = newProps
-    this.props.fetchCategories(languageId, cityId)
-  }
-
   renderCategories = () => {
     const language = this.props.language
     return this.props.categories.map((category, i) => {

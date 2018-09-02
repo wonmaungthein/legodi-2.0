@@ -3,7 +3,7 @@ const db = require('../../../dbClients/categoriesDB')
 
 const router = express.Router()
 
-router.get('/', async (req, res) => await res.render('category-menu'))
+router.get('/', async (req, res) => res.render('category-menu'))
 
 router.get('/view', async (req, res) => {
   try {
@@ -25,7 +25,7 @@ router.get('/view/:categoryId', async (req, res) => {
   }
 })
 
-router.get('/add', async (req, res) => await res.render('category-add'))
+router.get('/add', async (req, res) => res.render('category-add'))
 
 router.post('/add', async (req, res) => {
   const { body } = req

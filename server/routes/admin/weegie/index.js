@@ -3,7 +3,7 @@ const db = require('../../../dbClients/weegieQuestionDB')
 
 const router = express.Router()
 
-router.get('/', async (req, res) => await res.render('weegie-menu'))
+router.get('/', async (req, res) => res.render('weegie-menu'))
 
 router.get('/questions/view', async (req, res) => {
   try {
@@ -26,7 +26,7 @@ router.get('/questions/view/:questionId', async (req, res) => {
 
 router.get(
   '/questions/add',
-  async (req, res) => await res.render('weegie-add')
+  async (req, res) => res.render('weegie-add')
 )
 
 router.post('/questions/add', async (req, res) => {

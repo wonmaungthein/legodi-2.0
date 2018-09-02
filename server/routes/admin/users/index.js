@@ -3,7 +3,7 @@ const db = require('../../../dbClients/usersDB')
 
 const router = express.Router()
 
-router.get('/', async (req, res) => await res.render('user-menu'))
+router.get('/', async (req, res) => res.render('user-menu'))
 
 router.get('/view', async (req, res) => {
   try {
@@ -25,7 +25,7 @@ router.get('/view/:userId', async (req, res) => {
   }
 })
 
-router.get('/add', async (req, res) => await res.render('user-add'))
+router.get('/add', async (req, res) => res.render('user-add'))
 
 router.post('/add', async (req, res) => {
   const { body } = req
@@ -50,7 +50,7 @@ router.get('/edit/:userId', async (req, res) => {
   const { userId } = req.params
   const user = await db.getUserById(userId)
   try {
-    const data = await db.getUsers()
+    // const data = await db.getUsers()
     res.render('user-add', { data: user[0] })
   } catch (error) {
     res.render('error', { error })

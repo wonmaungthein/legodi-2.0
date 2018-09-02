@@ -32,7 +32,7 @@ module.exports = [
   {
     category_name: 'Welcome',
     short_description: 'Refuweege letters',
-    description: `Refuweege is a community-led charity set up to ensure that all refugees arriving in Glasgow are welcomed to the city in true Glaswegian style.  We want to make sure that when people arrive in Scotland they receive the welcome they deserve and few useful tips too! We also want to provide everyone who wishes to get involved and make a difference, the opportunity to do so.\r\n\r\nThe heart and soul of Refuweegee's welcome packs are the \"letters fae the locals\". Here are few of them to welcome you to the wonderful city of Glasgow.`,
+    description: `Refuweege is a community-led charity set up to ensure that all refugees arriving in Glasgow are welcomed to the city in true Glaswegian style.  We want to make sure that when people arrive in Scotland they receive the welcome they deserve and few useful tips too! We also want to provide everyone who wishes to get involved and make a difference, the opportunity to do so.\r\n\r\nThe heart and soul of Refuweegee's welcome packs are the "letters fae the locals". Here are few of them to welcome you to the wonderful city of Glasgow.`,
     status: 'approved',
     order: 1,
     icon: 'Welcome',

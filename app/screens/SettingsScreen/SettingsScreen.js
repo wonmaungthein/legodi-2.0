@@ -18,6 +18,10 @@ class SettingsScreen extends React.Component {
     }
   }
 
+  updateCategories = (languageId, cityId) => {
+    this.props.fetchCategories(languageId, cityId)
+  }
+
   render () {
     const { languages, cities, languageId, cityId } = this.props
 
@@ -31,7 +35,7 @@ class SettingsScreen extends React.Component {
 
             selectedValue={languageId}
             style={{ height: 50, width: 100 }}
-            onValueChange={itemValue => { this.props.onLanguageChange(itemValue) }}
+            onValueChange={itemValue => { this.props.onLanguageChange(itemValue); this.updateCategories(itemValue, cityId) }}
           >
             {
               languages.map((language, value) => {
@@ -45,7 +49,7 @@ class SettingsScreen extends React.Component {
           <Picker
             selectedValue={cityId}
             style={{ height: 50, width: 100 }}
-            onValueChange={itemValue => { this.props.onCityChange(itemValue) }}
+            onValueChange={itemValue => { this.props.onCityChange(itemValue); this.updateCategories(languageId, itemValue) }}
           >
             {
               cities.map((city, value) => {
@@ -76,8 +80,8 @@ const dispatchToProps = dispatch => {
     onCityChange: city => {
       dispatch(updateCity(city))
     },
-    fetchCategories: (language) => {
-      return dispatch(fetchCategories(language))
+    fetchCategories: (languageId, cityId) => {
+      return dispatch(fetchCategories(languageId, cityId))
     },
     fetchCities: () => {
       return dispatch(fetchCities())
