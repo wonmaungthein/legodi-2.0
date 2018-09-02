@@ -25,8 +25,8 @@ exports.up = async (knex, Promise) => {
       .inTable('languages')
     table.string('city_id').defaultTo('GLA')
     table.foreign('city_id')
-    .references('city_id')
-    .inTable('cities')
+      .references('city_id')
+      .inTable('cities')
   })
 
   await knex.schema.createTable('weegie', table => {

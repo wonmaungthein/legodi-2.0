@@ -9,7 +9,7 @@ import styles from './CategoryListStyles'
 import PropTypes from 'prop-types'
 
 class CategoriesList extends React.Component {
-  async componentDidMount() {
+  async componentDidMount () {
     const languageId = 'en'
     const cityId = 'GLA'
     this.props.fetchCategories(languageId, cityId)
@@ -36,7 +36,7 @@ class CategoriesList extends React.Component {
     })
   }
 
-  render() {
+  render () {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.layout}>

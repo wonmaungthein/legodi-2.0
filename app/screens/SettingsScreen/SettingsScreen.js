@@ -22,7 +22,7 @@ class SettingsScreen extends React.Component {
     this.props.fetchCategories(languageId, cityId)
   }
 
-  render() {
+  render () {
     const { languages, cities, languageId, cityId } = this.props
 
     return (
