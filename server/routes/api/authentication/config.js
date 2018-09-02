@@ -1,1 +1,2 @@
-module.exports = secret = 'legodieserver'
+const secret = 'legodieserver'
+module.exports = secret

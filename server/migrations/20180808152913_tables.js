@@ -6,6 +6,11 @@ exports.up = async (knex, Promise) => {
     table.string('original_name')
   })
 
+  await knex.schema.createTable('cities', table => {
+    table.string('city_id').primary().defaultTo('GLA')
+    table.string('city_name').notNullable()
+  })
+
   await knex.schema.createTable('categories', table => {
     table.increments('category_id')
     table.string('category_name')
@@ -18,6 +23,10 @@ exports.up = async (knex, Promise) => {
     table.foreign('language_id')
       .references('language_id')
       .inTable('languages')
+    table.string('city_id').defaultTo('GLA')
+    table.foreign('city_id')
+      .references('city_id')
+      .inTable('cities')
   })
 
   await knex.schema.createTable('weegie', table => {
@@ -31,11 +40,6 @@ exports.up = async (knex, Promise) => {
     table.bool('visible').defaultTo(false)
   })
 
-  await knex.schema.createTable('cities', table => {
-    table.string('city_id').primary().defaultTo('GLA')
-    table.string('city_name').notNullable()
-  })
-
   await knex.schema.createTable('articles', table => {
     table.increments('article_id')
     table.string('title').notNullable()
@@ -43,7 +47,7 @@ exports.up = async (knex, Promise) => {
     table.text('full_content').notNullable()
     table.integer('category_id').notNullable()
     table.foreign('category_id').references('category_id').inTable('categories')
-    table.string('image')
+    table.text('image')
     table.enum('status', ['pending', 'approved', 'rejected', 'hidden'])
 
     table.integer('sort_order')

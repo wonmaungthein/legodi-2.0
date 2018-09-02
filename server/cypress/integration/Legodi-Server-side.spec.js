@@ -1,3 +1,5 @@
+import cy from 'cypress'
+
 describe('Legodi Server side testing example', () => {
   beforeEach(() => {
     cy.visit('/')
@@ -20,7 +22,7 @@ describe('Legodi Server side testing example', () => {
       .click()
   }
 
-  it('should visit to Legodi server', () => {})
+  it('should visit to Legodi server', () => { })
 
   //  Visit Weegie Tab
   it('should visit and click Weegie Tab', () => {

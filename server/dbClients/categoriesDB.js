@@ -5,26 +5,26 @@ const getCategories = () => {
   return knex.select().from('categories')
 }
 
-const getArticlesByCategoryId = category_id => {
+const getArticlesByCategoryId = categoryId => {
   return knex
     .select()
     .from('articles')
-    .where({ category_id })
+    .where('category_id', '=', categoryId)
 }
 
-const getCategoryById = category_id => {
-  return knex('categories').where({ category_id })
+const getCategoryById = categoryId => {
+  return knex('categories').where('category_id', '=', categoryId)
 }
 
-const getCategoryByName = async category_name => {
+const getCategoryByName = async categoryName => {
   const category = await knex('categories')
-    .where({ category_name })
+    .where('category_name', '=', categoryName)
     .first()
   return category
 }
 
-const getCategoryByLanguage = async language_id => {
-  return knex('categories').where({ language_id })
+const getCategoryByLanguage = async (languageId, cityId) => {
+  return knex('categories').where('language_id', '=', languageId).andWhere('city_id', '=', cityId)
 }
 
 const addCategory = data => {

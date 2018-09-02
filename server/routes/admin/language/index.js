@@ -3,7 +3,7 @@ const db = require('../../../dbClients/languageDB')
 
 const router = express.Router()
 
-router.get('/', async (req, res) => await res.render('language-menu'))
+router.get('/', async (req, res) => res.render('language-menu'))
 
 router.get('/view', async (req, res) => {
   try {
@@ -24,7 +24,7 @@ router.get('/view/:languageId', async (req, res) => {
   }
 })
 
-router.get('/add', async (req, res) => await res.render('language-add'))
+router.get('/add', async (req, res) => res.render('language-add'))
 
 router.post('/add', async (req, res) => {
   const { body } = req

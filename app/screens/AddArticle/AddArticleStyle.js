@@ -19,20 +19,8 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     alignItems: 'center'
   },
-  language: {
-    fontSize: 17,
-    fontWeight: 'bold',
-    backgroundColor: secondaryColor,
-    color: primaryColor,
-    padding: 10,
-    textAlign: 'center'
-  },
-  changeLanguage: {
-    fontSize: 15,
-    marginTop: 10
-  },
   imagePicker: {
-    marginTop: height - 500,
+    marginTop: height - 630,
     alignItems: 'center'
   },
   submitButton: {

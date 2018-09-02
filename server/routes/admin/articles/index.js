@@ -3,7 +3,7 @@ const db = require('../../../dbClients/articlesDB')
 
 const router = express.Router()
 
-router.get('/', async (req, res) => await res.render('article-menu'))
+router.get('/', async (req, res) => res.render('article-menu'))
 
 router.get('/view', async (req, res) => {
   try {
@@ -25,7 +25,7 @@ router.get('/view/:articleId', async (req, res) => {
   }
 })
 
-router.get('/add', async (req, res) => await res.render('article-add'))
+router.get('/add', async (req, res) => res.render('article-add'))
 
 router.post('/add', async (req, res) => {
   const { body } = req
