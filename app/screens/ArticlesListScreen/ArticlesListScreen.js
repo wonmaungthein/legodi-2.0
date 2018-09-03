@@ -11,8 +11,7 @@ import Colors from '../../constants/Colors'
 const { primaryColor, secondaryColor } = Colors
 
 class ArticlesListScreen extends React.Component {
-
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     const { cityId } = nextProps
     if (cityId !== this.props.cityId) {
       const title = this.props.cities.filter(city => city.city_id === cityId)[0].city_name
@@ -20,7 +19,7 @@ class ArticlesListScreen extends React.Component {
     }
   }
 
-  shouldComponentUpdate(nextProps) {
+  shouldComponentUpdate (nextProps) {
     return this.props.cityId !== nextProps.cityId
   }
 
@@ -50,7 +49,7 @@ class ArticlesListScreen extends React.Component {
     }
   };
 
-  async componentDidMount() {
+  async componentDidMount () {
     const categoryId = this.props.navigation.getParam('id')
     this.props.listArticles(categoryId)
     const { cities, cityId } = this.props
@@ -106,7 +105,7 @@ class ArticlesListScreen extends React.Component {
     )
   };
 
-  render() {
+  render () {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.layout}>

@@ -9,8 +9,7 @@ import Colors from '../../constants/Colors'
 const { primaryColor, secondaryColor } = Colors
 
 class HomeScreen extends React.Component {
-
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     const { cityId } = nextProps
     if (cityId !== this.props.cityId) {
       const title = this.props.cities.filter(city => city.city_id === cityId)[0].city_name
@@ -18,7 +17,7 @@ class HomeScreen extends React.Component {
     }
   }
 
-  shouldComponentUpdate(nextProps) {
+  shouldComponentUpdate (nextProps) {
     return this.props.cityId !== nextProps.cityId
   }
 
@@ -34,7 +33,7 @@ class HomeScreen extends React.Component {
     }
   };
 
-  render() {
+  render () {
     const { navigate } = this.props.navigation
     return (
       <View style={styles.container}>
@@ -45,7 +44,7 @@ class HomeScreen extends React.Component {
     )
   }
 
-  _maybeRenderDevelopmentModeWarning() {
+  _maybeRenderDevelopmentModeWarning () {
     if (__DEV__) {
       const learnMoreButton = (
         <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>

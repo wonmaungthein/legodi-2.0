@@ -8,14 +8,13 @@ import Colors from '../../constants/Colors'
 const { primaryColor, secondaryColor } = Colors
 
 class Article extends React.Component {
-
-  componentDidMount() {
+  componentDidMount () {
     const { cities, cityId } = this.props
     const cityName = cities.filter(city => city.city_id === cityId)[0].city_name
     this.props.navigation.setParams({ cityName })
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     const { cityId } = nextProps
     if (cityId !== this.props.cityId) {
       const cityName = this.props.cities.filter(city => city.city_id === cityId)[0].city_name
@@ -23,7 +22,7 @@ class Article extends React.Component {
     }
   }
 
-  shouldComponentUpdate(nextProps) {
+  shouldComponentUpdate (nextProps) {
     return this.props.cityId !== nextProps.cityId
   }
 
@@ -40,7 +39,7 @@ class Article extends React.Component {
     }
   };
 
-  render() {
+  render () {
     const language = this.props.navigation.getParam('language', 'en')
     const description = this.props.navigation.getParam(
       'description',

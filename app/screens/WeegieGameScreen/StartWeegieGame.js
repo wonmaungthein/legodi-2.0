@@ -9,14 +9,13 @@ import Colors from '../../constants/Colors'
 const { primaryColor, secondaryColor } = Colors
 
 class StartWeegieGame extends React.Component {
-
-  componentDidMount() {
+  componentDidMount () {
     const { cities, cityId } = this.props
     const title = cities.filter(city => city.city_id === cityId)[0].city_name
     this.props.navigation.setParams({ title })
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     const { cityId } = nextProps
     if (cityId !== this.props.cityId) {
       const title = this.props.cities.filter(city => city.city_id === cityId)[0].city_name
@@ -24,7 +23,7 @@ class StartWeegieGame extends React.Component {
     }
   }
 
-  shouldComponentUpdate(nextProps) {
+  shouldComponentUpdate (nextProps) {
     return this.props.cityId !== nextProps.cityId
   }
 
@@ -41,7 +40,7 @@ class StartWeegieGame extends React.Component {
     }
   };
 
-  render() {
+  render () {
     return (
       <View style={styles.container}>
         <Button
