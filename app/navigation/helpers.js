@@ -48,21 +48,21 @@ export const tabBarVisibility = navigation => {
   return initialValue ? null : { tabBarVisible: false }
 }
 
-const tabHeader = {
-  title: 'Glasgow Welcome Pack',
-  headerStyle: {
-    backgroundColor: secondaryColor,
-    paddingTop: Constants.statusBarHeight
-  },
-  headerTitleStyle: { color: primaryColor }
-}
+// const tabHeader = {
+//   title: 'Glasgow Welcome Pack',
+//   headerStyle: {
+//     backgroundColor: secondaryColor,
+//     paddingTop: Constants.statusBarHeight
+//   },
+//   headerTitleStyle: { color: primaryColor }
+// }
 // generateSingleStackNavigator takes one parmeter the screen
 // generateSingleStackNavigator generate the navigator with screen header
 // it's work now only for single screens (component have only one screen like about screen)
-export const generateSingleStackNavigator = screen =>
-  createStackNavigator({
-    MyTab: {
-      screen,
-      navigationOptions: tabHeader
-    }
-  })
+// export const generateSingleStackNavigator = screen =>
+//   createStackNavigator({
+//     MyTab: {
+//       screen,
+//       navigationOptions: tabHeader
+//     }
+//   })
