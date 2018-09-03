@@ -48,7 +48,7 @@ helper.generateNavigation(
   'md-information-circle'
 )
 
-const SettingsStack = helper.generateSingleStackNavigator(Settings)
+const SettingsStack = createStackNavigator({ Settings })
 helper.generateNavigation(
   SettingsStack,
   'Settings',
