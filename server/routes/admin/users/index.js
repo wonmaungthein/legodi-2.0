@@ -3,7 +3,17 @@ const db = require('../../../dbClients/usersDB')
 
 const router = express.Router()
 
-router.get('/', async (req, res) => res.render('user-menu'))
+const ensureAuthenticated = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return next()
+  } else {
+    req.flash('error_msg','You are not logged in');
+    res.redirect('/users/login')
+    return next()
+  }
+}
+
+router.get('/', ensureAuthenticated, async (req, res) => res.render('user-menu'))
 
 router.get('/view', async (req, res) => {
   try {
