@@ -119,7 +119,9 @@ const mapStateToProps = (state) => ({
 })
 
 AboutScreen.propTypes = {
-  language: PropTypes.string.isRequired
+  language: PropTypes.string.isRequired,
+  cityId: PropTypes.string,
+  cities: PropTypes.array
 }
 
 export default connect(mapStateToProps, null)(AboutScreen)

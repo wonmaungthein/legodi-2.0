@@ -122,8 +122,14 @@ const dispatchToProps = dispatch => {
 }
 
 SettingsScreen.propTypes = {
-  language: PropTypes.string,
-  onLanguageChange: PropTypes.func
+  languageId: PropTypes.string,
+  languages: PropTypes.array,
+  cityId: PropTypes.string.isRequired,
+  cities: PropTypes.array.isRequired,
+  onLanguageChange: PropTypes.func,
+  onCityChange: PropTypes.func,
+  fetchCategories: PropTypes.func,
+  fetchCities: PropTypes.func
 }
 
 export default connect(
