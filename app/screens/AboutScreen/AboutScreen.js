@@ -8,14 +8,13 @@ import Colors from '../../constants/Colors'
 const { primaryColor, secondaryColor } = Colors
 
 class AboutScreen extends React.Component {
-
-  componentDidMount() {
+  componentDidMount () {
     const { cities, cityId } = this.props
     const title = cities.filter(city => city.city_id === cityId)[0].city_name
     this.props.navigation.setParams({ title })
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     const { cityId } = nextProps
     if (cityId !== this.props.cityId) {
       const title = this.props.cities.filter(city => city.city_id === cityId)[0].city_name
@@ -23,14 +22,14 @@ class AboutScreen extends React.Component {
     }
   }
 
-  shouldComponentUpdate(nextProps) {
+  shouldComponentUpdate (nextProps) {
     return this.props.cityId !== nextProps.cityId
   }
 
   static navigationOptions = ({ navigation }) => {
     const { params } = navigation.state
     return {
-      title: params ? `${params.title} Welcome Pack` : "Glasgow Welcome Pack",
+      title: params ? `${params.title} Welcome Pack` : 'Glasgow Welcome Pack',
       headerStyle: {
         backgroundColor: secondaryColor,
         paddingTop: Constants.statusBarHeight
@@ -39,7 +38,7 @@ class AboutScreen extends React.Component {
     }
   };
 
-  renderAboutData(language) {
+  renderAboutData (language) {
     if (language === 'am') {
       return (
         <View style={styles.textContainer}>
@@ -87,7 +86,7 @@ class AboutScreen extends React.Component {
     }
   }
 
-  render() {
+  render () {
     const { language } = this.props
     const aboutContent = this.renderAboutData(language)
     return (

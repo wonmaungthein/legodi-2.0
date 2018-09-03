@@ -1,10 +1,10 @@
 import React from 'react'
 import { Platform } from 'react-native'
 import TabBarIcon from '../components/TabBarIcon'
-import { Constants } from 'expo'
-import { createStackNavigator } from 'react-navigation'
-import Colors from '../constants/Colors'
-const { primaryColor, secondaryColor } = Colors
+// import { Constants } from 'expo'
+// import { createStackNavigator } from 'react-navigation'
+// import Colors from '../constants/Colors'
+// const { primaryColor, secondaryColor } = Colors
 
 // GenerateNavigation function created to reduce the code in MainTabNavigator and make it easy to use and understand
 // GenerateNavigation takes 5 parameters we can update it take more or less parameters

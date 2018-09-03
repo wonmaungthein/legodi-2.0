@@ -11,8 +11,7 @@ import Colors from '../../constants/Colors'
 const { primaryColor, secondaryColor } = Colors
 
 class SettingsScreen extends React.Component {
-
-  componentDidMount() {
+  componentDidMount () {
     const { cities, cityId } = this.props
     const title = cities.filter(city => city.city_id === cityId)[0].city_name
     this.props.navigation.setParams({ title })
@@ -28,7 +27,7 @@ class SettingsScreen extends React.Component {
     const { params } = navigation.state
 
     return {
-      title: params ? `${params.title} Welcome Pack` : "",
+      title: params ? `${params.title} Welcome Pack` : '',
       headerStyle: {
         backgroundColor: secondaryColor,
         paddingTop: Constants.statusBarHeight
@@ -51,7 +50,7 @@ class SettingsScreen extends React.Component {
     this.props.fetchCategories(languageId, cityId)
   }
 
-  render() {
+  render () {
     const { languages, cities, languageId, cityId } = this.props
     return (
       <View style={styles.container}>
@@ -78,8 +77,8 @@ class SettingsScreen extends React.Component {
             selectedValue={cityId}
             style={{ height: 50, width: 100 }}
             onValueChange={itemValue => {
-              this.props.onCityChange(itemValue);
-              this.updateCategories(languageId, itemValue);
+              this.props.onCityChange(itemValue)
+              this.updateCategories(languageId, itemValue)
               this.updateCityTitle(itemValue)
             }}
           >
