@@ -1,103 +1,118 @@
 <div class="container">
-{{#if data}}
-<h3 class="text-success">Edit Weegie Question</h3>
-<form method="post" >
+  <div class="weegie-add-edit">
+    <div class="login-message">
+      {{#if errors}} {{#each errors}}
+      <div class="alert alert-danger">{{msg}}</div>
+      {{/each}} {{/if}}
+    </div>
+    {{#if data}}
 
- <div class="form-group has-success">
-    <label class="text-primary">
-       Question: 
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="title">{{this.data.title}}</textarea>
-  </div>
-{{!-- 
-  <div class="form-group has-success">
-    <label class="text-primary">
-         chooise a: 
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="a">{{this.weegieData.choices.a}}</textarea>
-  </div>
+    <h3 class="text-success">Edit Weegie Question</h3>
+    <form method="post" onsubmit="return weegieValidator()">
+      <div class="form-group has-success">
+        <label class="text-primary">
+          Question:
+        </label>
+        <input id="title" value={{this.data.title}} name="title" class="form-control form-control-success mb-4" />
+        <span id="titleError" class="text-danger"></span>
+      </div>
+      <div class="form-group has-success">
+        <label class="text-primary">
+          Choice a:
+        </label>
+        <input id="choiceA" value={{this.data.a}} name="a" class="form-control form-control-success mb-4" />
+        <span id="choiceAError" class="text-danger"></span>
+      </div>
 
-   <div class="form-group has-success">
-    <label class="text-primary">
-          chooise b:
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="b">{{this.weegieData.choices.b}}</textarea>
-  </div>
+      <div class="form-group has-success">
+        <label class="text-primary">
+          Choice b:
+        </label>
+        <input id="choiceB" value={{this.data.b}} name="b" class="form-control form-control-success mb-4" />
+        <span id="choiceBError" class="text-danger"></span>
+      </div>
 
-   <div class="form-group has-success">
-    <label class="text-primary">
-      chooise c: 
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="c">{{this.weegieData.choices.c}}</textarea>
-  </div>
+      <div class="form-group has-success">
+        <label class="text-primary">
+          Choice c:
+        </label>
+        <input id="choiceC" value={{this.data.c}} name="c" class="form-control form-control-success mb-4" />
+        <span id="choiceCError" class="text-danger"></span>
+      </div>
 
-   <div class="form-group has-success">
-    <label class="text-primary"> chooise d: 
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="d">{{this.weegieData.choices.d}}</textarea>
-  </div> --}}
+      <div class="form-group has-success">
+        <label class="text-primary"> Choice d:
+        </label>
+        <input id="choiceD" value={{this.data.d}} name="d" class="form-control form-control-success mb-4" />
+        <span id="choiceDError" class="text-danger"></span>
+      </div>
+      <div class="form-group has-success">
+        <select id="answer" class="form-control" name="answer">
+          <option value="" class="text-primary">Select the correct choice letter: a,b,c,d:</option>
+          <option selected value={{this.data.answer}}>{{this.data.answer}}</option>
+          <option value="a">A</option>
+          <option value="b">B</option>
+          <option value="c">C</option>
+          <option value="d">D</option>
+        </select>
+        <span id="answerError" class="text-danger"></span>
+      </div>
+      <input class="btn btn-lg btn-danger" value="Submit" type="submit" />
+    </form>
 
-  <div class="form-group has-success">
-    <label class="text-primary">
-         answer<span class="text-danger">(write the correct choice letter: a,b,c,d):</span> 
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="answer">{{this.data.answer}}</textarea>
-  </div>
+    {{else}}
 
-    <button class="btn btn-lg btn-danger" type="submit">Submit</button>
-   
-</form>
-{{else}}
-<h3 class="text-success">Add a New Weegie Question</h3>
-<form method="post">
- <div class="form-group has-success">
-    <label class="text-primary">
-         Question:
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="title"></textarea>
-  </div>
- <div class="form-group has-success">
-    <label class="text-primary">
-         Question id:
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="questionId"></textarea>
-  </div>
-  <div class="form-group has-success">
-    <label class="text-primary">
-         chooise a: 
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4" ></textarea>
-  </div>
+    <h3 class="text-success">Add a New Weegie Question</h3>
+    <form method="post" onsubmit="return weegieValidator()">
+      <div class="form-group has-success">
+        <label class="text-primary">
+          Question:
+        </label>
+        <input id="title" name="title" class="form-control form-control-success mb-4" />
+        <span id="titleError" class="text-danger"></span>
+      </div>
+      <div class="form-group has-success">
+        <label class="text-primary">
+          Choice a:
+        </label>
+        <input id="choiceA" name="a" class="form-control form-control-success mb-4" />
+        <span id="choiceAError" class="text-danger"></span>
+      </div>
 
-   <div class="form-group has-success">
-    <label class="text-primary">
-        chooise b:
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4" ></textarea>
-  </div>
+      <div class="form-group has-success">
+        <label class="text-primary">
+          Choice b:
+        </label>
+        <input id="choiceB" name="b" class="form-control form-control-success mb-4" />
+        <span id="choiceBError" class="text-danger"></span>
+      </div>
 
-   <div class="form-group has-success">
-    <label class="text-primary">
-         chooise c: 
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4" ></textarea>
-  </div>
+      <div class="form-group has-success">
+        <label class="text-primary">
+          Choice c:
+        </label>
+        <input id="choiceC" name="c" class="form-control form-control-success mb-4" />
+        <span id="choiceCError" class="text-danger"></span>
+      </div>
 
-   <div class="form-group has-success">
-    <label class="text-primary"> chooise d:
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  ></textarea>
+      <div class="form-group has-success">
+        <label class="text-primary"> Choice d:
+        </label>
+        <input id="choiceD" name="d" class="form-control form-control-success mb-4" />
+        <span id="choiceDError" class="text-danger"></span>
+      </div>
+      <div class="form-group has-success">
+        <select id="answer" class="form-control" name="answer">
+          <option value="" class="text-primary">Select the correct choice letter: a,b,c,d:</option>
+          <option value="a">A</option>
+          <option value="b">B</option>
+          <option value="c">C</option>
+          <option value="d">D</option>
+        </select>
+        <span id="answerError" class="text-danger"></span>
+      </div>
+      <input class="btn btn-lg btn-danger" value="Add New Question" type="submit" />
+    </form>
+    {{/if}}
   </div>
-
-  <div class="form-group has-success">
-    <label class="text-primary">
-    answer<span class="text-danger">(write the correct choice letter: a,b,c,d):</span> 
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="answer"></textarea>
-  </div>
-
-    <button class="btn btn-lg btn-danger" type="submit">Add New Question</button>
-   
-</form>
-{{/if}}
 </div>
