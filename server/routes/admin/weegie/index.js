@@ -40,21 +40,8 @@ router.get(
 )
 
 router.post('/questions/add', async (req, res) => {
-
-  req.checkBody('title', 'Question is required').notEmpty();
-	req.checkBody('answer', 'Answer is required').notEmpty();
-  req.checkBody('a', 'Choice A is required').notEmpty();
-  req.checkBody('b', 'Choice B is required').notEmpty();
-  req.checkBody('c', 'Choice C is required').notEmpty();
-  req.checkBody('d', 'Choice D is required').notEmpty();
-
-  const errors = req.validationErrors();
-  
   const { body } = req
   try {
-    if (errors) {
-      res.render('weegie-add', { errors })
-    }
     await db.addQuestion(body)
     res.redirect('/admin/weegie/questions/view')
   } catch (error) {
@@ -95,22 +82,9 @@ router.get('/questions/edit/:questionId', async (req, res) => {
 router.post('/questions/edit/:questionId', async (req, res) => {
   const { questionId } = req.params
   const { body } = req
-
-  req.checkBody('title', 'Question is required').notEmpty();
-	req.checkBody('answer', 'Answer is required').notEmpty();
-  req.checkBody('a', 'Choice A is required').notEmpty();
-  req.checkBody('b', 'Choice B is required').notEmpty();
-  req.checkBody('c', 'Choice C is required').notEmpty();
-  req.checkBody('d', 'Choice D is required').notEmpty();
-
-  const errors = req.validationErrors();
-
   try {
-    if (errors) {
-      res.render('weegie-add', { errors })
-    }
     await db.editQuestion(questionId, body)
-    res.redirect('/admin/weegie/questions/view')
+    res.redirect('/admin/weegie/questions/edit')
   } catch (error) {
     res.render('error', { error })
   }
