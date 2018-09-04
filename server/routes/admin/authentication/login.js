@@ -54,4 +54,48 @@ router.get('/logout', (req, res) => {
 	res.redirect('/users/login');
 })
 
+router.get('/register', (req, res) => {
+	res.render('register', { layout: false })
+});
+
+router.post('/register', async (req, res) => {
+
+	const { fullName, email, password, confirmPassword } = req.body;
+	const data = { fullName, email, password }
+
+	// Validation
+	req.checkBody('fullName', 'Name is required').notEmpty();
+	req.checkBody('email', 'Email is required').notEmpty();
+	req.checkBody('password', 'Password is required').notEmpty();
+	req.checkBody('confirmPassword', 'Passwords do not match').equals(req.body.password);
+
+	const errors = req.validationErrors();
+
+	if (errors) {
+		res.render('register', {
+			errors: errors,
+			layout: false 
+		});
+	} else {
+		try {
+			const user = await db.getUserByEmail(email)
+			if (user.length > 0) {
+				res.render('register',  { 
+					error: 'User is already exist',
+					layout: false 
+				})
+			}else{
+				await db.addUser(data)
+				req.flash('success_msg', 'You are registered successfully, now you can login');
+				res.redirect('/users/login');
+			}
+		} catch (error) {
+			res.render('register', {
+				errors: errors,
+				layout: false 
+			});
+		}
+	}
+});
+
 module.exports = router

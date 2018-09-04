@@ -12,8 +12,8 @@
 </head>
 
 <body>
-  <div class="login">
-    <div class="content">
+  <div class="login row">
+    <div class="content col-lg-4 offset-md-4">
       <div class="login-message">
           {{#if success_msg}}
             <div class="alert alert-success">{{success_msg}}</div>
@@ -26,8 +26,6 @@
           {{#if error}}
             <div class="alert alert-danger">{{error}}</div>
           {{/if}}
-          
-          {{{body}}}
         </div>
       <h2 class="title">Account Login</h2>
       <form method="post" action="/users/login">
@@ -41,7 +39,7 @@
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
-      <h6>If you do not have an account register now</h6>
+      <h6>If you do not have an account <a href="/users/register">register</a> now</h6>
     </div>
   </div>
 </body>
