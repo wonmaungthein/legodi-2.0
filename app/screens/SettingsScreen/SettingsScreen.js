@@ -6,8 +6,36 @@ import { updateLanguage, updateCity } from '../../redux/actions/settingActions'
 import styles from './SettingStyles'
 import PropTypes from 'prop-types'
 import { fetchCities } from '../../redux/actions/citiesActions'
+import { Constants } from 'expo'
+import Colors from '../../constants/Colors'
+const { primaryColor, secondaryColor } = Colors
 
 class SettingsScreen extends React.Component {
+  componentDidMount () {
+    const { cities, cityId } = this.props
+    const title = cities.filter(city => city.city_id === cityId)[0].city_name
+    this.props.navigation.setParams({ title })
+  }
+
+  updateCityTitle = (cityId) => {
+    const { cities } = this.props
+    const title = cities.filter(city => city.city_id === cityId)[0].city_name
+    this.props.navigation.setParams({ title })
+  }
+
+  static navigationOptions = ({ navigation }) => {
+    const { params } = navigation.state
+
+    return {
+      title: params ? `${params.title} Welcome Pack` : '',
+      headerStyle: {
+        backgroundColor: secondaryColor,
+        paddingTop: Constants.statusBarHeight
+      },
+      headerTitleStyle: { color: primaryColor }
+    }
+  };
+
   renderLanguage = (languageId) => {
     if (languageId === 'ar') {
       return 'عربي اخترت'
@@ -24,7 +52,6 @@ class SettingsScreen extends React.Component {
 
   render () {
     const { languages, cities, languageId, cityId } = this.props
-
     return (
       <View style={styles.container}>
         <View style={styles.container}>
@@ -49,7 +76,11 @@ class SettingsScreen extends React.Component {
           <Picker
             selectedValue={cityId}
             style={{ height: 50, width: 100 }}
-            onValueChange={itemValue => { this.props.onCityChange(itemValue); this.updateCategories(languageId, itemValue) }}
+            onValueChange={itemValue => {
+              this.props.onCityChange(itemValue)
+              this.updateCategories(languageId, itemValue)
+              this.updateCityTitle(itemValue)
+            }}
           >
             {
               cities.map((city, value) => {
@@ -90,8 +121,14 @@ const dispatchToProps = dispatch => {
 }
 
 SettingsScreen.propTypes = {
-  language: PropTypes.string,
-  onLanguageChange: PropTypes.func
+  languageId: PropTypes.string,
+  languages: PropTypes.array,
+  cityId: PropTypes.string.isRequired,
+  cities: PropTypes.array.isRequired,
+  onLanguageChange: PropTypes.func,
+  onCityChange: PropTypes.func,
+  fetchCategories: PropTypes.func,
+  fetchCities: PropTypes.func
 }
 
 export default connect(
