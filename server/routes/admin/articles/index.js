@@ -1,5 +1,6 @@
 const express = require('express')
 const db = require('../../../dbClients/articlesDB')
+const categoriesDb = require('../../../dbClients/categoriesDB')
 
 const router = express.Router()
 
@@ -28,14 +29,16 @@ router.get('/view/:articleId', async (req, res) => {
   const { articleId } = req.params
   try {
     const data = await db.getArticleById(articleId)
-    console.log(data)
     res.render('article-view', { data: data[0] })
   } catch (error) {
     res.render('error', { error })
   }
 })
 
-router.get('/add', async (req, res) => res.render('article-add'))
+router.get('/add', async (req, res) => {
+  const categories = await categoriesDb.getCategories()
+  res.render('article-add', { categories })
+})
 
 router.post('/add', async (req, res) => {
   const { body } = req
@@ -69,9 +72,11 @@ router.get('/delete/:articleId', async (req, res) => {
 router.get('/edit/:articleId', async (req, res) => {
   const { articleId } = req.params
   try {
+    const categories = await categoriesDb.getCategories()
     const article = await db.getArticleById(articleId)
     const data = article[0]
-    res.render('article-add', { data })
+    const category = categories.filter(category => category.category_id === data.category_id)[0].category_name
+    res.render('article-add', { data, categories, category })
   } catch (error) {
     res.render('error', { error })
   }

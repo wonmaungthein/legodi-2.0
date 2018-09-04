@@ -28,7 +28,6 @@ router.get('/view/:categoryId', async (req, res) => {
   const { categoryId } = req.params
   try {
     const data = await db.getCategoryById(categoryId)
-    console.log(data)
     res.render('category-view', { data: data[0] })
   } catch (error) {
     res.render('error', { error })
@@ -39,7 +38,6 @@ router.get('/add', async (req, res) => res.render('category-add'))
 
 router.post('/add', async (req, res) => {
   const { body } = req
-  console.log(body)
   try {
     await db.addCategory(body)
     res.redirect('/admin/categories/view')
@@ -51,7 +49,6 @@ router.post('/add', async (req, res) => {
 router.get('/edit', async (req, res) => {
   try {
     const data = await db.getCategories()
-    console.log(data.length)
     res.render('category-table-edit', { data })
   } catch (error) {
     res.render('error', { error })
