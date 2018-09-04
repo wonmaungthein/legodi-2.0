@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "install": "npm --prefix server install && npm --prefix app install",
-    "test": "npm --prefix server test && npm --prefix app test",
-    "cypress": "open cypress"
+    "cypress": "open cypress",
     "client": "npm --prefix client start",
     "server": "npm --prefix server start",
     "start": "npm run server",
@@ -24,12 +23,17 @@
   },
   "homepage": "https://github.com/CodeYourFuture/legodi-2.0#readme",
   "dependencies": {
+    "eslint": "^5.5.0",
     "knex": "^0.15.2",
     "pg": "^7.4.3",
+    "react-native": "^0.56.0",
+    "sqlite3": "^4.0.2",
     "strapi-generate-migrations": "^2.0.2"
   },
   "devDependencies": {
     "cypress": "^3.1.0",
-    "lint": "^1.1.2"
+    "lint": "^1.1.2",
+    "wdio-jasmine-framework": "^0.3.6",
+    "webdriverio": "^4.13.2"
   }
 }
