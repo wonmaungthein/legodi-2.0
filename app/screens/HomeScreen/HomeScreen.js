@@ -1,19 +1,36 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { ScrollView, Text, View } from 'react-native'
 import { WebBrowser, Constants } from 'expo'
+import PropTypes from 'prop-types'
 import CategoriesList from '../CategoriesList/CategoriesList'
 import styles from './HomeStyles'
 import Colors from '../../constants/Colors'
 const { primaryColor, secondaryColor } = Colors
 
-export default class HomeScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Glasgow Welcome Pack',
-    headerStyle: {
-      backgroundColor: secondaryColor,
-      paddingTop: Constants.statusBarHeight
-    },
-    headerTitleStyle: { color: primaryColor }
+class HomeScreen extends React.Component {
+  componentWillReceiveProps (nextProps) {
+    const { cityId } = nextProps
+    if (cityId !== this.props.cityId) {
+      const title = this.props.cities.filter(city => city.city_id === cityId)[0].city_name
+      this.props.navigation.setParams({ title })
+    }
+  }
+
+  shouldComponentUpdate (nextProps) {
+    return this.props.cityId !== nextProps.cityId
+  }
+
+  static navigationOptions = ({ navigation }) => {
+    const { params } = navigation.state
+    return {
+      title: params ? `${params.title} Welcome Pack` : 'Glasgow Welcome Pack',
+      headerStyle: {
+        backgroundColor: secondaryColor,
+        paddingTop: Constants.statusBarHeight
+      },
+      headerTitleStyle: { color: primaryColor }
+    }
   };
 
   render () {
@@ -61,3 +78,15 @@ export default class HomeScreen extends React.Component {
     )
   };
 }
+
+const mapStateToProps = (state) => ({
+  cityId: state.Setting.city,
+  cities: state.cities.citiesList
+})
+
+HomeScreen.propTypes = {
+  cityId: PropTypes.string,
+  cities: PropTypes.array
+}
+
+export default connect(mapStateToProps, null)(HomeScreen)
