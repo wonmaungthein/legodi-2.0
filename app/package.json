@@ -28,6 +28,7 @@
     "@expo/samples": "2.1.1",
     "apsl-react-native-button": "^3.1.1",
     "axios": "^0.18.0",
+    "exp": "^57.0.1",
     "expo": "^28.0.0",
     "form-data": "^2.3.2",
     "prop-types": "^15.6.2",
