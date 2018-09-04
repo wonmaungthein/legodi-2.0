@@ -16,17 +16,23 @@ function editQuestion (questionId, data) {
     .table('weegie')
     .where('question_id', '=', questionId)
     .update({
-      // question_id: data.questionId,
       title: data.title,
-      answer: data.answer
+      answer: data.answer,
+      a: data.a,
+      b: data.b,
+      c: data.c,
+      d: data.d
     })
 }
 
 function addQuestion (data) {
   return knex.table('weegie').insert({
-    question_id: data.questionId,
     title: data.title,
-    answer: data.answer
+    answer: data.answer,
+    a: data.a,
+    b: data.b,
+    c: data.c,
+    d: data.d
   })
 }
 
