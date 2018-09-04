@@ -193,14 +193,10 @@ button,
   background-size: cover
 }
 
-/* .login .content{
-  width: 35em;
-  background: #6b9fd6;
-  padding: 1em 3em;
-  border-radius: .5em;
-  box-shadow: 0px 0px 10px 1px #5a5f63;
-  position: relative;
-} */
+/*=================== Language Styling =======================*/
+.language{
+  margin-top: 2em
+}
 
 .login .login-message{
   position: absolute;
