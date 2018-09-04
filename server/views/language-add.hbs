@@ -1,55 +1,69 @@
 <div class="container">
-{{#if data}}
-<h3 class="text-success">Edit Language</h3>
-<form method="post">
-   <div class="form-group has-success">
-    <label class="text-primary">
-         Original Name :
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="original_name">{{data.original_name}}</textarea>
+  <div class="language">
+    {{#if errors}} 
+        {{#each errors}}
+        <div class="alert alert-danger">{{msg}}</div>
+        {{/each}} 
+    {{/if}} 
+    {{#if data}}
+    <h3 class="text-success">Edit Language</h3>
+    <form method="post" onsubmit="return validate()">
+      <div class="form-group has-success">
+        <label class="text-primary">
+          Original Name :
+        </label>
+        <input id="originalName" value={{data.original_name}} class="form-control form-control-success mb-4" name="originalName" />
+         <span id="originalNameError" class="text-danger"></span>
+      </div>
+      <div class="form-group has-success">
+        <label class="text-primary">
+          Long Name:
+        </label>
+        <input id="longName" value={{data.long_name}} class="form-control form-control-success mb-4" name="longName" />
+        <span id="longNameError" class="text-danger"></span>
+      </div>
+      <div class="form-group has-success">
+        <label class="text-primary">
+          Short Name:
+        </label>
+        <input id="shortName" value={{data.short_name}} class="form-control form-control-success mb-4" name="shortName" />
+        <span id="shortNameError" class="text-danger"></span>
+      </div>
+      <input class="btn btn-lg btn-danger" value="Submit" type="submit" />
+    </form>
+    {{else}}
+    <h3 class="text-success">Add Language</h3>
+    <form method="post" onsubmit="return validate()">
+      <div class="form-group has-success">
+        <label class="text-primary">
+          Language Id:
+        </label>
+        <input id="languageId" class="form-control form-control-success mb-4" name="languageId">
+        <span id="languageIdError" class="text-danger"></span>
+      </div>
+      <div class="form-group has-success">
+        <label class="text-primary">
+          Original Name :
+        </label>
+        <input id="originalName" class="form-control form-control-success mb-4" name="originalName">
+        <span id="originalNameError" class="text-danger"></span>
+      </div>
+      <div class="form-group has-success">
+        <label class="text-primary">
+          Long Name:
+        </label>
+        <input id="longName" class="form-control form-control-success mb-4" name="longName">
+        <span id="longNameError" class="text-danger"></span>
+      </div>
+      <div class="form-group has-success">
+        <label class="text-primary">
+          Short Name:
+        </label>
+        <input id="shortName" class="form-control form-control-success mb-4" name="shortName">
+        <span id="shortNameError" class="text-danger"></span>
+      </div>
+      <input class="btn btn-lg btn-danger" value="Submit" type="submit" />
+    </form>
+    {{/if}}
   </div>
-   <div class="form-group has-success">
-    <label class="text-primary">
-         Long Name:
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="long_name">{{data.long_name}}</textarea>
-  </div>
-   <div class="form-group has-success">
-    <label class="text-primary">
-         Short Name:
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="short_name">{{data.short_name}}</textarea>
-  </div>
-    <button class="btn btn-lg btn-danger" type="submit">Submit</button>
-</form>
-{{else}}
-<h3 class="text-success">Add Language</h3>
-<form method="post">
- <div class="form-group has-success">
-    <label class="text-primary">
-         Language Id:
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="language_id"></textarea>
-  </div>
-   <div class="form-group has-success">
-    <label class="text-primary">
-         Original Name :
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="original_name"></textarea>
-  </div>
-   <div class="form-group has-success">
-    <label class="text-primary">
-         Long Name:
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="long_name"></textarea>
-  </div>
-   <div class="form-group has-success">
-    <label class="text-primary">
-         Short Name:
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="short_name"></textarea>
-  </div>
-    <button class="btn btn-lg btn-danger" type="submit">Submit</button>
-</form>
-{{/if}}
 </div>
