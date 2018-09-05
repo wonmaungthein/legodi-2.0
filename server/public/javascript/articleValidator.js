@@ -33,35 +33,35 @@ verifier()
 function articleValidator() {
     if (articleTitle && articleTitle.value === "") {
         articleTitle.style.border = "1px solid red";
-        articleTitleError.textContent = "Language Id is required";
+        articleTitleError.textContent = "Title is required";
         articleTitleError.style.color = 'red'
         articleTitle.focus();
         return false;
     }
     if (categoryId && categoryId.value === "") {
         categoryId.style.border = "1px solid red";
-        categoryIdError.textContent = "Language Id is required";
+        categoryIdError.textContent = "Category is required";
         categoryIdError.style.color = 'red'
         categoryId.focus();
         return false;
     }
     if (status && status.value === "") {
         status.style.border = "1px solid red";
-        statusError.textContent = "Language Id is required";
+        statusError.textContent = "Status is required";
         statusError.style.color = 'red'
         status.focus();
         return false;
     }
     if (shortContent && shortContent.value === "") {
         shortContent.style.border = "1px solid red";
-        shortContentError.textContent = "Language Id is required";
+        shortContentError.textContent = "Short is required";
         shortContentError.style.color = 'red'
         shortContent.focus();
         return false;
     }
     if (fullContent && fullContent.value === "") {
         fullContent.style.border = "1px solid red";
-        fullContentError.textContent = "Language Id is required";
+        fullContentError.textContent = "Full content is required";
         fullContentError.style.color = 'red'
         fullContent.focus();
         return false;
