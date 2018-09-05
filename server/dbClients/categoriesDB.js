@@ -29,13 +29,13 @@ const getCategoryByLanguage = async (languageId, cityId) => {
 
 const addCategory = data => {
   return knex.table('categories').insert({
-    category_id: data.categoryId,
-    category_name: data.title,
-    short_description: data.short_description,
+    category_name: data.categoryName,
+    short_description: data.shortDescription,
     description: data.description,
     status: data.status,
-    icon: data.image,
+    icon: data.icon,
     language_id: data.languageId,
+    city_id: data.cityId,
     order: data.order
   })
 }
@@ -45,12 +45,13 @@ const editCategory = (categoryId, data) => {
     .table('categories')
     .where('category_id', '=', categoryId)
     .update({
-      category_name: data.category_name,
-      short_description: data.short_description,
+      category_name: data.categoryName,
+      short_description: data.shortDescription,
       description: data.description,
       status: data.status,
       icon: data.icon,
-      language_id: data.language_id,
+      language_id: data.languageId,
+      city_id: data.cityId,
       order: data.order
     })
 }
