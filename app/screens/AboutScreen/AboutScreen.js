@@ -4,25 +4,23 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import styles from './AboutScreenStyle'
 import { Constants } from 'expo'
-import Colors from '../../constants/Colors'
-const { primaryColor, secondaryColor } = Colors
 
 class AboutScreen extends React.Component {
-  componentDidMount () {
+  componentDidMount() {
     const { cities, cityId } = this.props
-    const title = cities.filter(city => city.city_id === cityId)[0].city_name
-    this.props.navigation.setParams({ title })
+    const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor } = cities.filter(city => city.city_id === cityId)[0]
+    this.props.navigation.setParams({ title, primaryColor, secondaryColor })
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     const { cityId } = nextProps
     if (cityId !== this.props.cityId) {
-      const title = this.props.cities.filter(city => city.city_id === cityId)[0].city_name
-      this.props.navigation.setParams({ title })
+      const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor } = this.props.cities.filter(city => city.city_id === cityId)[0]
+      this.props.navigation.setParams({ title, primaryColor, secondaryColor })
     }
   }
 
-  shouldComponentUpdate (nextProps) {
+  shouldComponentUpdate(nextProps) {
     return this.props.cityId !== nextProps.cityId
   }
 
@@ -31,14 +29,14 @@ class AboutScreen extends React.Component {
     return {
       title: params ? `${params.title} Welcome Pack` : 'Glasgow Welcome Pack',
       headerStyle: {
-        backgroundColor: secondaryColor,
+        backgroundColor: params ? `${params.secondaryColor}` : '#0f352e',
         paddingTop: Constants.statusBarHeight
       },
-      headerTitleStyle: { color: primaryColor }
+      headerTitleStyle: { color: params ? `${params.primaryColor}` : '#e6bb44' }
     }
   };
 
-  renderAboutData (language) {
+  renderAboutData(language) {
     if (language === 'am') {
       return (
         <View style={styles.textContainer}>
@@ -86,11 +84,12 @@ class AboutScreen extends React.Component {
     }
   }
 
-  render () {
-    const { language } = this.props
+  render() {
+    const { language, cities, cityId } = this.props
     const aboutContent = this.renderAboutData(language)
+    const { primary_color: primaryColor } = cities.filter(city => city.city_id === cityId)[0]
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView style={[styles.container, { backgroundColor: primaryColor }]}>
         {aboutContent}
         <View style={styles.center}>
           <Image

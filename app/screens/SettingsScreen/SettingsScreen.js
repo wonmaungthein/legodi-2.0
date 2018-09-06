@@ -23,7 +23,6 @@ class SettingsScreen extends React.Component {
 
   static navigationOptions = ({ navigation }) => {
     const { params } = navigation.state
-
     return {
       title: params ? `${params.title} Welcome Pack` : '',
       headerStyle: {
