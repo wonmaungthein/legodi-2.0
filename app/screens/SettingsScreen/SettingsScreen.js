@@ -50,10 +50,11 @@ class SettingsScreen extends React.Component {
 
   render() {
     const { languages, cities, languageId, cityId } = this.props
+    const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor } = cities.filter(city => city.city_id === cityId)[0]
     return (
-      <View style={styles.container}>
-        <View style={styles.container}>
-          <Text style={styles.language}>
+      <View style={[styles.container, { backgroundColor: primaryColor }]}>
+        <View style={[styles.container, { backgroundColor: primaryColor }]}>
+          <Text style={[styles.language, { backgroundColor: secondaryColor, color: primaryColor }]}>
             {this.renderLanguage(languageId)} {}
           </Text>
           <Picker
@@ -69,8 +70,8 @@ class SettingsScreen extends React.Component {
             }
           </Picker>
         </View>
-        <View style={styles.container}>
-          <Text style={styles.language}>{cities.filter(city => city.city_id === cityId)[0].city_name} is selected</Text>
+        <View style={[styles.container, { backgroundColor: primaryColor }]}>
+          <Text style={[styles.language, { backgroundColor: secondaryColor, color: primaryColor }]}>{title} is selected</Text>
           <Picker
             selectedValue={cityId}
             style={{ height: 50, width: 100 }}
