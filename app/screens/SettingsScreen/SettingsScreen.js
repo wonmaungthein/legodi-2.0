@@ -7,20 +7,18 @@ import styles from './SettingStyles'
 import PropTypes from 'prop-types'
 import { fetchCities } from '../../redux/actions/citiesActions'
 import { Constants } from 'expo'
-import Colors from '../../constants/Colors'
-const { primaryColor, secondaryColor } = Colors
 
 class SettingsScreen extends React.Component {
-  componentDidMount () {
+  componentDidMount() {
     const { cities, cityId } = this.props
-    const title = cities.filter(city => city.city_id === cityId)[0].city_name
-    this.props.navigation.setParams({ title })
+    const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor } = cities.filter(city => city.city_id === cityId)[0]
+    this.props.navigation.setParams({ title, primaryColor, secondaryColor })
   }
 
-  updateCityTitle = (cityId) => {
+  updateCityTitleAndColors = (cityId) => {
     const { cities } = this.props
-    const title = cities.filter(city => city.city_id === cityId)[0].city_name
-    this.props.navigation.setParams({ title })
+    const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor } = cities.filter(city => city.city_id === cityId)[0]
+    this.props.navigation.setParams({ title, primaryColor, secondaryColor })
   }
 
   static navigationOptions = ({ navigation }) => {
@@ -29,10 +27,10 @@ class SettingsScreen extends React.Component {
     return {
       title: params ? `${params.title} Welcome Pack` : '',
       headerStyle: {
-        backgroundColor: secondaryColor,
+        backgroundColor: params ? `${params.secondaryColor}` : '#0f352e',
         paddingTop: Constants.statusBarHeight
       },
-      headerTitleStyle: { color: primaryColor }
+      headerTitleStyle: { color: params ? `${params.primaryColor}` : '#e6bb44' }
     }
   };
 
@@ -50,7 +48,7 @@ class SettingsScreen extends React.Component {
     this.props.fetchCategories(languageId, cityId)
   }
 
-  render () {
+  render() {
     const { languages, cities, languageId, cityId } = this.props
     return (
       <View style={styles.container}>
@@ -79,7 +77,7 @@ class SettingsScreen extends React.Component {
             onValueChange={itemValue => {
               this.props.onCityChange(itemValue)
               this.updateCategories(languageId, itemValue)
-              this.updateCityTitle(itemValue)
+              this.updateCityTitleAndColors(itemValue)
             }}
           >
             {
