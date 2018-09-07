@@ -245,6 +245,27 @@ button,
 .container .content{
   margin-top: 2em
 }
+
+/*================= Categories Styling ==================*/
+.delete-category{
+    background: #f00;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
+
+.delete-category .far{
+  margin-left: .3em;
+}
+
+.delete-category:hover{
+    background: #fff;
+    color: #f00;
+}
+
 @media (min-width: 680px) {
   .legodi-menu {
     max-width: 30%;

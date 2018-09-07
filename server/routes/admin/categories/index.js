@@ -15,7 +15,14 @@ const ensureAuthenticated = (req, res, next) => {
   }
 }
 
-router.get('/', ensureAuthenticated, async (req, res) => res.render('category-menu'))
+router.get('/', ensureAuthenticated, async (req, res) => {
+  try {
+    const data = await db.getCategories()
+    res.render('category-table-view', { data })
+  } catch (error) {
+    res.render('error', { error })
+  }
+})
 
 router.get('/view', async (req, res) => {
   try {
@@ -46,7 +53,7 @@ router.post('/add', async (req, res) => {
   const { body } = req
   try {
     await db.addCategory(body)
-    res.redirect('/admin/categories/view')
+    res.redirect('/admin/categories')
   } catch (error) {
     res.render('error', { error })
   }
@@ -65,7 +72,7 @@ router.get('/delete/:categoryId', async (req, res) => {
   const { categoryId } = req.params
   try {
     await db.deleteCategory(categoryId)
-    res.redirect('/admin/categories/edit')
+    res.redirect('/admin/categories')
   } catch (error) {
     res.render('error', { error })
   }
@@ -91,7 +98,7 @@ router.post('/edit/:categoryId', async (req, res) => {
   const { body } = req
   try {
     await db.editCategory(categoryId, body)
-    res.redirect('/admin/categories/edit')
+    res.redirect('/admin/categories')
   } catch (error) {
     res.render('error', { error })
   }
