@@ -7,7 +7,7 @@
     {{/if}} 
     {{#if data}}
     <h3 class="text-success">Edit Language</h3>
-    <form method="post" onsubmit="return validate()">
+    <form method="post" onsubmit="return languageValidator()">
       <div class="form-group has-success">
         <label class="text-primary">
           Original Name :
@@ -33,7 +33,7 @@
     </form>
     {{else}}
     <h3 class="text-success">Add Language</h3>
-    <form method="post" onsubmit="return validate()">
+    <form method="post" onsubmit="return languageValidator()">
       <div class="form-group has-success">
         <label class="text-primary">
           Language Id:

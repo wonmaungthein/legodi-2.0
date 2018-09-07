@@ -58,6 +58,7 @@ exports.up = async (knex, Promise) => {
     table.increments('user_id')
     table.string('full_name').notNullable()
     table.string('email').notNullable()
+    table.string('role').defaultTo('None')
     table.string('password').notNullable()
     table.timestamps(true, true)
   })

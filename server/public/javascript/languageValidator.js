@@ -12,7 +12,7 @@ const shortNameError = document.getElementById('shortNameError')
 // SETTING ALL EVENT LISTENERS
 function verifier () {
   if (languageId !== null) {
-    languageId.addEventListener('blur', languageVerify, true)
+    languageId.addEventListener('blur', languageIdVerify, true)
   }
   if (originalName !== null) {
     originalName.addEventListener('blur', originalNameVerify, true)
@@ -27,12 +27,12 @@ function verifier () {
 
 verifier()
 
-function validate () {
+function languageValidator () {
   // validate languageId
   if (languageId && languageId.value === '') {
     languageId.style.border = '1px solid red'
     languageIdError.textContent = 'Language Id is required'
-    shortNameError.style.color = 'red'
+    languageIdError.style.color = 'red'
     languageId.focus()
     return false
   }
@@ -40,7 +40,7 @@ function validate () {
   if (originalName.value === '') {
     originalName.style.border = '1px solid red'
     originalNameError.textContent = 'Original name is required'
-    shortNameError.style.color = 'red'
+    originalNameError.style.color = 'red'
     originalName.focus()
     return false
   }
@@ -48,7 +48,7 @@ function validate () {
   if (longName.value === '') {
     longName.style.border = '1px solid red'
     longNameError.textContent = 'Long name is required'
-    shortNameError.style.color = 'red'
+    longNameError.style.color = 'red'
     longName.focus()
     return false
   }
@@ -63,7 +63,7 @@ function validate () {
 }
 
 // event handler functions
-function languageVerify () {
+function languageIdVerify () {
   if (languageId.value !== '') {
     languageId.style.border = '1px solid #5e6e66'
     languageIdError.innerHTML = ''

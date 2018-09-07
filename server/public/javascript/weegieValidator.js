@@ -38,42 +38,42 @@ verifier()
 function weegieValidator () {
   if (title && title.value === '') {
     title.style.border = '1px solid red'
-    titleError.textContent = 'Language Id is required'
+    titleError.textContent = 'Question is required'
     titleError.style.color = 'red'
     title.focus()
     return false
   }
   if (choiceA && choiceA.value === '') {
     choiceA.style.border = '1px solid red'
-    choiceAError.textContent = 'Language Id is required'
+    choiceAError.textContent = 'Choice A is required'
     choiceAError.style.color = 'red'
     choiceA.focus()
     return false
   }
   if (choiceB && choiceB.value === '') {
     choiceB.style.border = '1px solid red'
-    choiceBError.textContent = 'Language Id is required'
+    choiceBError.textContent = 'Choice B is required'
     choiceBError.style.color = 'red'
     choiceB.focus()
     return false
   }
   if (choiceC && choiceC.value === '') {
     choiceC.style.border = '1px solid red'
-    choiceCError.textContent = 'Language Id is required'
+    choiceCError.textContent = 'Choice C is required'
     choiceCError.style.color = 'red'
     choiceC.focus()
     return false
   }
   if (choiceD && choiceD.value === '') {
     choiceD.style.border = '1px solid red'
-    choiceDError.textContent = 'Language Id is required'
+    choiceDError.textContent = 'Choice D is required'
     choiceDError.style.color = 'red'
     choiceD.focus()
     return false
   }
   if (answer && answer.value === '') {
     answer.style.border = '1px solid red'
-    answerError.textContent = 'Language Id is required'
+    answerError.textContent = 'Answer is required'
     answerError.style.color = 'red'
     answer.focus()
     return false

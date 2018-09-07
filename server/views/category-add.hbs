@@ -1,85 +1,145 @@
 <div class="container">
-{{#if data}}
-<h3 class="text-success">Edit Category</h3>
-<form method="post">
-   <div class="form-group has-success">
-    <label class="text-primary">
-         Title:
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="category_name">{{data.category_name}}</textarea>
+  <div class="content">
+    {{#if data}}
+    <h3 class="text-success">Edit Category</h3>
+    <form method="post" onsubmit="return categoryValidator()">
+      <div class="form-group has-success">
+        <label class="text-primary">
+          Title:
+        </label>
+        <input type="text" id="categoryTitle" value="{{data.category_name}}" class="form-control form-control-success mb-4" name="categoryName"
+        />
+        <span id="categoryTitleError" class="text-danger"></span>
+      </div>
+      <div class="form-group has-success">
+        <label class="text-primary">
+          Order:
+        </label>
+        <input type="number" id="order" value={{data.order}} class="form-control form-control-success mb-4" name="order">
+        <span id="orderError" class="text-danger"></span>
+      </div>
+      <div class="form-group has-success">
+        <label class="text-primary">
+          Icon:
+        </label>
+        <input id="icon" type="text" value={{data.icon}} class="form-control form-control-success mb-4" name="icon" />
+        <span id="iconError" class="text-danger"></span>
+      </div>
+      <div class="form-group has-success">
+        <select id="categoryStatus" class="form-control" name="status">
+          <option value="" class="text-primary">Select Status:</option>
+          <option selected value={{data.status}}>{{data.status}}</option>
+          <option value="pending">Pending</option>
+          <option value="approved">Approved</option>
+          <option value="rejected">Rejected</option>
+          <option value="hidden">Hidden</option>
+        </select>
+        <span id="categoryStatusError" class="text-danger"></span>
+      </div>
+      <div class="form-group has-success">
+        <select id="categoryLanguageId" class="form-control" name="languageId">
+          <option value="" class="text-primary">Select language:</option>
+          <option selected value={{data.language_id}}>{{language}}</option>
+          {{#each languages}}
+          <option value={{this.language_id}}>{{this.original_name}}</option>
+          {{/each}}
+        </select>
+        <span id="categoryLanguageIdError" class="text-danger"></span>
+      </div>
+      <div class="form-group has-success">
+        <select id="categoryCityId" class="form-control" name="cityId">
+          <option value="" class="text-primary">Select City:</option>
+          <option selected value={{data.city_id}}>{{city}}</option>
+          {{#each cities}}
+          <option value={{this.city_id}}>{{this.city_name}}</option>
+          {{/each}}
+        </select>
+        <span id="categoryCityIdError" class="text-danger"></span>
+      </div>
+      <div class="form-group has-success">
+        <label class="text-primary">
+          Short Content:
+        </label>
+        <textarea id="categoryShortContent" rows="3" class="form-control form-control-success mb-4" name="shortDescription">{{data.short_description}}</textarea>
+        <span id="categoryShortContentError" class="text-danger"></span>
+      </div>
+      <div class="form-group has-success">
+        <label class="text-primary">
+          Full Content:
+        </label>
+        <textarea id="categoryFullContent" rows="3" class="form-control form-control-success mb-4" name="description">{{data.description}}</textarea>
+        <span id="categoryFullContentError" class="text-danger"></span>
+      </div>
+      <button class="btn btn-lg btn-danger" type="submit">Submit</button>
+    </form>
+    {{else}}
+    <h3 class="text-success">Add Category</h3>
+    <form method="post" onsubmit="return categoryValidator()">
+      <div class="form-group has-success">
+        <label class="text-primary">
+          Title:
+        </label>
+        <input type="text" id="categoryTitle" class="form-control form-control-success mb-4" name="categoryName" />
+        <span id="categoryTitleError" class="text-danger"></span>
+      </div>
+      <div class="form-group has-success">
+        <label class="text-primary">
+          Order:
+        </label>
+        <input type="number" id="order" class="form-control form-control-success mb-4" name="order">
+        <span id="orderError" class="text-danger"></span>
+      </div>
+      <div class="form-group has-success">
+        <label class="text-primary">
+          Icon:
+        </label>
+        <input id="icon" type="text" class="form-control form-control-success mb-4" name="icon" />
+        <span id="iconError" class="text-danger"></span>
+      </div>
+      <div class="form-group has-success">
+        <select id="categoryStatus" class="form-control" name="status">
+          <option value="" class="text-primary">Select Status:</option>
+          <option value="pending">Pending</option>
+          <option value="approved">Approved</option>
+          <option value="rejected">Rejected</option>
+          <option value="hidden">Hidden</option>
+        </select>
+        <span id="categoryStatusError" class="text-danger"></span>
+      </div>
+      <div class="form-group has-success">
+        <select id="categoryLanguageId" class="form-control" name="languageId">
+          <option value="" class="text-primary">Select language:</option>
+          {{#each languages}}
+          <option value={{this.language_id}}>{{this.original_name}}</option>
+          {{/each}}
+        </select>
+        <span id="categoryLanguageIdError" class="text-danger"></span>
+      </div>
+      <div class="form-group has-success">
+        <select id="categoryCityId" class="form-control" name="cityId">
+          <option value="" class="text-primary">Select City:</option>
+          {{#each cities}}
+          <option value={{this.city_id}}>{{this.city_name}}</option>
+          {{/each}}
+        </select>
+        <span id="categoryCityIdError" class="text-danger"></span>
+      </div>
+      <div class="form-group has-success">
+        <label class="text-primary">
+          Short Content:
+        </label>
+        <textarea id="categoryShortContent" rows="3" class="form-control form-control-success mb-4" name="shortDescription"></textarea>
+        <span id="categoryShortContentError" class="text-danger"></span>
+      </div>
+      <div class="form-group has-success">
+        <label class="text-primary">
+          Full Content:
+        </label>
+        <textarea id="categoryFullContent" rows="3" class="form-control form-control-success mb-4" name="description"></textarea>
+        <span id="categoryFullContentError" class="text-danger"></span>
+      </div>
+      <button class="btn btn-lg btn-danger" type="submit">Submit</button>
+    </form>
+    {{/if}}
   </div>
-   <div class="form-group has-success">
-    <label class="text-primary">
-         Status:
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="status">{{data.status}}</textarea>
-  </div>
-   <div class="form-group has-success">
-    <label class="text-primary">
-         Full Content:
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="description">{{data.description}}</textarea>
-  </div>
-  <div class="form-group has-success">
-    <label class="text-primary">
-         Short Content:
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="short_description">{{data.short_description}}</textarea>
-  </div>
-  <div class="form-group has-success">
-    <label class="text-primary">
-         Order:
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="order">{{data.order}}</textarea>
-  </div>
-  <div class="form-group has-success">
-    <label class="text-primary">
-         Icon:
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="icon">{{data.icon}}</textarea>
-  </div>
-    <button class="btn btn-lg btn-danger" type="submit">Submit</button>
-</form>
-{{else}}
-<h3 class="text-success">Add Category</h3>
-<form method="post">
- <div class="form-group has-success">
-    <label class="text-primary">
-         Category Id:
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="categoryId"></textarea>
-  </div>
-   <div class="form-group has-success">
-    <label class="text-primary">
-         Title:
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="title"></textarea>
-  </div>
-  <div class="form-group has-success">
-    <label class="text-primary">
-         Full Content:
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="description"></textarea>
-  </div>
-   <div class="form-group has-success">
-    <label class="text-primary">
-         Short Content:
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="short_description"></textarea>
-  </div>
-  <div class="form-group has-success">
-    <label class="text-primary">
-         Image:
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="image"></textarea>
-  </div>
-  <div class="form-group has-success">
-    <label class="text-primary">
-         Status:
-    </label>
-    <textarea rows="3" class="form-control form-control-success mb-4"  name="status"></textarea>
-  </div>
-    <button class="btn btn-lg btn-danger" type="submit">Submit</button>
-</form>
-{{/if}}
 </div>
