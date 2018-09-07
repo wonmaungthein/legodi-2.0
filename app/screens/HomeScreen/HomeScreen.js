@@ -4,20 +4,28 @@ import { ScrollView, Text, View } from 'react-native'
 import { WebBrowser, Constants } from 'expo'
 import PropTypes from 'prop-types'
 import CategoriesList from '../CategoriesList/CategoriesList'
+import { fetchCities } from '../../redux/actions/citiesActions'
 import styles from './HomeStyles'
-import Colors from '../../constants/Colors'
-const { primaryColor, secondaryColor } = Colors
 
 class HomeScreen extends React.Component {
-  componentWillReceiveProps (nextProps) {
+
+  componentDidMount() {
+    this.props.fetchCities()
+    const { cities, cityId } = this.props
+    console.log(cityId)
+    const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor } = cities.filter(city => city.city_id === cityId)[0]
+    this.props.navigation.setParams({ title, primaryColor, secondaryColor })
+  }
+
+  componentWillReceiveProps(nextProps) {
     const { cityId } = nextProps
     if (cityId !== this.props.cityId) {
-      const title = this.props.cities.filter(city => city.city_id === cityId)[0].city_name
-      this.props.navigation.setParams({ title })
+      const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor } = this.props.cities.filter(city => city.city_id === cityId)[0]
+      this.props.navigation.setParams({ title, primaryColor, secondaryColor })
     }
   }
 
-  shouldComponentUpdate (nextProps) {
+  shouldComponentUpdate(nextProps) {
     return this.props.cityId !== nextProps.cityId
   }
 
@@ -26,17 +34,19 @@ class HomeScreen extends React.Component {
     return {
       title: params ? `${params.title} Welcome Pack` : 'Glasgow Welcome Pack',
       headerStyle: {
-        backgroundColor: secondaryColor,
+        backgroundColor: params ? `${params.secondaryColor}` : '#0f352e',
         paddingTop: Constants.statusBarHeight
       },
-      headerTitleStyle: { color: primaryColor }
+      headerTitleStyle: { color: params ? `${params.primaryColor}` : '#e6bb44' }
     }
   };
 
-  render () {
+  render() {
     const { navigate } = this.props.navigation
+    const { cities, cityId } = this.props
+    const { primary_color: primaryColor } = cities.filter(city => city.city_id === cityId)[0]
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, { backgroundColor: primaryColor }]}>
         <ScrollView contentContainerStyle={styles.contentContainer}>
           <CategoriesList onPressHandle={navigate} />
         </ScrollView>
@@ -44,7 +54,7 @@ class HomeScreen extends React.Component {
     )
   }
 
-  _maybeRenderDevelopmentModeWarning () {
+  _maybeRenderDevelopmentModeWarning() {
     if (__DEV__) {
       const learnMoreButton = (
         <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
@@ -84,9 +94,18 @@ const mapStateToProps = (state) => ({
   cities: state.cities.citiesList
 })
 
+const dispatchToProps = dispatch => {
+  return {
+    fetchCities: () => {
+      return dispatch(fetchCities())
+    }
+  }
+}
+
+
 HomeScreen.propTypes = {
   cityId: PropTypes.string,
   cities: PropTypes.array
 }
 
-export default connect(mapStateToProps, null)(HomeScreen)
+export default connect(mapStateToProps, dispatchToProps)(HomeScreen)
