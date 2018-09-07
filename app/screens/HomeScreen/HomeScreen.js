@@ -4,15 +4,12 @@ import { ScrollView, Text, View } from 'react-native'
 import { WebBrowser, Constants } from 'expo'
 import PropTypes from 'prop-types'
 import CategoriesList from '../CategoriesList/CategoriesList'
-import { fetchCities } from '../../redux/actions/citiesActions'
 import styles from './HomeStyles'
 
 class HomeScreen extends React.Component {
 
-  componentDidMount() {
-    this.props.fetchCities()
+  async componentDidMount() {
     const { cities, cityId } = this.props
-    console.log(cityId)
     const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor } = cities.filter(city => city.city_id === cityId)[0]
     this.props.navigation.setParams({ title, primaryColor, secondaryColor })
   }
@@ -44,7 +41,12 @@ class HomeScreen extends React.Component {
   render() {
     const { navigate } = this.props.navigation
     const { cities, cityId } = this.props
-    const { primary_color: primaryColor } = cities.filter(city => city.city_id === cityId)[0]
+    let primaryColor = ""
+    if (cities.length !== 0) {
+      primaryColor = cities.filter(city => city.city_id === cityId)[0].primary_color
+    } else {
+      primaryColor = '#e6bb44'
+    }
     return (
       <View style={[styles.container, { backgroundColor: primaryColor }]}>
         <ScrollView contentContainerStyle={styles.contentContainer}>
@@ -94,18 +96,9 @@ const mapStateToProps = (state) => ({
   cities: state.cities.citiesList
 })
 
-const dispatchToProps = dispatch => {
-  return {
-    fetchCities: () => {
-      return dispatch(fetchCities())
-    }
-  }
-}
-
-
 HomeScreen.propTypes = {
   cityId: PropTypes.string,
   cities: PropTypes.array
 }
 
-export default connect(mapStateToProps, dispatchToProps)(HomeScreen)
+export default connect(mapStateToProps)(HomeScreen)
