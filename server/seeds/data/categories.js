@@ -6,7 +6,8 @@ module.exports = [
     status: 'approved',
     order: 0,
     icon: 'Asylum',
-    language_id: 'en'
+    language_id: 'en',
+    city_id: 'GLA'
   },
   {
     category_name: 'ጥገኝነት',
@@ -15,7 +16,8 @@ module.exports = [
     status: 'approved',
     order: 0,
     icon: 'Asylum',
-    language_id: 'am'
+    language_id: 'am',
+    city_id: 'GLA'
   },
   {
     category_name: 'اللجوء',
@@ -24,16 +26,18 @@ module.exports = [
     status: 'approved',
     order: 0,
     icon: 'Asylum',
-    language_id: 'ar'
+    language_id: 'ar',
+    city_id: 'GLA'
   },
   {
     category_name: 'Welcome',
     short_description: 'Refuweege letters',
-    description: `Refuweege is a community-led charity set up to ensure that all refugees arriving in Glasgow are welcomed to the city in true Glaswegian style.  We want to make sure that when people arrive in Scotland they receive the welcome they deserve and few useful tips too! We also want to provide everyone who wishes to get involved and make a difference, the opportunity to do so.\r\n\r\nThe heart and soul of Refuweegee's welcome packs are the \"letters fae the locals\". Here are few of them to welcome you to the wonderful city of Glasgow.`,
+    description: `Refuweege is a community-led charity set up to ensure that all refugees arriving in Glasgow are welcomed to the city in true Glaswegian style.  We want to make sure that when people arrive in Scotland they receive the welcome they deserve and few useful tips too! We also want to provide everyone who wishes to get involved and make a difference, the opportunity to do so.\r\n\r\nThe heart and soul of Refuweegee's welcome packs are the "letters fae the locals". Here are few of them to welcome you to the wonderful city of Glasgow.`,
     status: 'approved',
     order: 1,
     icon: 'Welcome',
-    language_id: 'en'
+    language_id: 'en',
+    city_id: 'GLA'
   },
   {
     category_name: 'እንኳን ደህና መጣህ',
@@ -42,7 +46,8 @@ module.exports = [
     status: 'approved',
     order: 1,
     icon: 'Welcome',
-    language_id: 'am'
+    language_id: 'am',
+    city_id: 'GLA'
   },
   {
     category_name: 'مرحبا',
@@ -51,7 +56,8 @@ module.exports = [
     status: 'approved',
     order: 1,
     icon: 'Welcome',
-    language_id: 'ar'
+    language_id: 'ar',
+    city_id: 'GLA'
   },
   {
     category_name: 'Volunteering',
@@ -60,7 +66,8 @@ module.exports = [
     status: 'approved',
     order: 2,
     icon: 'Volunteering',
-    language_id: 'en'
+    language_id: 'en',
+    city_id: 'GLA'
   },
   {
     category_name: 'ፈቃደኛነት',
@@ -69,7 +76,8 @@ module.exports = [
     status: 'approved',
     order: 2,
     icon: 'Volunteering',
-    language_id: 'am'
+    language_id: 'am',
+    city_id: 'GLA'
   },
   {
     category_name: 'تطوع',
@@ -78,7 +86,8 @@ module.exports = [
     status: 'approved',
     order: 2,
     icon: 'Volunteering',
-    language_id: 'ar'
+    language_id: 'ar',
+    city_id: 'GLA'
   },
   {
     category_name: 'Food',
@@ -87,7 +96,8 @@ module.exports = [
     status: 'approved',
     order: 3,
     icon: 'Food',
-    language_id: 'en'
+    language_id: 'en',
+    city_id: 'GLA'
   },
   {
     category_name: 'ምግብ',
@@ -96,7 +106,8 @@ module.exports = [
     status: 'approved',
     order: 3,
     icon: 'Food',
-    language_id: 'am'
+    language_id: 'am',
+    city_id: 'GLA'
   },
   {
     category_name: 'الأكل',
@@ -105,7 +116,8 @@ module.exports = [
     status: 'approved',
     order: 3,
     icon: 'Food',
-    language_id: 'ar'
+    language_id: 'ar',
+    city_id: 'GLA'
   },
   {
     category_name: 'Parks',
@@ -114,7 +126,8 @@ module.exports = [
     status: 'approved',
     order: 4,
     icon: 'Parks',
-    language_id: 'en'
+    language_id: 'en',
+    city_id: 'GLA'
   },
   {
     category_name: 'መናፈሻዎች',
@@ -123,7 +136,8 @@ module.exports = [
     status: 'approved',
     order: 4,
     icon: 'Parks',
-    language_id: 'am'
+    language_id: 'am',
+    city_id: 'GLA'
   },
   {
     category_name: 'الحدائق',
@@ -132,7 +146,8 @@ module.exports = [
     status: 'approved',
     order: 4,
     icon: 'Parks',
-    language_id: 'ar'
+    language_id: 'ar',
+    city_id: 'GLA'
   },
   {
     category_name: 'Sport',
@@ -141,7 +156,8 @@ module.exports = [
     status: 'approved',
     order: 5,
     icon: 'Sport',
-    language_id: 'en'
+    language_id: 'en',
+    city_id: 'GLA'
   },
   {
     category_name: 'ስፖርት',
@@ -150,7 +166,8 @@ module.exports = [
     status: 'approved',
     order: 5,
     icon: 'Sport',
-    language_id: 'am'
+    language_id: 'am',
+    city_id: 'GLA'
   },
   {
     category_name: 'الرياضة',
@@ -159,7 +176,8 @@ module.exports = [
     status: 'approved',
     order: 5,
     icon: 'Sport',
-    language_id: 'ar'
+    language_id: 'ar',
+    city_id: 'GLA'
   },
   {
     category_name: 'Shopping',
@@ -168,7 +186,8 @@ module.exports = [
     status: 'approved',
     order: 6,
     icon: 'Shopping',
-    language_id: 'en'
+    language_id: 'en',
+    city_id: 'GLA'
   },
   {
     category_name: 'ግብይት',
@@ -177,7 +196,8 @@ module.exports = [
     status: 'approved',
     order: 6,
     icon: 'Shopping',
-    language_id: 'am'
+    language_id: 'am',
+    city_id: 'GLA'
   },
   {
     category_name: 'التسوق',
@@ -186,7 +206,8 @@ module.exports = [
     status: 'approved',
     order: 6,
     icon: 'Shopping',
-    language_id: 'ar'
+    language_id: 'ar',
+    city_id: 'GLA'
   },
   {
     category_name: 'Transport',
@@ -195,7 +216,8 @@ module.exports = [
     status: 'approved',
     icon: 'Transport',
     order: 7,
-    language_id: 'en'
+    language_id: 'en',
+    city_id: 'GLA'
   },
   {
     category_name: 'መጓጓዣ',
@@ -204,7 +226,8 @@ module.exports = [
     status: 'approved',
     icon: 'Transport',
     order: 7,
-    language_id: 'am'
+    language_id: 'am',
+    city_id: 'GLA'
   },
   {
     category_name: 'المواصلات',
@@ -213,7 +236,8 @@ module.exports = [
     status: 'approved',
     icon: 'Transport',
     order: 7,
-    language_id: 'ar'
+    language_id: 'ar',
+    city_id: 'GLA'
   },
   {
     category_name: 'Children',
@@ -222,7 +246,8 @@ module.exports = [
     status: 'approved',
     icon: 'Children',
     order: 8,
-    language_id: 'en'
+    language_id: 'en',
+    city_id: 'GLA'
   },
   {
     category_name: 'ልጆች',
@@ -231,7 +256,8 @@ module.exports = [
     status: 'approved',
     icon: 'Children',
     order: 8,
-    language_id: 'am'
+    language_id: 'am',
+    city_id: 'GLA'
   },
   {
     category_name: 'الأطفال',
@@ -240,7 +266,8 @@ module.exports = [
     status: 'approved',
     icon: 'Children',
     order: 8,
-    language_id: 'ar'
+    language_id: 'ar',
+    city_id: 'GLA'
   },
   {
     category_name: 'Emergency',
@@ -249,7 +276,8 @@ module.exports = [
     status: 'approved',
     icon: 'Emergency',
     order: 9,
-    language_id: 'en'
+    language_id: 'en',
+    city_id: 'GLA'
   },
   {
     category_name: 'ድንገተኛ',
@@ -258,7 +286,8 @@ module.exports = [
     status: 'approved',
     icon: 'Emergency',
     order: 9,
-    language_id: 'am'
+    language_id: 'am',
+    city_id: 'GLA'
   },
   {
     category_name: 'الطوارئ',
@@ -267,6 +296,67 @@ module.exports = [
     status: 'approved',
     icon: 'Emergency',
     order: 9,
-    language_id: 'ar'
+    language_id: 'ar',
+    city_id: 'GLA'
+  },
+  {
+    category_name: 'Welcome',
+    short_description: 'Welcome to Edinburgh',
+    description: `Welcome to Edinburgh`,
+    status: 'approved',
+    order: 10,
+    icon: 'Welcome',
+    language_id: 'en',
+    city_id: 'EDI'
+  },
+  {
+    category_name: 'እንኳን ደህና መጣህ',
+    short_description: 'ወደ ኤድንበርግ እንኳን ደህና መጡ',
+    description: 'ወደ ኤድንበርግ እንኳን ደህና መጡ',
+    status: 'approved',
+    order: 10,
+    icon: 'Welcome',
+    language_id: 'am',
+    city_id: 'EDI'
+  },
+  {
+    category_name: 'مرحبا',
+    short_description: 'مرحبا بك في ادنبره',
+    description: 'مرحبا بك في ادنبره',
+    status: 'approved',
+    order: 10,
+    icon: 'Welcome',
+    language_id: 'ar',
+    city_id: 'EDI'
+  },
+  {
+    category_name: 'Welcome',
+    short_description: 'Welcome to Paisley',
+    description: `Welcome to Paisley`,
+    status: 'approved',
+    order: 10,
+    icon: 'Welcome',
+    language_id: 'en',
+    city_id: 'PAI'
+  },
+  {
+    category_name: 'እንኳን ደህና መጣህ',
+    short_description: 'ወደ ፓይስል እንኳን በደህና መጡ',
+    description: 'ወደ ፓይስል እንኳን በደህና መጡ',
+    status: 'approved',
+    order: 10,
+    icon: 'Welcome',
+    language_id: 'am',
+    city_id: 'PAI'
+  },
+  {
+    category_name: 'مرحبا',
+    short_description: 'مرحبًا بك في بيسلي',
+    description: 'مرحبًا بك في بيسلي',
+    status: 'approved',
+    order: 10,
+    icon: 'Welcome',
+    language_id: 'ar',
+    city_id: 'PAI'
   }
 ]

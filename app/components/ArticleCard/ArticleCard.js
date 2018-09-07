@@ -9,15 +9,15 @@ import styles from './ArticleStyle'
 import PropTypes from 'prop-types'
 
 const ArticleCard = (props) => {
-  const { language } = props
+  const { language, description, title, image } = props
   return (
     <TouchableOpacity
       style={[styles.container, styles.text]}
       onPress={props.navigateToArticle}>
-      <Image style={styles.image} source={{ uri: 'http://placehold.it/100x80' }} />
+      <Image style={styles.image} source={{ uri: image ? `data:image/png;base64,${image}` : 'http://placehold.it/300x200' }} />
       <View style={styles.content}>
-        <Text style={language === 'ar' ? styles.arabicTitle : styles.title}>{props.title}</Text>
-        <Text style={language === 'ar' ? styles.arabicDescription : styles.description} numberOfLines={2} ellipsizeMode={'tail'}>{props.description}</Text>
+        <Text style={language === 'ar' ? styles.arabicTitle : styles.title}>{title}</Text>
+        <Text style={language === 'ar' ? styles.arabicDescription : styles.description} numberOfLines={2} ellipsizeMode={'tail'}>{description}</Text>
       </View>
     </TouchableOpacity>
   )

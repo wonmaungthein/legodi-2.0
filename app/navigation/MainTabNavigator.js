@@ -30,7 +30,6 @@ const HomeStack = createStackNavigator(
   { Home, Articles, Article, AddArticle },
   { initialRouteName: 'Home' }
 )
-
 helper.generateNavigation(
   HomeStack,
   'Home',
@@ -39,7 +38,7 @@ helper.generateNavigation(
   'md-home'
 )
 
-const AboutScreenStack = helper.generateSingleStackNavigator(About)
+const AboutScreenStack = createStackNavigator({ About })
 helper.generateNavigation(
   AboutScreenStack,
   'About',
@@ -48,7 +47,7 @@ helper.generateNavigation(
   'md-information-circle'
 )
 
-const SettingsStack = helper.generateSingleStackNavigator(Settings)
+const SettingsStack = createStackNavigator({ Settings })
 helper.generateNavigation(
   SettingsStack,
   'Settings',

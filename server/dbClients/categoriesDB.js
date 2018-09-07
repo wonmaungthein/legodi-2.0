@@ -5,37 +5,37 @@ const getCategories = () => {
   return knex.select().from('categories')
 }
 
-const getArticlesByCategoryId = category_id => {
+const getArticlesByCategoryId = categoryId => {
   return knex
     .select()
     .from('articles')
-    .where({ category_id })
+    .where('category_id', '=', categoryId)
 }
 
-const getCategoryById = category_id => {
-  return knex('categories').where({ category_id })
+const getCategoryById = categoryId => {
+  return knex('categories').where('category_id', '=', categoryId)
 }
 
-const getCategoryByName = async category_name => {
+const getCategoryByName = async categoryName => {
   const category = await knex('categories')
-    .where({ category_name })
+    .where('category_name', '=', categoryName)
     .first()
   return category
 }
 
-const getCategoryByLanguage = async language_id => {
-  return knex('categories').where({ language_id })
+const getCategoryByLanguage = async (languageId, cityId) => {
+  return knex('categories').where('language_id', '=', languageId).andWhere('city_id', '=', cityId)
 }
 
 const addCategory = data => {
   return knex.table('categories').insert({
-    category_id: data.categoryId,
-    category_name: data.title,
-    short_description: data.short_description,
+    category_name: data.categoryName,
+    short_description: data.shortDescription,
     description: data.description,
     status: data.status,
-    icon: data.image,
+    icon: data.icon,
     language_id: data.languageId,
+    city_id: data.cityId,
     order: data.order
   })
 }
@@ -45,12 +45,13 @@ const editCategory = (categoryId, data) => {
     .table('categories')
     .where('category_id', '=', categoryId)
     .update({
-      category_name: data.category_name,
-      short_description: data.short_description,
+      category_name: data.categoryName,
+      short_description: data.shortDescription,
       description: data.description,
       status: data.status,
       icon: data.icon,
-      language_id: data.language_id,
+      language_id: data.languageId,
+      city_id: data.cityId,
       order: data.order
     })
 }

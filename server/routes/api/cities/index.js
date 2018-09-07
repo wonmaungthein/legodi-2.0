@@ -34,7 +34,6 @@ router.put('/', async (req, res) => {
 
 router.delete('/', async (req, res) => {
   const data = req.body
-  console.log(data)
   try {
     const response = await db.deleteCity(data.cityId)
     res.status(200).json(response)

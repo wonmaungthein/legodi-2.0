@@ -13,26 +13,26 @@ router.get('/quiz', async (req, res) => {
 })
 
 router.post('/quiz/answers', async (req, res) => {
-  findQuestionCb = (data) => {
+  const findQuestionCb = (data) => {
     let similarQuestions = []
     let allQuestions = data
     let userAnswer = req.body
     allQuestions.map((question) => {
       userAnswer.map((answer) => {
-        if (question.question_id == answer.title) {
+        if (question.question_id === answer.title) {
           similarQuestions.push(question)
         }
       })
     })
 
-    checkAnswers = (questions, answers) => {
+    const checkAnswers = (questions, answers) => {
       let result = {}
       let wrongAnswersList = []
       let corretAnswers = 0
       let wrongAnswers = 0
       answers.map((answer) => {
         questions.map((question) => {
-          if (question.question_id == answer.title) {
+          if (question.question_id === answer.title) {
             if (question.answer === answer.answer) {
               corretAnswers++
             } else {

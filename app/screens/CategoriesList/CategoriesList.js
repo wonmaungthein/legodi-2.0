@@ -10,8 +10,9 @@ import PropTypes from 'prop-types'
 
 class CategoriesList extends React.Component {
   async componentDidMount () {
-    const language = 'en'
-    this.props.fetchCategories(language)
+    const languageId = 'en'
+    const cityId = 'GLA'
+    this.props.fetchCategories(languageId, cityId)
     this.props.fetchLanguages()
     this.props.fetchCities()
   }
@@ -48,8 +49,8 @@ class CategoriesList extends React.Component {
 
 const dispatchToProps = dispatch => {
   return {
-    fetchCategories: (language) => {
-      return dispatch(fetchCategories(language))
+    fetchCategories: (languageId, cityId) => {
+      return dispatch(fetchCategories(languageId, cityId))
     },
     fetchLanguages: () => {
       return dispatch(fetchLanguages())
@@ -63,7 +64,9 @@ const dispatchToProps = dispatch => {
 
 const mapStateToProps = ({ categories, Setting }) => ({
   categories: categories.categoriesList,
-  language: Setting.language
+  language: Setting.language,
+  languageId: Setting.language,
+  cityId: Setting.city
 })
 
 CategoriesList.propTypes = {

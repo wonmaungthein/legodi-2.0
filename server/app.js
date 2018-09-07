@@ -20,6 +20,7 @@ const categoriesApi = require('./routes/api/categories')
 const articlesApi = require('./routes/api/articles')
 const citiesApi = require('./routes/api/cities')
 const CategoriesAdmin = require('./routes/admin/categories')
+const login = require('./routes/admin/authentication/login')
 
 const fileUpload = require('express-fileupload')
 
@@ -85,6 +86,7 @@ app.use(function (req, res, next) {
 })
 
 app.use('/', index)
+app.use('/users', login)
 app.use('/api/languages', languagesApi)
 app.use('/admin/language', languagesAdmin)
 app.use('/api/categories', categoriesApi)
