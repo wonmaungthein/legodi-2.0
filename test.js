@@ -6,8 +6,8 @@ const opts = {
         platformName: "Android",
         platformVersion: "7.1.1",
         deviceName: "AndroidPhone",
-        app: "/Users/wonmaungthein/Desktop/sample-code/ApiDemos-debug.apk",
-        // app: "/Users/wonmaungthein/Desktop/Coding/legodi-2.0/legodi-6ce44261e0b8716a9c75413da663cba5-signed.apk",
+        // app: "/Users/wonmaungthein/Desktop/sample-code/ApiDemos-debug.apk",
+        app: "/Users/wonmaungthein/Desktop/Coding/legodi-2.0/legodi-6ce44261e0b8716a9c75413da663cba5-signed.apk",
         automationName: "UiAutomator2"
     }
 };

@@ -25,10 +25,10 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.yourcompany.yourappname"
+      "bundleIdentifier": "com.CodeYourFuture.Legodi"
     },
     "android": {
-      "package": "com.yourcompany.yourappname"
+      "package": "com.CodeYourFuture.Legodi"
     }
   }
 }
