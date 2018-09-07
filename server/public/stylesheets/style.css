@@ -247,6 +247,19 @@ button,
 }
 
 /*================= Categories Styling ==================*/
+.add-new-category{
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 9fr 3fr;
+  margin-top: 1.5em;
+}
+
+.add-new-category .btn{
+  width: 100%;
+  font-weight: 600;
+}
+
 .delete-category{
     background: #f00;
     color: #fff;

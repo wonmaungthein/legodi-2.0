@@ -24,15 +24,6 @@ router.get('/', ensureAuthenticated, async (req, res) => {
   }
 })
 
-router.get('/view', async (req, res) => {
-  try {
-    const data = await db.getCategories()
-    res.render('category-table-view', { data })
-  } catch (error) {
-    res.render('error', { error })
-  }
-})
-
 router.get('/view/:categoryId', async (req, res) => {
   const { categoryId } = req.params
   try {
@@ -54,15 +45,6 @@ router.post('/add', async (req, res) => {
   try {
     await db.addCategory(body)
     res.redirect('/admin/categories')
-  } catch (error) {
-    res.render('error', { error })
-  }
-})
-
-router.get('/edit', async (req, res) => {
-  try {
-    const data = await db.getCategories()
-    res.render('category-table-edit', { data })
   } catch (error) {
     res.render('error', { error })
   }
