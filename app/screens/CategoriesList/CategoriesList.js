@@ -9,16 +9,15 @@ import styles from './CategoryListStyles'
 import PropTypes from 'prop-types'
 
 class CategoriesList extends React.Component {
-  async componentDidMount () {
-    const languageId = 'en'
-    const cityId = 'GLA'
+  async componentDidMount() {
+    const { cityId, languageId } = this.props
+    this.props.fetchCities()
     this.props.fetchCategories(languageId, cityId)
     this.props.fetchLanguages()
-    this.props.fetchCities()
   }
 
   renderCategories = () => {
-    const language = this.props.language
+    const language = this.props.languageId
     return this.props.categories.map((category, i) => {
       if (category) {
         return (
@@ -36,9 +35,17 @@ class CategoriesList extends React.Component {
     })
   }
 
-  render () {
+  render() {
+    const { cities, cityId } = this.props
+    let primaryColor = ""
+    if (cities.length !== 0) {
+      primaryColor = cities.filter(city => city.city_id === cityId)[0].primary_color
+    } else {
+      primaryColor = 'yellow'
+    }
+
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView style={[styles.container, { backgroundColor: primaryColor }]}>
         <View style={styles.layout}>
           {this.renderCategories()}
         </View>
@@ -62,11 +69,11 @@ const dispatchToProps = dispatch => {
   }
 }
 
-const mapStateToProps = ({ categories, Setting }) => ({
+const mapStateToProps = ({ categories, Setting, cities }) => ({
   categories: categories.categoriesList,
-  language: Setting.language,
   languageId: Setting.language,
-  cityId: Setting.city
+  cityId: Setting.city,
+  cities: cities.citiesList
 })
 
 CategoriesList.propTypes = {
