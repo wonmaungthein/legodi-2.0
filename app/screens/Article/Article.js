@@ -4,21 +4,19 @@ import { Constants } from 'expo'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import styles from './ArticleStyle'
-import Colors from '../../constants/Colors'
-const { primaryColor, secondaryColor } = Colors
 
 class Article extends React.Component {
   componentDidMount () {
     const { cities, cityId } = this.props
-    const cityName = cities.filter(city => city.city_id === cityId)[0].city_name
-    this.props.navigation.setParams({ cityName })
+    const { city_name: cityName, primary_color: primaryColor, secondary_color: secondaryColor } = cities.filter(city => city.city_id === cityId)[0]
+    this.props.navigation.setParams({ cityName, primaryColor, secondaryColor })
   }
 
   componentWillReceiveProps (nextProps) {
     const { cityId } = nextProps
     if (cityId !== this.props.cityId) {
-      const cityName = this.props.cities.filter(city => city.city_id === cityId)[0].city_name
-      this.props.navigation.setParams({ cityName })
+      const { city_name: cityName, primary_color: primaryColor, secondary_color: secondaryColor } = this.props.cities.filter(city => city.city_id === cityId)[0]
+      this.props.navigation.setParams({ cityName, primaryColor, secondaryColor })
     }
   }
 
@@ -28,10 +26,11 @@ class Article extends React.Component {
 
   static navigationOptions = ({ navigation }) => {
     const { params } = navigation.state
+    const primaryColor = params ? `${params.primaryColor}` : '#e6bb44'
     return {
       title: params ? `${params.cityName} Welcome Pack` : 'Glasgow Welcome Pack',
       headerStyle: {
-        backgroundColor: secondaryColor,
+        backgroundColor: params ? `${params.secondaryColor}` : '#0f352e',
         paddingTop: Constants.statusBarHeight
       },
       headerTitleStyle: { color: primaryColor },
@@ -46,9 +45,11 @@ class Article extends React.Component {
       'Default description'
     )
     const articleImage = this.props.navigation.getParam('articleImage')
+    const { cities, cityId } = this.props
+    const { primary_color: primaryColor } = cities.filter(city => city.city_id === cityId)[0]
 
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, { backgroundColor: primaryColor }]}>
         <ScrollView>
           <View style={styles.center}>
             <Image
