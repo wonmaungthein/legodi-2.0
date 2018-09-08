@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-  baseURL: 'http://localhost:3001/api'
+  baseURL: 'https://api.staging.legodi.codeyourfuture.io/api'
 })
 
 export const getCategories = async (languageId = 'en', cityId = 'GLA') =>
