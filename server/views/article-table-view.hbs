@@ -1,20 +1,34 @@
 <div class="admin-legodi">
+    <div class="add-new-article">
+        <h3>Add new article:</h3>
+        <a href="/admin/articles/add">
+            <button class="btn btn-primary">Add new</button>
+        </a>
+    </div>
     <table class="table bg-primary table-bordered  mt-4 pd-4">
         <thead class="table ">
             <tr class="text-center align-middle">
-                <th>Id</th>
                 <th>Name</th>
-                <th>View</th>
-             </tr>
+                <th class="article-short-description">Short Description</th>
+                <th>Status</th>
+                <th>More Info</th>
+                <th>Edit</th>
+            </tr>
         </thead>
         <tbody class="table bg-info text-white">
             {{#each data}}
             <tr>
-                <th scope="row" class="text-center align-middle">{{this.article_id}}</th>
                 <td class="text-center align-middle">{{this.title}}</td>
+                <td>{{this.short_content}}</td>
+                <td class="text-center align-middle">{{this.status}}</td>
                 <td class="text-center align-middle">
-                    <a href='view/{{this.article_id}}'>
-                       <button class="btn btn-sm eye"><i class="far fa-eye" ></i></button>                         
+                    <a href='/admin/articles/view/{{this.article_id}}'>
+                        <button class="btn btn-sm eye"><i class="far fa-eye"></i></button>
+                    </a>
+                </td>
+                <td class="text-center align-middle">
+                    <a href='/admin/articles/edit/{{this.article_id}}'>
+                        <button class="btn btn-sm eye"><i class="far fa-edit"></i></button>
                     </a>
                 </td>
             </tr>

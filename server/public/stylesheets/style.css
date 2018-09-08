@@ -245,6 +245,78 @@ button,
 .container .content{
   margin-top: 2em
 }
+
+/*================= Categories Styling ==================*/
+.add-new-category{
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 9fr 3fr;
+  margin-top: 1.5em;
+}
+
+.add-new-category .btn{
+  width: 100%;
+  font-weight: 600;
+}
+
+.delete-category{
+    background: #f00;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
+
+.delete-category .far{
+  margin-left: .3em;
+}
+
+.delete-category:hover{
+    background: #fff;
+    color: #f00;
+}
+
+
+/*================= Articles Styling ==================*/
+.add-new-article{
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 9fr 3fr;
+  margin-top: 1.5em;
+}
+
+.add-new-article .btn{
+  width: 100%;
+  font-weight: 600;
+}
+
+.article-short-description{
+  width: 50%;
+}
+
+.delete-article{
+  background: #f00;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+  margin: auto;
+}
+
+.delete-article .far{
+margin-left: .3em;
+}
+
+.delete-article:hover{
+  background: #fff;
+  color: #f00;
+}
+
 @media (min-width: 680px) {
   .legodi-menu {
     max-width: 30%;
