@@ -16,6 +16,7 @@ function addArticle (data) {
     image: data.articleImage,
     title: data.title,
     status: data.status,
+    sort_order: data.order,
     category_id: data.categoryId,
     full_content: data.fullContent,
     short_content: data.shortContent
@@ -29,6 +30,7 @@ function editArticle (articleId, data) {
       image: data.articleImage,
       title: data.title,
       status: data.status,
+      sort_order: data.order,
       category_id: data.categoryId,
       full_content: data.fullContent,
       short_content: data.shortContent

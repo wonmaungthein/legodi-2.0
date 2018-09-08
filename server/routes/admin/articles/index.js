@@ -14,9 +14,7 @@ const ensureAuthenticated = (req, res, next) => {
   }
 }
 
-router.get('/', ensureAuthenticated, async (req, res) => res.render('article-menu'))
-
-router.get('/view', async (req, res) => {
+router.get('/', ensureAuthenticated, async (req, res) => {
   try {
     const data = await db.getArticles()
     res.render('article-table-view', { data })
@@ -44,16 +42,7 @@ router.post('/add', async (req, res) => {
   const { body } = req
   try {
     await db.addArticle(body)
-    res.redirect('/admin/articles/view')
-  } catch (error) {
-    res.render('error', { error })
-  }
-})
-
-router.get('/edit', async (req, res) => {
-  try {
-    const data = await db.getArticles()
-    res.render('article-table-edit', { data })
+    res.redirect('/admin/articles')
   } catch (error) {
     res.render('error', { error })
   }
@@ -63,7 +52,7 @@ router.get('/delete/:articleId', async (req, res) => {
   const { articleId } = req.params
   try {
     await db.deleteArticle(articleId)
-    res.redirect('/admin/articles/edit')
+    res.redirect('/admin/articles')
   } catch (error) {
     res.render('error', { error })
   }
@@ -75,7 +64,8 @@ router.get('/edit/:articleId', async (req, res) => {
     const categories = await categoriesDb.getCategories()
     const article = await db.getArticleById(articleId)
     const data = article[0]
-    const category = categories.filter(category => category.category_id === data.category_id)[0].category_name
+    const getCategory = categories.filter(category => category.category_id === data.category_id)
+    const category = getCategory.length > 0 ? `${getCategory[0].category_name} ${getCategory[0].city_id}` : 'Select Category'
     res.render('article-add', { data, categories, category })
   } catch (error) {
     res.render('error', { error })
@@ -87,7 +77,7 @@ router.post('/edit/:articleId', async (req, res) => {
   const { body } = req
   try {
     await db.editArticle(articleId, body)
-    res.redirect('/admin/articles/edit')
+    res.redirect('/admin/articles')
   } catch (error) {
     res.render('error', { error })
   }
