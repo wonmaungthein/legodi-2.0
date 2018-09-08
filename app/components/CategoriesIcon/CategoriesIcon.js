@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Text, TouchableOpacity, View } from 'react-native'
 import {
   Ionicons,
@@ -10,11 +11,11 @@ import {
 } from '@expo/vector-icons'
 import styles from './IconStyles'
 import PropTypes from 'prop-types'
-import Colors from '../../constants/Colors'
-const { primaryColor } = Colors
 
-const CategoriesIcon = props => {
-  const getIconName = name => {
+class CategoriesIcon extends React.Component {
+  getIconName = name => {
+    const { cities, cityId } = this.props
+    const { primary_color: primaryColor } = cities.filter(city => city.city_id === cityId)[0]
     switch (name) {
       case 'Welcome':
         return <Entypo name='hand' size={36} color={primaryColor} />
@@ -46,25 +47,34 @@ const CategoriesIcon = props => {
         return <Ionicons name='md-help' size={36} color={primaryColor} />
     }
   }
-  return (
-    <TouchableOpacity
-      style={styles.box}
-      onPress={() =>
-        props.navigation('Articles', {
-          id: props.id,
-          categoryTitle: props.title,
-          description: props.description,
-          categoryId: props.id
-        })
-      }
-    >
-      <View style={styles.corner} />
-      {getIconName(props.iconName)}
+  render() {
+    const { cities, cityId } = this.props
+    const { primary_color: primaryColor, categories_color: categoriesColor } = cities.filter(city => city.city_id === cityId)[0]
+    return (
+      <TouchableOpacity
+        style={[styles.box, { backgroundColor: categoriesColor }]}
+        onPress={() =>
+          this.props.navigation('Articles', {
+            id: this.props.id,
+            categoryTitle: this.props.title,
+            description: this.props.description,
+            categoryId: this.props.id
+          })
+        }
+      >
+        <View style={[styles.corner, { borderTopColor: primaryColor, borderRightColor: primaryColor }]} />
+        {this.getIconName(this.props.iconName)}
 
-      <Text style={styles.title}>{props.title}</Text>
-    </TouchableOpacity>
-  )
+        <Text style={styles.title}>{this.props.title}</Text>
+      </TouchableOpacity>
+    )
+  }
 }
+
+const mapStateToProps = (state) => ({
+  cityId: state.Setting.city,
+  cities: state.cities.citiesList
+})
 
 CategoriesIcon.propTypes = {
   navigation: PropTypes.func,
@@ -74,4 +84,4 @@ CategoriesIcon.propTypes = {
   title: PropTypes.string
 }
 
-export default CategoriesIcon
+export default connect(mapStateToProps)(CategoriesIcon)

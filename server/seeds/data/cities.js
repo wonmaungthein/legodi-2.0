@@ -11,13 +11,13 @@ module.exports = [
     city_name: 'Edinburgh',
     primary_color: '#97c5e5',
     secondary_color: '#ce5074',
-    categories_color: 'yellow'
+    categories_color: '#ed5c83'
   },
   {
     city_id: 'PAI',
     city_name: 'Paisley',
     primary_color: '#ed42e4',
     secondary_color: '#42edd0',
-    categories_color: 'blue'
+    categories_color: '#61b249'
   }
 ]
