@@ -1,10 +1,18 @@
 <div class="admin-legodi">
     <table class="table bg-primary table-bordered  mt-4 pd-4">
+            <div class="add-new-category">
+      <h3>Add new language:</h3>
+      <a href="/admin/language/add">
+        <button class="btn btn-primary">Add new</button>
+      </a>
+    </div>
         <thead class="table ">
             <tr class="text-center align-middle">
                 <th>Id</th>
-                <th>Name</th>
-                <th>View</th>
+                <th>Long Name</th>
+                <th>Original name Name</th>
+                <th>Edit</th>
+                <th>Delete</th>
              </tr>
         </thead>
         <tbody class="table bg-info text-white">
@@ -12,9 +20,15 @@
             <tr>
                 <th scope="row" class="text-center align-middle">{{this.language_id}}</th>
                 <td class="text-center align-middle">{{this.long_name}}</td>
+                <td class="text-center align-middle">{{this.original_name}}</td>
+                 <td class="text-center align-middle">
+                    <a href='/admin/language/edit/{{this.language_id}}'>
+                       <button class="btn btn-sm eye"><i class="far fa-edit"></i></button>                         
+                    </a>
+                </td>
                 <td class="text-center align-middle">
-                    <a href='view/{{this.language_id}}'>
-                       <button class="btn btn-sm eye"><i class="far fa-eye" ></i></button>                         
+                    <a href='/admin/language/delete/{{this.language_id}}'>
+                       <button class="btn btn-sm eye"><i class="far fa-trash-alt" ></i></button>                         
                     </a>
                 </td>
             </tr>
