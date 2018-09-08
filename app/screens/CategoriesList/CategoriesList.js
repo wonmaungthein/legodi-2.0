@@ -41,7 +41,7 @@ class CategoriesList extends React.Component {
     if (cities.length !== 0) {
       primaryColor = cities.filter(city => city.city_id === cityId)[0].primary_color
     } else {
-      primaryColor = 'yellow'
+      primaryColor = '#e6bb44'
     }
 
     return (
