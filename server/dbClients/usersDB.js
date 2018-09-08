@@ -23,6 +23,7 @@ const addUser = (data) => {
   let { password } = data
   const { fullName, email } = data
   bcrypt.genSalt(10, (err, salt) => {
+    if (err) throw err
     return bcrypt.hash(password, salt, async (error, hash) => {
       if (error) {
         throw error
@@ -37,24 +38,15 @@ const addUser = (data) => {
   })
 }
 
-const editUser = (id, data) => {
-  let { password } = data
-  const { fullName, email, userId } = data
-  return bcrypt.genSalt(10, (err, salt) => {
-    bcrypt.hash(password, salt, async (error, hash) => {
-      if (error) {
-        throw error
-      }
-      password = hash
-      await knex
-        .table('users')
-        .where('user_id', '=', userId)
-        .update({
-          full_name: fullName,
-          email: email,
-          password: password
-        })
-    })
+const editUser = async (id, data) => {
+  const { fullName, email } = data
+  return knex
+  .table('users')
+  .where('user_id', '=', id)
+  .update({
+    full_name: fullName,
+    email: email,
+    role: data.role
   })
 }
 

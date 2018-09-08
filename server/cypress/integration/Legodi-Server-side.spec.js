@@ -1,4 +1,4 @@
-// const cy = require ('cy')  
+import cy from 'cypress'
 
 describe('Legodi Server side testing example', () => {
   beforeEach(() => {

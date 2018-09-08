@@ -1,107 +1,47 @@
 const express = require('express')
-const router = express.Router()
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
-const User = require('../../../models/User')
-const UserDB = require('../../../dbClients/userDB')
+const db = require('../../../dbClients/usersDB')
+
+const router = express.Router()
 
 router.get('/login', (req, res) => {
   res.render('login', { layout: false })
 })
 
-// use users/register/codeyourfuture135 to create username and password to access adminstration
-// I will get rid of this link after all guys creatte an account in his local
-
-router.get('/register', (req, res) => {
-  res.render('register')
-})
-
-// Register
-// router.get('/register', ensureAuthenticated, (req, res) => {
-//   res.render('register')// Register
-// })
-
-// Login
-router.get('/login', (req, res) => {
-  res.render('login')
-})
-
-// Register User
-router.post('/register', (req, res) => {
-  const name = req.body.name
-  const email = req.body.email
-  const username = req.body.username
-  const password = req.body.password
-  // const password2 = req.body.password2
-  const isAdmin = req.body.isAdmin
-
-  // Validation
-  req.checkBody('name', 'Name is required').notEmpty()
-  req.checkBody('isAdmin', 'isAdmin is required').notEmpty()
-  req.checkBody('email', 'Email is required').notEmpty()
-  req.checkBody('email', 'Email is not valid').isEmail()
-  req.checkBody('username', 'Username is required').notEmpty()
-  req.checkBody('password', 'Password is required').notEmpty()
-  req.checkBody('password2', 'Passwords do not match').equals(req.body.password)
-
-  const errors = req.validationErrors()
-
-  if (errors) {
-    res.render('register', {
-      errors: errors
-    })
-  } else {
-    const newUser = new User({
-      name: name,
-      email: email,
-      username: username,
-      password: password,
-      isAdmin: isAdmin
-    })
-
-    UserDB.createUser(newUser, (err, User) => {
-      if (err) throw err
-      console.log(User)
-    })
-
-    req.flash('success_msg', 'You are registered and can now login')
-
-    res.redirect('/users/login')
-  }
-})
-
 passport.use(new LocalStrategy(
-  (username, password, done) => {
-    UserDB.getUserByUsername(username, (err, user) => {
+  {
+    usernameField: 'email',
+    passwordField: 'password',
+    session: false
+  },
+  async function (email, password, done) {
+    const user = await db.getUserByEmail(email)
+    if (user.length === 0) {
+      return done(null, false, { message: 'User is not exist' })
+    }
+    db.comparePassword(password, user[0].password, (err, isMatch) => {
       if (err) throw err
-      if (!user) {
-        return done(null, false, { message: 'Unknown user' })
+      if (isMatch) {
+        return done(null, user)
+      } else {
+        return done(null, false, { message: 'Invalid password' })
       }
-
-      UserDB.comparePassword(password, user.password, (err, isMatch) => {
-        if (err) throw err
-        if (isMatch) {
-          return done(null, user)
-        } else {
-          return done(null, false, { message: 'Invalid password' })
-        }
-      })
     })
   }))
 
-passport.serializeUser((user, done) => {
-  done(null, user.id)
+passport.serializeUser(function (user, done) {
+  done(null, user[0].user_id)
 })
 
-passport.deserializeUser((id, done) => {
-  UserDB.getUserById(id, (err, user) => {
-    done(err, user)
-  })
+passport.deserializeUser(async (id, done) => {
+  const user = await db.getUserById(id)
+  done(null, user[0])
 })
 
 router.post('/login',
   passport.authenticate('local', { successRedirect: '/', failureRedirect: '/users/login', failureFlash: true }),
-  (req, res) => {
+  function (req, res) {
     res.redirect('/')
   })
 
@@ -111,6 +51,49 @@ router.get('/logout', (req, res) => {
   req.flash('success_msg', 'You are logged out')
 
   res.redirect('/users/login')
+})
+
+router.get('/register', (req, res) => {
+  res.render('register', { layout: false })
+})
+
+router.post('/register', async (req, res) => {
+  const { fullName, email, password } = req.body
+  const data = { fullName, email, password }
+
+  // Validation
+  req.checkBody('fullName', 'Name is required').notEmpty()
+  req.checkBody('email', 'Email is required').notEmpty()
+  req.checkBody('password', 'Password is required').notEmpty()
+  req.checkBody('confirmPassword', 'Passwords do not match').equals(req.body.password)
+
+  const errors = req.validationErrors()
+
+  if (errors) {
+    res.render('register', {
+      errors: errors,
+      layout: false
+    })
+  } else {
+    try {
+      const user = await db.getUserByEmail(email)
+      if (user.length > 0) {
+        res.render('register', {
+          error: 'User is already exist',
+          layout: false
+        })
+      } else {
+        await db.addUser(data)
+        req.flash('success_msg', 'You are registered successfully, now you can login')
+        res.redirect('/users/login')
+      }
+    } catch (error) {
+      res.render('register', {
+        errors: errors,
+        layout: false
+      })
+    }
+  }
 })
 
 module.exports = router

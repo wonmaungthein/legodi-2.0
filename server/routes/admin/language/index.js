@@ -3,7 +3,17 @@ const db = require('../../../dbClients/languageDB')
 
 const router = express.Router()
 
-router.get('/', async (req, res) => await res.render('language-menu'))
+const ensureAuthenticated = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return next()
+  } else {
+    req.flash('error_msg', 'You are not logged in')
+    res.redirect('/users/login')
+    return next()
+  }
+}
+
+router.get('/', ensureAuthenticated, async (req, res) => res.render('language-menu'))
 
 router.get('/view', async (req, res) => {
   try {
@@ -24,7 +34,7 @@ router.get('/view/:languageId', async (req, res) => {
   }
 })
 
-router.get('/add', async (req, res) => await res.render('language-add'))
+router.get('/add', async (req, res) => res.render('language-add'))
 
 router.post('/add', async (req, res) => {
   const { body } = req

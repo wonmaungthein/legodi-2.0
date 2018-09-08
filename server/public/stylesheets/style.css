@@ -45,7 +45,6 @@ body {
   align-items: center;
 }
   
- 
 nav#serverNav {
   margin-bottom: 20px;
   padding-bottom: 0.53rem;
@@ -185,6 +184,101 @@ button,
  .weegie-question h4{
   color: #3c3f41
 }
+
+/*=================== Login Styling =======================*/
+.login{
+  height: 100vh;
+  align-items: center;
+  background-image: url('/images/glasgow.jpg');
+  background-size: cover
+}
+
+/*=================== Language Styling =======================*/
+.language{
+  margin-top: 2em
+}
+
+.login .login-message{
+  position: absolute;
+  width: 100%;
+  top: -4em;
+  left: 0;
+}
+
+.login .content h6{
+  margin-top: 1em
+}
+
+.login label{
+    display: inline-block;
+    margin-bottom: .5rem;
+    margin-top: .5em;
+}
+
+.login button{
+  margin-top: .5em;
+}
+
+/*================= Register Styling ==================*/
+.register{
+  height: 100vh;
+  align-items: center;
+  background-image: url('/images/glasgow.jpg');
+  background-size: cover
+}
+
+.register .content,
+.login .content{
+  background: rgba(0,0,0,.7);
+  padding: 1em 2em;
+  position: relative;
+  border-radius: .5em;
+  color: #fff;
+}
+
+.register button{
+  margin-top: 5px
+}
+
+/*================= Weegie Styling ==================*/
+.weegie-add-edit,
+.container .content{
+  margin-top: 2em
+}
+
+/*================= Categories Styling ==================*/
+.add-new-category{
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 9fr 3fr;
+  margin-top: 1.5em;
+}
+
+.add-new-category .btn{
+  width: 100%;
+  font-weight: 600;
+}
+
+.delete-category{
+    background: #f00;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
+
+.delete-category .far{
+  margin-left: .3em;
+}
+
+.delete-category:hover{
+    background: #fff;
+    color: #f00;
+}
+
 @media (min-width: 680px) {
   .legodi-menu {
     max-width: 30%;

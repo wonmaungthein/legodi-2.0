@@ -1,13 +1,18 @@
 import axios from 'axios'
-import FormData from 'form-data'
 
 const instance = axios.create({
   baseURL: 'https://api.staging.legodi.codeyourfuture.io/api'
 })
 
-export const getCategories = async (language = 'en') => instance.get(`/categories/language?language=${language}`)
+export const getCategories = async (languageId = 'en', cityId = 'GLA') =>
+  instance.get(`/categories/language?language=${languageId}&city=${cityId}`)
 
 export const getLanguages = async () => instance.get('/languages')
+
+export const getCities = async () => {
+  const response = await instance.get('/cities')
+  return response
+}
 
 export const getArticles = async (categoryId) => instance.get(`/categories/${categoryId}/articles`)
 
@@ -22,24 +27,9 @@ export const getWeegieGameAnswers = async (data) => {
   }
 }
 
-export const addArticle = async (article, file) => {
-  const config = {
-    headers: {
-      'accept': 'application/json',
-      'Accept-Language': 'en-US,en;q=0.8',
-      'Content-Type': 'multipart/form-data'
-    }
-  }
-
-  let data = new FormData()
-  data.append('article', JSON.stringify(article))
-
-  if (file) {
-    data.append('image', file)
-  }
-
+export const addArticle = async (data) => {
   try {
-    const response = await instance.post('/addArticle', data, config)
+    const { data: response } = await instance.post('/articles', data)
     return response
   } catch (error) {
     console.log(error)

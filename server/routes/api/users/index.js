@@ -16,6 +16,16 @@ router.get('/', async (req, res) => {
   }
 })
 
+router.get('/:id', async (req, res) => {
+  const { id } = req.params
+  try {
+    const response = await db.getUserById(id)
+    res.status(200).json(response)
+  } catch (error) {
+    res.status(502).json(error)
+  }
+})
+
 router.get('/email', async (req, res) => {
   const { email } = req.query
   try {

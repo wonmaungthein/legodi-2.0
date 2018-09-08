@@ -23,9 +23,9 @@ router.get('/:categoryId/articles', async (req, res) => {
 })
 
 router.get('/language', async (req, res) => {
-  const { language } = req.query
+  const { language, city } = req.query
   try {
-    const response = await db.getCategoryByLanguage(language)
+    const response = await db.getCategoryByLanguage(language, city)
     res.status(200).json(response)
   } catch (error) {
     res.status(502).json(error)

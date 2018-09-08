@@ -11,9 +11,22 @@ import Colors from '../../constants/Colors'
 const { primaryColor, secondaryColor } = Colors
 
 class ArticlesListScreen extends React.Component {
+  componentWillReceiveProps (nextProps) {
+    const { cityId } = nextProps
+    if (cityId !== this.props.cityId) {
+      const title = this.props.cities.filter(city => city.city_id === cityId)[0].city_name
+      this.props.navigation.setParams({ title })
+    }
+  }
+
+  shouldComponentUpdate (nextProps) {
+    return this.props.cityId !== nextProps.cityId
+  }
+
   static navigationOptions = ({ navigation }) => {
+    const { params } = navigation.state
     return {
-      title: 'Glasgow Welcome Pack',
+      title: params ? `${params.title} Welcome Pack` : 'Glasgow Welcome Pack',
       headerStyle: {
         backgroundColor: secondaryColor,
         paddingTop: Constants.statusBarHeight
@@ -39,6 +52,9 @@ class ArticlesListScreen extends React.Component {
   async componentDidMount () {
     const categoryId = this.props.navigation.getParam('id')
     this.props.listArticles(categoryId)
+    const { cities, cityId } = this.props
+    const title = cities.filter(city => city.city_id === cityId)[0].city_name
+    this.props.navigation.setParams({ title })
   }
 
   renderArticlesListPage = () => {
@@ -70,8 +86,8 @@ class ArticlesListScreen extends React.Component {
             this.props.navigation.navigate('Article', {
               title: article.title,
               language: language,
-              image: article.articleImage,
-              description: article.short_content || article.full_content
+              description: article.short_content || article.full_content,
+              articleImage: article.image
             })
 
           return (
@@ -95,7 +111,7 @@ class ArticlesListScreen extends React.Component {
         <View style={styles.layout}>
           {// this.props.articles.length > 0
             this.renderArticlesListPage()
-          // : <Text style={styles.title}>There are no articles in this category</Text>
+            // : <Text style={styles.title}>There are no articles in this category</Text>
           }
         </View>
       </ScrollView>
@@ -105,7 +121,9 @@ class ArticlesListScreen extends React.Component {
 
 const mapStateToProps = state => ({
   articles: state.categories.articlesInCategory,
-  language: state.Setting.language
+  language: state.Setting.language,
+  cityId: state.Setting.city,
+  cities: state.cities.citiesList
 })
 
 const dispatchToProps = dispatch => {

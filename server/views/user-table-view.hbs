@@ -1,27 +1,53 @@
 <div class="admin-legodi">
+    <div class="login-message">
+        {{#if success_msg}}
+        <div class="alert alert-success">{{success_msg}}</div>
+        {{/if}} {{#if error_msg}}
+        <div class="alert alert-danger">{{error_msg}}</div>
+        {{/if}} {{#if error}}
+        <div class="alert alert-danger">{{error}}</div>
+        {{/if}}
+    </div>
     <table class="table bg-primary table-bordered  mt-4 pd-4">
         <thead class="table ">
             <tr class="text-center align-middle">
-                <th>#</th>
                 <th>Full Name</th>
                 <th>Email</th>
+                <th>Role</th>
                 <th>View</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody class="table bg-info text-white">
             {{#each data}}
             <tr>
-                <th scope="row" class="text-center align-middle">{{this.user_id}}</th>
                 <td class="text-center align-middle">{{this.full_name}}</td>
                 <td class="text-center align-middle">{{this.email}}</td>
+                <th scope="row" class="text-center align-middle">{{this.role}}</th>
                 <td class="text-center align-middle">
-                    <a href='view/{{this.user_id}}'>
-                       <button class="btn btn-sm eye"><i class="far fa-eye" ></i></button>                         
+                    <a href='users/view/{{this.user_id}}'>
+                        <button class="btn btn-sm eye">
+                            <i class="far fa-eye"></i>
+                        </button>
+                    </a>
+                </td>
+                <td class="text-center align-middle">
+                    <a href='users/edit/{{this.user_id}}'>
+                        <button class="btn btn-sm eye">
+                            <i class="far fa-edit"></i>
+                        </button>
+                    </a>
+                </td>
+                <td class="text-center align-middle">
+                    <a href='users/delete/{{this.user_id}}'>
+                        <button class="btn btn-sm eye">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
                     </a>
                 </td>
             </tr>
             {{/each}}
-
         </tbody>
     </table>
 </div>
