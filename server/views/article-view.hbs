@@ -1,25 +1,37 @@
-<div class="mt-5 weegie-question">
-
-    <h3 class="text-center mt-4"> Title:</h3>
-    <h4 class="text-center">{{data.title}}</h4>
-
-    <h3 class="text-center">Status:</h3>
-    <h4 class="text-center">{{data.status}}</h4>
-
-    <h3 class="text-center">Order:</h3>
-    <h4 class="text-center">{{data.sort_order}}</h4>
-
-    <h3 class="text-center">Image:</h3>
-    <img src={{data.image}} alt="image" />
-
-    <h3 class="text-center mt-4">short description:</h3>
-    <h4 class="text-center">{{data.short_content}}</h4>
-
-    <h3 class="text-center mt-4">Full Content:</h3>
-    <h4 class="text-center">{{data.full_content}}</h4>
-
-    <a href='/admin/articles/delete/{{data.article_id}}'>
-        <button class="btn btn-sm eye delete-article">Delete<i class="far fa-trash-alt"></i></button>
+<div class="admin-legodi">
+    <table class="table bg-primary table-bordered  mt-4 pd-4">
+        <tbody class="table bg-info text-white">
+            <tr>
+                <th>Title:</th>
+                <td class="text-center align-middle">{{data.title}}</td>
+            </tr>
+            <tr>
+                <th>Status:</th>
+                <td class="text-center align-middle">{{data.status}}</td>
+            </tr>
+            <tr>
+                <th>Order:</th>
+                <td class="text-center align-middle">{{data.sort_order}}</td>
+            </tr>
+            <tr>
+                <th>Image:</th>
+                <td class="text-center align-middle">{{data.image}}</td>
+            </tr>
+            <tr>
+                <th>Language Id:</th>
+                <td class="text-center align-middle">{{data.language_id}}</td>
+            </tr>
+            <tr>
+                <th>Short Description</th>
+                <td class="text-center align-middle">{{data.short_content}}</td>
+            </tr>
+            <tr>
+                <th>Full description</th>
+                <td class="text-center align-middle">{{data.full_conten}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a href='/admin/articles/delete/{{data.category_id}}'>
+        <button class="btn btn-sm eye delete-category">Delete<i class="far fa-trash-alt"></i></button>
     </a>
-
- </div>
+</div>
