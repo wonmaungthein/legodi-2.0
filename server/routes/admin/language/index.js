@@ -13,22 +13,10 @@ const ensureAuthenticated = (req, res, next) => {
   }
 }
 
-router.get('/', ensureAuthenticated, async (req, res) => res.render('language-menu'))
-
-router.get('/view', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const data = await db.getLanguages()
     res.render('language-table-view', { data })
-  } catch (error) {
-    res.render('error', { error })
-  }
-})
-
-router.get('/view/:languageId', async (req, res) => {
-  const { languageId } = req.params
-  try {
-    const data = await db.getLanguage(languageId)
-    res.render('language-view', { data })
   } catch (error) {
     res.render('error', { error })
   }
@@ -38,19 +26,9 @@ router.get('/add', async (req, res) => res.render('language-add'))
 
 router.post('/add', async (req, res) => {
   const { body } = req
-
   try {
     await db.addLanguage(body)
-    res.redirect('/admin/language/view')
-  } catch (error) {
-    res.render('error', { error })
-  }
-})
-
-router.get('/edit', async (req, res) => {
-  try {
-    const data = await db.getLanguages()
-    res.render('language-table-edit', { data })
+    res.redirect('/admin/language')
   } catch (error) {
     res.render('error', { error })
   }
@@ -60,7 +38,7 @@ router.get('/delete/:languageId', async (req, res) => {
   const { languageId } = req.params
   try {
     await db.deleteLanguage(languageId)
-    res.redirect('/admin/language/edit')
+    res.redirect('/admin/language')
   } catch (error) {
     res.render('error', { error })
   }
@@ -82,7 +60,7 @@ router.post('/edit/:languageId', async (req, res) => {
   const { body } = req
   try {
     await db.editLanguage(languageId, body)
-    res.redirect('/admin/language/edit')
+    res.redirect('/admin/language')
   } catch (error) {
     res.render('error', { error })
   }
