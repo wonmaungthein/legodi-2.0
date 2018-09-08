@@ -9,15 +9,15 @@ module.exports = [
   {
     city_id: 'EDI',
     city_name: 'Edinburgh',
-    primary_color: 'green',
-    secondary_color: 'red',
+    primary_color: '#97c5e5',
+    secondary_color: '#ce5074',
     categories_color: 'yellow'
   },
   {
     city_id: 'PAI',
     city_name: 'Paisley',
-    primary_color: 'pink',
-    secondary_color: 'yellow',
+    primary_color: '#ed42e4',
+    secondary_color: '#42edd0',
     categories_color: 'blue'
   }
 ]

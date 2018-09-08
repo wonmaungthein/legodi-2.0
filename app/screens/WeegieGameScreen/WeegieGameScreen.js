@@ -10,18 +10,21 @@ import {
 } from '../../redux/actions/weegieGame'
 import Button from 'apsl-react-native-button'
 import { Constants } from 'expo'
-import Colors from '../../constants/Colors'
-const { primaryColor, secondaryColor } = Colors
 
 class WeegieGame extends React.Component {
-  static navigationOptions = {
-    title: 'Weegie Game',
-    headerStyle: {
-      backgroundColor: secondaryColor,
-      paddingTop: Constants.statusBarHeight
-    },
-    headerTitleStyle: { color: primaryColor },
-    headerTintColor: primaryColor
+
+  static navigationOptions = ({ navigation }) => {
+    const { params } = navigation.state
+    const primaryColor = params ? `${params.primaryColor}` : '#e6bb44'
+    return {
+      title: 'Weegie Game',
+      headerStyle: {
+        backgroundColor: params ? `${params.secondaryColor}` : '#0f352e',
+        paddingTop: Constants.statusBarHeight
+      },
+      headerTitleStyle: { color: primaryColor },
+      headerTintColor: primaryColor
+    }
   };
 
   state = {
@@ -32,8 +35,11 @@ class WeegieGame extends React.Component {
     isAnswerScreen: false
   };
 
-  componentDidMount () {
+  componentDidMount() {
     this.props.onGetWeegieQuestions()
+    const { cities, cityId } = this.props
+    const { primary_color: primaryColor, secondary_color: secondaryColor } = cities.filter(city => city.city_id === cityId)[0]
+    this.props.navigation.setParams({ primaryColor, secondaryColor })
   }
 
   handleNextQuestion = e => {
@@ -79,9 +85,11 @@ class WeegieGame extends React.Component {
       const { dataIndex } = this.state
       const question = data[dataIndex]
       const questionNum = dataIndex + 1
+      const { cities, cityId } = this.props
+      const { primary_color: primaryColor, secondary_color: secondaryColor } = cities.filter(city => city.city_id === cityId)[0]
       return (
         <View styles={styles.content}>
-          <Text style={styles.question}>
+          <Text style={[styles.question, { color: secondaryColor }]}>
             {questionNum}- {question.title}
           </Text>
           <View>
@@ -91,7 +99,7 @@ class WeegieGame extends React.Component {
               onPress={() => {
                 this.handleCheckBox('a')
               }}
-              containerStyle={styles.checkBoxContainer}
+              containerStyle={{ backgroundColor: primaryColor, borderColor: primaryColor }}
               uncheckedColor={secondaryColor}
               textStyle={styles.label}
             />
@@ -103,7 +111,7 @@ class WeegieGame extends React.Component {
               onPress={() => {
                 this.handleCheckBox('b')
               }}
-              containerStyle={styles.checkBoxContainer}
+              containerStyle={{ backgroundColor: primaryColor, borderColor: primaryColor }}
               uncheckedColor={secondaryColor}
               textStyle={styles.label}
             />
@@ -115,7 +123,7 @@ class WeegieGame extends React.Component {
               onPress={() => {
                 this.handleCheckBox('c')
               }}
-              containerStyle={styles.checkBoxContainer}
+              containerStyle={{ backgroundColor: primaryColor, borderColor: primaryColor }}
               uncheckedColor={secondaryColor}
               textStyle={styles.label}
               value='c'
@@ -128,14 +136,14 @@ class WeegieGame extends React.Component {
               onPress={() => {
                 this.handleCheckBox('d')
               }}
-              containerStyle={styles.checkBoxContainer}
+              containerStyle={{ backgroundColor: primaryColor, borderColor: primaryColor }}
               uncheckedColor={secondaryColor}
               textStyle={styles.label}
               value='c'
             />
           </View>
           <Button
-            style={styles.PlayAgainBtn}
+            style={[styles.PlayAgainBtn, { backgroundColor: secondaryColor }]}
             onPress={this.handleNextQuestion}
             textStyle={{
               color: primaryColor,
@@ -151,6 +159,8 @@ class WeegieGame extends React.Component {
   };
 
   renderAnswers = data => {
+    const { cities, cityId } = this.props
+    const { primary_color: primaryColor, secondary_color: secondaryColor } = cities.filter(city => city.city_id === cityId)[0]
     return (
       <View>
         <Text style={styles.correctAnswers}>
@@ -186,7 +196,7 @@ class WeegieGame extends React.Component {
               fontSize: 20,
               fontWeight: 'bold'
             }}
-            style={styles.PlayAgainBtn}
+            style={[styles.PlayAgainBtn, { backgroundColor: secondaryColor }]}
             onPress={this.resetGame}
           >
             Play Again
@@ -202,8 +212,10 @@ class WeegieGame extends React.Component {
     } else if (this.state.isAnswerScreen) {
       return this.renderAnswers(WeegieGameAnswers)
     }
+    const { cities, cityId } = this.props
+    const { primary_color: primaryColor, secondary_color: secondaryColor } = cities.filter(city => city.city_id === cityId)[0]
     return (
-      <View style={styles.viewButton}>
+      <View style={[styles.viewButton, { backgroundColor: secondaryColor }]}>
         <Button
           style={styles.startButton}
           onPress={this.handleOpen}
@@ -215,11 +227,13 @@ class WeegieGame extends React.Component {
     )
   };
 
-  render () {
+  render() {
     const data = this.props.WeegieGameQuestions
     const { WeegieGameAnswers } = this.props
+    const { cities, cityId } = this.props
+    const { primary_color: primaryColor } = cities.filter(city => city.city_id === cityId)[0]
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView style={[styles.container, { backgroundColor: primaryColor }]}>
         {this.showGameContent(data, WeegieGameAnswers)}
       </ScrollView>
     )
@@ -229,7 +243,9 @@ class WeegieGame extends React.Component {
 const mapStateToProps = state => {
   return {
     WeegieGameQuestions: state.WeegieGame.weegieQuestions,
-    WeegieGameAnswers: state.WeegieGameAnswers
+    WeegieGameAnswers: state.WeegieGameAnswers,
+    cityId: state.Setting.city,
+    cities: state.cities.citiesList
   }
 }
 
