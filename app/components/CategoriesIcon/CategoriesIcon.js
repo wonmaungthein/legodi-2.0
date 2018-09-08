@@ -47,7 +47,7 @@ class CategoriesIcon extends React.Component {
         return <Ionicons name='md-help' size={36} color={primaryColor} />
     }
   }
-  render() {
+  render () {
     const { cities, cityId } = this.props
     const { primary_color: primaryColor, categories_color: categoriesColor } = cities.filter(city => city.city_id === cityId)[0]
     return (

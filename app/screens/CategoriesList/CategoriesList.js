@@ -9,7 +9,7 @@ import styles from './CategoryListStyles'
 import PropTypes from 'prop-types'
 
 class CategoriesList extends React.Component {
-  async componentDidMount() {
+  async componentDidMount () {
     const { cityId, languageId } = this.props
     this.props.fetchCities()
     this.props.fetchCategories(languageId, cityId)
@@ -35,9 +35,9 @@ class CategoriesList extends React.Component {
     })
   }
 
-  render() {
+  render () {
     const { cities, cityId } = this.props
-    let primaryColor = ""
+    let primaryColor = ''
     if (cities.length !== 0) {
       primaryColor = cities.filter(city => city.city_id === cityId)[0].primary_color
     } else {

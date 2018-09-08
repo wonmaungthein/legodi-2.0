@@ -12,7 +12,6 @@ import Button from 'apsl-react-native-button'
 import { Constants } from 'expo'
 
 class WeegieGame extends React.Component {
-
   static navigationOptions = ({ navigation }) => {
     const { params } = navigation.state
     const primaryColor = params ? `${params.primaryColor}` : '#e6bb44'
@@ -35,7 +34,7 @@ class WeegieGame extends React.Component {
     isAnswerScreen: false
   };
 
-  componentDidMount() {
+  componentDidMount () {
     this.props.onGetWeegieQuestions()
     const { cities, cityId } = this.props
     const { primary_color: primaryColor, secondary_color: secondaryColor } = cities.filter(city => city.city_id === cityId)[0]
@@ -227,7 +226,7 @@ class WeegieGame extends React.Component {
     )
   };
 
-  render() {
+  render () {
     const data = this.props.WeegieGameQuestions
     const { WeegieGameAnswers } = this.props
     const { cities, cityId } = this.props

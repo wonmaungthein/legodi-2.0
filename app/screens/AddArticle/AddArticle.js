@@ -8,7 +8,7 @@ import { Constants, ImagePicker, Permissions } from 'expo'
 import { FormLabel, FormInput } from 'react-native-elements'
 
 class AddArticle extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     // state for the form of adding article
     this.state = {
@@ -22,13 +22,13 @@ class AddArticle extends React.Component {
     }
   }
 
-  async componentDidMount() {
+  async componentDidMount () {
     const { cities, cityId } = this.props
     const { primary_color: primaryColor, secondary_color: secondaryColor } = cities.filter(city => city.city_id === cityId)[0]
     this.props.navigation.setParams({ primaryColor, secondaryColor })
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     const { cityId } = nextProps
     if (cityId !== this.props.cityId) {
       const { primary_color: primaryColor, secondary_color: secondaryColor } = this.props.cities.filter(city => city.city_id === cityId)[0]
@@ -36,7 +36,7 @@ class AddArticle extends React.Component {
     }
   }
 
-  shouldComponentUpdate(nextProps) {
+  shouldComponentUpdate (nextProps) {
     return this.props.cityId !== nextProps.cityId
   }
 
@@ -59,7 +59,7 @@ class AddArticle extends React.Component {
     this.setState({ [name]: text })
   };
 
-  sendData() {
+  sendData () {
     const { title, shortContent, fullContent, categoryId, status, articleImage } = this.state
     const data = {
       title,
@@ -103,7 +103,7 @@ class AddArticle extends React.Component {
     }
   };
 
-  render() {
+  render () {
     const { cities, cityId } = this.props
     const { primary_color: primaryColor, secondary_color: secondaryColor } = cities.filter(city => city.city_id === cityId)[0]
     return (

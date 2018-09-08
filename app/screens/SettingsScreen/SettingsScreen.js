@@ -9,7 +9,7 @@ import { fetchCities } from '../../redux/actions/citiesActions'
 import { Constants } from 'expo'
 
 class SettingsScreen extends React.Component {
-  componentDidMount() {
+  componentDidMount () {
     const { cities, cityId } = this.props
     const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor } = cities.filter(city => city.city_id === cityId)[0]
     this.props.navigation.setParams({ title, primaryColor, secondaryColor })
@@ -47,7 +47,7 @@ class SettingsScreen extends React.Component {
     this.props.fetchCategories(languageId, cityId)
   }
 
-  render() {
+  render () {
     const { languages, cities, languageId, cityId } = this.props
     const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor } = cities.filter(city => city.city_id === cityId)[0]
     return (

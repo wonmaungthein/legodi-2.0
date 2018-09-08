@@ -6,13 +6,13 @@ import PropTypes from 'prop-types'
 import styles from './ArticleStyle'
 
 class Article extends React.Component {
-  componentDidMount() {
+  componentDidMount () {
     const { cities, cityId } = this.props
     const { city_name: cityName, primary_color: primaryColor, secondary_color: secondaryColor } = cities.filter(city => city.city_id === cityId)[0]
     this.props.navigation.setParams({ cityName, primaryColor, secondaryColor })
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     const { cityId } = nextProps
     if (cityId !== this.props.cityId) {
       const { city_name: cityName, primary_color: primaryColor, secondary_color: secondaryColor } = this.props.cities.filter(city => city.city_id === cityId)[0]
@@ -20,7 +20,7 @@ class Article extends React.Component {
     }
   }
 
-  shouldComponentUpdate(nextProps) {
+  shouldComponentUpdate (nextProps) {
     return this.props.cityId !== nextProps.cityId
   }
 
@@ -38,7 +38,7 @@ class Article extends React.Component {
     }
   };
 
-  render() {
+  render () {
     const language = this.props.navigation.getParam('language', 'en')
     const description = this.props.navigation.getParam(
       'description',
