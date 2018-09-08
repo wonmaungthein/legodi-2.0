@@ -1,14 +1,30 @@
 <div class="mt-5 weegie-question">
     {{#each data}}
 
-    <h3 class="text-center">Question ID:</h3>
-    <h4 class="text-center">{{this.question_id}}</h4>
-
-    <h3 class="text-center mt-4">Question Title:</h3>
+    <h3 class="text-center mt-4">Question:</h3>
     <h4 class="text-center">{{this.title}}</h4>
+
+     <h3 class="text-center mt-4">Visible:</h3>
+    <h4 class="text-center">{{this.visible}}</h4>
 
     <h3 class="text-center mt-4">Answer:</h3>
     <h4 class="text-center">{{this.answer}}</h4>
+
+    <h3 class="text-center">Choice A:</h3>
+    <h4 class="text-center">{{this.a}}</h4>
+
+    <h3 class="text-center">Choice B:</h3>
+    <h4 class="text-center">{{this.b}}</h4>
+
+    <h3 class="text-center">Choice C:</h3>
+    <h4 class="text-center">{{this.c}}</h4>
+
+    <h3 class="text-center">Choice D:</h3>
+    <h4 class="text-center">{{this.d}}</h4>
+
+     <a href='/admin/weegie/questions/delete/{{this.question_id}}'>
+        <button class="btn btn-sm eye delete-category">Delete<i class="far fa-trash-alt"></i></button>
+    </a>
 
     {{/each}}
 </div>
