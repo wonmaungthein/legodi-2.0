@@ -8,7 +8,10 @@ exports.up = async (knex, Promise) => {
 
   await knex.schema.createTable('cities', table => {
     table.string('city_id').primary().defaultTo('GLA')
-    table.string('city_name').notNullable()
+    table.string('city_name').notNullable(),
+      table.string('primary_color'),
+      table.string('secondary_color'),
+      table.string('categories_color')
   })
 
   await knex.schema.createTable('categories', table => {

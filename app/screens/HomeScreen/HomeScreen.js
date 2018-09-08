@@ -5,15 +5,19 @@ import { WebBrowser, Constants } from 'expo'
 import PropTypes from 'prop-types'
 import CategoriesList from '../CategoriesList/CategoriesList'
 import styles from './HomeStyles'
-import Colors from '../../constants/Colors'
-const { primaryColor, secondaryColor } = Colors
 
 class HomeScreen extends React.Component {
+  async componentDidMount () {
+    const { cities, cityId } = this.props
+    const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor } = cities.filter(city => city.city_id === cityId)[0]
+    this.props.navigation.setParams({ title, primaryColor, secondaryColor })
+  }
+
   componentWillReceiveProps (nextProps) {
     const { cityId } = nextProps
     if (cityId !== this.props.cityId) {
-      const title = this.props.cities.filter(city => city.city_id === cityId)[0].city_name
-      this.props.navigation.setParams({ title })
+      const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor } = this.props.cities.filter(city => city.city_id === cityId)[0]
+      this.props.navigation.setParams({ title, primaryColor, secondaryColor })
     }
   }
 
@@ -26,17 +30,24 @@ class HomeScreen extends React.Component {
     return {
       title: params ? `${params.title} Welcome Pack` : 'Glasgow Welcome Pack',
       headerStyle: {
-        backgroundColor: secondaryColor,
+        backgroundColor: params ? `${params.secondaryColor}` : '#0f352e',
         paddingTop: Constants.statusBarHeight
       },
-      headerTitleStyle: { color: primaryColor }
+      headerTitleStyle: { color: params ? `${params.primaryColor}` : '#e6bb44' }
     }
   };
 
   render () {
     const { navigate } = this.props.navigation
+    const { cities, cityId } = this.props
+    let primaryColor = ''
+    if (cities.length !== 0) {
+      primaryColor = cities.filter(city => city.city_id === cityId)[0].primary_color
+    } else {
+      primaryColor = '#e6bb44'
+    }
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, { backgroundColor: primaryColor }]}>
         <ScrollView contentContainerStyle={styles.contentContainer}>
           <CategoriesList onPressHandle={navigate} />
         </ScrollView>
@@ -89,4 +100,4 @@ HomeScreen.propTypes = {
   cities: PropTypes.array
 }
 
-export default connect(mapStateToProps, null)(HomeScreen)
+export default connect(mapStateToProps)(HomeScreen)
