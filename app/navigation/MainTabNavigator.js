@@ -17,9 +17,6 @@ import Articles from '../screens/ArticlesListScreen/ArticlesListScreen'
 import AddArticle from '../screens/AddArticle/AddArticle'
 import * as helper from './helpers'
 import StartGame from '../screens/WeegieGameScreen/StartWeegieGame'
-import Colors from '../constants/Colors'
-// Colors passed from the Constants => yellow and green
-const { primaryColor, secondaryColor } = Colors
 
 const middleware = createReactNavigationReduxMiddleware(
   'root',
@@ -33,7 +30,7 @@ const HomeStack = createStackNavigator(
 helper.generateNavigation(
   HomeStack,
   'Home',
-  secondaryColor,
+  '#0f352e',
   'ios-home',
   'md-home'
 )
@@ -42,7 +39,7 @@ const AboutScreenStack = createStackNavigator({ About })
 helper.generateNavigation(
   AboutScreenStack,
   'About',
-  secondaryColor,
+  '#0f352e',
   'ios-information-circle',
   'md-information-circle'
 )
@@ -51,7 +48,7 @@ const SettingsStack = createStackNavigator({ Settings })
 helper.generateNavigation(
   SettingsStack,
   'Settings',
-  secondaryColor,
+  '#0f352e',
   'ios-settings',
   'md-settings'
 )
@@ -63,10 +60,13 @@ const WeggieGameStack = createStackNavigator(
 helper.generateNavigation(
   WeggieGameStack,
   'Game',
-  secondaryColor,
+  '#0f352e',
   'ios-game-controller-b',
   'md-game-controller-b'
 )
+
+var primaryColor = ''
+var secondaryColor = ''
 
 const RootNavigator = createBottomTabNavigator(
   {
@@ -76,7 +76,26 @@ const RootNavigator = createBottomTabNavigator(
     AboutScreenStack
   },
   {
-    navigationOptions: ({ navigation }) => helper.tabBarVisibility(navigation),
+    navigationOptions: ({ navigation }) => {
+      let initialValue = true
+      navigation.state.routes.map(route => {
+        const { routeName } = route
+
+        const { params } = route
+        primaryColor = params ? params.primaryColor : ''
+        secondaryColor = params ? params.secondaryColor : ''
+        console.log(primaryColor, secondaryColor)
+        if (
+          routeName === 'Article' ||
+          routeName === 'Articles' ||
+          routeName === 'Game'
+        ) {
+          initialValue = false
+          return initialValue
+        }
+      })
+      return initialValue ? null : { tabBarVisible: false }
+    },
 
     tabBarOptions: {
       activeTintColor: primaryColor,
