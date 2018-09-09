@@ -6,21 +6,21 @@ import styles from './AboutScreenStyle'
 import { Constants } from 'expo'
 
 class AboutScreen extends React.Component {
-  componentDidMount () {
+  componentDidMount() {
     const { cities, cityId } = this.props
-    const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor } = cities.filter(city => city.city_id === cityId)[0]
-    this.props.navigation.setParams({ title, primaryColor, secondaryColor })
+    const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor, categories_color: categoriesColor } = cities.filter(city => city.city_id === cityId)[0]
+    this.props.navigation.setParams({ title, primaryColor, secondaryColor, categoriesColor })
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     const { cityId } = nextProps
     if (cityId !== this.props.cityId) {
-      const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor } = this.props.cities.filter(city => city.city_id === cityId)[0]
-      this.props.navigation.setParams({ title, primaryColor, secondaryColor })
+      const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor, categories_color: categoriesColor } = this.props.cities.filter(city => city.city_id === cityId)[0]
+      this.props.navigation.setParams({ title, primaryColor, secondaryColor, categoriesColor })
     }
   }
 
-  shouldComponentUpdate (nextProps) {
+  shouldComponentUpdate(nextProps) {
     return this.props.cityId !== nextProps.cityId
   }
 
@@ -36,7 +36,7 @@ class AboutScreen extends React.Component {
     }
   };
 
-  renderAboutData (language) {
+  renderAboutData(language) {
     if (language === 'am') {
       return (
         <View style={styles.textContainer}>
@@ -84,7 +84,7 @@ class AboutScreen extends React.Component {
     }
   }
 
-  render () {
+  render() {
     const { language, cities, cityId } = this.props
     const aboutContent = this.renderAboutData(language)
     const { primary_color: primaryColor } = cities.filter(city => city.city_id === cityId)[0]

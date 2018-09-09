@@ -7,21 +7,21 @@ import PropTypes from 'prop-types'
 import styles from './StartWeegieStyle'
 
 class StartWeegieGame extends React.Component {
-  componentDidMount () {
+  componentDidMount() {
     const { cities, cityId } = this.props
-    const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor } = cities.filter(city => city.city_id === cityId)[0]
-    this.props.navigation.setParams({ title, primaryColor, secondaryColor })
+    const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor, categories_color: categoriesColor } = cities.filter(city => city.city_id === cityId)[0]
+    this.props.navigation.setParams({ title, primaryColor, secondaryColor, categoriesColor })
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     const { cityId } = nextProps
     if (cityId !== this.props.cityId) {
-      const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor } = this.props.cities.filter(city => city.city_id === cityId)[0]
-      this.props.navigation.setParams({ title, primaryColor, secondaryColor })
+      const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor, categories_color: categoriesColor } = this.props.cities.filter(city => city.city_id === cityId)[0]
+      this.props.navigation.setParams({ title, primaryColor, secondaryColor, categoriesColor })
     }
   }
 
-  shouldComponentUpdate (nextProps) {
+  shouldComponentUpdate(nextProps) {
     return this.props.cityId !== nextProps.cityId
   }
 
@@ -39,7 +39,7 @@ class StartWeegieGame extends React.Component {
     }
   };
 
-  render () {
+  render() {
     const { cities, cityId } = this.props
     const { primary_color: primaryColor, secondary_color: secondaryColor } = cities.filter(city => city.city_id === cityId)[0]
     return (

@@ -7,21 +7,21 @@ import CategoriesList from '../CategoriesList/CategoriesList'
 import styles from './HomeStyles'
 
 class HomeScreen extends React.Component {
-  async componentDidMount () {
+  async componentDidMount() {
     const { cities, cityId } = this.props
-    const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor } = cities.filter(city => city.city_id === cityId)[0]
-    this.props.navigation.setParams({ title, primaryColor, secondaryColor })
+    const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor, categories_color: categoriesColor } = cities.filter(city => city.city_id === cityId)[0]
+    this.props.navigation.setParams({ title, primaryColor, secondaryColor, categoriesColor })
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     const { cityId } = nextProps
     if (cityId !== this.props.cityId) {
-      const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor } = this.props.cities.filter(city => city.city_id === cityId)[0]
-      this.props.navigation.setParams({ title, primaryColor, secondaryColor })
+      const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor, categories_color: categoriesColor } = this.props.cities.filter(city => city.city_id === cityId)[0]
+      this.props.navigation.setParams({ title, primaryColor, secondaryColor, categoriesColor })
     }
   }
 
-  shouldComponentUpdate (nextProps) {
+  shouldComponentUpdate(nextProps) {
     return this.props.cityId !== nextProps.cityId
   }
 
@@ -37,7 +37,7 @@ class HomeScreen extends React.Component {
     }
   };
 
-  render () {
+  render() {
     const { navigate } = this.props.navigation
     const { cities, cityId } = this.props
     let primaryColor = ''
@@ -55,7 +55,7 @@ class HomeScreen extends React.Component {
     )
   }
 
-  _maybeRenderDevelopmentModeWarning () {
+  _maybeRenderDevelopmentModeWarning() {
     if (__DEV__) {
       const learnMoreButton = (
         <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>

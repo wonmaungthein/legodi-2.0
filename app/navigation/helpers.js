@@ -3,31 +3,40 @@ import { Platform } from 'react-native'
 import TabBarIcon from '../components/TabBarIcon'
 // import { Constants } from 'expo'
 // import { createStackNavigator } from 'react-navigation'
-// import Colors from '../constants/Colors'
-// const { primaryColor, secondaryColor } = Colors
 
 // GenerateNavigation function created to reduce the code in MainTabNavigator and make it easy to use and understand
 // GenerateNavigation takes 5 parameters we can update it take more or less parameters
 export const generateNavigation = (
   routeStack,
   label,
-  color,
   iosIcon,
   androidIcon
 ) => {
-  routeStack.navigationOptions = {
-    tabBarLabel: label,
-    tabBarIcon: ({ focused }) => (
-      <TabBarIcon
-        focused={focused}
-        color={color}
-        name={
-          Platform.OS === 'ios'
-            ? `${iosIcon}${focused ? '' : '-outline'}`
-            : androidIcon
-        }
-      />
-    )
+  routeStack.navigationOptions = ({ navigation }) => {
+    const { params } = navigation.state.routes[0]
+    const primaryColor = params ? params.primaryColor : '#e6bb44'
+    const secondaryColor = params ? params.secondaryColor : '#0f352e'
+    const categoriesColor = params ? params.categoriesColor : '#205f55'
+    return {
+      tabBarLabel: label,
+      tabBarIcon: ({ focused }) => (
+        <TabBarIcon
+          focused={focused}
+          color={primaryColor}
+          name={
+            Platform.OS === 'ios'
+              ? `${iosIcon}${focused ? '' : '-outline'}`
+              : androidIcon
+          }
+        />
+      ),
+      tabBarOptions: {
+        activeTintColor: primaryColor,
+        activeBackgroundColor: categoriesColor,
+        inactiveBackgroundColor: secondaryColor,
+        inactiveTintColor: primaryColor
+      }
+    }
   }
 }
 
