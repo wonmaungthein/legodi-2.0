@@ -11,25 +11,27 @@ import { Constants } from 'expo'
 class SettingsScreen extends React.Component {
   componentDidMount () {
     const { cities, cityId } = this.props
-    const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor } = cities.filter(city => city.city_id === cityId)[0]
-    this.props.navigation.setParams({ title, primaryColor, secondaryColor })
+    const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor, categories_color: categoriesColor } = cities.filter(city => city.city_id === cityId)[0]
+    this.props.navigation.setParams({ title, primaryColor, secondaryColor, categoriesColor })
   }
 
   updateCityTitleAndColors = (cityId) => {
     const { cities } = this.props
-    const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor } = cities.filter(city => city.city_id === cityId)[0]
-    this.props.navigation.setParams({ title, primaryColor, secondaryColor })
+    const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor, categories_color: categoriesColor } = cities.filter(city => city.city_id === cityId)[0]
+    this.props.navigation.setParams({ title, primaryColor, secondaryColor, categoriesColor })
   }
 
   static navigationOptions = ({ navigation }) => {
     const { params } = navigation.state
+    const primaryColor = params ? `${params.primaryColor}` : '#e6bb44'
+    const secondaryColor = params ? `${params.secondaryColor}` : '#0f352e'
     return {
       title: params ? `${params.title} Welcome Pack` : '',
       headerStyle: {
-        backgroundColor: params ? `${params.secondaryColor}` : '#0f352e',
+        backgroundColor: secondaryColor,
         paddingTop: Constants.statusBarHeight
       },
-      headerTitleStyle: { color: params ? `${params.primaryColor}` : '#e6bb44' }
+      headerTitleStyle: { color: primaryColor }
     }
   };
 

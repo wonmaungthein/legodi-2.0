@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+// 'http://localhost:3001/api'
 const instance = axios.create({
   baseURL: 'https://api.staging.legodi.codeyourfuture.io/api'
 })

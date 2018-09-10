@@ -17,9 +17,6 @@ import Articles from '../screens/ArticlesListScreen/ArticlesListScreen'
 import AddArticle from '../screens/AddArticle/AddArticle'
 import * as helper from './helpers'
 import StartGame from '../screens/WeegieGameScreen/StartWeegieGame'
-import Colors from '../constants/Colors'
-// Colors passed from the Constants => yellow and green
-const { primaryColor, secondaryColor } = Colors
 
 const middleware = createReactNavigationReduxMiddleware(
   'root',
@@ -33,7 +30,6 @@ const HomeStack = createStackNavigator(
 helper.generateNavigation(
   HomeStack,
   'Home',
-  secondaryColor,
   'ios-home',
   'md-home'
 )
@@ -42,7 +38,6 @@ const AboutScreenStack = createStackNavigator({ About })
 helper.generateNavigation(
   AboutScreenStack,
   'About',
-  secondaryColor,
   'ios-information-circle',
   'md-information-circle'
 )
@@ -51,7 +46,6 @@ const SettingsStack = createStackNavigator({ Settings })
 helper.generateNavigation(
   SettingsStack,
   'Settings',
-  secondaryColor,
   'ios-settings',
   'md-settings'
 )
@@ -63,7 +57,6 @@ const WeggieGameStack = createStackNavigator(
 helper.generateNavigation(
   WeggieGameStack,
   'Game',
-  secondaryColor,
   'ios-game-controller-b',
   'md-game-controller-b'
 )
@@ -76,14 +69,7 @@ const RootNavigator = createBottomTabNavigator(
     AboutScreenStack
   },
   {
-    navigationOptions: ({ navigation }) => helper.tabBarVisibility(navigation),
-
-    tabBarOptions: {
-      activeTintColor: primaryColor,
-      activeBackgroundColor: '#215e55',
-      inactiveBackgroundColor: secondaryColor,
-      inactiveTintColor: primaryColor
-    }
+    navigationOptions: ({ navigation }) => helper.tabBarVisibility(navigation)
   }
 )
 
