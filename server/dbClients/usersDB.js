@@ -41,13 +41,13 @@ const addUser = (data) => {
 const editUser = async (id, data) => {
   const { fullName, email } = data
   return knex
-  .table('users')
-  .where('user_id', '=', id)
-  .update({
-    full_name: fullName,
-    email: email,
-    role: data.role
-  })
+    .table('users')
+    .where('user_id', '=', id)
+    .update({
+      full_name: fullName,
+      email: email,
+      role: data.role
+    })
 }
 
 const deleteUser = (userId) => {

@@ -111,7 +111,6 @@ describe('Legodi Server side testing example', () => {
     cy.get('tbody>tr>td').eq(3).click()
   })
 
-
   // Visit Users Tab
   const UsersTab = () => {
     cy.get('a.nav-link')
@@ -187,7 +186,7 @@ describe('Legodi Server side testing example', () => {
         .select('4').should('have.value', '4')
       cy.get('textarea[id="shortContent"]').type('write shortContent')
       cy.get('textarea[id="fullContent"]').type('write fullContent!')
-      //I Need to find a way to upload the file testing
+      // I Need to find a way to upload the file testing
       // cy.get('input[type=file]').click()
       cy.root().submit()
     })
@@ -277,9 +276,3 @@ describe('Legodi Server side testing example', () => {
     cy.url().should('eql', 'http://localhost:3001/users/login')
   })
 })
-
-
-
-
-
-
