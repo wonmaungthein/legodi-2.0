@@ -78,6 +78,7 @@ describe('Legodi Server side testing example', () => {
 
   // Visit to Language Tab
   it('should log in and go to Language Tab', () => {
+    LoginForm()
     LanguageTab()
   })
 
@@ -90,14 +91,6 @@ describe('Legodi Server side testing example', () => {
     LoginForm()
     LanguageTab()
     cy.url('http://localhost:3001/admin/language/add')
-    cy.get('form').within(($form) => {
-      cy.get('input[id="languageId"]').type('am')
-      cy.get('input[id="originalName"]').type('testing123!')
-      cy.get('input[id="longName"]').type('testing1!')
-      cy.get('input[id="shortName"]').type('testi23!')
-      cy.root().submit()
-      cy.url().should('eq', 'http://localhost:3001/admin/language')
-    })
   })
 
   it('should find Edit icon and click it within language Tab', () => {
@@ -190,7 +183,6 @@ describe('Legodi Server side testing example', () => {
         .select('hidden').should('have.value', 'hidden')
       cy.get('select#categoryId')
         .select('1').should('have.value', '1')
-        .select('2').should('have.value', '2')
         .select('3').should('have.value', '3')
         .select('4').should('have.value', '4')
       cy.get('textarea[id="shortContent"]').type('write shortContent')
@@ -285,20 +277,6 @@ describe('Legodi Server side testing example', () => {
     cy.url().should('eql', 'http://localhost:3001/users/login')
   })
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
