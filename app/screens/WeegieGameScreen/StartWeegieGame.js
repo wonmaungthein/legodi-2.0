@@ -8,16 +8,16 @@ import styles from './StartWeegieStyle'
 
 class StartWeegieGame extends React.Component {
   componentDidMount () {
-    const { cities, cityId } = this.props
+    const { cities, cityId, languageId } = this.props
     const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor, categories_color: categoriesColor } = cities.filter(city => city.city_id === cityId)[0]
-    this.props.navigation.setParams({ title, primaryColor, secondaryColor, categoriesColor })
+    this.props.navigation.setParams({ title, primaryColor, secondaryColor, categoriesColor, languageId })
   }
 
   componentWillReceiveProps (nextProps) {
-    const { cityId } = nextProps
-    if (cityId !== this.props.cityId) {
+    const { cityId, languageId } = nextProps
+    if (cityId !== this.props.cityId || languageId !== this.props.languageId) {
       const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor, categories_color: categoriesColor } = this.props.cities.filter(city => city.city_id === cityId)[0]
-      this.props.navigation.setParams({ title, primaryColor, secondaryColor, categoriesColor })
+      this.props.navigation.setParams({ title, primaryColor, secondaryColor, categoriesColor, languageId })
     }
   }
 
@@ -58,7 +58,8 @@ class StartWeegieGame extends React.Component {
 
 const mapStateToProps = (state) => ({
   cityId: state.Setting.city,
-  cities: state.cities.citiesList
+  cities: state.cities.citiesList,
+  languageId: state.Setting.language
 })
 
 StartWeegieGame.propTypes = {
