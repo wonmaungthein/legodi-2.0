@@ -9,15 +9,38 @@ import styles from './HomeStyles'
 class HomeScreen extends React.Component {
   async componentDidMount () {
     const { cities, cityId } = this.props
-    const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor, categories_color: categoriesColor } = cities.filter(city => city.city_id === cityId)[0]
-    this.props.navigation.setParams({ title, primaryColor, secondaryColor, categoriesColor })
+    if (cities.length && cityId) {
+      const {
+        city_name: title,
+        primary_color: primaryColor,
+        secondary_color: secondaryColor,
+        categories_color: categoriesColor
+      } = cities.filter(city => city.city_id === cityId)[0]
+      this.props.navigation.setParams({
+        title,
+        primaryColor,
+        secondaryColor,
+        categoriesColor
+      })
+    }
   }
 
   componentWillReceiveProps (nextProps) {
     const { cityId } = nextProps
+
     if (cityId !== this.props.cityId) {
-      const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor, categories_color: categoriesColor } = this.props.cities.filter(city => city.city_id === cityId)[0]
-      this.props.navigation.setParams({ title, primaryColor, secondaryColor, categoriesColor })
+      const {
+        city_name: title,
+        primary_color: primaryColor,
+        secondary_color: secondaryColor,
+        categories_color: categoriesColor
+      } = this.props.cities.filter(city => city.city_id === cityId)[0]
+      this.props.navigation.setParams({
+        title,
+        primaryColor,
+        secondaryColor,
+        categoriesColor
+      })
     }
   }
 
@@ -33,16 +56,19 @@ class HomeScreen extends React.Component {
         backgroundColor: params ? `${params.secondaryColor}` : '#0f352e',
         paddingTop: Constants.statusBarHeight
       },
-      headerTitleStyle: { color: params ? `${params.primaryColor}` : '#e6bb44' }
+      headerTitleStyle: {
+        color: params ? `${params.primaryColor}` : '#e6bb44'
+      }
     }
-  };
+  }
 
   render () {
     const { navigate } = this.props.navigation
     const { cities, cityId } = this.props
     let primaryColor = ''
     if (cities.length !== 0) {
-      primaryColor = cities.filter(city => city.city_id === cityId)[0].primary_color
+      primaryColor = cities.filter(city => city.city_id === cityId)[0]
+        .primary_color
     } else {
       primaryColor = '#e6bb44'
     }
@@ -81,16 +107,16 @@ class HomeScreen extends React.Component {
     WebBrowser.openBrowserAsync(
       'https://docs.expo.io/versions/latest/guides/development-mode'
     )
-  };
+  }
 
   _handleHelpPress = () => {
     WebBrowser.openBrowserAsync(
       'https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes'
     )
-  };
+  }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   cityId: state.Setting.city,
   cities: state.cities.citiesList
 })

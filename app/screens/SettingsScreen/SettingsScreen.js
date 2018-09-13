@@ -10,9 +10,9 @@ import { Constants } from 'expo'
 
 class SettingsScreen extends React.Component {
   componentDidMount () {
-    const { cities, cityId } = this.props
+    const { cities, cityId, languageId } = this.props
     const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor, categories_color: categoriesColor } = cities.filter(city => city.city_id === cityId)[0]
-    this.props.navigation.setParams({ title, primaryColor, secondaryColor, categoriesColor })
+    this.props.navigation.setParams({ title, primaryColor, secondaryColor, categoriesColor, languageId, renderHeaderTitle: this.renderHeaderTitle(cityId, languageId) })
   }
 
   updateCityTitleAndColors = (cityId) => {
@@ -21,12 +21,45 @@ class SettingsScreen extends React.Component {
     this.props.navigation.setParams({ title, primaryColor, secondaryColor, categoriesColor })
   }
 
+  translateHeaderTitle = (cityId, languageId) => {
+    this.props.navigation.setParams({ languageId, renderHeaderTitle: this.renderHeaderTitle(cityId, languageId) })
+  }
+
+  renderCity = (cityId) => {
+    const { cities } = this.props
+    return cities.filter(city => city.city_id === cityId)[0].city_name
+  }
+
+  renderHeaderTitle = (cityId, languageId) => {
+    const city = this.renderCity(cityId)
+    if (languageId === 'en') {
+      return `${city} Welcome Pack`
+    } else if (languageId === 'ar') {
+      if (city === 'Glasgow') {
+        return 'باقة ترحيب غلاسكو'
+      } else if (city === 'Edinburgh') {
+        return 'باقة ترحيب غلاسكو'
+      } else {
+        return 'بايسلي ترحيب حزمة'
+      }
+    } else {
+      if (city === 'Glasgow') {
+        return 'ግላስጎው እንኳን ደህና መጡ ፓኬጅ'
+      } else if (city === 'Edinburgh') {
+        return 'የኢዲትብሌን የእንኳን ደህና መጡ ጥሪ'
+      } else {
+        return 'Paisley እንኳን ደህና መጡ እሽግ'
+      }
+    }
+  }
+
   static navigationOptions = ({ navigation }) => {
     const { params } = navigation.state
     const primaryColor = params ? `${params.primaryColor}` : '#e6bb44'
     const secondaryColor = params ? `${params.secondaryColor}` : '#0f352e'
+    const headerTitle = params ? params.renderHeaderTitle : 'Glasgow Welcome Pack'
     return {
-      title: params ? `${params.title} Welcome Pack` : '',
+      title: headerTitle,
       headerStyle: {
         backgroundColor: secondaryColor,
         paddingTop: Constants.statusBarHeight
@@ -62,7 +95,7 @@ class SettingsScreen extends React.Component {
 
             selectedValue={languageId}
             style={{ height: 50, width: 100 }}
-            onValueChange={itemValue => { this.props.onLanguageChange(itemValue); this.updateCategories(itemValue, cityId) }}
+            onValueChange={itemValue => { this.props.onLanguageChange(itemValue); this.updateCategories(itemValue, cityId); this.translateHeaderTitle(cityId, itemValue) }}
           >
             {
               languages.map((language, value) => {
@@ -80,6 +113,7 @@ class SettingsScreen extends React.Component {
               this.props.onCityChange(itemValue)
               this.updateCategories(languageId, itemValue)
               this.updateCityTitleAndColors(itemValue)
+              this.translateHeaderTitle(itemValue, languageId)
             }}
           >
             {
