@@ -8,8 +8,8 @@ import styles from './HomeStyles'
 
 class HomeScreen extends React.Component {
   async componentDidMount () {
-    const { cities, cityId } = this.props
-    if (cities.length && cityId) {
+    const { cities, cityId, languageId } = this.props
+    if (cities.length && cityId && languageId) {
       const {
         city_name: title,
         primary_color: primaryColor,
@@ -20,15 +20,15 @@ class HomeScreen extends React.Component {
         title,
         primaryColor,
         secondaryColor,
-        categoriesColor
+        categoriesColor,
+        languageId
       })
     }
   }
 
   componentWillReceiveProps (nextProps) {
-    const { cityId } = nextProps
-
-    if (cityId !== this.props.cityId) {
+    const { cityId, languageId } = nextProps
+    if (cityId !== this.props.cityId || languageId !== this.props.languageId) {
       const {
         city_name: title,
         primary_color: primaryColor,
@@ -39,7 +39,8 @@ class HomeScreen extends React.Component {
         title,
         primaryColor,
         secondaryColor,
-        categoriesColor
+        categoriesColor,
+        languageId
       })
     }
   }
@@ -118,7 +119,8 @@ class HomeScreen extends React.Component {
 
 const mapStateToProps = state => ({
   cityId: state.Setting.city,
-  cities: state.cities.citiesList
+  cities: state.cities.citiesList,
+  languageId: state.Setting.language
 })
 
 HomeScreen.propTypes = {

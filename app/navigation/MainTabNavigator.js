@@ -11,12 +11,12 @@ import { connect } from 'react-redux'
 import Home from '../screens/HomeScreen/HomeScreen'
 import About from '../screens/AboutScreen/AboutScreen'
 import Settings from '../screens/SettingsScreen/SettingsScreen'
-import Game from '../screens/WeegieGameScreen/WeegieGameScreen'
+import StartGame from '../screens/WeegieGameScreen/WeegieGameScreen'
 import Article from '../screens/Article/Article'
 import Articles from '../screens/ArticlesListScreen/ArticlesListScreen'
 import AddArticle from '../screens/AddArticle/AddArticle'
 import * as helper from './helpers'
-import StartGame from '../screens/WeegieGameScreen/StartWeegieGame'
+import Game from '../screens/WeegieGameScreen/StartWeegieGame'
 
 const middleware = createReactNavigationReduxMiddleware(
   'root',
@@ -52,7 +52,7 @@ helper.generateNavigation(
 
 const WeggieGameStack = createStackNavigator(
   { StartGame, Game },
-  { initialRouteName: 'StartGame' }
+  { initialRouteName: 'Game' }
 )
 helper.generateNavigation(
   WeggieGameStack,
@@ -76,6 +76,7 @@ const RootNavigator = createBottomTabNavigator(
 const AppWithNavigationState = reduxifyNavigator(RootNavigator, 'root')
 
 const mapStateToProps = state => {
+  console.log(state.nav)
   return {
     state: state.nav
   }
