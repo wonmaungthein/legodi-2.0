@@ -12,9 +12,6 @@ exports.up = async (knex, Promise) => {
     table.string('primary_color'),
     table.string('secondary_color'),
     table.string('categories_color')
-    table.string('city_name').notNullable(), table.string(
-      'primary_color'
-    ), table.string('secondary_color'), table.string('categories_color')
   })
 
   await knex.schema.createTable('categories', table => {
