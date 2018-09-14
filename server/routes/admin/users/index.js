@@ -50,7 +50,7 @@ router.post('/edit/:userId', async (req, res) => {
     if (user && Number(user[0].user_id) !== Number(userId)) {
       req.flash('error_msg', 'User is already exist')
       res.redirect('/admin/users')
-    }else{
+    } else {
       await db.editUser(userId, body)
       res.redirect('/admin/users')
     }

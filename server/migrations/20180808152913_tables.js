@@ -8,7 +8,10 @@ exports.up = async (knex, Promise) => {
 
   await knex.schema.createTable('cities', table => {
     table.string('city_id').primary().defaultTo('GLA')
-    table.string('city_name').notNullable()
+    table.string('city_name').notNullable(),
+    table.string('primary_color'),
+    table.string('secondary_color'),
+    table.string('categories_color')
   })
 
   await knex.schema.createTable('categories', table => {
@@ -20,13 +23,9 @@ exports.up = async (knex, Promise) => {
     table.string('icon')
     table.string('order')
     table.string('language_id').defaultTo('en')
-    table.foreign('language_id')
-      .references('language_id')
-      .inTable('languages')
+    table.foreign('language_id').references('language_id').inTable('languages')
     table.string('city_id').defaultTo('GLA')
-    table.foreign('city_id')
-      .references('city_id')
-      .inTable('cities')
+    table.foreign('city_id').references('city_id').inTable('cities')
   })
 
   await knex.schema.createTable('weegie', table => {
@@ -65,10 +64,10 @@ exports.up = async (knex, Promise) => {
 }
 
 exports.down = async (knex, Promise) => {
-  await knex.schema.dropTable('users')
-  await knex.schema.dropTable('weegie')
-  await knex.schema.dropTable('articles')
-  await knex.schema.dropTable('categories')
-  await knex.schema.dropTable('languages')
-  await knex.schema.dropTable('cities')
+  await knex.schema.dropTableIfExists('users')
+  await knex.schema.dropTableIfExists('weegie')
+  await knex.schema.dropTableIfExists('articles')
+  await knex.schema.dropTableIfExists('categories')
+  await knex.schema.dropTableIfExists('languages')
+  await knex.schema.dropTableIfExists('cities')
 }

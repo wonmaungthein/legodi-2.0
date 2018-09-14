@@ -1,14 +1,39 @@
-<div class="mt-5 weegie-question">
-    {{#each data}}
-
-    <h3 class="text-center">Question ID:</h3>
-    <h4 class="text-center">{{this.question_id}}</h4>
-
-    <h3 class="text-center mt-4">Question Title:</h3>
-    <h4 class="text-center">{{this.title}}</h4>
-
-    <h3 class="text-center mt-4">Answer:</h3>
-    <h4 class="text-center">{{this.answer}}</h4>
-
+<div class="admin-legodi">
+     {{#each data}}
+    <table class="table bg-primary table-bordered  mt-4 pd-4">
+        <tbody class="table bg-info text-white">
+            <tr>
+                <th>Question</th>
+                <td class="text-center align-middle">{{this.title}}</td>
+            </tr>
+            <tr>
+                <th>Visible:</th>
+                <td class="text-center align-middle">{{this.visible}}</td>
+            </tr>
+            <tr>
+                <th>Answer:</th>
+                <td class="text-center align-middle">{{this.answer}}</td>
+            </tr>
+            <tr>
+                <th>Choice A:</th>
+                <td class="text-center align-middle">{{this.a}}</td>
+            </tr>
+            <tr>
+                <th>Choice B:</th>
+                <td class="text-center align-middle">{{this.b}}</td>
+            </tr>
+            <tr>
+                <th>Choice C:</th>
+                <td class="text-center align-middle">{{this.c}}</td>
+            </tr>
+                        <tr>
+                <th>Choice D:</th>
+                <td class="text-center align-middle">{{this.d}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a href='/admin/weegie/questions/delete/{{this.question_id}}'>
+        <button class="btn btn-sm eye delete-category">Delete<i class="far fa-trash-alt"></i></button>
+    </a>
     {{/each}}
 </div>

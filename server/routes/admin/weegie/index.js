@@ -13,9 +13,7 @@ const ensureAuthenticated = (req, res, next) => {
   }
 }
 
-router.get('/', ensureAuthenticated, async (req, res) => res.render('weegie-menu'))
-
-router.get('/questions/view', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const data = await db.getQuestions()
     res.render('weegie-table-view', { data })
@@ -43,16 +41,7 @@ router.post('/questions/add', async (req, res) => {
   const { body } = req
   try {
     await db.addQuestion(body)
-    res.redirect('/admin/weegie/questions/view')
-  } catch (error) {
-    res.render('error', { error })
-  }
-})
-
-router.get('/questions/edit', async (req, res) => {
-  try {
-    const data = await db.getQuestions()
-    res.render('weegie-table-edit', { data })
+    res.redirect('/admin/weegie')
   } catch (error) {
     res.render('error', { error })
   }
@@ -62,7 +51,7 @@ router.get('/questions/delete/:questionId', async (req, res) => {
   const { questionId } = req.params
   try {
     await db.deleteQuestion(questionId)
-    res.redirect('/admin/weegie/questions/edit')
+    res.redirect('/admin/weegie')
   } catch (error) {
     res.render('error', { error })
   }
@@ -84,7 +73,7 @@ router.post('/questions/edit/:questionId', async (req, res) => {
   const { body } = req
   try {
     await db.editQuestion(questionId, body)
-    res.redirect('/admin/weegie/questions/edit')
+    res.redirect('/admin/weegie')
   } catch (error) {
     res.render('error', { error })
   }
@@ -94,7 +83,7 @@ router.post('/questions/add', async (req, res) => {
   const { body } = req
   try {
     await db.addQuestion(body)
-    res.redirect('/admin/weegie/questions/view')
+    res.redirect('/admin/weegie')
   } catch (error) {
     res.render('error', { error })
   }

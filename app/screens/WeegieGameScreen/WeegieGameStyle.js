@@ -1,11 +1,8 @@
 import { StyleSheet } from 'react-native'
-import Colors from '../../constants/Colors'
-const { primaryColor, secondaryColor } = Colors
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: primaryColor,
     padding: 20
   },
   content: {
@@ -19,7 +16,6 @@ const styles = StyleSheet.create({
     padding: 40
   },
   PlayAgainBtn: {
-    backgroundColor: secondaryColor,
     height: 45,
     borderColor: 'transparent',
     borderWidth: 0,
@@ -28,19 +24,13 @@ const styles = StyleSheet.create({
   },
   question: {
     fontSize: 20,
-    color: secondaryColor,
     fontWeight: 'bold'
-  },
-  checkBoxContainer: {
-    backgroundColor: '#e5ba4f',
-    borderColor: '#e5ba4f'
   },
   label: {
     fontSize: 15,
     color: '#000'
   },
   viewButton: {
-    backgroundColor: secondaryColor,
     width: 300,
     height: 45,
     borderColor: 'transparent',

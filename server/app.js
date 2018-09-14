@@ -22,6 +22,8 @@ const citiesApi = require('./routes/api/cities')
 const CategoriesAdmin = require('./routes/admin/categories')
 const login = require('./routes/admin/authentication/login')
 
+const knex = require('./dbClients/connection')
+
 const fileUpload = require('express-fileupload')
 
 const app = express()
@@ -115,6 +117,19 @@ app.use((err, req, res, next) => {
   // render the error page
   res.status(err.status || 500)
   res.render('error')
+})
+
+knex.migrate.rollback().then(() => {
+  console.log('Database rolled back successfully.')
+  return knex.migrate
+    .latest()
+    .then(function () {
+      console.log('Database Migration ran successfully.')
+      return knex.seed.run()
+    })
+    .then(function () {
+      console.log('Database seed ran successfully.')
+    })
 })
 
 module.exports = app

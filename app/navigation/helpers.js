@@ -3,31 +3,74 @@ import { Platform } from 'react-native'
 import TabBarIcon from '../components/TabBarIcon'
 // import { Constants } from 'expo'
 // import { createStackNavigator } from 'react-navigation'
-// import Colors from '../constants/Colors'
-// const { primaryColor, secondaryColor } = Colors
+
+const translateTabs = (languageId, label) => {
+  if (languageId === 'en' || languageId === '') {
+    return label
+  } else if (languageId === 'ar') {
+    switch (label) {
+      case 'Home':
+        return 'الرئيسية'
+      case 'Game':
+        return 'لعبة'
+      case 'Settings':
+        return 'ضبط'
+      case 'About':
+        return 'حول'
+    }
+  } else if (languageId === 'am') {
+    switch (label) {
+      case 'Home':
+        return 'ቤት'
+      case 'Game':
+        return 'ጨዋታ'
+      case 'Settings':
+        return 'ቅንብር'
+      case 'About':
+        return 'ስለ'
+    }
+  }
+}
 
 // GenerateNavigation function created to reduce the code in MainTabNavigator and make it easy to use and understand
 // GenerateNavigation takes 5 parameters we can update it take more or less parameters
 export const generateNavigation = (
   routeStack,
   label,
-  color,
   iosIcon,
   androidIcon
 ) => {
-  routeStack.navigationOptions = {
-    tabBarLabel: label,
-    tabBarIcon: ({ focused }) => (
-      <TabBarIcon
-        focused={focused}
-        color={color}
-        name={
-          Platform.OS === 'ios'
-            ? `${iosIcon}${focused ? '' : '-outline'}`
-            : androidIcon
-        }
-      />
-    )
+  routeStack.navigationOptions = ({ navigation }) => {
+    const { params } = navigation.state.routes[0]
+    const primaryColor = params ? params.primaryColor : '#e6bb44'
+    const secondaryColor = params ? params.secondaryColor : '#0f352e'
+    const categoriesColor = params ? params.categoriesColor : '#205f55'
+    const languageId = params ? params.languageId : ''
+    let tabName = ''
+
+    const name = navigation.state.routes[0].routeName
+    tabName = translateTabs(languageId, name)
+
+    return {
+      tabBarLabel: tabName,
+      tabBarIcon: ({ focused }) => (
+        <TabBarIcon
+          focused={focused}
+          color={primaryColor}
+          name={
+            Platform.OS === 'ios'
+              ? `${iosIcon}${focused ? '' : '-outline'}`
+              : androidIcon
+          }
+        />
+      ),
+      tabBarOptions: {
+        activeTintColor: primaryColor,
+        activeBackgroundColor: categoriesColor,
+        inactiveBackgroundColor: secondaryColor,
+        inactiveTintColor: primaryColor
+      }
+    }
   }
 }
 
@@ -39,7 +82,7 @@ export const tabBarVisibility = navigation => {
     if (
       routeName === 'Article' ||
       routeName === 'Articles' ||
-      routeName === 'Game'
+      routeName === 'StartGame'
     ) {
       initialValue = false
       return initialValue

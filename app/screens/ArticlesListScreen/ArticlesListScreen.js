@@ -7,15 +7,21 @@ import { Constants } from 'expo'
 import styles from './ArticleListStyles'
 import PropTypes from 'prop-types'
 import { Ionicons } from '@expo/vector-icons'
-import Colors from '../../constants/Colors'
-const { primaryColor, secondaryColor } = Colors
 
 class ArticlesListScreen extends React.Component {
+  async componentDidMount () {
+    const categoryId = this.props.navigation.getParam('id')
+    this.props.listArticles(categoryId)
+    const { cities, cityId } = this.props
+    const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor } = cities.filter(city => city.city_id === cityId)[0]
+    this.props.navigation.setParams({ title, primaryColor, secondaryColor })
+  }
+
   componentWillReceiveProps (nextProps) {
     const { cityId } = nextProps
     if (cityId !== this.props.cityId) {
-      const title = this.props.cities.filter(city => city.city_id === cityId)[0].city_name
-      this.props.navigation.setParams({ title })
+      const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor } = this.props.cities.filter(city => city.city_id === cityId)[0]
+      this.props.navigation.setParams({ title, primaryColor, secondaryColor })
     }
   }
 
@@ -25,10 +31,11 @@ class ArticlesListScreen extends React.Component {
 
   static navigationOptions = ({ navigation }) => {
     const { params } = navigation.state
+    const primaryColor = params ? `${params.primaryColor}` : '#e6bb44'
     return {
       title: params ? `${params.title} Welcome Pack` : 'Glasgow Welcome Pack',
       headerStyle: {
-        backgroundColor: secondaryColor,
+        backgroundColor: params ? `${params.secondaryColor}` : '#0f352e',
         paddingTop: Constants.statusBarHeight
       },
       headerRight: (
@@ -48,14 +55,6 @@ class ArticlesListScreen extends React.Component {
       headerTintColor: primaryColor
     }
   };
-
-  async componentDidMount () {
-    const categoryId = this.props.navigation.getParam('id')
-    this.props.listArticles(categoryId)
-    const { cities, cityId } = this.props
-    const title = cities.filter(city => city.city_id === cityId)[0].city_name
-    this.props.navigation.setParams({ title })
-  }
 
   renderArticlesListPage = () => {
     const { language } = this.props
@@ -106,8 +105,10 @@ class ArticlesListScreen extends React.Component {
   };
 
   render () {
+    const { cities, cityId } = this.props
+    const { primary_color: primaryColor } = cities.filter(city => city.city_id === cityId)[0]
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView style={[styles.container, { backgroundColor: primaryColor }]}>
         <View style={styles.layout}>
           {// this.props.articles.length > 0
             this.renderArticlesListPage()

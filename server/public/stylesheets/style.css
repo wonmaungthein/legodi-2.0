@@ -4,12 +4,12 @@ body {
   font-family: "Times New Roman", Times, serif;
 }
 #legodiNav .navbar-brand{
-  font-weight:bold; 
+  font-weight:bold;
   color:#6b9fd6;
   font-size: 1.8em
 }
 #legodiNav .navbar-brand:hover{
-  color:#1a5ca3 
+  color:#1a5ca3
 }
 #legodiNav .nav-link{
    font-size: 1.4em
@@ -20,8 +20,8 @@ body {
 .admin-panel h3 {
   color: black;
   font-weight: bold;
-  margin-bottom:15px; 
-  font-size: 1.7em 
+  margin-bottom:15px;
+  font-size: 1.7em
 }
 .admin-panel h5 {
   color: rgb(230, 152, 152);
@@ -32,10 +32,10 @@ body {
   font-size: 1.3em;
 }
 .admin-panel span:first-of-type{
-  color:#d66c2c; 
+  color:#d66c2c;
 }
 .admin-panel span:last-of-type{
-  color:#6b9fd6 
+  color:#6b9fd6
 }
 .admin-panel-content {
    min-height: 300px;
@@ -44,7 +44,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-  
+
 nav#serverNav {
   margin-bottom: 20px;
   padding-bottom: 0.53rem;
@@ -268,6 +268,7 @@ button,
     display: flex;
     align-items: center;
     margin: auto;
+    margin-top: 1.5em
 }
 
 .delete-category .far{
@@ -277,6 +278,44 @@ button,
 .delete-category:hover{
     background: #fff;
     color: #f00;
+}
+
+
+/*================= Articles Styling ==================*/
+.add-new-article{
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 9fr 3fr;
+  margin-top: 1.5em;
+}
+
+.add-new-article .btn{
+  width: 100%;
+  font-weight: 600;
+}
+
+.article-short-description{
+  width: 50%;
+}
+
+.delete-article{
+  background: #f00;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+  margin: auto;
+}
+
+.delete-article .far{
+margin-left: .3em;
+}
+
+.delete-article:hover{
+  background: #fff;
+  color: #f00;
 }
 
 @media (min-width: 680px) {

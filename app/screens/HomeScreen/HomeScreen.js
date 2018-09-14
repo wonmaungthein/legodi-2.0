@@ -5,15 +5,43 @@ import { WebBrowser, Constants } from 'expo'
 import PropTypes from 'prop-types'
 import CategoriesList from '../CategoriesList/CategoriesList'
 import styles from './HomeStyles'
-import Colors from '../../constants/Colors'
-const { primaryColor, secondaryColor } = Colors
 
 class HomeScreen extends React.Component {
+  async componentDidMount () {
+    const { cities, cityId, languageId } = this.props
+    if (cities.length && cityId && languageId) {
+      const {
+        city_name: title,
+        primary_color: primaryColor,
+        secondary_color: secondaryColor,
+        categories_color: categoriesColor
+      } = cities.filter(city => city.city_id === cityId)[0]
+      this.props.navigation.setParams({
+        title,
+        primaryColor,
+        secondaryColor,
+        categoriesColor,
+        languageId
+      })
+    }
+  }
+
   componentWillReceiveProps (nextProps) {
-    const { cityId } = nextProps
-    if (cityId !== this.props.cityId) {
-      const title = this.props.cities.filter(city => city.city_id === cityId)[0].city_name
-      this.props.navigation.setParams({ title })
+    const { cityId, languageId } = nextProps
+    if (cityId !== this.props.cityId || languageId !== this.props.languageId) {
+      const {
+        city_name: title,
+        primary_color: primaryColor,
+        secondary_color: secondaryColor,
+        categories_color: categoriesColor
+      } = this.props.cities.filter(city => city.city_id === cityId)[0]
+      this.props.navigation.setParams({
+        title,
+        primaryColor,
+        secondaryColor,
+        categoriesColor,
+        languageId
+      })
     }
   }
 
@@ -26,17 +54,27 @@ class HomeScreen extends React.Component {
     return {
       title: params ? `${params.title} Welcome Pack` : 'Glasgow Welcome Pack',
       headerStyle: {
-        backgroundColor: secondaryColor,
+        backgroundColor: params ? `${params.secondaryColor}` : '#0f352e',
         paddingTop: Constants.statusBarHeight
       },
-      headerTitleStyle: { color: primaryColor }
+      headerTitleStyle: {
+        color: params ? `${params.primaryColor}` : '#e6bb44'
+      }
     }
-  };
+  }
 
   render () {
     const { navigate } = this.props.navigation
+    const { cities, cityId } = this.props
+    let primaryColor = ''
+    if (cities.length !== 0) {
+      primaryColor = cities.filter(city => city.city_id === cityId)[0]
+        .primary_color
+    } else {
+      primaryColor = '#e6bb44'
+    }
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, { backgroundColor: primaryColor }]}>
         <ScrollView contentContainerStyle={styles.contentContainer}>
           <CategoriesList onPressHandle={navigate} />
         </ScrollView>
@@ -70,18 +108,19 @@ class HomeScreen extends React.Component {
     WebBrowser.openBrowserAsync(
       'https://docs.expo.io/versions/latest/guides/development-mode'
     )
-  };
+  }
 
   _handleHelpPress = () => {
     WebBrowser.openBrowserAsync(
       'https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes'
     )
-  };
+  }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   cityId: state.Setting.city,
-  cities: state.cities.citiesList
+  cities: state.cities.citiesList,
+  languageId: state.Setting.language
 })
 
 HomeScreen.propTypes = {
@@ -89,4 +128,4 @@ HomeScreen.propTypes = {
   cities: PropTypes.array
 }
 
-export default connect(mapStateToProps, null)(HomeScreen)
+export default connect(mapStateToProps)(HomeScreen)

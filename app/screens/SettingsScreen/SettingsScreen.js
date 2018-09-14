@@ -7,27 +7,59 @@ import styles from './SettingStyles'
 import PropTypes from 'prop-types'
 import { fetchCities } from '../../redux/actions/citiesActions'
 import { Constants } from 'expo'
-import Colors from '../../constants/Colors'
-const { primaryColor, secondaryColor } = Colors
 
 class SettingsScreen extends React.Component {
   componentDidMount () {
-    const { cities, cityId } = this.props
-    const title = cities.filter(city => city.city_id === cityId)[0].city_name
-    this.props.navigation.setParams({ title })
+    const { cities, cityId, languageId } = this.props
+    const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor, categories_color: categoriesColor } = cities.filter(city => city.city_id === cityId)[0]
+    this.props.navigation.setParams({ title, primaryColor, secondaryColor, categoriesColor, languageId, renderHeaderTitle: this.renderHeaderTitle(cityId, languageId) })
   }
 
-  updateCityTitle = (cityId) => {
+  updateCityTitleAndColors = (cityId) => {
     const { cities } = this.props
-    const title = cities.filter(city => city.city_id === cityId)[0].city_name
-    this.props.navigation.setParams({ title })
+    const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor, categories_color: categoriesColor } = cities.filter(city => city.city_id === cityId)[0]
+    this.props.navigation.setParams({ title, primaryColor, secondaryColor, categoriesColor })
+  }
+
+  translateHeaderTitle = (cityId, languageId) => {
+    this.props.navigation.setParams({ languageId, renderHeaderTitle: this.renderHeaderTitle(cityId, languageId) })
+  }
+
+  renderCity = (cityId) => {
+    const { cities } = this.props
+    return cities.filter(city => city.city_id === cityId)[0].city_name
+  }
+
+  renderHeaderTitle = (cityId, languageId) => {
+    const city = this.renderCity(cityId)
+    if (languageId === 'en') {
+      return `${city} Welcome Pack`
+    } else if (languageId === 'ar') {
+      if (city === 'Glasgow') {
+        return 'باقة ترحيب غلاسكو'
+      } else if (city === 'Edinburgh') {
+        return 'باقة ترحيب غلاسكو'
+      } else {
+        return 'بايسلي ترحيب حزمة'
+      }
+    } else {
+      if (city === 'Glasgow') {
+        return 'ግላስጎው እንኳን ደህና መጡ ፓኬጅ'
+      } else if (city === 'Edinburgh') {
+        return 'የኢዲትብሌን የእንኳን ደህና መጡ ጥሪ'
+      } else {
+        return 'Paisley እንኳን ደህና መጡ እሽግ'
+      }
+    }
   }
 
   static navigationOptions = ({ navigation }) => {
     const { params } = navigation.state
-
+    const primaryColor = params ? `${params.primaryColor}` : '#e6bb44'
+    const secondaryColor = params ? `${params.secondaryColor}` : '#0f352e'
+    const headerTitle = params ? params.renderHeaderTitle : 'Glasgow Welcome Pack'
     return {
-      title: params ? `${params.title} Welcome Pack` : '',
+      title: headerTitle,
       headerStyle: {
         backgroundColor: secondaryColor,
         paddingTop: Constants.statusBarHeight
@@ -52,17 +84,18 @@ class SettingsScreen extends React.Component {
 
   render () {
     const { languages, cities, languageId, cityId } = this.props
+    const { city_name: title, primary_color: primaryColor, secondary_color: secondaryColor } = cities.filter(city => city.city_id === cityId)[0]
     return (
-      <View style={styles.container}>
-        <View style={styles.container}>
-          <Text style={styles.language}>
+      <View style={[styles.container, { backgroundColor: primaryColor }]}>
+        <View style={[styles.container, { backgroundColor: primaryColor }]}>
+          <Text style={[styles.language, { backgroundColor: secondaryColor, color: primaryColor }]}>
             {this.renderLanguage(languageId)} {}
           </Text>
           <Picker
 
             selectedValue={languageId}
             style={{ height: 50, width: 100 }}
-            onValueChange={itemValue => { this.props.onLanguageChange(itemValue); this.updateCategories(itemValue, cityId) }}
+            onValueChange={itemValue => { this.props.onLanguageChange(itemValue); this.updateCategories(itemValue, cityId); this.translateHeaderTitle(cityId, itemValue) }}
           >
             {
               languages.map((language, value) => {
@@ -71,15 +104,16 @@ class SettingsScreen extends React.Component {
             }
           </Picker>
         </View>
-        <View style={styles.container}>
-          <Text style={styles.language}>{cities.filter(city => city.city_id === cityId)[0].city_name} is selected</Text>
+        <View style={[styles.container, { backgroundColor: primaryColor }]}>
+          <Text style={[styles.language, { backgroundColor: secondaryColor, color: primaryColor }]}>{title} is selected</Text>
           <Picker
             selectedValue={cityId}
             style={{ height: 50, width: 100 }}
             onValueChange={itemValue => {
               this.props.onCityChange(itemValue)
               this.updateCategories(languageId, itemValue)
-              this.updateCityTitle(itemValue)
+              this.updateCityTitleAndColors(itemValue)
+              this.translateHeaderTitle(itemValue, languageId)
             }}
           >
             {

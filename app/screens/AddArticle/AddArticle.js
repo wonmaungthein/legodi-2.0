@@ -1,25 +1,13 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import Button from 'apsl-react-native-button'
 import { View, ScrollView, Image, Alert } from 'react-native'
 import styles from './AddArticleStyle'
 import { addArticle } from '../../helpers/api'
 import { Constants, ImagePicker, Permissions } from 'expo'
-import Colors from '../../constants/Colors'
 import { FormLabel, FormInput } from 'react-native-elements'
 
-const { primaryColor, secondaryColor } = Colors
-
-export default class AddArticle extends React.Component {
-  static navigationOptions = {
-    title: 'Add New Article',
-    headerStyle: {
-      backgroundColor: secondaryColor,
-      paddingTop: Constants.statusBarHeight
-    },
-    headerTitleStyle: { color: primaryColor },
-    headerTintColor: primaryColor
-  };
-
+class AddArticle extends React.Component {
   constructor (props) {
     super(props)
     // state for the form of adding article
@@ -33,6 +21,38 @@ export default class AddArticle extends React.Component {
       imageUrl: ''
     }
   }
+
+  async componentDidMount () {
+    const { cities, cityId } = this.props
+    const { primary_color: primaryColor, secondary_color: secondaryColor } = cities.filter(city => city.city_id === cityId)[0]
+    this.props.navigation.setParams({ primaryColor, secondaryColor })
+  }
+
+  componentWillReceiveProps (nextProps) {
+    const { cityId } = nextProps
+    if (cityId !== this.props.cityId) {
+      const { primary_color: primaryColor, secondary_color: secondaryColor } = this.props.cities.filter(city => city.city_id === cityId)[0]
+      this.props.navigation.setParams({ primaryColor, secondaryColor })
+    }
+  }
+
+  shouldComponentUpdate (nextProps) {
+    return this.props.cityId !== nextProps.cityId
+  }
+
+  static navigationOptions = ({ navigation }) => {
+    const { params } = navigation.state
+    const primaryColor = params ? `${params.primaryColor}` : '#e6bb44'
+    return {
+      title: 'Add New Article',
+      headerStyle: {
+        backgroundColor: params ? `${params.secondaryColor}` : '#0f352e',
+        paddingTop: Constants.statusBarHeight
+      },
+      headerTitleStyle: { color: primaryColor },
+      headerTintColor: primaryColor
+    }
+  };
 
   // The function returns another function which updates the state with passing name
   handleChange = name => text => {
@@ -84,11 +104,13 @@ export default class AddArticle extends React.Component {
   };
 
   render () {
+    const { cities, cityId } = this.props
+    const { primary_color: primaryColor, secondary_color: secondaryColor } = cities.filter(city => city.city_id === cityId)[0]
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView style={[styles.container, { backgroundColor: primaryColor }]}>
         <View style={styles.layout}>
           <View>
-            <FormLabel labelStyle={styles.inputTitle}>Title</FormLabel>
+            <FormLabel labelStyle={{ color: secondaryColor }}>Title</FormLabel>
             <FormInput
               onChangeText={this.handleChange('title')}
               inputStyle={{ color: secondaryColor }}
@@ -96,7 +118,7 @@ export default class AddArticle extends React.Component {
             />
           </View>
           <View>
-            <FormLabel labelStyle={styles.inputTitle}>Short Description</FormLabel>
+            <FormLabel labelStyle={{ color: secondaryColor }}>Short Description</FormLabel>
             <FormInput
               multiline
               onChangeText={this.handleChange('shortContent')}
@@ -105,7 +127,7 @@ export default class AddArticle extends React.Component {
             />
           </View>
           <View>
-            <FormLabel labelStyle={styles.inputTitle}>Full Description</FormLabel>
+            <FormLabel labelStyle={{ color: secondaryColor }}>Full Description</FormLabel>
             <FormInput
               multiline
               onChangeText={this.handleChange('fullContent')}
@@ -127,7 +149,7 @@ export default class AddArticle extends React.Component {
 
           <Button
             onPress={() => this.sendData()}
-            style={styles.submitButton}
+            style={[styles.submitButton, { backgroundColor: secondaryColor }]}
             textStyle={{
               color: primaryColor,
               fontSize: 20,
@@ -141,3 +163,12 @@ export default class AddArticle extends React.Component {
     )
   }
 }
+
+const mapStateToProps = (state) => ({
+  cityId: state.Setting.city,
+  cities: state.cities.citiesList
+})
+
+export default connect(
+  mapStateToProps
+)(AddArticle)
