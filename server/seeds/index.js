@@ -1,6 +1,7 @@
 const languagesData = require('./data/languages')
 const categoriesData = require('./data/categories')
 const generateArticles = require('./data/articles')
+const rightToRemain = require('./data/rightToRemain.json')
 const usersData = require('./data/users')
 const weegieData = require('./data/weegie')
 const citiesData = require('./data/cities')
@@ -19,6 +20,7 @@ exports.seed = async (knex, Promise) => {
 
   const articles = await generateArticles()
   await knex('articles').insert(articles)
+  await knex('articles').insert(rightToRemain)
 
   await knex('users').insert(usersData)
   await knex('weegie').insert(weegieData)
