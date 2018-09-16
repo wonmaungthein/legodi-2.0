@@ -13,11 +13,13 @@
     "cypress": "open cypress",
     "rollback": "knex migrate:rollback",
     "recreate-db": "npm run rollback && npm run migrate",
-    "ci-recreate-db": "npm run rollback && npm run migrate"
+    "ci-recreate-db": "npm run rollback && npm run migrate",
+    "scrape-data": "node ./__tools/crawlRightToRemain"
   },
   "dependencies": {
     "bcrypt": "^3.0.0",
     "body-parser": "~1.18.2",
+    "cheerio": "^1.0.0-rc.2",
     "connect-flash": "^0.1.1",
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.4",
@@ -37,6 +39,7 @@
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "pg": "^7.4.3",
+    "request-promise": "^4.2.2",
     "serve-favicon": "~2.4.5",
     "standard": "^11.0.1"
   },

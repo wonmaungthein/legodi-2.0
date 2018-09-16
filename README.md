@@ -131,3 +131,7 @@ We use `knex` for migrations, but we created alias helpers on `package.json` to 
 ## To Open Cypress
 
 1. Go to server and run `./node_modules/.bin/cypress open` or `npx cypress open` in terminal and it will open a window.
+
+## To Run the scraper tool
+1. To start the scraper got to server and `npm run scrape-data`.
+2. The tool will go to the `https://www.righttoremain.org.uk/toolkit/index.htm` and it will scrape all the contents and save them to a file called `crawlRightToRemain.json` that we then use it to seed the database.
